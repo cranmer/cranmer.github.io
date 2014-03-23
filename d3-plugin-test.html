@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>wp-d3 plugin test</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!-- for ipython notebook -->
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Theory And Practice </a></h1>
+                <nav><ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/pages/impactstory.html">ImpactStory</a></li>
+                    <li><a href="/pages/in-the-news.html">Media & Outreach</a></li>
+                    <li><a href="/pages/projects.html">Projects</a></li>
+                    <li class="active"><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/d3-plugin-test.html" rel="bookmark"
+           title="Permalink to wp-d3 plugin test">wp-d3 plugin test</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-07-06T15:48:00">
+                Sat 06 July 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/cranmer.html">cranmer</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>. </p>
+
+</footer><!-- /.post-info -->      <p>[d3-link]<br />
+<a href="http://theoryandpractice.org/wp-content/uploads/2013/07/data.csv">data</a><br />
+[/d3-link]</p>
+<p>Trying to use the <a href="http://figurebelow.com/2013/03/13/wp-d3-tutorial-adding-d3-snippet-into-a-wordpress-post/">wp-d3 plugin</a>... and having problems. There should
+be a pie chart here:</p>
+<p>[d3-source canvas="chart"]<br />
+var width = 960,<br />
+height = 500,<br />
+radius = Math.min(width, height) / 2;</p>
+<p>var color = d3.scale.ordinal()<br />
+.range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56",
+"#d0743c", "#ff8c00"]);</p>
+<p>var arc = d3.svg.arc()<br />
+.outerRadius(radius – 10)<br />
+.innerRadius(0);</p>
+<p>var pie = d3.layout.pie()<br />
+.sort(null)<br />
+.value(function(d) { return d.population; });</p>
+<p>var svg = d3.select(".chart").append("svg")<br />
+.attr("width", width)<br />
+.attr("height", height)<br />
+.append("g")<br />
+.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");</p>
+<p>d3.csv("http://theoryandpractice.org/wp-content/uploads/2013/07/data.csv",
+function(error, data)<br />
+data.forEach(function(d) {<br />
+d.population = +d.population;<br />
+});</p>
+<p>var g = svg.selectAll(".arc")<br />
+.data(pie(data))<br />
+.enter().append("g")<br />
+.attr("class", "arc");</p>
+<p>g.append("path")<br />
+.attr("d", arc)<br />
+.style("fill", function(d) { return color(d.data.age); });</p>
+<p>g.append("text")<br />
+.attr("transform", function(d) { return "translate(" + arc.centroid(d)
++ ")"; })<br />
+.attr("dy", ".35em")<br />
+.style("text-anchor", "middle")<br />
+.text(function(d) { return d.data.age; });<br />
+});<br />
+[/d3-source]</p>
+<p>Ok, well the piechart example above is not working, but here is some
+success! I'm using a simple d3 example from this<br />
+<a href="http://mbostock.github.io/d3/tutorial/bar-1.html%20">tutorial</a>. And I'm just putting the style right in the post instead
+of an external .css file.</p>
+<style>
+         .barchart rect {<br></br>
+          stroke: white;<br></br>
+          fill: steelblue;<br></br>
+   text-align: right;<br></br>
+   padding: 3px;<br></br>
+   margin: 1px;<br></br>
+   color: white;</p>
+<p>}</p>
+<p>.barchart div {<br></br>
+   font: 10px sans-serif;<br></br>
+   background-color: steelblue;<br></br>
+   text-align: right;<br></br>
+   padding: 3px;<br></br>
+   margin: 1px;<br></br>
+   color: white;<br></br>
+ }</p>
+</style>
+
+<p>[d3-source canvas="barchart"]<br />
+var data = [4, 8, 15, 16, 23, 42];</p>
+<p>var chart = d3.select(".barchart").append("svg")<br />
+.attr("class", "barchart")<br />
+.attr("width", 440)<br />
+.attr("height", 140)<br />
+.append("g")<br />
+.attr("transform", "translate(10,15)");</p>
+<p>var x = d3.scale.linear()<br />
+.domain([0, d3.max(data)])<br />
+.range([0, 420]);</p>
+<p>chart.selectAll("rect")<br />
+.data(data)<br />
+.enter().append("rect")<br />
+.attr("y", function(d, i) { return i * 20; })<br />
+.attr("width", x)<br />
+.attr("height", 20);</p>
+<p>var y = d3.scale.ordinal()<br />
+.domain(data)<br />
+.rangeBands([0, 120]);</p>
+<p>chart.selectAll("rect")<br />
+.data(data)<br />
+.enter().append("rect")<br />
+.attr("y", y)<br />
+.attr("width", x)<br />
+.attr("height", y.rangeBand());</p>
+<p>chart.selectAll("text")<br />
+.data(data)<br />
+.enter().append("text")<br />
+.attr("x", x)<br />
+.attr("y", function(d) { return y(d) + y.rangeBand() / 2; })<br />
+.attr("dx", -3) // padding-right<br />
+.attr("dy", ".35em") // vertical-align: middle<br />
+.attr("text-anchor", "end") // text-align: right<br />
+.text(String);</p>
+<p>chart.selectAll("line")<br />
+.data(x.ticks(10))<br />
+.enter().append("line")<br />
+.attr("x1", x)<br />
+.attr("x2", x)<br />
+.attr("y1", 0)<br />
+.attr("y2", 120)<br />
+.style("stroke", "#ccc");</p>
+<p>chart.selectAll(".rule")<br />
+.data(x.ticks(10))<br />
+.enter().append("text")<br />
+.attr("class", "rule")<br />
+.attr("x", x)<br />
+.attr("y", 0)<br />
+.attr("dy", -3)<br />
+.attr("text-anchor", "middle")<br />
+.text(String);</p>
+<p>chart.append("line")<br />
+.attr("y1", 0)<br />
+.attr("y2", 120)<br />
+.style("stroke", "#000");<br />
+[/d3-source]</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="http://www.quantumdiaries.org/">Quantum Diaries</a></li>
+                            <li><a href="http://www.quantumdiaries.org/author/kyle-cranmer/">Me @ Quantum Diaries</a></li>
+                            <li><a href="http://www.math.columbia.edu/~woit/wordpress/">Not Even Wrong</a></li>
+                            <li><a href="http://twistedphysics.typepad.com/cocktail_party_physics/">Cocktail Party Physics</a></li>
+                            <li><a href="http://resonaances.blogspot.com/">Résonaances</a></li>
+                            <li><a href="http://profmattstrassler.com/">Matt Strassler</a></li>
+                            <li><a href="http://gordonwatts.wordpress.com/">Life as a physicist</a></li>
+                            <li><a href="http://www.science20.com/physics">Tommaso Dorigo</a></li>
+                            <li><a href="http://blogs.discovermagazine.com/cosmicvariance/">Cosmic Variance</a></li>
+                            <li><a href="http://muon.wordpress.com/">Collider Blog</a></li>
+                            <li><a href="http://www.symmetrymagazine.org/breaking">Symmetry Breaking</a></li>
+                            <li><a href="http://blog.inspirehep.net/">INSPIRE</a></li>
+                            <li><a href="http://datapub.cdlib.org/">Data Pub</a></li>
+                            <li><a href="http://hoggresearch.blogspot.com/">Hogg’s Research</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="http://twitter.com/kylecranmer">twitter</a></li>
+                            <li><a href="http://github.com/cranmer">github</a></li>
+                            <li><a href="http://www.linkedin.com/in/kylecranmer">linkedin</a></li>
+                            <li><a href="https://plus.google.com/106689822196584540592/posts">google+</a></li>
+                            <li><a href="http://www.flickr.com/photos/hoonynoo/">flickr</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
