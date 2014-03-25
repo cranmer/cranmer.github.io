@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Theory And Practice</title><link href="http://cranmer.github.io/" rel="alternate"></link><link href="http://cranmer.github.io/feeds/all.atom.xml" rel="self"></link><id>http://cranmer.github.io/</id><updated>2014-03-21T10:53:00+01:00</updated><entry><title>Testing Pelican Migration</title><link href="http://cranmer.github.io/Testing-Pelican-Migration.html" rel="alternate"></link><updated>2014-03-21T10:53:00+01:00</updated><author><name>Kyle Cranmer</name></author><id>tag:cranmer.github.io,2014-03-21:Testing-Pelican-Migration.html</id><summary type="html">&lt;p&gt;So, I'm taking the leap and migrating from Wordpress to pelican.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Theory And Practice</title><link href="http://cranmer.github.io/" rel="alternate"></link><link href="http://cranmer.github.io/feeds/all.atom.xml" rel="self"></link><id>http://cranmer.github.io/</id><updated>2014-03-21T10:53:00+01:00</updated><entry><title>Testing Pelican Migration</title><link href="http://cranmer.github.io/2014/03/Testing-Pelican-Migration/" rel="alternate"></link><updated>2014-03-21T10:53:00+01:00</updated><author><name>Kyle Cranmer</name></author><id>tag:cranmer.github.io,2014-03-21:2014/03/Testing-Pelican-Migration/</id><summary type="html">&lt;p&gt;So, I'm taking the leap and migrating from Wordpress to pelican.&lt;/p&gt;
 &lt;p&gt;Testing:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Here is &lt;a href="{filename}../inspired-by-the-higgs-a-step-forward-in-open-access.md"&gt;a link&lt;/a&gt; to a local file&lt;/li&gt;
@@ -158,7 +158,7 @@ test notebook
         (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
     }
 &lt;/script&gt;
-</summary></entry><entry><title>Bicep2 and Software Carpentry</title><link href="http://cranmer.github.io/bicep2-software-carpentry.html" rel="alternate"></link><updated>2014-03-17T16:47:00+01:00</updated><author><name>cranmer</name></author><id>tag:cranmer.github.io,2014-03-17:bicep2-software-carpentry.html</id><summary type="html">&lt;p&gt;This week NYU hosted a &lt;a href="http://software-carpentry.org/bootcamps/index.html"&gt;Software Carpentry Bootcamp&lt;/a&gt; along with Berkeley and U. Washington (the other institutes in the Moore-Sloan data science environment).  I sat in on the python classes (there were also classes in R).  However, on Monday, there was a &lt;em&gt;huge&lt;/em&gt; announcement from the &lt;a href="http://bicepkeck.org"&gt;BICEP2&lt;/a&gt; collaboration about the observation of B-mode polarization in the CMB, which is considered a smoking gun for primordial gravitational waves predicte by inflation. That made it hard to concentrate on python, but I tried to merge the two. I noticed that BICEP2 made their likelihood curve public. I also noticed that they got a bit mixed up with their Bayesian and Frequentist statistics (at least the terminology), so that gave me an idea.&lt;br /&gt;
+</summary></entry><entry><title>Bicep2 and Software Carpentry</title><link href="http://cranmer.github.io/2014/03/bicep2-software-carpentry/" rel="alternate"></link><updated>2014-03-17T16:47:00+01:00</updated><author><name>cranmer</name></author><id>tag:cranmer.github.io,2014-03-17:2014/03/bicep2-software-carpentry/</id><summary type="html">&lt;p&gt;This week NYU hosted a &lt;a href="http://software-carpentry.org/bootcamps/index.html"&gt;Software Carpentry Bootcamp&lt;/a&gt; along with Berkeley and U. Washington (the other institutes in the Moore-Sloan data science environment).  I sat in on the python classes (there were also classes in R).  However, on Monday, there was a &lt;em&gt;huge&lt;/em&gt; announcement from the &lt;a href="http://bicepkeck.org"&gt;BICEP2&lt;/a&gt; collaboration about the observation of B-mode polarization in the CMB, which is considered a smoking gun for primordial gravitational waves predicte by inflation. That made it hard to concentrate on python, but I tried to merge the two. I noticed that BICEP2 made their likelihood curve public. I also noticed that they got a bit mixed up with their Bayesian and Frequentist statistics (at least the terminology), so that gave me an idea.&lt;br /&gt;
 Here's a link to my &lt;a href="http://nbviewer.ipython.org/url/cranmer.github.io/downloads/notebooks/BICEP2_likelihood.ipynb?create=1"&gt;iPython notebook on alternate BICEP2 error analysis&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;For convenience, embedded below (using the pelican liquid notebook plugin)&lt;/p&gt;
 &lt;hr /&gt;
@@ -1019,7 +1019,7 @@ In&amp;nbsp;[27]:
 &lt;/div&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;This was done during a Software Carpentry bootcamp at NYU, it's more of a fun python project than a critique of the BICEP2 result. Congratulations to BICEP2!&lt;/p&gt;
-&lt;/div&gt;&lt;/p&gt;</summary><category term="Data"></category><category term="python"></category><category term="Statistics"></category><category term="physics"></category><category term="open science"></category></entry><entry><title>Visualizing information geometry with multidimensional scaling</title><link href="http://cranmer.github.io/visualizing-information-geometry-with-multidimensional-scaling.html" rel="alternate"></link><updated>2014-03-05T16:47:00+01:00</updated><author><name>cranmer</name></author><id>tag:cranmer.github.io,2014-03-05:visualizing-information-geometry-with-multidimensional-scaling.html</id><summary type="html">&lt;p&gt;This weekend's project was a fun one!  &lt;/p&gt;
+&lt;/div&gt;&lt;/p&gt;</summary><category term="Data"></category><category term="python"></category><category term="Statistics"></category><category term="physics"></category><category term="open science"></category></entry><entry><title>Visualizing information geometry with multidimensional scaling</title><link href="http://cranmer.github.io/2014/03/visualizing-information-geometry-with-multidimensional-scaling/" rel="alternate"></link><updated>2014-03-05T16:47:00+01:00</updated><author><name>cranmer</name></author><id>tag:cranmer.github.io,2014-03-05:2014/03/visualizing-information-geometry-with-multidimensional-scaling/</id><summary type="html">&lt;p&gt;This weekend's project was a fun one!  &lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Update: Since the original post I made some more progress. I'm developing the code into my GitHub &lt;a href="https://github.com/cranmer/play/tree/master/manifoldLearning"&gt;play/manifoldLearning&lt;/a&gt; repository.  Below is from the README.&lt;/em&gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;p&gt;I'm working on a paper about Informtion Geometry.&lt;br /&gt;
@@ -1027,13 +1027,13 @@ The first step was an iPython notebook on &lt;a href="http://nbviewer.ipython.or
 &lt;p&gt;The other python files are me working my way to something more ambitious.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Step 1:&lt;/strong&gt;
 The first step is described nicely in this iPython notebook on &lt;a href="http://nbviewer.ipython.org/github/cranmer/play/blob/master/manifoldLearning/GaussianInformationGeometryEmbedding.ipynb"&gt;Visualizing information geometry with multidimensional scaling&lt;/a&gt;. Final result shown here. Important part is a grid of points in (μ,σ) being mapped by f:&lt;/p&gt;
-&lt;p&gt;&lt;img width="400" src="images/gaussianInfoGeom.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img width="400" src="/images/gaussianInfoGeom.png"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Step 2:&lt;/strong&gt;
 Try various &lt;a href="http://scikit-learn.org/0.11/modules/generated/sklearn.svm.SVR.html"&gt;scikit-learn&lt;/a&gt; algorithms, setteling on NuSVR. Results not so good, smaller red spots not approximating the larger colorful training samples, particuarly near the edges. The lower-right is what I'm ultimately after, the inverse map of back into the space (μ,σ) -- for these points, that should be a perfect grid. Surprised I can't do regression on &lt;/p&gt;
-&lt;p&gt;&lt;img width="400" src="images/learnEmbedding.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img width="400" src="/images/learnEmbedding.png"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Step 3:&lt;/strong&gt;
 Since this is a low dimensional problem with little noise, just try &lt;a href="http://docs.scipy.org/doc/scipy/reference/tutorial/interpolate.html#d-interpolation-interp1d"&gt;SciPy Interpolation&lt;/a&gt; algorithms. Ah, that's better, now I'm getting the grid I want.&lt;/p&gt;
-&lt;p&gt;&lt;img width="400" src="images/interpEmbedding.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img width="400" src="/images/interpEmbedding.png"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Step 4:&lt;/strong&gt;
 To do: make a regular grid in the target space and project it via the inverse into the (μ,σ) plane.  This is a "smart" sampling from an information theoretic perspective. It's also a good choice if simulation of the statistical model is expensive (ie. full simulation with GEANT at the LHC, which takes about 20 min per event, and the real collisons are happening at 40 million/sec. )&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Step 5:&lt;/strong&gt;
@@ -3733,7 +3733,7 @@ ABRIrAEAABRIrAEAABRIrAEAABRIrAEAABToC3PRk3G2sn5hAAAAAElFTkSuQmCC
 &lt;/div&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;em&gt;This post was created entirely in IPython notebook. Download the raw notebook&lt;/em&gt; &lt;a href="https://github.com/cranmer/play/raw/master/manifoldLearning/GaussianInformationGeometryEmbedding.ipynb"&gt;&lt;em&gt;here&lt;/em&gt;&lt;/a&gt;, &lt;em&gt;or see a static view on&lt;/em&gt; &lt;a href="http://nbviewer.ipython.org/url/github.com/cranmer/play/raw/master/manifoldLearning/GaussianInformationGeometryEmbedding.ipynb"&gt;&lt;em&gt;nbviewer&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;&lt;/p&gt;</summary><category term="Data"></category><category term="python"></category><category term="Statistics"></category></entry><entry><title>RooFit statistical modeling language demo in an iPython notebook</title><link href="http://cranmer.github.io/roofit-statistical-modeling-language-in-ipython-notebook.html" rel="alternate"></link><updated>2014-03-04T21:01:00+01:00</updated><author><name>cranmer</name></author><id>tag:cranmer.github.io,2014-03-04:roofit-statistical-modeling-language-in-ipython-notebook.html</id><summary type="html">&lt;p&gt;Particle physicisits primarily use &lt;a href="http://root.cern.ch/"&gt;ROOT&lt;/a&gt; for the data analysis
+&lt;/div&gt;&lt;/p&gt;</summary><category term="Data"></category><category term="python"></category><category term="Statistics"></category></entry><entry><title>RooFit statistical modeling language demo in an IPython notebook</title><link href="http://cranmer.github.io/2014/03/roofit-statistical-modeling-language-in-ipython-notebook/" rel="alternate"></link><updated>2014-03-04T21:01:00+01:00</updated><author><name>cranmer</name></author><id>tag:cranmer.github.io,2014-03-04:2014/03/roofit-statistical-modeling-language-in-ipython-notebook/</id><summary type="html">&lt;p&gt;Particle physicisits primarily use &lt;a href="http://root.cern.ch/"&gt;ROOT&lt;/a&gt; for the data analysis
 framework. Part of that framework is a package
 called &lt;a href="http://root.cern.ch/drupal/content/users-guide#roofit"&gt;RooFit&lt;/a&gt; statistical modeling and fitting package. I have
 contributed to this package and added a layer on top
@@ -3741,7 +3741,7 @@ called &lt;a href="https://twiki.cern.ch/twiki/bin/view/RooStats/WebHome"&gt;Ro
 frequentist and Bayesian paradigms based on statistical models made with
 RooFit. These are the tools that were used to claim the discover the
 Higgs boson, and those &lt;a href="http://blogs.discovermagazine.com/cosmicvariance/2011/12/08/making-the-higgs-sausage/?utm_source=feedburner&amp;amp;utm_medium=feed&amp;amp;utm_campaign=Feed%3A+CosmicVariance+%28Cosmic+Variance%29#.UxFW0NyrvlI"&gt;statistical models get pretty complicated&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;span style="line-height: 1.5em;"&gt;I created&lt;/span&gt;[a little iPython
+&lt;p&gt;&lt;span style="line-height: 1.5em;"&gt;I created&lt;/span&gt;[a little IPython
 notebook to demonstrate a simple example of RooFit's ability][]&lt;span
 style="line-height: 1.5em;"&gt; to create a statistical model, generate
 some simulated data, fit that data, create the profile likelihood, and
@@ -4750,9 +4750,9 @@ TAAAAABJRU5ErkJggg==
 &lt;/div&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;This post was created entirely in IPython notebook. Download the raw notebook &lt;a href="https://raw.github.com/cranmer/play/raw/master/iPythonROOT/BasicRooFitExample.ipynb"&gt;here&lt;/a&gt;, or see a static view on &lt;a href="http://nbviewer.ipython.org/url/github.com/cranmer/play/raw/master/iPythonROOT/BasicRooFitExample.ipynb"&gt;nbviewer&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;&lt;/p&gt;</summary><category term="Data"></category><category term="python"></category><category term="Statistics"></category></entry><entry><title>The Higgs Boson: A Natural Disaster!</title><link href="http://cranmer.github.io/the-higgs-boson-a-natural-disaster.html" rel="alternate"></link><updated>2014-02-07T16:02:00+01:00</updated><author><name>cranmer</name></author><id>tag:cranmer.github.io,2014-02-07:the-higgs-boson-a-natural-disaster.html</id><summary type="html">&lt;p&gt;See my blog post over at QuantumDiaries on an analogy about the fine
+&lt;/div&gt;&lt;/p&gt;</summary><category term="Data"></category><category term="python"></category><category term="Statistics"></category></entry><entry><title>The Higgs Boson: A Natural Disaster!</title><link href="http://cranmer.github.io/2014/02/the-higgs-boson-a-natural-disaster/" rel="alternate"></link><updated>2014-02-07T16:02:00+01:00</updated><author><name>cranmer</name></author><id>tag:cranmer.github.io,2014-02-07:2014/02/the-higgs-boson-a-natural-disaster/</id><summary type="html">&lt;p&gt;See my blog post over at QuantumDiaries on an analogy about the fine
 tuning problem related to the Higgs boson.  &lt;/p&gt;
-&lt;p&gt;&lt;a href="http://www.quantumdiaries.org/2014/02/01/the-higgs-boson-a-natural-disaster/"&gt;"The Higgs Boson: A Natural Disaster!" &lt;/a&gt;&lt;/p&gt;</summary><category term="Physics"></category><category term="Higgs"></category><category term="Communication"></category></entry><entry><title>Enabling data sharing, citation, and discovery</title><link href="http://cranmer.github.io/enabling-data-sharing-citation-and-discovery.html" rel="alternate"></link><updated>2013-10-02T15:42:00+02:00</updated><author><name>cranmer</name></author><id>tag:cranmer.github.io,2013-10-02:enabling-data-sharing-citation-and-discovery.html</id><summary type="html">&lt;p&gt;&lt;em&gt;[A guest post for INSPIRE originally posted &lt;a href="http://blog.inspirehep.net/2013/10/enabling-data-sharing-citation-and.html"&gt;here.&lt;/a&gt;]&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.quantumdiaries.org/2014/02/01/the-higgs-boson-a-natural-disaster/"&gt;"The Higgs Boson: A Natural Disaster!" &lt;/a&gt;&lt;/p&gt;</summary><category term="Physics"></category><category term="Higgs"></category><category term="Communication"></category></entry><entry><title>Enabling data sharing, citation, and discovery</title><link href="http://cranmer.github.io/2013/10/enabling-data-sharing-citation-and-discovery/" rel="alternate"></link><updated>2013-10-02T15:42:00+02:00</updated><author><name>cranmer</name></author><id>tag:cranmer.github.io,2013-10-02:2013/10/enabling-data-sharing-citation-and-discovery/</id><summary type="html">&lt;p&gt;&lt;em&gt;[A guest post for INSPIRE originally posted &lt;a href="http://blog.inspirehep.net/2013/10/enabling-data-sharing-citation-and.html"&gt;here.&lt;/a&gt;]&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;We are familiar with the critical role of INSPIRE in searching for
 papers, following references, tracking the citations, and providing
 author profiles.  Now INSPIRE is taking steps to extend this service to
@@ -4808,8 +4808,7 @@ from low-level experimental data, to theoretical predictions, to the
 results of statistical analysis.  They also demonstrate the richness of
 the data layer and the need for a robust information system.  Looking to
 the future, we can imagine an extended author profile that includes
-details on datasets analogous to what we are already have with papers.&lt;/p&gt;
-&lt;/div&gt;</summary><category term="physics"></category><category term="open science"></category></entry><entry><title>Inspired by the Higgs, a step forward in open access</title><link href="http://cranmer.github.io/inspired-by-the-higgs-a-step-forward-in-open-access.html" rel="alternate"></link><updated>2013-09-13T13:31:00+02:00</updated><author><name>cranmer</name></author><id>tag:cranmer.github.io,2013-09-13:inspired-by-the-higgs-a-step-forward-in-open-access.html</id><summary type="html">&lt;p&gt;[originally posted on &lt;a href="http://www.quantumdiaries.org/2013/09/12/inspired-by-the-higgs-a-step-forward-in-open-access/"&gt;Quantum Diaries&lt;/a&gt;]&lt;/p&gt;
+details on datasets analogous to what we are already have with papers.&lt;/p&gt;</summary><category term="physics"></category><category term="open science"></category></entry><entry><title>Inspired by the Higgs, a step forward in open access</title><link href="http://cranmer.github.io/2013/09/inspired-by-the-higgs-a-step-forward-in-open-access/" rel="alternate"></link><updated>2013-09-13T13:31:00+02:00</updated><author><name>cranmer</name></author><id>tag:cranmer.github.io,2013-09-13:2013/09/inspired-by-the-higgs-a-step-forward-in-open-access/</id><summary type="html">&lt;p&gt;[originally posted on &lt;a href="http://www.quantumdiaries.org/2013/09/12/inspired-by-the-higgs-a-step-forward-in-open-access/"&gt;Quantum Diaries&lt;/a&gt;]&lt;/p&gt;
 &lt;p&gt;The discovery of the Higgs boson is a major step forward in our
 understanding of nature at the most fundamental levels. In addition to
 being the last piece of the standard model, it is also at the core of
@@ -4931,7 +4930,7 @@ Bang, through the discovery at CERN, to a DataCite DOI".&lt;/p&gt;
 &lt;p&gt;I truly hope that this becomes standard practice for the LHC. It is a
 real milestone for the information architecture associated to the field
 of high energy physics and a step forward in the global analysis of the
-Higgs boson discovered at the LHC!&lt;/p&gt;</summary><category term="higgs"></category><category term="physics"></category><category term="open science"></category></entry><entry><title>Visiting my high school in Arkansas</title><link href="http://cranmer.github.io/visiting-my-high-school-in-arkansas.html" rel="alternate"></link><updated>2013-08-21T20:41:00+02:00</updated><author><name>cranmer</name></author><id>tag:cranmer.github.io,2013-08-21:visiting-my-high-school-in-arkansas.html</id><summary type="html">&lt;p&gt;(Originally posted at &lt;a href="http://www.quantumdiaries.org/author/kyle-cranmer/"&gt;Quantum Diaries&lt;/a&gt;)&lt;/p&gt;
+Higgs boson discovered at the LHC!&lt;/p&gt;</summary><category term="higgs"></category><category term="physics"></category><category term="open science"></category></entry><entry><title>Visiting my high school in Arkansas</title><link href="http://cranmer.github.io/2013/08/visiting-my-high-school-in-arkansas/" rel="alternate"></link><updated>2013-08-21T20:41:00+02:00</updated><author><name>cranmer</name></author><id>tag:cranmer.github.io,2013-08-21:2013/08/visiting-my-high-school-in-arkansas/</id><summary type="html">&lt;p&gt;(Originally posted at &lt;a href="http://www.quantumdiaries.org/author/kyle-cranmer/"&gt;Quantum Diaries&lt;/a&gt;)&lt;/p&gt;
 &lt;p&gt;This week I will be going to visit my high school in Arkansas.  It was
 20 years ago that the school first opened its doors and I was part of
 that Charter class.  The &lt;a href="http://asmsa.org/about"&gt;Arkansas School for Mathematics, Science &amp;amp; the
@@ -4997,7 +4996,7 @@ on-line and exposed to the world wide web in its formative years
 with legislators, parents, alumni, students, and supporters.  I look
 forward to telling the students about the tremendously exciting career
 I've had in particle physics, culminating in the discovery of the Higgs
-boson.&lt;/p&gt;</summary></entry><entry><title>A fresh look for the standard model</title><link href="http://cranmer.github.io/a-fresh-look-for-the-standard-model.html" rel="alternate"></link><updated>2013-08-09T19:40:00+02:00</updated><author><name>cranmer</name></author><id>tag:cranmer.github.io,2013-08-09:a-fresh-look-for-the-standard-model.html</id><summary type="html">&lt;p&gt;Recently I've been more involved in communication, education, and
+boson.&lt;/p&gt;</summary></entry><entry><title>A fresh look for the standard model</title><link href="http://cranmer.github.io/2013/08/a-fresh-look-for-the-standard-model/" rel="alternate"></link><updated>2013-08-09T19:40:00+02:00</updated><author><name>cranmer</name></author><id>tag:cranmer.github.io,2013-08-09:2013/08/a-fresh-look-for-the-standard-model/</id><summary type="html">&lt;p&gt;Recently I've been more involved in communication, education, and
 outreach activities via the &lt;a href="http://www.symmetrymagazine.org/article/august-2013/physicists-chart-path-forward"&gt;"Snowmass" Community Summer Study&lt;/a&gt;.  One
 of the goals we discussed was to get to the point that the public is
 more aware of the fundamental particles.  Ideally, we'd like something
@@ -5016,12 +5015,12 @@ problems for communicating with the public&lt;/p&gt;
     use of Comic Sans for painting physicists as being inept in the
     graphic design department&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img width="300" src="images/standardmodel-standard.jpg"&gt;
+&lt;p&gt;&lt;img width="300" src="/images/standardmodel-standard.jpg"&gt;
  &lt;/p&gt;
 &lt;p&gt;It seems easy enough to add the Higgs to this table, but there seems no
 agreement on where to put it as you can see from &lt;a href="http://images.google.com/search?tbm=isch&amp;amp;q=standard+model"&gt;Google's image
 search&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img width="300" src="images/SM-confusion.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img width="300" src="/images/SM-confusion.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;From a physicists point of view there are some other problems that
 actually harm those starting to learn the standard model for real&lt;/p&gt;
 &lt;ul&gt;
@@ -5042,7 +5041,7 @@ fundamental particle physics in an emotional, funny, and romantic way.
 way of representing the fundamental particles.  David Kaplan sent me
 &lt;a href="http://cranmer.github.io/images/Standard-Model.jpg"&gt;this mockup&lt;/a&gt;, that it looks like he made in Keynote, and I  had my own go
 at it with some different fonts.&lt;/p&gt;
-&lt;p&gt;&lt;img width="400" src="images/Particle-Fever-Standard-Model-Graphic.png"&gt;
+&lt;p&gt;&lt;img width="400" src="/images/Particle-Fever-Standard-Model-Graphic.png"&gt;
  &lt;/p&gt;
 &lt;p&gt;Here's what I like about it&lt;/p&gt;
 &lt;ul&gt;
@@ -5080,11 +5079,11 @@ supersymmetric friends.&lt;/p&gt;
   []: http://theoryandpractice.org/wp-content/uploads/2013/08/Standard-Model-300x183.jpg
   [![][]]: http://theoryandpractice.org/wp-content/uploads/2013/08/Standard-Model.jpg
   [![Particle Fever Standard Model Graphic][]]: http://theoryandpractice.org/wp-    [![standardmodel standard][]]: http://theoryandpractice.org/wp-content/uploads/2013/08/standardmodel-standard.jpg
---&gt;</summary><category term="Physics"></category><category term="Communication"></category></entry><entry><title>Facebook GraphSearch and the NSA</title><link href="http://cranmer.github.io/facebook-graphseach-and-the-nsa.html" rel="alternate"></link><updated>2013-07-13T03:49:00+02:00</updated><author><name>cranmer</name></author><id>tag:cranmer.github.io,2013-07-13:facebook-graphseach-and-the-nsa.html</id><summary type="html">&lt;p&gt;It was worth a shot.  The funny thing is that Mark Zuckerburg is a
+--&gt;</summary><category term="Physics"></category><category term="Communication"></category></entry><entry><title>Facebook GraphSearch and the NSA</title><link href="http://cranmer.github.io/2013/07/facebook-graphseach-and-the-nsa/" rel="alternate"></link><updated>2013-07-13T03:49:00+02:00</updated><author><name>cranmer</name></author><id>tag:cranmer.github.io,2013-07-13:2013/07/facebook-graphseach-and-the-nsa/</id><summary type="html">&lt;p&gt;It was worth a shot.  The funny thing is that Mark Zuckerburg is a
 friend of my friend and he is being followed by an NSA employee.&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://theoryandpractice.org/wp-content/uploads/2013/07/GraphSearchNSA.png"&gt;&lt;img alt="GraphSearchNSA" src="http://theoryandpractice.org/wp-content/uploads/2013/07/GraphSearchNSA.png" /&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;And for good measure&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/XLQIsnH.gif" /&gt;&lt;/p&gt;</summary></entry><entry><title>Projects from July 2013</title><link href="http://cranmer.github.io/projects-from-july-2013.html" rel="alternate"></link><updated>2013-07-13T02:38:00+02:00</updated><author><name>cranmer</name></author><id>tag:cranmer.github.io,2013-07-13:projects-from-july-2013.html</id><summary type="html">&lt;p&gt;Wow, perhaps this is my first real blog post since rebooting
+&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/XLQIsnH.gif" /&gt;&lt;/p&gt;</summary></entry><entry><title>Projects from July 2013</title><link href="http://cranmer.github.io/2013/07/projects-from-july-2013/" rel="alternate"></link><updated>2013-07-13T02:38:00+02:00</updated><author><name>cranmer</name></author><id>tag:cranmer.github.io,2013-07-13:2013/07/projects-from-july-2013/</id><summary type="html">&lt;p&gt;Wow, perhaps this is my first real blog post since rebooting
 thoeryandpractice.org.&lt;br /&gt;
 And really one of my first blog posts ever.&lt;/p&gt;
 &lt;p&gt;I'm back from a really invigorating trip to CERN to give &lt;a href="https://indico.cern.ch/conferenceDisplay.py?confId=243641"&gt;some
@@ -5102,12 +5101,10 @@ on the front of presenting LHC results, perhaps publishing 2-d profile
 likelihoods (slices of Higgs likelihoods in thousands of dimensions).
 It's amazing how the model independent (cross-section)_i x (branching
 ratio)_j contours (for i={VBF+WH, ggF+ttH} and j={WW, ZZ, γγ})&lt;/p&gt;
-&lt;p&gt;[caption id="" align="aligncenter" width="567"]&lt;img alt="" src="http://inspirehep.net/record/1241574/files/MuTMuW_comb_ggwwllll.png" /&gt; model independent
-presentation of Higgs couplings[/caption]&lt;/p&gt;
+&lt;p&gt;&lt;img width="400" alt=""model independent presentation of Higgs couplings"" title=""model independent presentation of Higgs couplings"" src="//inspirehep.net/record/1241574/files/MuTMuW_comb_ggwwllll.png"&gt;&lt;/p&gt;
 &lt;p&gt;are sufficient statistics for for a number of benchmark-model coupling
 measurements (eg. kV-kF, kg-kγ, λ_WZ, etc.)&lt;/p&gt;
-&lt;p&gt;[caption id="" align="aligncenter" width="567"]&lt;img alt="" src="http://inspirehep.net/record/1241574/files/Model_CVCF_2D_CVCF_color_overlay.png" /&gt; Model-dependent
-coupling fits.[/caption]&lt;/p&gt;
+&lt;p&gt;&lt;img width="400" alt=""Model-dependent coupling fits."" title=""Model-dependent coupling fits."" src="//inspirehep.net/record/1241574/files/Model_CVCF_2D_CVCF_color_overlay.png"&gt;&lt;/p&gt;
 &lt;p&gt;In addition, I just finished  the process of uploading data from
 a &lt;a href="http://inspirehep.net/record/749860"&gt;phenomenology paper I worked on a few years ago&lt;/a&gt; where we did a big
 MCMC (Markov Chain Monte Carlo) scan of the CMSSM (Constrained Minimal
@@ -5127,7 +5124,7 @@ Forecasts"", &lt;a href="http://hdl.handle.net/1902.1/21804"&gt;hdl:1902.1/21804
 [Version]&lt;/p&gt;
 &lt;p&gt;If you go to it and click on one of the TabularData entries you can even
 do some minimal analysis from the web. Like this&lt;/p&gt;
-&lt;p&gt;[&lt;img alt="KISMET scan" src="http://theoryandpractice.org/wp-content/uploads/2013/07/KISMET-scan-300x187.png" /&gt;][]&lt;/p&gt;
+&lt;p&gt;&lt;img alt="KISMET scan" src="http://theoryandpractice.org/wp-content/uploads/2013/07/KISMET-scan-300x187.png" /&gt;&lt;/p&gt;
 &lt;p&gt;I wish they would give me a little gist-style embed like this one:&lt;/p&gt;
 &lt;p&gt;
 &lt;script type="text/javascript" src="https://gist.github.com/defunkt/202314.js"&gt;&lt;/script&gt;
@@ -5135,8 +5132,7 @@ do some minimal analysis from the web. Like this&lt;/p&gt;
 
 &lt;p&gt;Anyways, that's a lot of playing around with new things of late. I hope
 to see the &lt;a href="http://hdl.handle.net/1902.1/21804"&gt;DataVerse handle&lt;/a&gt; associated to &lt;a href="http://inspirehep.net/record/749860"&gt;the
-INSPIRE record&lt;/a&gt; soon.&lt;/p&gt;
-&lt;p&gt;[&lt;img alt="KISMET scan" src="http://theoryandpractice.org/wp-content/uploads/2013/07/KISMET-scan-300x187.png" /&gt;]: http://theoryandpractice.org/wp-content/uploads/2013/07/KISMET-scan.png&lt;/p&gt;</summary><category term="open science"></category><category term="physics"></category><category term="statistics"></category><category term="Communication"></category></entry><entry><title>Next up, Flask</title><link href="http://cranmer.github.io/next-up-flask.html" rel="alternate"></link><updated>2013-06-28T19:56:00+02:00</updated><author><name>cranmer</name></author><id>tag:cranmer.github.io,2013-06-28:next-up-flask.html</id><summary type="html">&lt;p&gt;I was a big fan of &lt;a href="http://www.zope.org"&gt;Zope&lt;/a&gt; early on (late 90's) and always wanted to do
+INSPIRE record&lt;/a&gt; soon.&lt;/p&gt;</summary><category term="open science"></category><category term="physics"></category><category term="statistics"></category><category term="Communication"></category></entry><entry><title>Next up, Flask</title><link href="http://cranmer.github.io/2013/06/next-up-flask/" rel="alternate"></link><updated>2013-06-28T19:56:00+02:00</updated><author><name>cranmer</name></author><id>tag:cranmer.github.io,2013-06-28:2013/06/next-up-flask/</id><summary type="html">&lt;p&gt;I was a big fan of &lt;a href="http://www.zope.org"&gt;Zope&lt;/a&gt; early on (late 90's) and always wanted to do
 some fun web-based projects.  One of the more successful ones was
 &lt;a href="https://github.com/eaudeweb/EionetProducts/tree/master/ZWiki/plugins/latexwiki"&gt;LaTeXWiki&lt;/a&gt;, which was one of the first wiki plugins where you could
 write LaTeX.    Unfortunately, I was always sufficiently confused about
@@ -5147,7 +5143,7 @@ touched in years.  I spent so much time getting a 3-collumn CSS layout
 back in the early CSS days that it basically killed my interest.  Now
 I'm rebooting theoryandpractice.org (love that name) with wordpress and
 I'm hoping to tinker with some of the new technologies like D3
-and &lt;a href="http://flask.pocoo.org"&gt;Flask&lt;/a&gt;.  Wish me luck!&lt;/p&gt;</summary></entry><entry><title>A D3 Test post using iframe</title><link href="http://cranmer.github.io/a-d3-test-post-using-iframe.html" rel="alternate"></link><updated>2013-06-28T18:21:00+02:00</updated><author><name>cranmer</name></author><id>tag:cranmer.github.io,2013-06-28:a-d3-test-post-using-iframe.html</id><summary type="html">&lt;p&gt;A quick test of inserting an HTML file with some &lt;a href="http://d3js.org/"&gt;D3 magic&lt;/a&gt; into a
+and &lt;a href="http://flask.pocoo.org"&gt;Flask&lt;/a&gt;.  Wish me luck!&lt;/p&gt;</summary></entry><entry><title>A D3 Test post using iframe</title><link href="http://cranmer.github.io/2013/06/a-d3-test-post-using-iframe/" rel="alternate"></link><updated>2013-06-28T18:21:00+02:00</updated><author><name>cranmer</name></author><id>tag:cranmer.github.io,2013-06-28:2013/06/a-d3-test-post-using-iframe/</id><summary type="html">&lt;p&gt;A quick test of inserting an HTML file with some &lt;a href="http://d3js.org/"&gt;D3 magic&lt;/a&gt; into a
 wordpress post using the iframe trick I found &lt;a href="http://charlesmartinreid.com/wordpress/2012/08/d3-and-wordpress/"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;iframe style="border: 1px;" src="http://new.theoryandpractice.org/wp-content/uploads/2013/06/morphDemo.html" height="650" width="100%" scrolling="yes"&gt;&lt;/iframe&gt;</summary><category term="Data"></category><category term="Physics"></category><category term="Statistics"></category></entry></feed>

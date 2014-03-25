@@ -149,7 +149,7 @@ init_mathjax();
         <meta property="og:site_name" content="Theory And Practice" />
             <meta property="og:type" content="article"/>
             <meta property="og:title" content="Visualizing information geometry with multidimensional scaling"/>
-            <meta property="og:url" content="http://cranmer.github.io/visualizing-information-geometry-with-multidimensional-scaling.html"/>
+            <meta property="og:url" content="http://cranmer.github.io/2014/03/visualizing-information-geometry-with-multidimensional-scaling/"/>
             <meta property="og:description" content="This weekend&#39;s project was a fun one! Update: Since the original post I made some more progress. I&#39;m developing the code into my GitHub play/manifoldLearning repository. Below is from the README. I&#39;m working on a paper about Informtion Geometry. The first step was an iPython notebook ..."/>
             <meta property="article:published_time" content="2014-03-05" />
             <meta property="article:section" content="Blog" />
@@ -158,7 +158,7 @@ init_mathjax();
             <meta property="article:tag" content="Statistics" />
 
     <!-- Bootstrap -->
-        <link rel="stylesheet" href="http://cranmer.github.io/theme/css/bootstrap.min.css" type="text/css"/>
+        <link rel="stylesheet" href="http://cranmer.github.io/theme/css/bootstrap.cosmo.min.css" type="text/css"/>
     <link href="http://cranmer.github.io/theme/css/font-awesome.min.css" rel="stylesheet">
 
     <link href="http://cranmer.github.io/theme/css/pygments/default.css" rel="stylesheet">
@@ -185,7 +185,6 @@ Theory And Practice            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                    <li><a href="index.html">Home</a></li>
                     <li><a href="/pages/Research.html">Research</a></li>
                     <li><a href="/pages/projects.html">Projects</a></li>
                     <li><a href="/pages/in-the-news.html">Media & Outreach</a></li>
@@ -209,7 +208,7 @@ Theory And Practice            </a>
         <article>
             <header class="page-header">
                 <h1>
-                    <a href="http://cranmer.github.io/visualizing-information-geometry-with-multidimensional-scaling.html"
+                    <a href="http://cranmer.github.io/2014/03/visualizing-information-geometry-with-multidimensional-scaling/"
                        rel="bookmark"
                        title="Permalink to Visualizing information geometry with multidimensional scaling">
                         Visualizing information geometry with multidimensional scaling
@@ -244,13 +243,13 @@ The first step was an iPython notebook on <a href="http://nbviewer.ipython.org/g
 <p>The other python files are me working my way to something more ambitious.</p>
 <p><strong>Step 1:</strong>
 The first step is described nicely in this iPython notebook on <a href="http://nbviewer.ipython.org/github/cranmer/play/blob/master/manifoldLearning/GaussianInformationGeometryEmbedding.ipynb">Visualizing information geometry with multidimensional scaling</a>. Final result shown here. Important part is a grid of points in (μ,σ) being mapped by f:</p>
-<p><img width="400" src="images/gaussianInfoGeom.png"></p>
+<p><img width="400" src="/images/gaussianInfoGeom.png"></p>
 <p><strong>Step 2:</strong>
 Try various <a href="http://scikit-learn.org/0.11/modules/generated/sklearn.svm.SVR.html">scikit-learn</a> algorithms, setteling on NuSVR. Results not so good, smaller red spots not approximating the larger colorful training samples, particuarly near the edges. The lower-right is what I'm ultimately after, the inverse map of back into the space (μ,σ) -- for these points, that should be a perfect grid. Surprised I can't do regression on </p>
-<p><img width="400" src="images/learnEmbedding.png"></p>
+<p><img width="400" src="/images/learnEmbedding.png"></p>
 <p><strong>Step 3:</strong>
 Since this is a low dimensional problem with little noise, just try <a href="http://docs.scipy.org/doc/scipy/reference/tutorial/interpolate.html#d-interpolation-interp1d">SciPy Interpolation</a> algorithms. Ah, that's better, now I'm getting the grid I want.</p>
-<p><img width="400" src="images/interpEmbedding.png"></p>
+<p><img width="400" src="/images/interpEmbedding.png"></p>
 <p><strong>Step 4:</strong>
 To do: make a regular grid in the target space and project it via the inverse into the (μ,σ) plane.  This is a "smart" sampling from an information theoretic perspective. It's also a good choice if simulation of the statistical model is expensive (ie. full simulation with GEANT at the LHC, which takes about 20 min per event, and the real collisons are happening at 40 million/sec. )</p>
 <p><strong>Step 5:</strong>
@@ -2976,24 +2975,54 @@ ABRIrAEAABRIrAEAABRIrAEAABRIrAEAABToC3PRk3G2sn5hAAAAAElFTkSuQmCC
                     <li class="list-group-item"><a href="https://plus.google.com/106689822196584540592/posts"><i
                             class="fa fa-google-plus-square fa-lg"></i> google+
                     </a></li>
+                    <li class="list-group-item"><a href="http://youtube.com/user/cranmer"><i
+                            class="fa fa-youtube-square fa-lg"></i> youtube
+                    </a></li>
                     <li class="list-group-item"><a href="http://www.flickr.com/photos/hoonynoo/"><i
                             class="fa fa-flickr-square fa-lg"></i> flickr
+                    </a></li>
+                    <li class="list-group-item"><a href="http://figshare.com/authors/Kyle%20Cranmer/432748"><i
+                            class="fa fa-figshare-square fa-lg"></i> figshare
                     </a></li>
                   </ul>
                 </li>
 
+                <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+                    <ul class="list-group" id="recentposts">
+                        <li class="list-group-item">
+                            <a href="http://cranmer.github.io/2014/03/Testing-Pelican-Migration/">
+                                Testing Pelican Migration
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="http://cranmer.github.io/2014/03/bicep2-software-carpentry/">
+                                Bicep2 and Software Carpentry
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="http://cranmer.github.io/2014/03/visualizing-information-geometry-with-multidimensional-scaling/">
+                                Visualizing information geometry with multidimensional scaling
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="http://cranmer.github.io/2014/03/roofit-statistical-modeling-language-in-ipython-notebook/">
+                                RooFit statistical modeling language demo in an IPython notebook
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="http://cranmer.github.io/2014/02/the-higgs-boson-a-natural-disaster/">
+                                The Higgs Boson: A Natural Disaster!
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
 
                 <li class="list-group-item"><a href="http://cranmer.github.io/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
                     <ul class="list-group " id="tags">
                         <li class="list-group-item tag-1">
-                            <a href="http://cranmer.github.io/tag/statistics.html">
-                                Statistics
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-1">
-                            <a href="http://cranmer.github.io/tag/open-science.html">
-                                open science
+                            <a href="http://cranmer.github.io/tag/data.html">
+                                Data
                             </a>
                         </li>
                         <li class="list-group-item tag-1">
@@ -3002,8 +3031,13 @@ ABRIrAEAABRIrAEAABRIrAEAABRIrAEAABToC3PRk3G2sn5hAAAAAElFTkSuQmCC
                             </a>
                         </li>
                         <li class="list-group-item tag-1">
-                            <a href="http://cranmer.github.io/tag/data.html">
-                                Data
+                            <a href="http://cranmer.github.io/tag/open-science.html">
+                                open science
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-1">
+                            <a href="http://cranmer.github.io/tag/statistics.html">
+                                Statistics
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
@@ -3012,13 +3046,13 @@ ABRIrAEAABRIrAEAABRIrAEAABRIrAEAABToC3PRk3G2sn5hAAAAAElFTkSuQmCC
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
-                            <a href="http://cranmer.github.io/tag/higgs.html">
-                                Higgs
+                            <a href="http://cranmer.github.io/tag/python.html">
+                                python
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
-                            <a href="http://cranmer.github.io/tag/python.html">
-                                python
+                            <a href="http://cranmer.github.io/tag/higgs.html">
+                                Higgs
                             </a>
                         </li>
                     </ul>

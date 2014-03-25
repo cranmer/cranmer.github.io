@@ -3,7 +3,7 @@
       xmlns:og="http://ogp.me/ns#"
       xmlns:fb="https://www.facebook.com/2008/fbml">
 <head>
-    <title>Next up, Flask - Theory And Practice</title>
+    <title>A fresh look for the standard model - Theory And Practice</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -148,14 +148,16 @@ init_mathjax();
     <!-- Open Graph tags -->
         <meta property="og:site_name" content="Theory And Practice" />
             <meta property="og:type" content="article"/>
-            <meta property="og:title" content="Next up, Flask"/>
-            <meta property="og:url" content="http://cranmer.github.io/next-up-flask.html"/>
-            <meta property="og:description" content="I was a big fan of Zope early on (late 90&#39;s) and always wanted to do some fun web-based projects. One of the more successful ones was LaTeXWiki, which was one of the first wiki plugins where you could write LaTeX. Unfortunately, I was always sufficiently confused about some ..."/>
-            <meta property="article:published_time" content="2013-06-28" />
+            <meta property="og:title" content="A fresh look for the standard model"/>
+            <meta property="og:url" content="http://cranmer.github.io/2013/08/a-fresh-look-for-the-standard-model/"/>
+            <meta property="og:description" content="Recently I&#39;ve been more involved in communication, education, and outreach activities via the &#34;Snowmass&#34; Community Summer Study. One of the goals we discussed was to get to the point that the public is more aware of the fundamental particles. Ideally, we&#39;d like something as iconic as the periodic ..."/>
+            <meta property="article:published_time" content="2013-08-09" />
             <meta property="article:section" content="Blog" />
+            <meta property="article:tag" content="Physics" />
+            <meta property="article:tag" content="Communication" />
 
     <!-- Bootstrap -->
-        <link rel="stylesheet" href="http://cranmer.github.io/theme/css/bootstrap.min.css" type="text/css"/>
+        <link rel="stylesheet" href="http://cranmer.github.io/theme/css/bootstrap.cosmo.min.css" type="text/css"/>
     <link href="http://cranmer.github.io/theme/css/font-awesome.min.css" rel="stylesheet">
 
     <link href="http://cranmer.github.io/theme/css/pygments/default.css" rel="stylesheet">
@@ -182,7 +184,6 @@ Theory And Practice            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                    <li><a href="index.html">Home</a></li>
                     <li><a href="/pages/Research.html">Research</a></li>
                     <li><a href="/pages/projects.html">Projects</a></li>
                     <li><a href="/pages/in-the-news.html">Media & Outreach</a></li>
@@ -206,10 +207,10 @@ Theory And Practice            </a>
         <article>
             <header class="page-header">
                 <h1>
-                    <a href="http://cranmer.github.io/next-up-flask.html"
+                    <a href="http://cranmer.github.io/2013/08/a-fresh-look-for-the-standard-model/"
                        rel="bookmark"
-                       title="Permalink to Next up, Flask">
-                        Next up, Flask
+                       title="Permalink to A fresh look for the standard model">
+                        A fresh look for the standard model
                     </a>
                 </h1>
             </header>
@@ -219,26 +220,102 @@ Theory And Practice            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2013-06-28T19:56:00"> Fri 28 June 2013</time>
+        <i class="fa fa-calendar"></i><time datetime="2013-08-09T19:40:00"> Fri 09 August 2013</time>
     </span>
 
 
 
+<span class="label label-default">Tags</span>
+	<a href="http://cranmer.github.io/tag/physics.html">Physics</a>
+        /
+	<a href="http://cranmer.github.io/tag/communication.html">Communication</a>
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                <p>I was a big fan of <a href="http://www.zope.org">Zope</a> early on (late 90's) and always wanted to do
-some fun web-based projects.  One of the more successful ones was
-<a href="https://github.com/eaudeweb/EionetProducts/tree/master/ZWiki/plugins/latexwiki">LaTeXWiki</a>, which was one of the first wiki plugins where you could
-write LaTeX.    Unfortunately, I was always sufficiently confused about
-some aspect of Zope that most of my projects only worked out with the
-help of friends like Sean, Joe, Jeff, Bob, and Stephen.</p>
-<p>The <a href="http://old.theoryandpractice.org">old theoryandpractice</a> site ran on Zope, but it hasn't been
-touched in years.  I spent so much time getting a 3-collumn CSS layout
-back in the early CSS days that it basically killed my interest.  Now
-I'm rebooting theoryandpractice.org (love that name) with wordpress and
-I'm hoping to tinker with some of the new technologies like D3
-and <a href="http://flask.pocoo.org">Flask</a>.  Wish me luck!</p>
+                <p>Recently I've been more involved in communication, education, and
+outreach activities via the <a href="http://www.symmetrymagazine.org/article/august-2013/physicists-chart-path-forward">"Snowmass" Community Summer Study</a>.  One
+of the goals we discussed was to get to the point that the public is
+more aware of the fundamental particles.  Ideally, we'd like something
+as iconic as the periodic table (which is rotated from <a href="http://www.rsc.org/education/teachers/resources/periodictable/pre16/develop/mendeleev.htm">Mendeleev's
+original</a>).</p>
+<p><img width="400" src="//www.chemicool.com/images/periodic-table.png">
+ </p>
+<p>Our standard graphic for the standard model builds on this tabular
+format, which is not unreasonable with the three generations of fermions
+for the columns and rows pointing to the up/down pairing of the SU(2)
+symmetry in the weak force.  It's a cute graphic, but it has a number of
+problems for communicating with the public</p>
+<ul>
+<li>the Higgs is absent</li>
+<li>the 3-d effect is meaningless and is second only to our notorious
+    use of Comic Sans for painting physicists as being inept in the
+    graphic design department</li>
+</ul>
+<p><img width="300" src="/images/standardmodel-standard.jpg">
+ </p>
+<p>It seems easy enough to add the Higgs to this table, but there seems no
+agreement on where to put it as you can see from <a href="http://images.google.com/search?tbm=isch&amp;q=standard+model">Google's image
+search</a>.</p>
+<p><img width="300" src="/images/SM-confusion.jpg"></p>
+<p>From a physicists point of view there are some other problems that
+actually harm those starting to learn the standard model for real</p>
+<ul>
+<li>there symmetry for the strong force (the RGB colors of the quarks)
+    is not reflected at all leading to the idea that there is only one
+    type of up quark.</li>
+<li>the complications about the left- and right- handed parts of the
+    leptons in the weak interaction</li>
+<li>the mixing between the quarks</li>
+<li>the rows and columns don't mean anything for the force carriers,
+    and any sort of group-theoretic structure for the gauge bosons is
+    missing</li>
+</ul>
+<p>In June, I went to the <a href="http://sheffdocfest.com">Sheffield Documentary Film Festival</a> for the
+screening of <a href="http://www.particlefever.com/PF/">Particle Fever</a>.  It's a great film that humanizes
+fundamental particle physics in an emotional, funny, and romantic way.
+ It also has some great graphics.  One of my favorite parts was this new
+way of representing the fundamental particles.  David Kaplan sent me
+<a href="http://cranmer.github.io/images/Standard-Model.jpg">this mockup</a>, that it looks like he made in Keynote, and I  had my own go
+at it with some different fonts.</p>
+<p><img width="400" src="/images/Particle-Fever-Standard-Model-Graphic.png">
+ </p>
+<p>Here's what I like about it</p>
+<ul>
+<li>it looks complete (which the standard model is in a certain sense),
+    unlike like a table that can keep being appended with rows and
+    columns</li>
+<li><span style="line-height: 13px;">it has a fresh, flat design that
+    lends itself way to an iconic image (stickers, t-shirts,
+    etc.)</span></li>
+<li>it is minimal, but it still has some basic structure<ul>
+<li>rings of fermions, vector bosons, scalar (Higgs) boson</li>
+<li>quarks/leptons are top/bottom or red/green</li>
+<li>families are still there in the clockwise orientation</li>
+</ul>
+</li>
+<li>the Higgs is central (I'm kind of kidding, but the Higgs is a
+    unique, central part of the theory and it has gathered a huge amount
+    of attention to the field)</li>
+</ul>
+<p>Of course, the graphic is not perfect.  I've thought about variations.
+ For instance, rearranging the fermions from a clockwise oriented flow
+to a left/right and top/bottom symmetry for the quark/lepton and weak
+force (SU(2) doublet) structure.  One could play with color a bit so
+that the up/down-type quarks and leptons have a common coloring in some
+way.  However, all of these changes also can be given the same criticism
+I gave the standard standard model graphic at the top.  For instance,
+focusing on the weak interaction over the strong interaction.</p>
+<p>You can see the graphic near the end of this trailer for Particle Fever,
+where it then gets dressed up with a <a href="http://en.wikipedia.org/wiki/Penrose_tiling">Penrose tiling</a> and some
+supersymmetric friends.</p>
+<iframe src="http://player.vimeo.com/video/67912472" height="300" width="400" allowfullscreen frameborder="0"></iframe>
+
+<!--
+  [![SM-confusion][]]: http://theoryandpractice.org/wp-content/uploads/2013/08/SM-confusion.jpg
+  []: http://theoryandpractice.org/wp-content/uploads/2013/08/Standard-Model-300x183.jpg
+  [![][]]: http://theoryandpractice.org/wp-content/uploads/2013/08/Standard-Model.jpg
+  [![Particle Fever Standard Model Graphic][]]: http://theoryandpractice.org/wp-    [![standardmodel standard][]]: http://theoryandpractice.org/wp-content/uploads/2013/08/standardmodel-standard.jpg
+-->
             </div>
             <!-- /.entry-content -->
         </article>
@@ -264,24 +341,54 @@ and <a href="http://flask.pocoo.org">Flask</a>.  Wish me luck!</p>
                     <li class="list-group-item"><a href="https://plus.google.com/106689822196584540592/posts"><i
                             class="fa fa-google-plus-square fa-lg"></i> google+
                     </a></li>
+                    <li class="list-group-item"><a href="http://youtube.com/user/cranmer"><i
+                            class="fa fa-youtube-square fa-lg"></i> youtube
+                    </a></li>
                     <li class="list-group-item"><a href="http://www.flickr.com/photos/hoonynoo/"><i
                             class="fa fa-flickr-square fa-lg"></i> flickr
+                    </a></li>
+                    <li class="list-group-item"><a href="http://figshare.com/authors/Kyle%20Cranmer/432748"><i
+                            class="fa fa-figshare-square fa-lg"></i> figshare
                     </a></li>
                   </ul>
                 </li>
 
+                <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+                    <ul class="list-group" id="recentposts">
+                        <li class="list-group-item">
+                            <a href="http://cranmer.github.io/2014/03/Testing-Pelican-Migration/">
+                                Testing Pelican Migration
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="http://cranmer.github.io/2014/03/bicep2-software-carpentry/">
+                                Bicep2 and Software Carpentry
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="http://cranmer.github.io/2014/03/visualizing-information-geometry-with-multidimensional-scaling/">
+                                Visualizing information geometry with multidimensional scaling
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="http://cranmer.github.io/2014/03/roofit-statistical-modeling-language-in-ipython-notebook/">
+                                RooFit statistical modeling language demo in an IPython notebook
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="http://cranmer.github.io/2014/02/the-higgs-boson-a-natural-disaster/">
+                                The Higgs Boson: A Natural Disaster!
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
 
                 <li class="list-group-item"><a href="http://cranmer.github.io/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
                     <ul class="list-group " id="tags">
                         <li class="list-group-item tag-1">
-                            <a href="http://cranmer.github.io/tag/statistics.html">
-                                Statistics
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-1">
-                            <a href="http://cranmer.github.io/tag/open-science.html">
-                                open science
+                            <a href="http://cranmer.github.io/tag/data.html">
+                                Data
                             </a>
                         </li>
                         <li class="list-group-item tag-1">
@@ -290,8 +397,13 @@ and <a href="http://flask.pocoo.org">Flask</a>.  Wish me luck!</p>
                             </a>
                         </li>
                         <li class="list-group-item tag-1">
-                            <a href="http://cranmer.github.io/tag/data.html">
-                                Data
+                            <a href="http://cranmer.github.io/tag/open-science.html">
+                                open science
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-1">
+                            <a href="http://cranmer.github.io/tag/statistics.html">
+                                Statistics
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
@@ -300,13 +412,13 @@ and <a href="http://flask.pocoo.org">Flask</a>.  Wish me luck!</p>
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
-                            <a href="http://cranmer.github.io/tag/higgs.html">
-                                Higgs
+                            <a href="http://cranmer.github.io/tag/python.html">
+                                python
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
-                            <a href="http://cranmer.github.io/tag/python.html">
-                                python
+                            <a href="http://cranmer.github.io/tag/higgs.html">
+                                Higgs
                             </a>
                         </li>
                     </ul>

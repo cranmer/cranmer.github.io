@@ -3,7 +3,7 @@
       xmlns:og="http://ogp.me/ns#"
       xmlns:fb="https://www.facebook.com/2008/fbml">
 <head>
-    <title>Enabling data sharing, citation, and discovery - Theory And Practice</title>
+    <title>A D3 Test post using iframe - Theory And Practice</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -148,16 +148,17 @@ init_mathjax();
     <!-- Open Graph tags -->
         <meta property="og:site_name" content="Theory And Practice" />
             <meta property="og:type" content="article"/>
-            <meta property="og:title" content="Enabling data sharing, citation, and discovery"/>
-            <meta property="og:url" content="http://cranmer.github.io/enabling-data-sharing-citation-and-discovery.html"/>
-            <meta property="og:description" content="[A guest post for INSPIRE originally posted here.] We are familiar with the critical role of INSPIRE in searching for papers, following references, tracking the citations, and providing author profiles. Now INSPIRE is taking steps to extend this service to data, thus creating a rich new layer to the information ..."/>
-            <meta property="article:published_time" content="2013-10-02" />
+            <meta property="og:title" content="A D3 Test post using iframe"/>
+            <meta property="og:url" content="http://cranmer.github.io/2013/06/a-d3-test-post-using-iframe/"/>
+            <meta property="og:description" content="A quick test of inserting an HTML file with some D3 magic into a wordpress post using the iframe trick I found here"/>
+            <meta property="article:published_time" content="2013-06-28" />
             <meta property="article:section" content="Blog" />
-            <meta property="article:tag" content="physics" />
-            <meta property="article:tag" content="open science" />
+            <meta property="article:tag" content="Data" />
+            <meta property="article:tag" content="Physics" />
+            <meta property="article:tag" content="Statistics" />
 
     <!-- Bootstrap -->
-        <link rel="stylesheet" href="http://cranmer.github.io/theme/css/bootstrap.min.css" type="text/css"/>
+        <link rel="stylesheet" href="http://cranmer.github.io/theme/css/bootstrap.cosmo.min.css" type="text/css"/>
     <link href="http://cranmer.github.io/theme/css/font-awesome.min.css" rel="stylesheet">
 
     <link href="http://cranmer.github.io/theme/css/pygments/default.css" rel="stylesheet">
@@ -184,7 +185,6 @@ Theory And Practice            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                    <li><a href="index.html">Home</a></li>
                     <li><a href="/pages/Research.html">Research</a></li>
                     <li><a href="/pages/projects.html">Projects</a></li>
                     <li><a href="/pages/in-the-news.html">Media & Outreach</a></li>
@@ -208,10 +208,10 @@ Theory And Practice            </a>
         <article>
             <header class="page-header">
                 <h1>
-                    <a href="http://cranmer.github.io/enabling-data-sharing-citation-and-discovery.html"
+                    <a href="http://cranmer.github.io/2013/06/a-d3-test-post-using-iframe/"
                        rel="bookmark"
-                       title="Permalink to Enabling data sharing, citation, and discovery">
-                        Enabling data sharing, citation, and discovery
+                       title="Permalink to A D3 Test post using iframe">
+                        A D3 Test post using iframe
                     </a>
                 </h1>
             </header>
@@ -221,76 +221,24 @@ Theory And Practice            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2013-10-02T15:42:00"> Wed 02 October 2013</time>
+        <i class="fa fa-calendar"></i><time datetime="2013-06-28T18:21:00"> Fri 28 June 2013</time>
     </span>
 
 
 
 <span class="label label-default">Tags</span>
-	<a href="http://cranmer.github.io/tag/physics.html">physics</a>
+	<a href="http://cranmer.github.io/tag/data.html">Data</a>
         /
-	<a href="http://cranmer.github.io/tag/open-science.html">open science</a>
+	<a href="http://cranmer.github.io/tag/physics.html">Physics</a>
+        /
+	<a href="http://cranmer.github.io/tag/statistics.html">Statistics</a>
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                <p><em>[A guest post for INSPIRE originally posted <a href="http://blog.inspirehep.net/2013/10/enabling-data-sharing-citation-and.html">here.</a>]</em></p>
-<p>We are familiar with the critical role of INSPIRE in searching for
-papers, following references, tracking the citations, and providing
-author profiles.  Now INSPIRE is taking steps to extend this service to
-data, thus creating a rich new layer to the information system of high
-energy physics.</p>
-<p>Historically, papers have been the primary means for scientific
-communication; however, it is common to augment papers with data.  The
-Durham <a href="http://hepdata.cedar.ac.uk/">HepData</a> project has hosted this type of data for several
-years, and since last year, <a href="http://blog.inspirehep.net/2012/10/hepdata-comes-to-inspire.html">HepData is integrated with INSPIRE</a>.
- Some papers have several datasets associated to it, so each dataset is
-given a unique, persistent Digital Object Identifier (<a href="http://www.datacite.org/">DOI</a>).  Not
-only do these DOIs ensure that you can find the data, but they also
-provide a clear way to <a href="http://thedata.org/files/thedata_new2/files/datacitationprinciples-datacite.pdf">cite the data</a>.</p>
-<p>Let's look at an example.  Last month, ATLAS took an important <a href="http://www.quantumdiaries.org/2013/09/12/inspired-by-the-higgs-a-step-forward-in-open-access/">step
-forward</a> and released a digital form of the likelihood function
-associated to the Higgs boson property measurements.  You can find these
-likelihood functions by clicking on the Data tab of the <a href="http://inspirehep.net/record/1241574">ATLAS paper</a>.
- There are three datasets associated to this paper, and each has its own
-DOI.  For instance, the H→γγ likelihood's DOI
-is  <a href="http://doi.org/10.7484/INSPIREHEP.DATA.A78C.HK44">http://doi.org/10.7484/INSPIREHEP.DATA.A78C.HK44</a>.  If you click,
-the DOI will "resolve" to the INSPIRE record for this specific dataset
-(not the paper).  From this record you can:</p>
-<ul>
-<li>download the data from the "Files" tab</li>
-<li>check which papers are citing this dataset from the "Citation" tab</li>
-<li>follow the link to the original paper</li>
-<li>export a properly formatted citation to the dataset itself</li>
-</ul>
-<!--![image]( http://2.bp.blogspot.com/-rA32o66Z3Wo/Ukri72OW3WI/AAAAAAAAAGI/cFxa7tghFpg/s1600/InspireDataRecord.png)-->
-
-<p><img width="400" src="//2.bp.blogspot.com/-rA32o66Z3Wo/Ukri72OW3WI/AAAAAAAAAGI/cFxa7tghFpg/s1600/InspireDataRecord.png"></p>
-<p>In addition to data coming from HepData, INSPIRE now supports data
-hosted in other third-party data repositories such
-as <a href="http://figshare.com/">Figshare</a> or <a href="http://thedata.org/">The Dataverse Network</a>.  To test this out, I
-put <a href="http://hdl.handle.net/1902.1/21804">some data</a> from a phenomenological study of the CMSSM onto
-Dataverse -- yes, theorists create data too!  In this case, Dataverse
-issued the persistent identifier to our data since they take on the
-responsibility to store it.   I sent the persistent identifier to
-INSPIRE and now it shows up in the data tab of our <a href="http://inspirehep.net/record/749860/">original paper</a>.
- INSPIRE can now track citations to this data, which is hosted remotely.
- Nice!</p>
-<p>The last example comes from a not-so-high-energy experiment I was
-involved in called APEX  at <a href="https://www.jlab.org/">Jefferson Lab</a>, which is searching for
-evidence of a 5th fundamental force of nature together with similar
-experiments such as DarkLight, HPS, and MAMI. Unlike the enormous LHC
-experiments, <a href="http://hallaweb.jlab.org/experiment/APEX/">APEX</a> had 66 collaborators that contributed to the
-test-run for this small, special-purpose experiment. The results of the
-test run were <a href="http://inspirehep.net/record/923960/">published in 2011</a>, and this week the <a href="http://inspirehep.net/record/923960/hepdata">raw mass
-distribution</a> from those 770,509 events collected by APEX was released
-directly on INSPIRE.</p>
-<p>These three examples illustrate the diversity of data in HEP ranging
-from low-level experimental data, to theoretical predictions, to the
-results of statistical analysis.  They also demonstrate the richness of
-the data layer and the need for a robust information system.  Looking to
-the future, we can imagine an extended author profile that includes
-details on datasets analogous to what we are already have with papers.</p>
-</div>
+                <p>A quick test of inserting an HTML file with some <a href="http://d3js.org/">D3 magic</a> into a
+wordpress post using the iframe trick I found <a href="http://charlesmartinreid.com/wordpress/2012/08/d3-and-wordpress/">here</a></p>
+<hr />
+<iframe style="border: 1px;" src="http://new.theoryandpractice.org/wp-content/uploads/2013/06/morphDemo.html" height="650" width="100%" scrolling="yes"></iframe>
             </div>
             <!-- /.entry-content -->
         </article>
@@ -316,24 +264,54 @@ details on datasets analogous to what we are already have with papers.</p>
                     <li class="list-group-item"><a href="https://plus.google.com/106689822196584540592/posts"><i
                             class="fa fa-google-plus-square fa-lg"></i> google+
                     </a></li>
+                    <li class="list-group-item"><a href="http://youtube.com/user/cranmer"><i
+                            class="fa fa-youtube-square fa-lg"></i> youtube
+                    </a></li>
                     <li class="list-group-item"><a href="http://www.flickr.com/photos/hoonynoo/"><i
                             class="fa fa-flickr-square fa-lg"></i> flickr
+                    </a></li>
+                    <li class="list-group-item"><a href="http://figshare.com/authors/Kyle%20Cranmer/432748"><i
+                            class="fa fa-figshare-square fa-lg"></i> figshare
                     </a></li>
                   </ul>
                 </li>
 
+                <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+                    <ul class="list-group" id="recentposts">
+                        <li class="list-group-item">
+                            <a href="http://cranmer.github.io/2014/03/Testing-Pelican-Migration/">
+                                Testing Pelican Migration
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="http://cranmer.github.io/2014/03/bicep2-software-carpentry/">
+                                Bicep2 and Software Carpentry
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="http://cranmer.github.io/2014/03/visualizing-information-geometry-with-multidimensional-scaling/">
+                                Visualizing information geometry with multidimensional scaling
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="http://cranmer.github.io/2014/03/roofit-statistical-modeling-language-in-ipython-notebook/">
+                                RooFit statistical modeling language demo in an IPython notebook
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="http://cranmer.github.io/2014/02/the-higgs-boson-a-natural-disaster/">
+                                The Higgs Boson: A Natural Disaster!
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
 
                 <li class="list-group-item"><a href="http://cranmer.github.io/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
                     <ul class="list-group " id="tags">
                         <li class="list-group-item tag-1">
-                            <a href="http://cranmer.github.io/tag/statistics.html">
-                                Statistics
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-1">
-                            <a href="http://cranmer.github.io/tag/open-science.html">
-                                open science
+                            <a href="http://cranmer.github.io/tag/data.html">
+                                Data
                             </a>
                         </li>
                         <li class="list-group-item tag-1">
@@ -342,8 +320,13 @@ details on datasets analogous to what we are already have with papers.</p>
                             </a>
                         </li>
                         <li class="list-group-item tag-1">
-                            <a href="http://cranmer.github.io/tag/data.html">
-                                Data
+                            <a href="http://cranmer.github.io/tag/open-science.html">
+                                open science
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-1">
+                            <a href="http://cranmer.github.io/tag/statistics.html">
+                                Statistics
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
@@ -352,13 +335,13 @@ details on datasets analogous to what we are already have with papers.</p>
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
-                            <a href="http://cranmer.github.io/tag/higgs.html">
-                                Higgs
+                            <a href="http://cranmer.github.io/tag/python.html">
+                                python
                             </a>
                         </li>
                         <li class="list-group-item tag-2">
-                            <a href="http://cranmer.github.io/tag/python.html">
-                                python
+                            <a href="http://cranmer.github.io/tag/higgs.html">
+                                Higgs
                             </a>
                         </li>
                     </ul>
