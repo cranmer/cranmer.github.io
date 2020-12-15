@@ -1,0 +1,1972 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Hotelling's Experiment - Theory And Practice</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="/2014/04/Hotelling-Experiment/">
+
+        <meta name="author" content="Kyle Cranmer" />
+        <meta name="keywords" content="python,Statistics" />
+        <meta name="description" content="/*! * * IPython notebook * */ /* CSS font colors for translated ANSI escape sequences */ /* The color values are a mix of http://www.xcolors.net/dl/baskerville-ivorylight and http://www.xcolors.net/dl/euphrasia */ .ansi-black-fg { color: #3E424D; } .ansi-black-bg { background-color: #3E424D; } .ansi-black-intense-fg { color: #282C36; } .ansi-black-intense-bg { background-color: #282C36; } .ansi-red-fg { color: #E75C58; } .ansi-red-bg { background-color: #E75C58; } .ansi-red-intense-fg { color …" />
+
+        <meta property="og:site_name" content="Theory And Practice" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Hotelling&#39;s Experiment"/>
+        <meta property="og:url" content="/2014/04/Hotelling-Experiment/"/>
+        <meta property="og:description" content="/*! * * IPython notebook * */ /* CSS font colors for translated ANSI escape sequences */ /* The color values are a mix of http://www.xcolors.net/dl/baskerville-ivorylight and http://www.xcolors.net/dl/euphrasia */ .ansi-black-fg { color: #3E424D; } .ansi-black-bg { background-color: #3E424D; } .ansi-black-intense-fg { color: #282C36; } .ansi-black-intense-bg { background-color: #282C36; } .ansi-red-fg { color: #E75C58; } .ansi-red-bg { background-color: #E75C58; } .ansi-red-intense-fg { color …"/>
+        <meta property="article:published_time" content="2014-04-11" />
+            <meta property="article:section" content="Blog" />
+            <meta property="article:tag" content="python" />
+            <meta property="article:tag" content="Statistics" />
+            <meta property="article:author" content="Kyle Cranmer" />
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.flatly.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/default.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+Theory And Practice            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                    <li><a href="/index.html">About</a></li>
+                    <li><a href="/pages/Research.html">Research</a></li>
+                    <li><a href="/pages/projects.html">Projects</a></li>
+                    <li><a href="/pages/in-the-news.html">Media & Outreach</a></li>
+                        <li class="active">
+                            <a href="/category/blog.html">Blog</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/2014/04/Hotelling-Experiment/"
+                       rel="bookmark"
+                       title="Permalink to Hotelling's Experiment">
+                        Hotelling's Experiment
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2014-04-11T10:53:00+02:00"> Fri 11 April 2014</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/python.html">python</a>
+        /
+	<a href="/tag/statistics.html">Statistics</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <style type="text/css">/*!
+*
+* IPython notebook
+*
+*/
+/* CSS font colors for translated ANSI escape sequences */
+/* The color values are a mix of
+   http://www.xcolors.net/dl/baskerville-ivorylight and
+   http://www.xcolors.net/dl/euphrasia */
+.ansi-black-fg {
+  color: #3E424D;
+}
+.ansi-black-bg {
+  background-color: #3E424D;
+}
+.ansi-black-intense-fg {
+  color: #282C36;
+}
+.ansi-black-intense-bg {
+  background-color: #282C36;
+}
+.ansi-red-fg {
+  color: #E75C58;
+}
+.ansi-red-bg {
+  background-color: #E75C58;
+}
+.ansi-red-intense-fg {
+  color: #B22B31;
+}
+.ansi-red-intense-bg {
+  background-color: #B22B31;
+}
+.ansi-green-fg {
+  color: #00A250;
+}
+.ansi-green-bg {
+  background-color: #00A250;
+}
+.ansi-green-intense-fg {
+  color: #007427;
+}
+.ansi-green-intense-bg {
+  background-color: #007427;
+}
+.ansi-yellow-fg {
+  color: #DDB62B;
+}
+.ansi-yellow-bg {
+  background-color: #DDB62B;
+}
+.ansi-yellow-intense-fg {
+  color: #B27D12;
+}
+.ansi-yellow-intense-bg {
+  background-color: #B27D12;
+}
+.ansi-blue-fg {
+  color: #208FFB;
+}
+.ansi-blue-bg {
+  background-color: #208FFB;
+}
+.ansi-blue-intense-fg {
+  color: #0065CA;
+}
+.ansi-blue-intense-bg {
+  background-color: #0065CA;
+}
+.ansi-magenta-fg {
+  color: #D160C4;
+}
+.ansi-magenta-bg {
+  background-color: #D160C4;
+}
+.ansi-magenta-intense-fg {
+  color: #A03196;
+}
+.ansi-magenta-intense-bg {
+  background-color: #A03196;
+}
+.ansi-cyan-fg {
+  color: #60C6C8;
+}
+.ansi-cyan-bg {
+  background-color: #60C6C8;
+}
+.ansi-cyan-intense-fg {
+  color: #258F8F;
+}
+.ansi-cyan-intense-bg {
+  background-color: #258F8F;
+}
+.ansi-white-fg {
+  color: #C5C1B4;
+}
+.ansi-white-bg {
+  background-color: #C5C1B4;
+}
+.ansi-white-intense-fg {
+  color: #A1A6B2;
+}
+.ansi-white-intense-bg {
+  background-color: #A1A6B2;
+}
+.ansi-default-inverse-fg {
+  color: #FFFFFF;
+}
+.ansi-default-inverse-bg {
+  background-color: #000000;
+}
+.ansi-bold {
+  font-weight: bold;
+}
+.ansi-underline {
+  text-decoration: underline;
+}
+/* The following styles are deprecated an will be removed in a future version */
+.ansibold {
+  font-weight: bold;
+}
+.ansi-inverse {
+  outline: 0.5px dotted;
+}
+/* use dark versions for foreground, to improve visibility */
+.ansiblack {
+  color: black;
+}
+.ansired {
+  color: darkred;
+}
+.ansigreen {
+  color: darkgreen;
+}
+.ansiyellow {
+  color: #c4a000;
+}
+.ansiblue {
+  color: darkblue;
+}
+.ansipurple {
+  color: darkviolet;
+}
+.ansicyan {
+  color: steelblue;
+}
+.ansigray {
+  color: gray;
+}
+/* and light for background, for the same reason */
+.ansibgblack {
+  background-color: black;
+}
+.ansibgred {
+  background-color: red;
+}
+.ansibggreen {
+  background-color: green;
+}
+.ansibgyellow {
+  background-color: yellow;
+}
+.ansibgblue {
+  background-color: blue;
+}
+.ansibgpurple {
+  background-color: magenta;
+}
+.ansibgcyan {
+  background-color: cyan;
+}
+.ansibggray {
+  background-color: gray;
+}
+div.cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  width: 100%;
+  padding: 5px;
+  /* This acts as a spacer between cells, that is outside the border */
+  margin: 0px;
+  outline: none;
+  position: relative;
+  overflow: visible;
+}
+div.cell:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: transparent;
+}
+div.cell.jupyter-soft-selected {
+  border-left-color: #E3F2FD;
+  border-left-width: 1px;
+  padding-left: 5px;
+  border-right-color: #E3F2FD;
+  border-right-width: 1px;
+  background: #E3F2FD;
+}
+@media print {
+  div.cell.jupyter-soft-selected {
+    border-color: transparent;
+  }
+}
+div.cell.selected,
+div.cell.selected.jupyter-soft-selected {
+  border-color: #ababab;
+}
+div.cell.selected:before,
+div.cell.selected.jupyter-soft-selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #42A5F5;
+}
+@media print {
+  div.cell.selected,
+  div.cell.selected.jupyter-soft-selected {
+    border-color: transparent;
+  }
+}
+.edit_mode div.cell.selected {
+  border-color: #66BB6A;
+}
+.edit_mode div.cell.selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #66BB6A;
+}
+@media print {
+  .edit_mode div.cell.selected {
+    border-color: transparent;
+  }
+}
+.prompt {
+  /* This needs to be wide enough for 3 digit prompt numbers: In[100]: */
+  min-width: 14ex;
+  /* This padding is tuned to match the padding on the CodeMirror editor. */
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace;
+  text-align: right;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+  /* Don't highlight prompt number selection */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Use default cursor */
+  cursor: default;
+}
+@media (max-width: 540px) {
+  .prompt {
+    text-align: left;
+  }
+}
+div.inner_cell {
+  min-width: 0;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_area {
+  border: 1px solid #cfcfcf;
+  border-radius: 2px;
+  background: #f7f7f7;
+  line-height: 1.21429em;
+}
+/* This is needed so that empty prompt areas can collapse to zero height when there
+   is no content in the output_subarea and the prompt. The main purpose of this is
+   to make sure that empty JavaScript output_subareas have no height. */
+div.prompt:empty {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+div.unrecognized_cell {
+  padding: 5px 5px 5px 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.unrecognized_cell .inner_cell {
+  border-radius: 2px;
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+  border: 1px solid #cfcfcf;
+  background: #eaeaea;
+}
+div.unrecognized_cell .inner_cell a {
+  color: inherit;
+  text-decoration: none;
+}
+div.unrecognized_cell .inner_cell a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+@media (max-width: 540px) {
+  div.unrecognized_cell > div.prompt {
+    display: none;
+  }
+}
+div.code_cell {
+  /* avoid page breaking on code cells when printing */
+}
+@media print {
+  div.code_cell {
+    page-break-inside: avoid;
+  }
+}
+/* any special styling for code cells that are currently running goes here */
+div.input {
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.input {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_prompt {
+  color: #303F9F;
+  border-top: 1px solid transparent;
+}
+div.input_area > div.highlight {
+  margin: 0.4em;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+div.input_area > div.highlight > pre {
+  margin: 0px;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+/* The following gets added to the <head> if it is detected that the user has a
+ * monospace font with inconsistent normal/bold/italic height.  See
+ * notebookmain.js.  Such fonts will have keywords vertically offset with
+ * respect to the rest of the text.  The user should select a better font.
+ * See: https://github.com/ipython/ipython/issues/1503
+ *
+ * .CodeMirror span {
+ *      vertical-align: bottom;
+ * }
+ */
+.CodeMirror {
+  line-height: 1.21429em;
+  /* Changed from 1em to our global default */
+  font-size: 14px;
+  height: auto;
+  /* Changed to auto to autogrow */
+  background: none;
+  /* Changed from white to allow our bg to show through */
+}
+.CodeMirror-scroll {
+  /*  The CodeMirror docs are a bit fuzzy on if overflow-y should be hidden or visible.*/
+  /*  We have found that if it is visible, vertical scrollbars appear with font size changes.*/
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.CodeMirror-lines {
+  /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
+  /* we have set a different line-height and want this to scale with that. */
+  /* Note that this should set vertical padding only, since CodeMirror assumes
+       that horizontal padding will be set on CodeMirror pre */
+  padding: 0.4em 0;
+}
+.CodeMirror-linenumber {
+  padding: 0 8px 0 4px;
+}
+.CodeMirror-gutters {
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+}
+.CodeMirror pre {
+  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
+    use .CodeMirror-lines for vertical */
+  padding: 0 0.4em;
+  border: 0;
+  border-radius: 0;
+}
+.CodeMirror-cursor {
+  border-left: 1.4px solid black;
+}
+@media screen and (min-width: 2138px) and (max-width: 4319px) {
+  .CodeMirror-cursor {
+    border-left: 2px solid black;
+  }
+}
+@media screen and (min-width: 4320px) {
+  .CodeMirror-cursor {
+    border-left: 4px solid black;
+  }
+}
+/*
+
+Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiacs.Org>
+Adapted from GitHub theme
+
+*/
+.highlight-base {
+  color: #000;
+}
+.highlight-variable {
+  color: #000;
+}
+.highlight-variable-2 {
+  color: #1a1a1a;
+}
+.highlight-variable-3 {
+  color: #333333;
+}
+.highlight-string {
+  color: #BA2121;
+}
+.highlight-comment {
+  color: #408080;
+  font-style: italic;
+}
+.highlight-number {
+  color: #080;
+}
+.highlight-atom {
+  color: #88F;
+}
+.highlight-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.highlight-builtin {
+  color: #008000;
+}
+.highlight-error {
+  color: #f00;
+}
+.highlight-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.highlight-meta {
+  color: #AA22FF;
+}
+/* previously not defined, copying from default codemirror */
+.highlight-def {
+  color: #00f;
+}
+.highlight-string-2 {
+  color: #f50;
+}
+.highlight-qualifier {
+  color: #555;
+}
+.highlight-bracket {
+  color: #997;
+}
+.highlight-tag {
+  color: #170;
+}
+.highlight-attribute {
+  color: #00c;
+}
+.highlight-header {
+  color: blue;
+}
+.highlight-quote {
+  color: #090;
+}
+.highlight-link {
+  color: #00c;
+}
+/* apply the same style to codemirror */
+.cm-s-ipython span.cm-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-atom {
+  color: #88F;
+}
+.cm-s-ipython span.cm-number {
+  color: #080;
+}
+.cm-s-ipython span.cm-def {
+  color: #00f;
+}
+.cm-s-ipython span.cm-variable {
+  color: #000;
+}
+.cm-s-ipython span.cm-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-variable-2 {
+  color: #1a1a1a;
+}
+.cm-s-ipython span.cm-variable-3 {
+  color: #333333;
+}
+.cm-s-ipython span.cm-comment {
+  color: #408080;
+  font-style: italic;
+}
+.cm-s-ipython span.cm-string {
+  color: #BA2121;
+}
+.cm-s-ipython span.cm-string-2 {
+  color: #f50;
+}
+.cm-s-ipython span.cm-meta {
+  color: #AA22FF;
+}
+.cm-s-ipython span.cm-qualifier {
+  color: #555;
+}
+.cm-s-ipython span.cm-builtin {
+  color: #008000;
+}
+.cm-s-ipython span.cm-bracket {
+  color: #997;
+}
+.cm-s-ipython span.cm-tag {
+  color: #170;
+}
+.cm-s-ipython span.cm-attribute {
+  color: #00c;
+}
+.cm-s-ipython span.cm-header {
+  color: blue;
+}
+.cm-s-ipython span.cm-quote {
+  color: #090;
+}
+.cm-s-ipython span.cm-link {
+  color: #00c;
+}
+.cm-s-ipython span.cm-error {
+  color: #f00;
+}
+.cm-s-ipython span.cm-tab {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAMCAYAAAAkuj5RAAAAAXNSR0IArs4c6QAAAGFJREFUSMft1LsRQFAQheHPowAKoACx3IgEKtaEHujDjORSgWTH/ZOdnZOcM/sgk/kFFWY0qV8foQwS4MKBCS3qR6ixBJvElOobYAtivseIE120FaowJPN75GMu8j/LfMwNjh4HUpwg4LUAAAAASUVORK5CYII=);
+  background-position: right;
+  background-repeat: no-repeat;
+}
+div.output_wrapper {
+  /* this position must be relative to enable descendents to be absolute within it */
+  position: relative;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  z-index: 1;
+}
+/* class for the output area when it should be height-limited */
+div.output_scroll {
+  /* ideally, this would be max-height, but FF barfs all over that */
+  height: 24em;
+  /* FF needs this *and the wrapper* to specify full width, or it will shrinkwrap */
+  width: 100%;
+  overflow: auto;
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  display: block;
+}
+/* output div while it is collapsed */
+div.output_collapsed {
+  margin: 0px;
+  padding: 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+div.out_prompt_overlay {
+  height: 100%;
+  padding: 0px 0.4em;
+  position: absolute;
+  border-radius: 2px;
+}
+div.out_prompt_overlay:hover {
+  /* use inner shadow to get border that is computed the same on WebKit/FF */
+  -webkit-box-shadow: inset 0 0 1px #000;
+  box-shadow: inset 0 0 1px #000;
+  background: rgba(240, 240, 240, 0.5);
+}
+div.output_prompt {
+  color: #D84315;
+}
+/* This class is the outer container of all output sections. */
+div.output_area {
+  padding: 0px;
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.output_area .MathJax_Display {
+  text-align: left !important;
+}
+div.output_area 
+div.output_area 
+div.output_area img,
+div.output_area svg {
+  max-width: 100%;
+  height: auto;
+}
+div.output_area img.unconfined,
+div.output_area svg.unconfined {
+  max-width: none;
+}
+div.output_area .mglyph > img {
+  max-width: none;
+}
+/* This is needed to protect the pre formating from global settings such
+   as that of bootstrap */
+.output {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.output_area {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+div.output_area pre {
+  margin: 0;
+  padding: 1px 0 1px 0;
+  border: 0;
+  vertical-align: baseline;
+  color: black;
+  background-color: transparent;
+  border-radius: 0;
+}
+/* This class is for the output subarea inside the output_area and after
+   the prompt div. */
+div.output_subarea {
+  overflow-x: auto;
+  padding: 0.4em;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+  max-width: calc(100% - 14ex);
+}
+div.output_scroll div.output_subarea {
+  overflow-x: visible;
+}
+/* The rest of the output_* classes are for special styling of the different
+   output types */
+/* all text output has this class: */
+div.output_text {
+  text-align: left;
+  color: #000;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+}
+/* stdout/stderr are 'text' as well as 'stream', but execute_result/error are *not* streams */
+div.output_stderr {
+  background: #fdd;
+  /* very light red background for stderr */
+}
+div.output_latex {
+  text-align: left;
+}
+/* Empty output_javascript divs should have no height */
+div.output_javascript:empty {
+  padding: 0;
+}
+.js-error {
+  color: darkred;
+}
+/* raw_input styles */
+div.raw_input_container {
+  line-height: 1.21429em;
+  padding-top: 5px;
+}
+pre.raw_input_prompt {
+  /* nothing needed here. */
+}
+input.raw_input {
+  font-family: monospace;
+  font-size: inherit;
+  color: inherit;
+  width: auto;
+  /* make sure input baseline aligns with prompt */
+  vertical-align: baseline;
+  /* padding + margin = 0.5em between prompt and cursor */
+  padding: 0em 0.25em;
+  margin: 0em 0.25em;
+}
+input.raw_input:focus {
+  box-shadow: none;
+}
+p.p-space {
+  margin-bottom: 10px;
+}
+div.output_unrecognized {
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+}
+div.output_unrecognized a {
+  color: inherit;
+  text-decoration: none;
+}
+div.output_unrecognized a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+.rendered_html {
+  color: #000;
+  /* any extras will just be numbers: */
+}
+
+
+
+.rendered_html :link {
+  text-decoration: underline;
+}
+.rendered_html :visited {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+.rendered_html h1:first-child {
+  margin-top: 0.538em;
+}
+.rendered_html h2:first-child {
+  margin-top: 0.636em;
+}
+.rendered_html h3:first-child {
+  margin-top: 0.777em;
+}
+.rendered_html h4:first-child {
+  margin-top: 1em;
+}
+.rendered_html h5:first-child {
+  margin-top: 1em;
+}
+.rendered_html h6:first-child {
+  margin-top: 1em;
+}
+.rendered_html ul:not(.list-inline),
+.rendered_html ol:not(.list-inline) {
+  padding-left: 2em;
+}
+
+
+
+
+
+
+
+
+.rendered_html * + ul {
+  margin-top: 1em;
+}
+.rendered_html * + ol {
+  margin-top: 1em;
+}
+
+
+
+
+
+.rendered_html pre,
+
+
+
+
+.rendered_html tr,
+.rendered_html th,
+
+
+.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+.rendered_html * + table {
+  margin-top: 1em;
+}
+
+.rendered_html * + p {
+  margin-top: 1em;
+}
+
+.rendered_html * + img {
+  margin-top: 1em;
+}
+.rendered_html img,
+
+.rendered_html img.unconfined,
+
+
+.rendered_html * + .alert {
+  margin-top: 1em;
+}
+[dir="rtl"] 
+div.text_cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.text_cell > div.prompt {
+    display: none;
+  }
+}
+div.text_cell_render {
+  /*font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;*/
+  outline: none;
+  resize: none;
+  width: inherit;
+  border-style: none;
+  padding: 0.5em 0.5em 0.5em 0.4em;
+  color: #000;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+a.anchor-link:link {
+  text-decoration: none;
+  padding: 0px 20px;
+  visibility: hidden;
+}
+h1:hover .anchor-link,
+h2:hover .anchor-link,
+h3:hover .anchor-link,
+h4:hover .anchor-link,
+h5:hover .anchor-link,
+h6:hover .anchor-link {
+  visibility: visible;
+}
+.text_cell.rendered .input_area {
+  display: none;
+}
+.text_cell.rendered 
+.text_cell.rendered .rendered_html tr,
+.text_cell.rendered .rendered_html th,
+.text_cell.rendered 
+.text_cell.unrendered .text_cell_render {
+  display: none;
+}
+.text_cell .dropzone .input_area {
+  border: 2px dashed #bababa;
+  margin: -1px;
+}
+.cm-header-1,
+.cm-header-2,
+.cm-header-3,
+.cm-header-4,
+.cm-header-5,
+.cm-header-6 {
+  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.cm-header-1 {
+  font-size: 185.7%;
+}
+.cm-header-2 {
+  font-size: 157.1%;
+}
+.cm-header-3 {
+  font-size: 128.6%;
+}
+.cm-header-4 {
+  font-size: 110%;
+}
+.cm-header-5 {
+  font-size: 100%;
+  font-style: italic;
+}
+.cm-header-6 {
+  font-size: 100%;
+  font-style: italic;
+}
+</style>
+<style type="text/css">.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f8f8f8; }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style>
+<style type="text/css">
+/* Temporary definitions which will become obsolete with Notebook release 5.0 */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-bold { font-weight: bold; }
+</style>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Hotelling's-Experiment">Hotelling's Experiment<a class="anchor-link" href="#Hotelling's-Experiment">¶</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>License: BSD (C) 2014, Kyle Cranmer. Feel free to use, distribute, and modify with the above attribution.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is an example of "Design of Experiments" - using the statistician's terminology - given in the <a href="http://en.wikipedia.org/wiki/Design_of_experiments#Example">Wikipedia article</a>. Aimed to be used for teaching undergraduate-level physics lab / data analysis course.</p>
+<p><strong>The problem is to give the best measurement of the mass of 8 objects using 8 uses of a chemical balance (which has some intrensic measurement error $\sigma=1$.  On a chemical balance, you can put some of your objects on the left and some on the right to measure the difference of their masses.  </strong></p>
+<p>The code below follows the paper 
+"On Hotelling's Weighing Problem" by 
+Alexander M. Mood
+<em>Ann. Math. Statist.</em>
+Volume 17, Number 4 (1946), 377-556
+which you can find <a href="http://projecteuclid.org/DPubS?verb=Display&version=1.0&service=UI&handle=euclid.aoms/1177730883&page=record">here</a>.
+The setup is that there is that you provide an "design matrix" that indicates where you should put each of the objects on the scale for each of the 8 weighing operations.  Based on this design matrix, the code will give you the best estimate of the masses for a random experiment.</p>
+<p>At the bottom we run 10k experiments and compare the straight-forward approach (ie. measure each object once individually) vs. Hotelling's solution.</p>
+<p><img alt="from wikipedia" src="http://upload.wikimedia.org/wikipedia/commons/1/17/Balance_à_tabac_1850.JPG" width="200"></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">pylab</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Populating the interactive namespace from numpy and matplotlib
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [3]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="k">class</span> <span class="nc">DoExperiment</span><span class="p">():</span>
+    <span class="sd">"""</span>
+<span class="sd">    This class performs a weighing experiment given true weights and a design matrix.</span>
+<span class="sd">        It follows "On Hotelling's Weighing Problem" by </span>
+<span class="sd">        Alexander M. Mood *Ann. Math. Statist.*</span>
+<span class="sd">        Volume 17, Number 4 (1946), 377-556</span>
+<span class="sd">    """</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">design</span><span class="p">,</span><span class="n">truthWeights</span><span class="p">,</span><span class="n">withError</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_truthWeights</span> <span class="o">=</span> <span class="n">truthWeights</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_design</span> <span class="o">=</span> <span class="n">design</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_withError</span> <span class="o">=</span> <span class="n">withError</span>
+    <span class="k">def</span> <span class="nf">get_measurement</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_design</span> <span class="c1"># eq.1</span>
+        <span class="n">truthWeights</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_truthWeights</span>
+
+        <span class="c1"># design is matrix where rows are weighting operations</span>
+        <span class="c1"># columns are the masses of the objects</span>
+        <span class="c1"># and entries are +1 (left), -1 (right), or 0 not on balance</span>
+        <span class="n">measurements</span> <span class="o">=</span> <span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">truthWeights</span><span class="p">)</span> 
+
+        <span class="c1">#now add gaussian random error to measurements</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_withError</span><span class="p">:</span>
+            <span class="n">measurements</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">truthWeights</span><span class="p">))</span>
+        
+        <span class="c1">#the least squares best estimates of the true weights </span>
+        <span class="n">aij</span> <span class="o">=</span> <span class="n">inv</span><span class="p">(</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="p">,</span><span class="n">X</span><span class="p">))</span> <span class="c1">#eq 2</span>
+        <span class="n">estimates</span> <span class="o">=</span> <span class="n">dot</span><span class="p">(</span><span class="n">aij</span><span class="p">,</span> <span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">measurements</span><span class="p">))</span> <span class="c1">#eq 3 & 4</span>
+        <span class="k">return</span> <span class="n">estimates</span>                                                        
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [4]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="c1">#get 8 random numbers for the true weights of the objects</span>
+<span class="n">truthWeights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">truthWeights</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[4]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>array([  6.41506648,  17.78102833,  14.06824604,   0.94515061,
+        13.66822659,   6.81498054,  12.80084059,  12.51520099])</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [5]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="c1">#the straight-forward solution to this problem is to weigh each object once.</span>
+<span class="n">NaiveDesign</span><span class="o">=</span> <span class="n">zeros</span><span class="p">((</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">fill_diagonal</span><span class="p">(</span><span class="n">NaiveDesign</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">NaiveDesign</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[5]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[1, 0, 0, 0, 0, 0, 0, 0],
+       [0, 1, 0, 0, 0, 0, 0, 0],
+       [0, 0, 1, 0, 0, 0, 0, 0],
+       [0, 0, 0, 1, 0, 0, 0, 0],
+       [0, 0, 0, 0, 1, 0, 0, 0],
+       [0, 0, 0, 0, 0, 1, 0, 0],
+       [0, 0, 0, 0, 0, 0, 1, 0],
+       [0, 0, 0, 0, 0, 0, 0, 1]])</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [6]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="c1">#The optimal solution to this problem is based on Hadamard Matrices</span>
+<span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">hadamard</span>
+<span class="n">HotellingsDesign</span> <span class="o">=</span> <span class="n">hadamard</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">HotellingsDesign</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[6]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 1,  1,  1,  1,  1,  1,  1,  1],
+       [ 1, -1,  1, -1,  1, -1,  1, -1],
+       [ 1,  1, -1, -1,  1,  1, -1, -1],
+       [ 1, -1, -1,  1,  1, -1, -1,  1],
+       [ 1,  1,  1,  1, -1, -1, -1, -1],
+       [ 1, -1,  1, -1, -1,  1, -1,  1],
+       [ 1,  1, -1, -1, -1, -1,  1,  1],
+       [ 1, -1, -1,  1, -1,  1,  1, -1]])</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [7]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="c1">#test that perfect experiment (with no measurement error) gives</span>
+<span class="c1">#back the true weights</span>
+<span class="p">[</span><span class="nb">abs</span><span class="p">(</span><span class="n">residual</span><span class="p">)</span><span class="o"><</span><span class="mf">1E-5</span> <span class="k">for</span> <span class="n">residual</span> <span class="ow">in</span> \
+ <span class="p">(</span><span class="n">DoExperiment</span><span class="p">(</span><span class="n">HotellingsDesign</span><span class="p">,</span><span class="n">truthWeights</span><span class="p">,</span><span class="n">withError</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">get_measurement</span><span class="p">()</span><span class="o">-</span><span class="n">truthWeights</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[7]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>[True, True, True, True, True, True, True, True]</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [8]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="c1">#Same test for Niave Design</span>
+<span class="p">[</span><span class="nb">abs</span><span class="p">(</span><span class="n">residual</span><span class="p">)</span><span class="o"><</span><span class="mf">1E-5</span> <span class="k">for</span> <span class="n">residual</span> <span class="ow">in</span> \
+ <span class="p">(</span><span class="n">DoExperiment</span><span class="p">(</span><span class="n">NaiveDesign</span><span class="p">,</span><span class="n">truthWeights</span><span class="p">,</span><span class="n">withError</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">get_measurement</span><span class="p">()</span><span class="o">-</span><span class="n">truthWeights</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[8]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>[True, True, True, True, True, True, True, True]</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [9]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="c1">#Ok, now run 10k weighing experiments</span>
+<span class="c1">#without loss of generality compare measurement of first object</span>
+<span class="n">nBins</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">data_standard</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">data_hotelling</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
+    <span class="n">data_standard</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">DoExperiment</span><span class="p">(</span><span class="n">NaiveDesign</span><span class="p">,</span><span class="n">truthWeights</span><span class="p">)</span><span class="o">.</span><span class="n">get_measurement</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">data_hotelling</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">DoExperiment</span><span class="p">(</span><span class="n">HotellingsDesign</span><span class="p">,</span><span class="n">truthWeights</span><span class="p">)</span><span class="o">.</span><span class="n">get_measurement</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+
+
+<span class="k">print</span><span class="p">(</span> <span class="s1">'standard = '</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">data_standard</span><span class="p">),</span> <span class="s1">'vs hotelling = '</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">data_hotelling</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span> <span class="s1">'observed improvement = '</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">data_standard</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">data_hotelling</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span> <span class="s1">'expected improvement = '</span><span class="p">,</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
+    
+<span class="n">heights</span><span class="p">,</span> <span class="n">edges</span><span class="p">,</span> <span class="n">patches</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data_standard</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="n">nBins</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data_hotelling</span><span class="p">,</span><span class="n">edges</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>standard =  1.00535627048 vs hotelling =  0.356687120426
+observed improvement =  2.81859426065
+expected improvement =  2.82842712475
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_png output_subarea">
+<img src="data:image/png;base64,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
+">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Nice!</p>
+<p>you can see the IPython notebook in GitHub <a href="https://github.com/cranmer/play/blob/master/Teaching/HotellingsExperiment.ipynb">here</a>:</p>
+</div>
+</div>
+</div>
+
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+            </div>
+            <!-- /.entry-content -->
+    <hr />
+    <!-- AddThis Button BEGIN -->
+    <div class="addthis_toolbox addthis_default_style">
+            <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+            <a class="addthis_button_tweet"></a>
+            <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    </div>
+    <!-- AddThis Button END -->
+    <hr/>
+    <section class="comments" id="comments">
+        <h2>Comments</h2>
+
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'theoryandpractice'; // required: replace example with your forum shortname
+
+                    var disqus_identifier = 'Hotelling-Experiment';
+                var disqus_url = '/2014/04/Hotelling-Experiment/';
+
+            var disqus_config = function () {
+                this.language = "en";
+            };
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+
+<section class="well well-sm">
+    <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+              <ul class="list-group" id="social">
+                <li class="list-group-item"><a href="http://twitter.com/kylecranmer"><i class="fa fa-twitter-square fa-lg"></i> twitter</a></li>
+                <li class="list-group-item"><a href="http://github.com/cranmer"><i class="fa fa-github-square fa-lg"></i> github</a></li>
+                <li class="list-group-item"><a href="http://www.linkedin.com/in/kylecranmer"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
+                <li class="list-group-item"><a href="https://www.youtube.com/channel/UCKl2VoIJiPYp3QhuK22b7xQ"><i class="fa fa-youtube-square fa-lg"></i> youtube</a></li>
+                <li class="list-group-item"><a href="http://figshare.com/authors/Kyle%20Cranmer/432748"><i class="fa fa-figshare-square fa-lg"></i> figshare</a></li>
+                <li class="list-group-item"><a href="https://impactstory.org/u/0000-0002-5769-7094"><i class="fa fa-impactstory-square fa-lg"></i> ImpactStory</a></li>
+              </ul>
+            </li>
+
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+                <ul class="list-group" id="recentposts">
+                    <li class="list-group-item">
+                        <a href="/2020/06/collaboration-map-nyiml/">
+                            Map of NYIML
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/2020/01/Jupyter Book/">
+                            Jupyter Book
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/./2020/01/collaboration-map-iris/">
+                            Map of IRIS-HEP
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/2020/01/ML4Jets 2020/">
+                            ML4Jets 2020
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/2019/12/ML4PS 2019/">
+                            ML4PS 2019
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li class="list-group-item"><a href="/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                <ul class="list-group list-inline tagcloud" id="tags">
+                    <li class="list-group-item tag-2">
+                        <a href="/tag/communication.html">
+                            communication
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="/tag/crayfis.html">
+                            crayfis
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-2">
+                        <a href="/tag/data.html">
+                            Data
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="/tag/data-science.html">
+                            data science
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-2">
+                        <a href="/tag/higgs.html">
+                            Higgs
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-2">
+                        <a href="/tag/machine-learning.html">
+                            Machine Learning
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="/tag/mathematics.html">
+                            mathematics
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="/tag/open-science.html">
+                            Open Science
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="/tag/physics.html">
+                            Physics
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="/tag/python.html">
+                            python
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="/tag/reflection.html">
+                            reflection
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-3">
+                        <a href="/tag/research.html">
+                            research
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-3">
+                        <a href="/tag/sabbatical.html">
+                            sabbatical
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="/tag/statistics.html">
+                            statistics
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-2">
+                        <a href="/tag/visualization.html">
+                            visualization
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+    <li class="list-group-item"><h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+      <ul class="list-group" id="links">
+        <li class="list-group-item">
+            <a href="https://physics.nyu.edu/experimentalparticle/" target="_blank">
+                My group
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://cosmo.nyu.edu/" target="_blank">
+                CCPP
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://cds.nyu.edu/" target="_blank">
+                CDS
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="https://iris-hep.org/" target="_blank">
+                IRIS-HEP
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="https://diana-hep.org/" target="_blank">
+                DIANA
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="https://msdse.org" target="_blank">
+                MSDSE
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://daspos.org/" target="_blank">
+                DASPOS
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="https://scailfin.github.io" target="_blank">
+                SCAILFIN
+            </a>
+        </li>
+      </ul>
+    </li>
+    </ul>
+</section>
+            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">
+         </div>
+         <br>
+         <div class="col-xs-10">&copy; 2020 Kyle Cranmer
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>              <p><small>  <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by/4.0/80x15.png" /></a>
+    Content
+  licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>, except where indicated otherwise.
+</small></p>
+         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+    <!-- Disqus -->
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'theoryandpractice'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+    <!-- End Disqus Code -->
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-3337202-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
+        <script type="text/javascript">var addthis_config = {"data_track_addressbar": true};</script>
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5332e76b5340f5f3"></script>
+</body>
+
+
+</html>

@@ -1,0 +1,295 @@
+{
+ "ditems": [
+  {
+   "name": "Particle Physics",
+   "links": [
+    "Kyle Cranmer",
+    "Joan Bruna",
+    "Kyunghyun Cho",
+    "Brenden Lake",
+    "Likelihood-free Methods",
+    "Compositionality",
+    "Causality",
+    "Symmetry",
+    "Uncertainty in Deep Learning",
+    "Deep Representation Learning",
+    "Probabilistic Representation Learning",
+    "Disentanglement",
+    "Inductive Bias",
+    "Deep Generative Models",
+    "Structured Prediction"
+   ],
+   "description": "",
+   "type": "ditem",
+   "ditem": 1
+  },
+  {
+   "name": "Astrophysics",
+   "links": [
+    "David Hogg",
+    "Rob Fergus",
+    "David Blei",
+    "Kyle Cranmer",
+    "Inductive Bias",
+    "Causality",
+    "Compositionality",
+    "Self-Supervised",
+    "Disentanglement",
+    "Uncertainty in Deep Learning",
+    "Probabilistic Representation Learning",
+    "Likelihood-free Methods",
+    "Deep Generative Models",
+    "Structured Prediction"
+   ],
+   "description": "",
+   "type": "ditem",
+   "ditem": 2
+  },
+  {
+   "name": "Cosmology",
+   "links": [
+    "Shirley Ho",
+    "David Hogg",
+    "Inductive Bias",
+    "Deep Representation Learning",
+    "Uncertainty in Deep Learning",
+    "Probabilistic Representation Learning",
+    "Likelihood-free Methods",
+    "Compositionality",
+    "Symmetry",
+    "Disentanglement",
+    "Deep Generative Models"
+   ],
+   "description": "",
+   "type": "ditem",
+   "ditem": 3
+  },
+  {
+   "name": "Lattice Field Theory",
+   "links": [
+    "Kyle Cranmer",
+    "Yann LeCun",
+    "Rajesh Ranganath",
+    "Joan Bruna",
+    "Andrew Wilson",
+    "Variational Inference",
+    "Deep Representation Learning",
+    "Probabilistic Representation Learning",
+    "Symmetry",
+    "Disentanglement",
+    "Compositionality",
+    "Self-Supervised",
+    "Inductive Bias",
+    "Deep Generative Models"
+   ],
+   "description": "",
+   "type": "ditem",
+   "ditem": 4
+  },
+  {
+   "name": "Quantum Many Body",
+   "links": [
+    "Kyle Cranmer",
+    "Miles Stoudenmire",
+    "Giuseppe Carleo",
+    "Joan Bruna",
+    "Rajesh Ranganath",
+    "Compositionality",
+    "Inductive Bias",
+    "Optimization Theory",
+    "Variational Inference",
+    "Self-Supervised",
+    "Disentanglement",
+    "Symmetry",
+    "Deep Generative Models",
+    "Probabilistic Representation Learning",
+    "Deep Representation Learning",
+    "Online Learning"
+   ],
+   "description": "",
+   "type": "ditem",
+   "ditem": 5
+  }
+ ],
+ "collaborations": [
+  {
+   "name": "Deep Representation Learning",
+   "group": 1,
+   "description": "",
+   "type": "collaboration",
+   "count": 1
+  },
+  {
+   "name": "Probabilistic Representation Learning",
+   "group": 1,
+   "description": "",
+   "type": "collaboration",
+   "count": 2
+  },
+  {
+   "name": "Uncertainty in Deep Learning",
+   "group": 1,
+   "description": "",
+   "type": "collaboration",
+   "count": 3
+  },
+  {
+   "name": "Self-Supervised",
+   "group": 1,
+   "description": "",
+   "type": "collaboration",
+   "count": 4
+  },
+  {
+   "name": "Causality",
+   "group": 1,
+   "description": "",
+   "type": "collaboration",
+   "count": 5
+  },
+  {
+   "name": "Compositionality",
+   "group": 1,
+   "description": "",
+   "type": "collaboration",
+   "count": 6
+  },
+  {
+   "name": "Disentanglement",
+   "group": 1,
+   "description": "",
+   "type": "collaboration",
+   "count": 7
+  },
+  {
+   "name": "Symmetry",
+   "group": 1,
+   "description": "",
+   "type": "collaboration",
+   "count": 8
+  },
+  {
+   "name": "Inductive Bias",
+   "group": 1,
+   "description": "",
+   "type": "collaboration",
+   "count": 9
+  },
+  {
+   "name": "Structured Prediction",
+   "group": 1,
+   "description": "",
+   "type": "collaboration",
+   "count": 10
+  },
+  {
+   "name": "Variational Inference",
+   "group": 1,
+   "description": "",
+   "type": "collaboration",
+   "count": 11
+  },
+  {
+   "name": "Deep Generative Models",
+   "group": 1,
+   "description": "",
+   "type": "collaboration",
+   "count": 12
+  },
+  {
+   "name": "Likelihood-free Methods",
+   "group": 1,
+   "description": "",
+   "type": "collaboration",
+   "count": 13
+  },
+  {
+   "name": "Optimization Theory",
+   "group": 1,
+   "description": "",
+   "type": "collaboration",
+   "count": 14
+  },
+  {
+   "name": "Online Learning",
+   "group": 1,
+   "description": "",
+   "type": "collaboration",
+   "count": 15
+  }
+ ],
+ "projects": [
+  {
+   "name": "Kyunghyun Cho",
+   "description": "",
+   "type": "project",
+   "count": 1
+  },
+  {
+   "name": "Rajesh Ranganath",
+   "description": "",
+   "type": "project",
+   "count": 2
+  },
+  {
+   "name": "Rob Fergus",
+   "description": "",
+   "type": "project",
+   "count": 3
+  },
+  {
+   "name": "David Blei",
+   "description": "",
+   "type": "project",
+   "count": 4
+  },
+  {
+   "name": "Andrew Wilson",
+   "description": "",
+   "type": "project",
+   "count": 5
+  },
+  {
+   "name": "Kyle Cranmer",
+   "description": "",
+   "type": "project",
+   "count": 6
+  },
+  {
+   "name": "David Hogg",
+   "description": "",
+   "type": "project",
+   "count": 7
+  },
+  {
+   "name": "Joan Bruna",
+   "description": "",
+   "type": "project",
+   "count": 8
+  },
+  {
+   "name": "Shirley Ho",
+   "description": "",
+   "type": "project",
+   "count": 9
+  },
+  {
+   "name": "Giuseppe Carleo",
+   "description": "",
+   "type": "project",
+   "count": 10
+  },
+  {
+   "name": "Miles Stoudenmire",
+   "description": "",
+   "type": "project",
+   "count": 11
+  },
+  {
+   "name": "Brenden Lake",
+   "description": "",
+   "type": "project",
+   "count": 12
+  }
+ ]
+}

@@ -1,0 +1,110 @@
+ditems:
+- name: Particle Physics
+  links:
+    - Kyle Cranmer
+    - Joan Bruna
+    - Kyunghyun Cho    
+    - Brenden Lake
+    - Likelihood-free Methods
+    - Compositionality
+    - Causality
+    - Symmetry
+    - Uncertainty in Deep Learning
+    - Deep Representation Learning
+    - Probabilistic Representation Learning
+    - Disentanglement
+    - Inductive Bias
+    - Deep Generative Models
+    - Structured Prediction
+- name: Astrophysics
+  links: 
+    - David Hogg
+    - Rob Fergus
+    - David Blei
+    - Kyle Cranmer
+    - Inductive Bias
+    - Causality
+    - Compositionality
+    - Self-Supervised
+    - Disentanglement
+    - Uncertainty in Deep Learning
+    - Probabilistic Representation Learning
+    - Likelihood-free Methods
+    - Deep Generative Models
+    - Structured Prediction
+- name: Cosmology
+  links: 
+    - Shirley Ho
+    - David Hogg
+    - Inductive Bias
+    - Deep Representation Learning
+    - Uncertainty in Deep Learning
+    - Probabilistic Representation Learning
+    - Likelihood-free Methods
+    - Compositionality
+    - Symmetry
+    - Disentanglement
+    - Deep Generative Models
+- name: Lattice Field Theory
+  links:
+    - Kyle Cranmer
+    - Yann LeCun
+    - Rajesh Ranganath
+    - Joan Bruna
+    - Andrew Wilson
+    - Variational Inference
+    - Deep Representation Learning
+    - Probabilistic Representation Learning
+    - Symmetry
+    - Disentanglement
+    - Compositionality
+    - Self-Supervised
+    - Inductive Bias
+    - Deep Generative Models
+- name: Quantum Many Body 
+  links:
+    - Kyle Cranmer
+    - Miles Stoudenmire
+    - Giuseppe Carleo
+    - Joan Bruna
+    - Rajesh Ranganath
+    - Compositionality
+    - Inductive Bias
+    - Optimization Theory
+    - Variational Inference
+    - Self-Supervised
+    - Disentanglement
+    - Symmetry
+    - Deep Generative Models
+    - Probabilistic Representation Learning
+    - Deep Representation Learning
+    - Online Learning
+projects:
+- name: Kyunghyun Cho
+- name: Rajesh Ranganath
+- name: Rob Fergus
+- name: David Blei
+- name: Andrew Wilson
+- name: Kyle Cranmer
+- name: David Hogg
+- name: Joan Bruna
+- name: Shirley Ho
+- name: Giuseppe Carleo
+- name: Miles Stoudenmire
+- name: Brenden Lake
+collaborations:
+- name: Deep Representation Learning
+- name: Probabilistic Representation Learning
+- name: Uncertainty in Deep Learning
+- name: Self-Supervised
+- name: Causality
+- name: Compositionality
+- name: Disentanglement
+- name: Symmetry
+- name: Inductive Bias
+- name: Structured Prediction
+- name: Variational Inference
+- name: Deep Generative Models
+- name: Likelihood-free Methods
+- name: Optimization Theory
+- name: Online Learning
