@@ -123,7 +123,21 @@ Theory And Practice            </a>
 <a href='#Greenberg:2020heb' id='ref-Greenberg:2020heb-1'>Greenberg et al. (2020)</a>
 <a href='#Serviansky:2020qwa' id='ref-Serviansky:2020qwa-1'>Serviansky et al. (2020)</a>
 <a href='#Rezende:2020hrd' id='ref-Rezende:2020hrd-1'>Rezende et al. (2020)</a></p>
-<p>Well, I had to edit some entries in the <code>.bib</code> file that had missing <code>journal</code> information or it lead to a critical failure. This is nice, but not exactly what I'm looking for. </p><hr>
+<p>Well, I had to edit some entries in the <code>.bib</code> file that had missing <code>journal</code> information or it lead to a critical failure. This is nice, but not exactly what I'm looking for. </p>
+<p>... time passes...</p>
+<p>Ok, I played with <a href="https://github.com/vene/pelican-bibtex">pelican-bibtex</a> some. I added a custom template and I hacked pelican-bibtex with this:</p>
+<div class="highlight"><pre><span></span>    #hack added by Kyle Cranmer to avoid problems in bib with no journal entry
+    for entry in bibdata_all.entries.values():
+        if &#39;journal&#39; not in entry.fields: 
+            entry.fields[&#39;journal&#39;]=&#39;&#39;
+        if &#39;booktitle&#39; not in entry.fields: 
+            entry.fields[&#39;booktitle&#39;]=&#39;&#39;
+
+    formatted_entries = plain_style.format_entries(bibdata_all.entries.values())
+</pre></div>
+
+
+<p>so that I don't have to modify the <code>.bib</code> file. That produces <a href="/publications.html">this page</a></p><hr>
 <h2>Bibliography</h2>
 <p id='Boyda:2020hsi'>Denis Boyda, Gurtej Kanwar, Sébastien Racanière, Danilo&nbsp;Jimenez Rezende, Michael&nbsp;S. Albergo, Kyle Cranmer, Daniel&nbsp;C. Hackett, and Phiala&nbsp;E. Shanahan.
 <span class="bibtex-protected">Sampling using $SU(N)$ gauge equivariant flows</span>.
