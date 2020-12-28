@@ -320,10 +320,13 @@ even outside of the world of theoretical particle physics, thus far it is restri
     mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
     mathjaxscript.type = 'text/javascript';
     mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +
@@ -337,6 +340,8 @@ even outside of the world of theoretical particle physics, thus far it is restri
         "        preview: 'TeX'," +
         "    }, " +
         "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
         "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
         "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
         "    }, " +
@@ -357,6 +362,8 @@ even outside of the world of theoretical particle physics, thus far it is restri
                 "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
             "});" +
         "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Kyle Cranmer</dc:creator><pubDate>Tue, 01 Apr 2014 10:53:00 +0200</pubDate><guid isPermaLink="false">tag:theoryandpractice.org,2014-04-01:/2014/04/The-Realineituhedron/</guid></item><item><title>Using the INSPIRE API to generate AltMetric badges</title><link>http://theoryandpractice.org/2014/03/inspire-altmetric-api/</link><description>&lt;p&gt;I updated my &lt;a href="/pages/Research.html"&gt;Research&lt;/a&gt; page to include the &lt;a href="altmetric.com"&gt;Altmetric&lt;/a&gt; badges to highlight a few papers that I've been involved with that had some impact outside of high energy physics.  On the side, I was wanting to try out the &lt;a href="http://inspirehep.net"&gt;INSPIRE&lt;/a&gt; API.  So I put the two together to make a …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Kyle Cranmer</dc:creator><pubDate>Fri, 28 Mar 2014 10:53:00 +0100</pubDate><guid isPermaLink="false">tag:theoryandpractice.org,2014-03-28:/2014/03/inspire-altmetric-api/</guid></item><item><title>Migrating To Pelican</title><link>http://theoryandpractice.org/2014/03/Testing-Pelican-Migration/</link><description>&lt;p&gt;So, I'm taking the leap and migrating from Wordpress to 
