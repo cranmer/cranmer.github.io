@@ -208,7 +208,15 @@ One of my major initiatives in 2019 was the launch of &lt;a href="https://cds.ny
 &lt;/div&gt;
 
 &lt;h3&gt;Code:&lt;/h3&gt;
-&lt;p&gt;{% notebook downloads/notebooks/scale-separation-word-cloud.ipynb cells[0:2] %}&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Kyle Cranmer</dc:creator><pubDate>Wed, 01 May 2019 00:00:00 +0200</pubDate><guid isPermaLink="false">tag:theoryandpractice.org,2019-05-01:/2019/05/Scale Separation/</guid><category>python</category></item><item><title>INSPIRE API</title><link>http://theoryandpractice.org/2019/04/INSPIRE%20API/</link><description>&lt;p&gt;For the &lt;a href="http://iris-hep.org"&gt;IRIS-HEP&lt;/a&gt; organization we need to collect publications and update our webpage regularly. I also have to do this for our group webpage, my CV, etc. It's annoying to copy/paste all of this information. The &lt;a href="INSPIRE"&gt;http://inspirehep.net&lt;/a&gt; website lets you export bibtex, latex, and plain text for …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Kyle Cranmer</dc:creator><pubDate>Sun, 14 Apr 2019 00:00:00 +0200</pubDate><guid isPermaLink="false">tag:theoryandpractice.org,2019-04-14:/2019/04/INSPIRE API/</guid><category>python</category></item><item><title>Murmuration</title><link>http://theoryandpractice.org/2018/10/Murmuration/</link><description>&lt;p&gt;I like murmurations!&lt;/p&gt;
+&lt;style type="text/css"&gt;/*!
+*
+* IPython notebook
+*
+*/
+/* CSS font colors for translated ANSI escape sequences */
+/* The color values are a mix of
+   http://www.xcolors.net/dl/baskerville-ivorylight and
+   http://www.xcolors …&lt;/style&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Kyle Cranmer</dc:creator><pubDate>Wed, 01 May 2019 00:00:00 +0200</pubDate><guid isPermaLink="false">tag:theoryandpractice.org,2019-05-01:/2019/05/Scale Separation/</guid><category>python</category></item><item><title>INSPIRE API</title><link>http://theoryandpractice.org/2019/04/INSPIRE%20API/</link><description>&lt;p&gt;For the &lt;a href="http://iris-hep.org"&gt;IRIS-HEP&lt;/a&gt; organization we need to collect publications and update our webpage regularly. I also have to do this for our group webpage, my CV, etc. It's annoying to copy/paste all of this information. The &lt;a href="INSPIRE"&gt;http://inspirehep.net&lt;/a&gt; website lets you export bibtex, latex, and plain text for …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Kyle Cranmer</dc:creator><pubDate>Sun, 14 Apr 2019 00:00:00 +0200</pubDate><guid isPermaLink="false">tag:theoryandpractice.org,2019-04-14:/2019/04/INSPIRE API/</guid><category>python</category></item><item><title>Murmuration</title><link>http://theoryandpractice.org/2018/10/Murmuration/</link><description>&lt;p&gt;I like murmurations!&lt;/p&gt;
 &lt;blockquote class="twitter-tweet" data-lang="en"&gt;&lt;p lang="en" dir="ltr"&gt;Bernard Chazelle proved that if each bird adjusts its velocity and position to the other birds within a fixed radius, the time it takes to converge to a steady state tends to infinity as the number of birds increases. &lt;a href="https://t.co/Wq9iruUefl"&gt;pic.twitter.com/Wq9iruUefl&lt;/a&gt;&lt;/p&gt;&amp;mdash; Fermat&amp;#39;s Library (@fermatslibrary …&lt;/blockquote&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Kyle Cranmer</dc:creator><pubDate>Tue, 23 Oct 2018 00:00:00 +0200</pubDate><guid isPermaLink="false">tag:theoryandpractice.org,2018-10-23:/2018/10/Murmuration/</guid><category>python</category></item><item><title>Year in Review: 2016</title><link>http://theoryandpractice.org/2016/12/year-in-review-2016/</link><description>&lt;!--
 ### Progress
 &lt;div class="progress"&gt;
@@ -243,7 +251,15 @@ Check it out first, and then read the blog post below. The collaboration map has
 &lt;p&gt;Well I caught the fever for the 750 GeV excess too. While ATLAS policies prevent me from submitting a paper to the arXiv about a preliminary result, I couldn't help but write up &lt;a href="http://bit.ly/1Y34QbT"&gt;these thoughts&lt;/a&gt; on the excess in the context of Supersplit Supersymmetry. Note, they do not represent any …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Kyle Cranmer</dc:creator><pubDate>Fri, 01 Apr 2016 10:53:00 +0200</pubDate><guid isPermaLink="false">tag:theoryandpractice.org,2016-04-01:/2016/04/Supersplit-750/</guid><category>physics</category></item><item><title>My favorite way to write numbers</title><link>http://theoryandpractice.org/2016/03/My%20favorite%20way%20to%20write%20numbers/</link><description>&lt;p&gt;&lt;strong&gt;Warning&lt;/strong&gt; I need to fix some css problems with pelican-bootstrap3 and embeded notebooks. &lt;/p&gt;
 &lt;p&gt;You might want to &lt;a href="http://nbviewer.jupyter.org/github/cranmer/play/blob/master/misc/recursive%20prime%20decomposition.ipynb"&gt;view the notebook with nbviewer instead&lt;/a&gt;. &lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;{% notebook downloads/notebooks/recursive-prime-decomposition.ipynb %}&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Kyle Cranmer</dc:creator><pubDate>Sun, 27 Mar 2016 00:00:00 +0100</pubDate><guid isPermaLink="false">tag:theoryandpractice.org,2016-03-27:/2016/03/My favorite way to write numbers/</guid><category>mathematics</category><category>python</category></item><item><title>Testing interactive blog post</title><link>http://theoryandpractice.org/2016/01/Testing%20interactive%20blog%20post!/</link><description>&lt;p&gt;Recently I've been learning more about docker and all the things it can do for us.
+&lt;style type="text/css"&gt;/*!
+*
+* IPython notebook
+*
+*/
+/* CSS font colors for translated ANSI escape sequences */
+/* The color values are a mix of
+   http://www.xcolors.net/dl/baskerville-ivorylight and
+   http://www.xcolors …&lt;/style&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Kyle Cranmer</dc:creator><pubDate>Sun, 27 Mar 2016 00:00:00 +0100</pubDate><guid isPermaLink="false">tag:theoryandpractice.org,2016-03-27:/2016/03/My favorite way to write numbers/</guid><category>mathematics</category><category>python</category></item><item><title>Testing interactive blog post</title><link>http://theoryandpractice.org/2016/01/Testing%20interactive%20blog%20post!/</link><description>&lt;p&gt;Recently I've been learning more about docker and all the things it can do for us.
 My student Lukas Heinrich has been working on the &lt;a href="http://recast.perimeterinstitute.ca"&gt;Recast&lt;/a&gt;
 project and using docker heavily. In parallel, &lt;a href="http://betatim.github.io/"&gt;Tim Head&lt;/a&gt; and I have
 been talking a lot about projects like &lt;a href="http://mybinder.org"&gt;binder&lt;/a&gt; and &lt;a href="http://everware.xyz"&gt;everware&lt;/a&gt;,
@@ -259,7 +275,35 @@ in smart phones to detect ultra high energy &lt;a href="http://en.wikipedia.org/
 cell phone is basically the same as the technology …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Kyle Cranmer</dc:creator><pubDate>Thu, 02 Oct 2014 10:53:00 +0200</pubDate><guid isPermaLink="false">tag:theoryandpractice.org,2014-10-02:/2014/10/Crayfis/</guid><category>sabbatical</category><category>research</category><category>crayfis</category></item><item><title>On Sabbatical</title><link>http://theoryandpractice.org/2014/10/Sabbatical/</link><description>&lt;p&gt;One of the big perks of the academic career path is sabbatical 
 -- a year or half-year without teaching, where you often travel to a different location
 and often focus on some big project or perhaps a totally new subject. 
-My path to tenure was pretty quick PhD (5 yrs), post-doc …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Kyle Cranmer</dc:creator><pubDate>Thu, 02 Oct 2014 10:53:00 +0200</pubDate><guid isPermaLink="false">tag:theoryandpractice.org,2014-10-02:/2014/10/Sabbatical/</guid><category>sabbatical</category><category>research</category></item><item><title>Hotelling's Experiment</title><link>http://theoryandpractice.org/2014/04/Hotelling-Experiment/</link><description>&lt;p&gt;{% notebook downloads/notebooks/HotellingsExperiment.ipynb %}&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Kyle Cranmer</dc:creator><pubDate>Fri, 11 Apr 2014 10:53:00 +0200</pubDate><guid isPermaLink="false">tag:theoryandpractice.org,2014-04-11:/2014/04/Hotelling-Experiment/</guid><category>python</category><category>Statistics</category></item><item><title>The USA Science &amp; Engineering Festival</title><link>http://theoryandpractice.org/2014/04/The-USA-Science-Engineering-Festival/</link><description>&lt;p&gt;I'm looking forward to presenting our LHC exhibit at the &lt;a href="http://www.usasciencefestival.org"&gt;USA Science &amp;amp; Engineering Festival&lt;/a&gt; in Washington, D.C. again this year.  As part of my outreach activities, funded by the &lt;a href="http://nsf.gov"&gt;NSF&lt;/a&gt; I developed this exhibit. The idea was inspired by the &lt;a href="http://ligo.phy.olemiss.edu/LIGOexhibit/exhibit_features.html"&gt;LIGO exhibit&lt;/a&gt; that I saw (partially) on display at …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Kyle Cranmer</dc:creator><pubDate>Fri, 11 Apr 2014 10:53:00 +0200</pubDate><guid isPermaLink="false">tag:theoryandpractice.org,2014-04-11:/2014/04/The-USA-Science-Engineering-Festival/</guid></item><item><title>The Realineituhedron</title><link>http://theoryandpractice.org/2014/04/The-Realineituhedron/</link><description>&lt;p&gt;Inspired by the deep insights revealed in the recent work around the &lt;a href="http://arxiv.org/abs/arXiv:1312.2007"&gt;Amplituhedron&lt;/a&gt;, a new and deeper mathematical principle has revealed itself. While the amplituhedron caused quite a 
+My path to tenure was pretty quick PhD (5 yrs), post-doc …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Kyle Cranmer</dc:creator><pubDate>Thu, 02 Oct 2014 10:53:00 +0200</pubDate><guid isPermaLink="false">tag:theoryandpractice.org,2014-10-02:/2014/10/Sabbatical/</guid><category>sabbatical</category><category>research</category></item><item><title>Hotelling's Experiment</title><link>http://theoryandpractice.org/2014/04/Hotelling-Experiment/</link><description>&lt;style type="text/css"&gt;/*!
+*
+* IPython notebook
+*
+*/
+/* CSS font colors for translated ANSI escape sequences */
+/* The color values are a mix of
+   http://www.xcolors.net/dl/baskerville-ivorylight and
+   http://www.xcolors.net/dl/euphrasia */
+.ansi-black-fg {
+  color: #3E424D;
+}
+.ansi-black-bg {
+  background-color: #3E424D;
+}
+.ansi-black-intense-fg {
+  color: #282C36;
+}
+.ansi-black-intense-bg {
+  background-color: #282C36;
+}
+.ansi-red-fg {
+  color: #E75C58;
+}
+.ansi-red-bg {
+  background-color: #E75C58;
+}
+.ansi-red-intense-fg {
+  color …&lt;/style&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Kyle Cranmer</dc:creator><pubDate>Fri, 11 Apr 2014 10:53:00 +0200</pubDate><guid isPermaLink="false">tag:theoryandpractice.org,2014-04-11:/2014/04/Hotelling-Experiment/</guid><category>python</category><category>Statistics</category></item><item><title>The USA Science &amp; Engineering Festival</title><link>http://theoryandpractice.org/2014/04/The-USA-Science-Engineering-Festival/</link><description>&lt;p&gt;I'm looking forward to presenting our LHC exhibit at the &lt;a href="http://www.usasciencefestival.org"&gt;USA Science &amp;amp; Engineering Festival&lt;/a&gt; in Washington, D.C. again this year.  As part of my outreach activities, funded by the &lt;a href="http://nsf.gov"&gt;NSF&lt;/a&gt; I developed this exhibit. The idea was inspired by the &lt;a href="http://ligo.phy.olemiss.edu/LIGOexhibit/exhibit_features.html"&gt;LIGO exhibit&lt;/a&gt; that I saw (partially) on display at …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Kyle Cranmer</dc:creator><pubDate>Fri, 11 Apr 2014 10:53:00 +0200</pubDate><guid isPermaLink="false">tag:theoryandpractice.org,2014-04-11:/2014/04/The-USA-Science-Engineering-Festival/</guid></item><item><title>The Realineituhedron</title><link>http://theoryandpractice.org/2014/04/The-Realineituhedron/</link><description>&lt;p&gt;Inspired by the deep insights revealed in the recent work around the &lt;a href="http://arxiv.org/abs/arXiv:1312.2007"&gt;Amplituhedron&lt;/a&gt;, a new and deeper mathematical principle has revealed itself. While the amplituhedron caused quite a 
 &lt;a href="http://www.altmetric.com/details.php?citation_id=1967370&amp;amp;src=bookmarklet"&gt;buzz&lt;/a&gt;
 even outside of the world of theoretical particle physics, thus far it is restricted to &lt;span class="math"&gt;\(\mathcal{N}=4\)&lt;/span&gt; supersymmetry.  In contrast …&lt;/p&gt;&lt;script type='text/javascript'&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
