@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>The Bittersweet Lesson - Theory And Practice</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="https://theoryandpractice.org/2025/09/The Bittersweet Lesson/">
+
+        <meta name="author" content="Kyle Cranmer" />
+        <meta name="keywords" content="physics,machine learning,AI" />
+        <meta name="description" content="In 2019, Rich Sutton authored an essay entitled “The Bitter Lesson”, where he made the observation that general purpose methods that leverage computation eventually win over bespoke solutions that incorporate human domain knowledge. The essay has been the source of debate and evoked both positive and negative reactions. Within the …" />
+
+        <meta property="og:site_name" content="Theory And Practice" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="The Bittersweet Lesson"/>
+        <meta property="og:url" content="https://theoryandpractice.org/2025/09/The Bittersweet Lesson/"/>
+        <meta property="og:description" content="In 2019, Rich Sutton authored an essay entitled “The Bitter Lesson”, where he made the observation that general purpose methods that leverage computation eventually win over bespoke solutions that incorporate human domain knowledge. The essay has been the source of debate and evoked both positive and negative reactions. Within the …"/>
+        <meta property="article:published_time" content="2025-09-17" />
+            <meta property="article:section" content="Blog" />
+            <meta property="article:tag" content="physics" />
+            <meta property="article:tag" content="machine learning" />
+            <meta property="article:tag" content="AI" />
+            <meta property="article:author" content="Kyle Cranmer" />
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://theoryandpractice.org/theme/css/bootstrap.flatly.min.css" type="text/css"/>
+    <link href="https://theoryandpractice.org/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="https://theoryandpractice.org/theme/css/pygments/default.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://theoryandpractice.org/theme/css/style.css" type="text/css"/>
+
+        <link href="https://theoryandpractice.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Theory And Practice ATOM Feed"/>
+
+
+
+        <link href="https://theoryandpractice.org/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Theory And Practice Blog ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="https://theoryandpractice.org/" class="navbar-brand">
+Theory And Practice            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                    <li><a href="/index.html">About</a></li>
+                    <li><a href="/pages/Research.html">Research</a></li>
+                    <li><a href="/pages/projects.html">Projects</a></li>
+                    <li><a href="/pages/in-the-news.html">Media & Outreach</a></li>
+                        <li class="active">
+                            <a href="https://theoryandpractice.org/category/blog.html">Blog</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="https://theoryandpractice.org/2025/09/The Bittersweet Lesson/"
+                       rel="bookmark"
+                       title="Permalink to The Bittersweet Lesson">
+                        The Bittersweet Lesson
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2025-09-17T00:00:00+02:00"> Wed 17 September 2025</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="https://theoryandpractice.org/tag/physics.html">physics</a>
+        /
+	<a href="https://theoryandpractice.org/tag/machine-learning.html">machine learning</a>
+        /
+	<a href="https://theoryandpractice.org/tag/ai.html">AI</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>In 2019, Rich Sutton authored an essay entitled “<a href="http://www.incompleteideas.net/IncIdeas/BitterLesson.html">The Bitter Lesson</a>”, where he made the observation that general purpose methods that leverage computation eventually win over bespoke solutions that incorporate human domain knowledge. The essay has been the source of debate and evoked both positive and negative reactions. </p>
+<p>Within the AI for Science community, there is a strong instinct to incorporate domain knowledge as a form of inductive bias. It is intellectually gratifying and intuitively feels like the right thing to do from a learning perspective. After all, if we know (believe) there is some structure in the data, then it seems that reducing the model class can only help in terms of sample efficiency. Indeed, there are several examples where adding a well motivated form of inductive bias has improved performance and some examples where it has been an essential ingredient. </p>
+<p>At the same time, the AI for Science community is not blind to the rapid advances that are being made with large language models and multi-modal foundation models, where a very generic and general purpose strategy paired with massive data and compute is working extremely well. The number of “scaling laws” are proliferating, and the mantra ‘scale is all you need’ is taking hold. Fueling the fire are examples where removing well-motivated forms of inductive bias actually helped. </p>
+<p>Most of the debate around the bitter lesson is framed as a false dichotomy between two approaches. Sutton himself wrote “these two need not run counter to each other, but in practice they tend to.” The lesson that we should be taking from all of this is that we are confused. There is no consensus on which approach is better and there is conflicting evidence on the issue. But this confusion should be celebrated. It is progress. It’s the kind of bittersweet confusion that often precedes a major conceptual advance. Ideally, we would have a conceptual framework that could resolve the conflicting evidence and be a guide for the path forward.</p>
+<p>For example, in theoretical chemistry problems that involve molecules there is no doubt that a rotational and translational symmetry exists <em>in silico</em>. Yet, paradoxically, there are examples where models that do not enforce this symmetry perform better than those that do. Why is that? I doubt that the restricted model class is the core of the problem. Instead, it seems likely that the way that model class is parametrized leads to a loss landscape that is challenging for our standard gradient-based learning algorithms or that they do not profit from phenomena that lead to good generalization in over-parametrized models. This is something to be understood. To dismiss this paradoxical situation as support for eschewing well-motivated forms of inductive bias is an opportunity lost. </p>
+<p>Sutton’s essay ends with the comment “We want AI agents that can discover like we can, not which contain what we have discovered.” Ironically, the quest for parsimonious representations, causal mechanisms, symmetries, and other manifestations of Occam’s razor is a key part of what it means to ‘discover like we can’. Instead of rejecting inductive bias outright, it seems that we should be working to understand how to incorporate the discovery of such structures into the learning algorithms themselves. </p>
+<p>In order to do so, we need better understanding of several key issues. In what situations do the forms of right inductive bias help in the long run? If they don’t help in the long run, can we understand better when and why there is a transition? If they should help in principle, but don’t help in practice, why is that? Are there fundamental advantages or disadvantages to encoding domain knowledge through data augmentation rather than at the architectural level?</p>
+<p>The bittersweet lesson is that we are confused. But that confusion is a sign of progress. The path forward is to embrace the confusion and work to resolve it. With that in mind, one can reframe the efforts to build in known forms of inductive bias into models by hand not as an end goal, but as an intermediate step in a longer journey. These efforts and efforts like them can be used to inform those working to resolve the questions above.   </p>
+<p><img alt="" src="" title="/images/Kyle-Cranmer-Rich-Sutton-large.jpeg">
+<div>
+<img src="https://theoryandpractice.org/images/Kyle-Cranmer-Rich-Sutton-large.jpeg" alt="Kyle Cranmer and Rich Sutton, September 16, 2025" width="90%" style="display: block; margin: auto;" />
+<div style="text-align: center; font-style: italic;">Kyle Cranmer and Rich Sutton at the Heidelberg Laureate Forum, September 16, 2025. <br> Thumbs up does not indicate endorsement of this essay.</div>
+</div></p>
+<hr>
+<p><em>Note</em>: After writing this essay and <a href="https://youtu.be/I-Ye-rMhRws?si=t-iRuTE8cnxGNAaa&amp;t=5203">sharing the the working title publicly</a>, I came across an <a href="https://medium.com/@felixhill/the-agreeable-lesson-9766382c6d83">essay</a> by Felix Hill with the same name (though the blog URL is "the agreeable lesson"). Felix's essay is also in response to Sutton's essay, but it takes a different perspective. I recommend reading it as well. </p>
+            </div>
+            <!-- /.entry-content -->
+    <hr />
+    <!-- AddThis Button BEGIN -->
+    <div class="addthis_toolbox addthis_default_style">
+            <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+            <a class="addthis_button_tweet"></a>
+            <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    </div>
+    <!-- AddThis Button END -->
+    <hr/>
+    <section class="comments" id="comments">
+        <h2>Comments</h2>
+
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'theoryandpractice'; // required: replace example with your forum shortname
+
+                    var disqus_identifier = 'The Bittersweet Lesson';
+                var disqus_url = 'https://theoryandpractice.org/2025/09/The Bittersweet Lesson/';
+
+            var disqus_config = function () {
+                this.language = "en";
+            };
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+
+<section class="well well-sm">
+    <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+              <ul class="list-group" id="social">
+                <li class="list-group-item"><a href="http://twitter.com/kylecranmer"><i class="fa fa-twitter-square fa-lg"></i> twitter</a></li>
+                <li class="list-group-item"><a href="http://github.com/cranmer"><i class="fa fa-github-square fa-lg"></i> github</a></li>
+                <li class="list-group-item"><a href="http://www.linkedin.com/in/kylecranmer"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
+                <li class="list-group-item"><a href="https://www.youtube.com/channel/UCKl2VoIJiPYp3QhuK22b7xQ"><i class="fa fa-youtube-square fa-lg"></i> youtube</a></li>
+                <li class="list-group-item"><a href="https://inspirehep.net/literature?sort=mostrecent&size=25&page=1&q=a%3Ak.s.cranmer.1%20and%20ac%201-%3E10&ui-citation-summary=true"><i class="fa fa-inspire-(≤-10-authors)-square fa-lg"></i> INSPIRE (≤ 10 authors)</a></li>
+                <li class="list-group-item"><a href="http://scholar.google.com/citations?user=EZjSxgwAAAAJ"><i class="fa fa-google-scholar-square fa-lg"></i> Google Scholar</a></li>
+                <li class="list-group-item"><a href="https://orcid.org/0000-0002-5769-7094"><i class="fa fa-orcid-square fa-lg"></i> ORCiD</a></li>
+                <li class="list-group-item"><a href="http://localhost:8000/pages/Research.html"><i class="fa fa-wikipedia-square fa-lg"></i> Wikipedia</a></li>
+              </ul>
+            </li>
+
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+                <ul class="list-group" id="recentposts">
+                    <li class="list-group-item">
+                        <a href="https://theoryandpractice.org/2025/09/The Bittersweet Lesson/">
+                            The Bittersweet Lesson
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="https://theoryandpractice.org/2024/10/Yes, we did discover the Higgs!/">
+                            Yes, we did discover the Higgs!
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="https://theoryandpractice.org/2020/12/pelican-cite/">
+                            Citing from a bibtex file
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="https://theoryandpractice.org/2020/12/timeline/">
+                            Creating a timeline
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="https://theoryandpractice.org/2020/12/ML4PS2020/">
+                            ML4PS2020
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li class="list-group-item"><a href="https://theoryandpractice.org/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                <ul class="list-group list-inline tagcloud" id="tags">
+                    <li class="list-group-item tag-4">
+                        <a href="https://theoryandpractice.org/tag/ai.html">
+                            AI
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-2">
+                        <a href="https://theoryandpractice.org/tag/communication.html">
+                            communication
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="https://theoryandpractice.org/tag/crayfis.html">
+                            crayfis
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-2">
+                        <a href="https://theoryandpractice.org/tag/data.html">
+                            Data
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="https://theoryandpractice.org/tag/data-science.html">
+                            data science
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-2">
+                        <a href="https://theoryandpractice.org/tag/higgs.html">
+                            Higgs
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="https://theoryandpractice.org/tag/machine-learning.html">
+                            machine learning
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="https://theoryandpractice.org/tag/mathematics.html">
+                            mathematics
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="https://theoryandpractice.org/tag/open-science.html">
+                            Open Science
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="https://theoryandpractice.org/tag/physics.html">
+                            physics
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="https://theoryandpractice.org/tag/python.html">
+                            python
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="https://theoryandpractice.org/tag/reflection.html">
+                            reflection
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-3">
+                        <a href="https://theoryandpractice.org/tag/research.html">
+                            research
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-3">
+                        <a href="https://theoryandpractice.org/tag/sabbatical.html">
+                            sabbatical
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="https://theoryandpractice.org/tag/statistics.html">
+                            statistics
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-2">
+                        <a href="https://theoryandpractice.org/tag/visualization.html">
+                            visualization
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-3">
+                        <a href="https://theoryandpractice.org/tag/website.html">
+                            website
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+    <li class="list-group-item"><h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+      <ul class="list-group" id="links">
+        <li class="list-group-item">
+            <a href="https://datascience.wisc.edu" target="_blank">
+                Data Science @ UW
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="https://www.physics.wisc.edu/directory/cranmer-kyle/" target="_blank">
+                My UW Physics webpage
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="https://iris-hep.org/" target="_blank">
+                IRIS-HEP
+            </a>
+        </li>
+      </ul>
+    </li>
+    </ul>
+</section>
+            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">
+         </div>
+         <br>
+         <div class="col-xs-10">&copy; 2025 Kyle Cranmer
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>              <p><small>  <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by/4.0/80x15.png" /></a>
+    Content
+  licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>, except where indicated otherwise.
+</small></p>
+         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="https://theoryandpractice.org/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://theoryandpractice.org/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="https://theoryandpractice.org/theme/js/respond.min.js"></script>
+
+    <!-- Disqus -->
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'theoryandpractice'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+    <!-- End Disqus Code -->
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-3337202-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
+        <script type="text/javascript">var addthis_config = {"data_track_addressbar": true};</script>
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5332e76b5340f5f3"></script>
+</body>
+
+
+</html>
