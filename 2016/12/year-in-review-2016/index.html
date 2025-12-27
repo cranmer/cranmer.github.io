@@ -13,13 +13,13 @@
 
         <meta name="author" content="Kyle Cranmer" />
         <meta name="keywords" content="Machine Learning,Higgs,Open Science,Physics,reflection" />
-        <meta name="description" content="--&gt; Despite the reputation of 2016 as a terrible year, it was pretty good for me on a personal and professional level. Many of the ideas that were born during my sabbaticall matured this year. Many of my collaborations also flourished. The 750 GeV Excess The year started with a bang …" />
+        <meta name="description" content="Despite the reputation of 2016 as a terrible year, it was pretty good for me on a personal and professional level. Many of the ideas that were born during my sabbaticall matured this year. Many of my collaborations also flourished. The 750 GeV Excess The year started with a bang …" />
 
         <meta property="og:site_name" content="Theory And Practice" />
         <meta property="og:type" content="article"/>
         <meta property="og:title" content="Year in Review: 2016"/>
         <meta property="og:url" content="https://theoryandpractice.org/2016/12/year-in-review-2016/"/>
-        <meta property="og:description" content="--&gt; Despite the reputation of 2016 as a terrible year, it was pretty good for me on a personal and professional level. Many of the ideas that were born during my sabbaticall matured this year. Many of my collaborations also flourished. The 750 GeV Excess The year started with a bang …"/>
+        <meta property="og:description" content="Despite the reputation of 2016 as a terrible year, it was pretty good for me on a personal and professional level. Many of the ideas that were born during my sabbaticall matured this year. Many of my collaborations also flourished. The 750 GeV Excess The year started with a bang …"/>
         <meta property="article:published_time" content="2016-12-30" />
             <meta property="article:section" content="Blog" />
             <meta property="article:tag" content="Machine Learning" />
@@ -30,6 +30,7 @@
             <meta property="article:author" content="Kyle Cranmer" />
 
 
+
     <!-- Bootstrap -->
         <link rel="stylesheet" href="https://theoryandpractice.org/theme/css/bootstrap.flatly.min.css" type="text/css"/>
     <link href="https://theoryandpractice.org/theme/css/font-awesome.min.css" rel="stylesheet">
@@ -37,19 +38,35 @@
     <link href="https://theoryandpractice.org/theme/css/pygments/default.css" rel="stylesheet">
     <link rel="stylesheet" href="https://theoryandpractice.org/theme/css/style.css" type="text/css"/>
 
+
         <link href="https://theoryandpractice.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
               title="Theory And Practice ATOM Feed"/>
 
-
-
         <link href="https://theoryandpractice.org/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate"
               title="Theory And Practice Blog ATOM Feed"/>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3337202-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', UA-3337202-1);
+    </script>
+    <!-- End Google Analytics Code -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','');</script>
+    <!-- End Google Tag Manager -->
 
 </head>
 <body>
 
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-	<div class="container">
+    <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                 <span class="sr-only">Toggle navigation</span>
@@ -76,8 +93,11 @@ Theory And Practice            </a>
         <!-- /.navbar-collapse -->
     </div>
 </div> <!-- /.navbar -->
+
 <!-- Banner -->
 <!-- End Banner -->
+
+<!-- Content Container -->
 <div class="container">
     <div class="row">
         <div class="col-sm-9">
@@ -98,7 +118,7 @@ Theory And Practice            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2016-12-30T00:00:00+01:00"> Fri 30 December 2016</time>
+        <i class="fa fa-calendar"></i><time datetime="2016-12-30T00:00:00-06:00"> Fri 30 December 2016</time>
     </span>
 
 
@@ -132,19 +152,15 @@ Many of the ideas that were born during my <a href="https://theoryandpractice.or
 <div align="center">
 <iframe width="80%" align="center" height="124" scrolling="no" frameborder="no" src="//embed.wbur.org/player/hereandnow/2015/12/16/cern-fundamental-particle-nature"></iframe>
 </div>
-
-<p><br /></p>
 <p>One of the concerns in interpreting the significance of that bump in the data was that we perform so many different tests
 of the Standard Model that we expect to see big fluctuations occasionally. We often call this the look-elsewhere effect.
 Conventional wisdom is that this effect goes away because we have two experiments seeing the same thing. While it's true that having two experiments reduces this effect, it doesn't go away entirely. I was thinking about all of this early in the year and came up with a nice way to <a href="http://nbviewer.jupyter.org/github/cranmer/look-elsewhere-2d/blob/master/two-experiment-lee-testing.ipynb">connect Gaussian Processes and the look-elsewhere effect </a>.</p>
 <p>The excitement around the bump was extraordinary, there were more than 100 papers on the subject by <strong>February</strong>. 
 In <strong>March</strong> there was a lot of introspection in the field about this phenomena. I decided to write an <a href="https://theoryandpractice.org/2016/04/Supersplit-750/"><strong>April</strong> Fools Day</a> paper about it. It's full of subtle physics and statistics references -- so while it's not at all accessible, I'm pretty happy with it.</p>
 <p>Unfortunately, by <strong>August</strong> the 750 GeV diphoton bump had disappeared with more data. André David kept track of the number of citations throughout the year.</p>
-<div align="center">
+<p><br /><div align="center">
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/hashtag/Run2Seminar?src=hash">#Run2Seminar</a> 1st (only?) anniversary.<br>3 clear <a href="https://twitter.com/hashtag/750GeV?src=hash">#750GeV</a> <a href="https://twitter.com/hashtag/diphoton?src=hash">#diphoton</a> phases:<br>- Inflationary Xmas.<br>- Moriond steady state.<br>- Post-ICHEP flatline. <a href="https://t.co/7UUQTrTo5P">pic.twitter.com/7UUQTrTo5P</a></p>&mdash; André David (@DrAndreDavid) <a href="https://twitter.com/DrAndreDavid/status/809410781242683392">December 15, 2016</a></blockquote> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-</div>
-
-<p><br /></p>
+</div></p>
 <h3>Carl and likelihood-free inference</h3>
 <p>One of the most significant outcomes of my sabbatical at UC-Irvine was this idea that we can use classifiers from machine learning to approximate an intractable likelihood function and perform inference. 
 While the term is unfamiliar, intractable likelihoods is one of the defining challenges of data analysis for experimental high-energy physics. Our field has developed a lot of strategies, but we have not formulated them 
@@ -162,12 +178,10 @@ That was our main focus in <strong>February</strong> and <strong>March</strong>.
 In the process the core idea really matured and we made connections to many different topics, 
 including generative models, importance sampling / reweighting, and adversarial training. 
 These all ended up being themes of my talk at NIPS in <strong>December</strong>.</p>
-<div align="center">
+<p><br /><div align="center">
 <blockquote class="twitter-tweet" data-partner="tweetdeck"><p lang="en" dir="ltr">This set of connections has fascinated me for the last year. So many different ideas come together under one umbrella. <a href="https://t.co/eeiVP32ASo">https://t.co/eeiVP32ASo</a></p>&mdash; Kyle Cranmer (@KyleCranmer) <a href="https://twitter.com/KyleCranmer/status/814088701403873280">December 28, 2016</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-</div>
-
-<p><br /></p>
+</div></p>
 <h3>Major progress on long-term projects</h3>
 <p>This year also saw progress on a number of long-term projects. </p>
 <h4>Recast &amp; Analysis Preservation</h4>
@@ -226,11 +240,9 @@ Luckily, I had a lot of help from Connie Potter, Petya Lilova, Jennifer Morral, 
 and Ben Kaplan in organizing it. Organizing ATLAS week consumed essentially all of <strong>June</strong> and probably another
 month integrated over the year. Luckily, it went quite well. We had more than 300 people for the first ATLAS week
 hosted in the US in more than a decade. </p>
-<div align="center">
+<p><br /><div align="center">
 <img src="/images/atlas-week-group-IMG_7192.JPG" alt="ATLAS Week photo" width="70%" align="center" />
-</div>
-
-<p><br /></p>
+</div></p>
 <h3>Data Science @ HEP</h3>
 <p>We organized a <a href="https://indico.hep.caltech.edu/indico/conferenceOtherViews.py?confId=102&amp;view=standard">Data Science @ HEP workshop at the Simons Center for Data Analysis</a> 
 in <strong>July</strong> immediately after ATLAS week. Gilles Louppe and Juan Pavez flew in, and 
@@ -275,11 +287,9 @@ Cyril Becot to ge the jet algorithms integrated into the pipeline,
 and Gilles coded them up and came up with some clever ways to efficiently train
 these QCD-inspired recursive neural networks. We are now done with the studies,
 and should have a paper out in early 2017.</p>
-<div align="center">
+<p><br /><div align="center">
 <img src="https://theoryandpractice.org/images/jet-embedding.png" alt "jet embedding" width="80%" />
-</div>
-
-<p><br /></p>
+</div></p>
 <h3>Physics Track in the Masters of Data Science</h3>
 <p>As part of the Moore-Sloan Data Science Environment at NYU, I spend quite a bit of time thinking 
 about how we can develop a sustainable resource of data science in academia,
@@ -298,12 +308,10 @@ in data science roles, so perhaps the students that go through this track will h
 The Physics Department, the Faculty of Arts and Science, and the Center for Data Science approved the track in <strong>September</strong>. The program will start in the fall of 2017 and we are <a href="http://cds.nyu.edu/academics/ms-in-data-science/">taking applications now</a>.</p>
 <p>As a soft-launch for the Physics Track in the MS in Data Science, I proposed a few Capstone projects to the current masters students. Since the students don't have any particular physics background, it was also good practice for
 posing problems and preparing data in a way that does not require a lot of domain expertise. I was surprised that five groups picked my physics projects. So while I wasn't teaching in the fall, I was advising 15 masters students! I was impressed with the progress they made in one semester. The tweet below starts a thread that gives a short description of those five projects. </p>
-<div align="center">
+<p><br /><div align="center">
 <blockquote class="twitter-tweet" data-partner="tweetdeck"><p lang="en" dir="ltr">This semester I advised 5 physics-related Capstone projects for <a href="https://twitter.com/NYUDataScience">@NYUDataScience</a> Masters Program.  <a href="https://t.co/IwpFfVwYlx">https://t.co/IwpFfVwYlx</a> (1/n) <a href="https://t.co/9FTnuALBoa">pic.twitter.com/9FTnuALBoa</a></p>&mdash; Kyle Cranmer (@KyleCranmer) <a href="https://twitter.com/KyleCranmer/status/809843960965435393">December 16, 2016</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-</div>
-
-<p><br /></p>
+</div></p>
 <h3>Higgs Effective Field Theory &amp; Information Geometry</h3>
 <p>The first science driver of <a href="http://www.usparticlephysics.org/">the P5 Report</a> is 
 <em>Use the Higgs boson as a new tool for discovery</em>. One of the primary strategies
@@ -356,11 +364,9 @@ procedure would know about the sources of uncertainty and lead to a classifier t
 is robust to these sources of uncertainty. Gilles Louppe, Michael Kagan, and I figured
 out a way to do that by using a new technique in machine learning: adversarial training. 
 We called our technique "Learning to Pivot".</p>
-<div align="center">
+<p><br /><div align="center">
 <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fyann.lecun%2Fposts%2F10153940354257143&width=500" width="500" height="323" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
-</div>
-
-<p><br /></p>
+</div></p>
 <h3>NIPS</h3>
 <p>The culmination of my professional year was a keynote talk at 
 <a href="https://nips.cc/Conferences/2016">NIPS 2016</a> in Barcelona. 
@@ -398,12 +404,10 @@ NIPS2016 was a transformational event for me. </p>
 <!--Drew Purves gave a fantastic keynote on Monday at NIPS with the message that
 "Nature needs AI, and AI needs nature". I echoed his -->
 
-<div align="center">
+<p><br /><div align="center">
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Here are the slides from my talk at <a href="https://twitter.com/hashtag/NIPS2016?src=hash">#NIPS2016</a> on machine learning &amp; likelihood-free inference for particle physics<a href="https://t.co/pvmPCFexyZ">https://t.co/pvmPCFexyZ</a> <a href="https://t.co/72EDdwVnXE">pic.twitter.com/72EDdwVnXE</a></p>&mdash; Kyle Cranmer (@KyleCranmer) <a href="https://twitter.com/KyleCranmer/status/806537845909422080">December 7, 2016</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-</div>
-
-<p><br /></p>
+</div></p>
 <h3>DIANA</h3>
 <p>Immediately after NIPS our DIANA group had an end of the year meeting. 
 Gilles, Lukas, and I put together some slides reviewing the year and our
@@ -416,14 +420,13 @@ and I'm looking forward to 2017!</p>
 <!--
   <img src="/images/year-in-review-GH-2016.png" alt="GitHub Activity in 2016" width="90%" />
 -->
-
-<div class="embed-responsive embed-responsive-16by9">
+<p><br /><div class="embed-responsive embed-responsive-16by9">
 
   <iframe src="https://docs.google.com/presentation/d/1So1U6v-e6Ai88gXw1Toy-9OzYNnGwCrCnYMngLeB1l8/embed?start=false&loop=false&delayms=3000" frameborder="0" width="100%" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 </div>
-
+</p>
 <!--
-**February & March**
+**February & March** 
 
 *  CARL
 
@@ -565,182 +568,72 @@ and I'm looking forward to 2017!</p>
         </div>
         <div class="col-sm-3" id="sidebar">
             <aside>
-
+<!-- Sidebar -->
 <section class="well well-sm">
-    <ul class="list-group list-group-flush">
-            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
-              <ul class="list-group" id="social">
-                <li class="list-group-item"><a href="http://twitter.com/kylecranmer"><i class="fa fa-twitter-square fa-lg"></i> twitter</a></li>
-                <li class="list-group-item"><a href="http://github.com/cranmer"><i class="fa fa-github-square fa-lg"></i> github</a></li>
-                <li class="list-group-item"><a href="http://www.linkedin.com/in/kylecranmer"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
-                <li class="list-group-item"><a href="https://www.youtube.com/channel/UCKl2VoIJiPYp3QhuK22b7xQ"><i class="fa fa-youtube-square fa-lg"></i> youtube</a></li>
-                <li class="list-group-item"><a href="https://inspirehep.net/literature?sort=mostrecent&size=25&page=1&q=a%3Ak.s.cranmer.1%20and%20ac%201-%3E10&ui-citation-summary=true"><i class="fa fa-inspire-(≤-10-authors)-square fa-lg"></i> INSPIRE (≤ 10 authors)</a></li>
-                <li class="list-group-item"><a href="http://scholar.google.com/citations?user=EZjSxgwAAAAJ"><i class="fa fa-google-scholar-square fa-lg"></i> Google Scholar</a></li>
-                <li class="list-group-item"><a href="https://orcid.org/0000-0002-5769-7094"><i class="fa fa-orcid-square fa-lg"></i> ORCiD</a></li>
-                <li class="list-group-item"><a href="http://localhost:8000/pages/Research.html"><i class="fa fa-wikipedia-square fa-lg"></i> Wikipedia</a></li>
-              </ul>
-            </li>
+  <ul class="list-group list-group-flush">
 
-            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
-                <ul class="list-group" id="recentposts">
-                    <li class="list-group-item">
-                        <a href="https://theoryandpractice.org/2025/12/travel-map/">
-                            Travel Map
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="https://theoryandpractice.org/2025/12/cassville-checkers/">
-                            Casseville Checkers
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="https://theoryandpractice.org/2025/09/The Bittersweet Lesson/">
-                            The Bittersweet Lesson
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="https://theoryandpractice.org/2024/10/Yes, we did discover the Higgs!/">
-                            Yes, we did discover the Higgs!
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="https://theoryandpractice.org/2020/12/pelican-cite/">
-                            Citing from a bibtex file
-                        </a>
-                    </li>
-                </ul>
-            </li>
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="http://twitter.com/kylecranmer"><i class="fa fa-twitter-square fa-lg"></i> twitter</a></li>
+    <li class="list-group-item"><a href="http://github.com/cranmer"><i class="fa fa-github-square fa-lg"></i> github</a></li>
+    <li class="list-group-item"><a href="http://www.linkedin.com/in/kylecranmer"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
+    <li class="list-group-item"><a href="https://www.youtube.com/channel/UCKl2VoIJiPYp3QhuK22b7xQ"><i class="fa fa-youtube-square fa-lg"></i> youtube</a></li>
+    <li class="list-group-item"><a href="https://inspirehep.net/literature?sort=mostrecent&size=25&page=1&q=a%3Ak.s.cranmer.1%20and%20ac%201-%3E10&ui-citation-summary=true"><i class="fa fa-inspire-(≤-10-authors)-square fa-lg"></i> INSPIRE (≤ 10 authors)</a></li>
+    <li class="list-group-item"><a href="http://scholar.google.com/citations?user=EZjSxgwAAAAJ"><i class="fa fa-google-scholar-square fa-lg"></i> Google Scholar</a></li>
+    <li class="list-group-item"><a href="https://orcid.org/0000-0002-5769-7094"><i class="fa fa-orcid-square fa-lg"></i> ORCiD</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
 
+<!-- Sidebar/Recent Posts -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+  <ul class="list-group" id="recentposts">
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/12/travel-map/">Travel Map</a></li>
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/12/cassville-checkers/">Casseville Checkers</a></li>
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/09/The Bittersweet Lesson/">The Bittersweet Lesson</a></li>
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2024/10/Yes, we did discover the Higgs!/">Yes, we did discover the Higgs!</a></li>
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2020/12/pelican-cite/">Citing from a bibtex file</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Recent Posts -->
 
-            <li class="list-group-item"><a href="https://theoryandpractice.org/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
-                <ul class="list-group list-inline tagcloud" id="tags">
-                    <li class="list-group-item tag-4">
-                        <a href="https://theoryandpractice.org/tag/ai.html">
-                            AI
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-2">
-                        <a href="https://theoryandpractice.org/tag/communication.html">
-                            communication
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="https://theoryandpractice.org/tag/crayfis.html">
-                            crayfis
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-2">
-                        <a href="https://theoryandpractice.org/tag/data.html">
-                            Data
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="https://theoryandpractice.org/tag/data-science.html">
-                            data science
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-2">
-                        <a href="https://theoryandpractice.org/tag/higgs.html">
-                            Higgs
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="https://theoryandpractice.org/tag/machine-learning.html">
-                            machine learning
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="https://theoryandpractice.org/tag/mathematics.html">
-                            mathematics
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="https://theoryandpractice.org/tag/open-science.html">
-                            Open Science
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="https://theoryandpractice.org/tag/physics.html">
-                            physics
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="https://theoryandpractice.org/tag/python.html">
-                            python
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="https://theoryandpractice.org/tag/reflection.html">
-                            reflection
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-3">
-                        <a href="https://theoryandpractice.org/tag/research.html">
-                            research
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-3">
-                        <a href="https://theoryandpractice.org/tag/sabbatical.html">
-                            sabbatical
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="https://theoryandpractice.org/tag/statistics.html">
-                            statistics
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-2">
-                        <a href="https://theoryandpractice.org/tag/visualization.html">
-                            visualization
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-2">
-                        <a href="https://theoryandpractice.org/tag/website.html">
-                            website
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-
-    <li class="list-group-item"><h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
-      <ul class="list-group" id="links">
-        <li class="list-group-item">
-            <a href="https://datascience.wisc.edu" target="_blank">
-                Data Science @ UW
-            </a>
-        </li>
-        <li class="list-group-item">
-            <a href="https://www.physics.wisc.edu/directory/cranmer-kyle/" target="_blank">
-                My UW Physics webpage
-            </a>
-        </li>
-        <li class="list-group-item">
-            <a href="https://iris-hep.org/" target="_blank">
-                IRIS-HEP
-            </a>
-        </li>
-      </ul>
+<!-- Sidebar/Links -->
+<li class="list-group-item">
+  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+  <ul class="list-group" id="links">
+    <li class="list-group-item">
+      <a href="https://datascience.wisc.edu" target="_blank">Data Science @ UW</a>
     </li>
-    </ul>
+    <li class="list-group-item">
+      <a href="https://www.physics.wisc.edu/directory/cranmer-kyle/" target="_blank">My UW Physics webpage</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://iris-hep.org/" target="_blank">IRIS-HEP</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Links -->
+  </ul>
 </section>
-            </aside>
+<!-- End Sidebar -->            </aside>
         </div>
     </div>
 </div>
+<!-- End Content Container -->
+
 <footer>
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">
-         </div>
-         <br>
          <div class="col-xs-10">&copy; 2025 Kyle Cranmer
             &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
-            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>              <p><small>  <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by/4.0/80x15.png" /></a>
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>                <p><small>  <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.en"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by/4.0/80x15.png" /></a>
     Content
-  licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>, except where indicated otherwise.
+  licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.en">Creative Commons Attribution 4.0 International License</a>, except where indicated otherwise.
 </small></p>
          </div>
          <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
@@ -755,28 +648,11 @@ and I'm looking forward to 2017!</p>
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
 <script src="https://theoryandpractice.org/theme/js/respond.min.js"></script>
 
-    <!-- Google Analytics -->
-    <script type="text/javascript">
 
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-3337202-1']);
-        _gaq.push(['_trackPageview']);
 
-        (function () {
-            var ga = document.createElement('script');
-            ga.type = 'text/javascript';
-            ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(ga, s);
-        })();
-    </script>
-    <!-- End Google Analytics Code -->
 
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
         <script type="text/javascript">var addthis_config = {"data_track_addressbar": true};</script>
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5332e76b5340f5f3"></script>
 </body>
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
-
 </html>

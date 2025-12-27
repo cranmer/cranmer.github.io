@@ -26,6 +26,7 @@
             <meta property="article:author" content="Kyle Cranmer" />
 
 
+
     <!-- Bootstrap -->
         <link rel="stylesheet" href="https://theoryandpractice.org/theme/css/bootstrap.flatly.min.css" type="text/css"/>
     <link href="https://theoryandpractice.org/theme/css/font-awesome.min.css" rel="stylesheet">
@@ -33,21 +34,37 @@
     <link href="https://theoryandpractice.org/theme/css/pygments/default.css" rel="stylesheet">
     <link rel="stylesheet" href="https://theoryandpractice.org/theme/css/style.css" type="text/css"/>
 
+            <link rel="stylesheet" href="https://theoryandpractice.org/css/concept-map.css" type="text/css" />
+            <link rel="stylesheet" href="https://theoryandpractice.org/css/concept-map-padding.css" type="text/css" />
+
         <link href="https://theoryandpractice.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
               title="Theory And Practice ATOM Feed"/>
 
-
-
         <link href="https://theoryandpractice.org/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate"
               title="Theory And Practice Blog ATOM Feed"/>
-    <link rel="stylesheet" href="https://theoryandpractice.org/css/concept-map.css" type="text/css" />
-    <link rel="stylesheet" href="https://theoryandpractice.org/css/concept-map-padding.css" type="text/css" />
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3337202-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', UA-3337202-1);
+    </script>
+    <!-- End Google Analytics Code -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','');</script>
+    <!-- End Google Tag Manager -->
 
 </head>
 <body>
 
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-	<div class="container">
+    <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                 <span class="sr-only">Toggle navigation</span>
@@ -74,8 +91,11 @@ Theory And Practice            </a>
         <!-- /.navbar-collapse -->
     </div>
 </div> <!-- /.navbar -->
+
 <!-- Banner -->
 <!-- End Banner -->
+
+<!-- Content Container -->
 <div class="container">
     <div class="row">
         <div class="col-sm-9">
@@ -96,7 +116,7 @@ Theory And Practice            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2020-01-25T00:00:00+01:00"> Sat 25 January 2020</time>
+        <i class="fa fa-calendar"></i><time datetime="2020-01-25T00:00:00-06:00"> Sat 25 January 2020</time>
     </span>
 
 
@@ -118,13 +138,12 @@ Theory And Practice            </a>
 </ul>
 <h2>The result</h2>
 <div id="graph" class="conceptmap" ></div>
-
 <div id="graph-info"></div>
 
 <p><br /></p>
 <h2>Making it easier to make them with YAML</h2>
 <p>One nice thing about this appraoch is that the input to the D3.js script <a href="/downloads/files/collaboration.json">is JSON</a> (here's an example on GitHub <a href="https://github.com/cranmer/TheoryAndPractice/blob/javascript/content/downloads/files/test.json">link</a> ), so it should be easy to collaboratively guild this collaboration graph. However, the JSON is annoying to edit and the D3 script is picky. So I worked on a small script to convert a minimal YAML file into the corresponding JSON.</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">yaml</span><span class="o">,</span> <span class="nn">json</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">yaml</span><span class="o">,</span> <span class="nn">json</span>
 
 <span class="k">def</span> <span class="nf">expand_dict</span><span class="p">(</span><span class="n">dict_in</span><span class="p">):</span>
     <span class="n">dict_out</span> <span class="o">=</span> <span class="p">{}</span>
@@ -178,62 +197,58 @@ Theory And Practice            </a>
 <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;test.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">)</span>
 <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">ydict_expanded</span><span class="p">,</span><span class="n">f</span><span class="p">,</span><span class="n">indent</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>        
-</pre></div>
-
+</code></pre></div>
 
 <h2>Example YAML files</h2>
-<div class="highlight"><pre><span></span><span class="nt">ditems</span><span class="p">:</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Peter Elmer</span>
-  <span class="nt">links</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">CMS</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">DIANA</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Executive Board</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Steering Board</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Innovative Algorithms</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Brian Bockelman</span>
-  <span class="nt">links</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">DOMA</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">DIANA</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">OSG</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Executive Board</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">xcache</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">iDDS</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">third party copy</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">ditems</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Peter Elmer</span>
+<span class="w">  </span><span class="nt">links</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CMS</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DIANA</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Executive Board</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Steering Board</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Innovative Algorithms</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Brian Bockelman</span>
+<span class="w">  </span><span class="nt">links</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DOMA</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DIANA</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OSG</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Executive Board</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">xcache</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">iDDS</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">third party copy</span>
+</code></pre></div>
 
+<div class="highlight"><pre><span></span><code><span class="nt">projects</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pyhf</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">func_adl</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Coffea</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uproot</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Awkward Array</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Recast</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">REANA</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MadMiner</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Scikit-Hep</span>
+</code></pre></div>
 
-<div class="highlight"><pre><span></span><span class="nt">projects</span><span class="p">:</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pyhf</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">func_adl</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Coffea</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">uproot</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Awkward Array</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Recast</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">REANA</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MadMiner</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Scikit-Hep</span>
-</pre></div>
-
-
-<div class="highlight"><pre><span></span><span class="nt">collaborations</span><span class="p">:</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ATLAS</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">CMS</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">LHCb</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">DOMA</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Analysis Systems</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Innovative Algorithms</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">SSL</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Blueprint</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Executive Board</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Steering Board</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Advisory Board</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Training, Education and Outreach</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">OSG</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">SCAILFIN</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">DIANA</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">DASPOS</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nt">collaborations</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ATLAS</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CMS</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LHCb</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DOMA</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis Systems</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Innovative Algorithms</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SSL</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Blueprint</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Executive Board</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Steering Board</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Advisory Board</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Training, Education and Outreach</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OSG</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SCAILFIN</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DIANA</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DASPOS</span>
+</code></pre></div>
 
 <hr>
             </div>
@@ -252,182 +267,72 @@ Theory And Practice            </a>
         </div>
         <div class="col-sm-3" id="sidebar">
             <aside>
-
+<!-- Sidebar -->
 <section class="well well-sm">
-    <ul class="list-group list-group-flush">
-            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
-              <ul class="list-group" id="social">
-                <li class="list-group-item"><a href="http://twitter.com/kylecranmer"><i class="fa fa-twitter-square fa-lg"></i> twitter</a></li>
-                <li class="list-group-item"><a href="http://github.com/cranmer"><i class="fa fa-github-square fa-lg"></i> github</a></li>
-                <li class="list-group-item"><a href="http://www.linkedin.com/in/kylecranmer"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
-                <li class="list-group-item"><a href="https://www.youtube.com/channel/UCKl2VoIJiPYp3QhuK22b7xQ"><i class="fa fa-youtube-square fa-lg"></i> youtube</a></li>
-                <li class="list-group-item"><a href="https://inspirehep.net/literature?sort=mostrecent&size=25&page=1&q=a%3Ak.s.cranmer.1%20and%20ac%201-%3E10&ui-citation-summary=true"><i class="fa fa-inspire-(≤-10-authors)-square fa-lg"></i> INSPIRE (≤ 10 authors)</a></li>
-                <li class="list-group-item"><a href="http://scholar.google.com/citations?user=EZjSxgwAAAAJ"><i class="fa fa-google-scholar-square fa-lg"></i> Google Scholar</a></li>
-                <li class="list-group-item"><a href="https://orcid.org/0000-0002-5769-7094"><i class="fa fa-orcid-square fa-lg"></i> ORCiD</a></li>
-                <li class="list-group-item"><a href="http://localhost:8000/pages/Research.html"><i class="fa fa-wikipedia-square fa-lg"></i> Wikipedia</a></li>
-              </ul>
-            </li>
+  <ul class="list-group list-group-flush">
 
-            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
-                <ul class="list-group" id="recentposts">
-                    <li class="list-group-item">
-                        <a href="https://theoryandpractice.org/2025/12/travel-map/">
-                            Travel Map
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="https://theoryandpractice.org/2025/12/cassville-checkers/">
-                            Casseville Checkers
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="https://theoryandpractice.org/2025/09/The Bittersweet Lesson/">
-                            The Bittersweet Lesson
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="https://theoryandpractice.org/2024/10/Yes, we did discover the Higgs!/">
-                            Yes, we did discover the Higgs!
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="https://theoryandpractice.org/2020/12/pelican-cite/">
-                            Citing from a bibtex file
-                        </a>
-                    </li>
-                </ul>
-            </li>
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="http://twitter.com/kylecranmer"><i class="fa fa-twitter-square fa-lg"></i> twitter</a></li>
+    <li class="list-group-item"><a href="http://github.com/cranmer"><i class="fa fa-github-square fa-lg"></i> github</a></li>
+    <li class="list-group-item"><a href="http://www.linkedin.com/in/kylecranmer"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
+    <li class="list-group-item"><a href="https://www.youtube.com/channel/UCKl2VoIJiPYp3QhuK22b7xQ"><i class="fa fa-youtube-square fa-lg"></i> youtube</a></li>
+    <li class="list-group-item"><a href="https://inspirehep.net/literature?sort=mostrecent&size=25&page=1&q=a%3Ak.s.cranmer.1%20and%20ac%201-%3E10&ui-citation-summary=true"><i class="fa fa-inspire-(≤-10-authors)-square fa-lg"></i> INSPIRE (≤ 10 authors)</a></li>
+    <li class="list-group-item"><a href="http://scholar.google.com/citations?user=EZjSxgwAAAAJ"><i class="fa fa-google-scholar-square fa-lg"></i> Google Scholar</a></li>
+    <li class="list-group-item"><a href="https://orcid.org/0000-0002-5769-7094"><i class="fa fa-orcid-square fa-lg"></i> ORCiD</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
 
+<!-- Sidebar/Recent Posts -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+  <ul class="list-group" id="recentposts">
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/12/travel-map/">Travel Map</a></li>
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/12/cassville-checkers/">Casseville Checkers</a></li>
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/09/The Bittersweet Lesson/">The Bittersweet Lesson</a></li>
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2024/10/Yes, we did discover the Higgs!/">Yes, we did discover the Higgs!</a></li>
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2020/12/pelican-cite/">Citing from a bibtex file</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Recent Posts -->
 
-            <li class="list-group-item"><a href="https://theoryandpractice.org/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
-                <ul class="list-group list-inline tagcloud" id="tags">
-                    <li class="list-group-item tag-4">
-                        <a href="https://theoryandpractice.org/tag/ai.html">
-                            AI
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-2">
-                        <a href="https://theoryandpractice.org/tag/communication.html">
-                            communication
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="https://theoryandpractice.org/tag/crayfis.html">
-                            crayfis
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-2">
-                        <a href="https://theoryandpractice.org/tag/data.html">
-                            Data
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="https://theoryandpractice.org/tag/data-science.html">
-                            data science
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-2">
-                        <a href="https://theoryandpractice.org/tag/higgs.html">
-                            Higgs
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="https://theoryandpractice.org/tag/machine-learning.html">
-                            machine learning
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="https://theoryandpractice.org/tag/mathematics.html">
-                            mathematics
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="https://theoryandpractice.org/tag/open-science.html">
-                            Open Science
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="https://theoryandpractice.org/tag/physics.html">
-                            physics
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="https://theoryandpractice.org/tag/python.html">
-                            python
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="https://theoryandpractice.org/tag/reflection.html">
-                            reflection
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-3">
-                        <a href="https://theoryandpractice.org/tag/research.html">
-                            research
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-3">
-                        <a href="https://theoryandpractice.org/tag/sabbatical.html">
-                            sabbatical
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="https://theoryandpractice.org/tag/statistics.html">
-                            statistics
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-2">
-                        <a href="https://theoryandpractice.org/tag/visualization.html">
-                            visualization
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-2">
-                        <a href="https://theoryandpractice.org/tag/website.html">
-                            website
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-
-    <li class="list-group-item"><h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
-      <ul class="list-group" id="links">
-        <li class="list-group-item">
-            <a href="https://datascience.wisc.edu" target="_blank">
-                Data Science @ UW
-            </a>
-        </li>
-        <li class="list-group-item">
-            <a href="https://www.physics.wisc.edu/directory/cranmer-kyle/" target="_blank">
-                My UW Physics webpage
-            </a>
-        </li>
-        <li class="list-group-item">
-            <a href="https://iris-hep.org/" target="_blank">
-                IRIS-HEP
-            </a>
-        </li>
-      </ul>
+<!-- Sidebar/Links -->
+<li class="list-group-item">
+  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+  <ul class="list-group" id="links">
+    <li class="list-group-item">
+      <a href="https://datascience.wisc.edu" target="_blank">Data Science @ UW</a>
     </li>
-    </ul>
+    <li class="list-group-item">
+      <a href="https://www.physics.wisc.edu/directory/cranmer-kyle/" target="_blank">My UW Physics webpage</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://iris-hep.org/" target="_blank">IRIS-HEP</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Links -->
+  </ul>
 </section>
-            </aside>
+<!-- End Sidebar -->            </aside>
         </div>
     </div>
 </div>
+<!-- End Content Container -->
+
 <footer>
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">
-         </div>
-         <br>
          <div class="col-xs-10">&copy; 2025 Kyle Cranmer
             &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
-            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>              <p><small>  <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by/4.0/80x15.png" /></a>
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>                <p><small>  <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.en"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by/4.0/80x15.png" /></a>
     Content
-  licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>, except where indicated otherwise.
+  licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.en">Creative Commons Attribution 4.0 International License</a>, except where indicated otherwise.
 </small></p>
          </div>
          <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
@@ -442,31 +347,14 @@ Theory And Practice            </a>
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
 <script src="https://theoryandpractice.org/theme/js/respond.min.js"></script>
 
-    <!-- Google Analytics -->
-    <script type="text/javascript">
 
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-3337202-1']);
-        _gaq.push(['_trackPageview']);
 
-        (function () {
-            var ga = document.createElement('script');
-            ga.type = 'text/javascript';
-            ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(ga, s);
-        })();
-    </script>
-    <!-- End Google Analytics Code -->
 
+        <script src="https://theoryandpractice.org/js/d3.min.js"></script>
+        <script src="https://theoryandpractice.org/js/packages.js"></script>
+        <script src="https://theoryandpractice.org/js/collaboration-map.js"></script>
+        <script src="https://theoryandpractice.org/js/iris-collaboration-map-test.js"></script>
         <script type="text/javascript">var addthis_config = {"data_track_addressbar": true};</script>
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5332e76b5340f5f3"></script>
 </body>
-<script src="https://theoryandpractice.org/js/d3.min.js"></script>
-<script src="https://theoryandpractice.org/js/packages.js"></script>
-<script src="https://theoryandpractice.org/js/collaboration-map.js"></script>
-<script src="https://theoryandpractice.org/js/iris-collaboration-map-test.js"></script>
-
-
 </html>

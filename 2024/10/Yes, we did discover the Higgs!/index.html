@@ -28,6 +28,7 @@
             <meta property="article:author" content="Kyle Cranmer" />
 
 
+
     <!-- Bootstrap -->
         <link rel="stylesheet" href="https://theoryandpractice.org/theme/css/bootstrap.flatly.min.css" type="text/css"/>
     <link href="https://theoryandpractice.org/theme/css/font-awesome.min.css" rel="stylesheet">
@@ -35,19 +36,35 @@
     <link href="https://theoryandpractice.org/theme/css/pygments/default.css" rel="stylesheet">
     <link rel="stylesheet" href="https://theoryandpractice.org/theme/css/style.css" type="text/css"/>
 
+
         <link href="https://theoryandpractice.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
               title="Theory And Practice ATOM Feed"/>
 
-
-
         <link href="https://theoryandpractice.org/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate"
               title="Theory And Practice Blog ATOM Feed"/>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3337202-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', UA-3337202-1);
+    </script>
+    <!-- End Google Analytics Code -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','');</script>
+    <!-- End Google Tag Manager -->
 
 </head>
 <body>
 
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-	<div class="container">
+    <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                 <span class="sr-only">Toggle navigation</span>
@@ -74,8 +91,11 @@ Theory And Practice            </a>
         <!-- /.navbar-collapse -->
     </div>
 </div> <!-- /.navbar -->
+
 <!-- Banner -->
 <!-- End Banner -->
+
+<!-- Content Container -->
 <div class="container">
     <div class="row">
         <div class="col-sm-9">
@@ -96,7 +116,7 @@ Theory And Practice            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2024-10-22T00:00:00+02:00"> Tue 22 October 2024</time>
+        <i class="fa fa-calendar"></i><time datetime="2024-10-22T00:00:00-05:00"> Tue 22 October 2024</time>
     </span>
 
 
@@ -114,10 +134,11 @@ Theory And Practice            </a>
                 </div>
                 <p>Ben Recht got my attention with a <a href="https://x.com/beenwrekt/status/1848733784868589815">tweet</a>
  about his blog post "<a href="https://www.argmin.net/p/the-higgs-discovery-did-not-take">The Higgs discovery did not take place</a>.” I’m generally a fan of Ben’s writing, but I think he’s off base on a number of issues, and I’ll explain why. [Updated Oct 23rd, 2024]</p>
-<p><a href="https://www.argmin.net/p/the-higgs-discovery-did-not-take">Ben's post</a> starts off with a debate about statistics (the role of null hypothesis testing), but the post goes into a lot of other issues and ends with a damning conclusion 
+<p><a href="https://www.argmin.net/p/the-higgs-discovery-did-not-take">Ben's post</a> starts off with a debate about statistics (the role of null hypothesis testing), but the post goes into a lot of other issues and ends with a damning conclusion </p>
 <blockquote>
 The Higgs Discovery is a celebration of modern bureaucracy, not a revelation about material reality.
-</blockquote></p>
+</blockquote>
+
 <p>Along the way, the post meanders through many important issues and questions:</p>
 <ol>
 <li>The complexity of particle physics – does anyone actually understand what’s going on? </li>
@@ -133,22 +154,16 @@ The Higgs Discovery is a celebration of modern bureaucracy, not a revelation abo
 <div align="center">
 <img src="https://theoryandpractice.org/images/atlas-yy-140.png" alt "jet embedding" width="80%" />
 </div>
-
-<p><br /></p>
 <p>This bump is what physicists call a resonance. It follows directly from energy and momentum conservation  and special relativity that we teach first year undergraduates (hardly the ivory towers). </p>
 <p>This bump or resonance is intimately tied to what physicists mean when they say ‘particle’. If you dig a bit deeper, the term resonance is also tied to one of the most elementary physical systems: the simple harmonic oscillator. Sure, when you treat these things quantum mechanically, it gets more sophisticated, but my point is it doesn’t require highfalutin mathematics and quantum field theory to say that we discovered a new particle at the LHC. </p>
 <p>Now if you want to say that the particle we saw is the Higgs boson it’s a bit more complicated. Even without reference to the fancy theory, we can say that it has some of the properties that we expect, for instance it’s a “spin-0” particle (basically meaning that it decays isotropically). </p>
 <p>There are other ways to search for the Higgs where it decays into different particles. Again you get a bump. In the example below the alternate hypothesis is a bump on top of the ‘background’ and the null hypothesis is ‘background only.’ In this case, t​​he background isn’t just a smoothly falling distribution, and this search relies more heavily on our ability to predict the background using theory and simulations of our detectors (blue and green). But I think everyone would agree that the data (black dots) don’t follow the null (stack of blue and green) distribution and it clearly prefers that alternate hypothesis with the additional red bump. What's the Poisson probability that you get more than 200 events in that bin when you expect ~40 under the null distribution? We do calculate it, including nuisance parameters and systematic uncertainties and all that jazz, but who cares, it's astronomically small.</p>
-<div align="center">
+<p><br /><div align="center">
 <img src="https://theoryandpractice.org/images/cms-zz-138.png" alt "jet embedding" width="50%" />
 <!-- <img src="https://theoryandpractice.org/images/atlas-zz-138.png" alt "jet embedding" width="40%" /> -->
-</div>
-
-<p><br /></p>
-<div align="center">
-</div>
-
-<p><br /></p>
+</div></p>
+<p><br /><div align="center">
+</div></p>
 <p>These are more recent results with a lot more data, and the statistical significance is WAY beyond <span class="math">\(5\sigma\)</span>. If you don’t like frequentist statistics, you are free to calculate your Bayes factor or any other statistical measure you want. There is no scale used in any area of science where this wouldn’t be a slam dunk in favor of the alternate hypothesis.</p>
 <p>Without any fancy theory, you can say that if there is one particle producing both bumps, then I should expect the bumps to show up at the same place (around 125 GeV). That’s indeed the case. And both the ATLAS and CMS experiments saw this bump in the same location (here's the ATLAS <a href="https://theoryandpractice.org/images/atlas-zz-138.png">plot</a>).</p>
 <p>So when Ben writes “Do we believe that their presented statistical counts represent a close enough facsimile of experimental conditions to corroborate an ornate, impossible to understand theory?” I hope you can see how that is off base when it comes to claiming discovery of a new particle. It's less off base when it comes to connecting this discovery to the underlying theory of the standard model of particle physics.</p>
@@ -159,11 +174,11 @@ The Higgs Discovery is a celebration of modern bureaucracy, not a revelation abo
 <p>In reality, we operate on consensus, which can be slow and, at times, frustrating. If individual people are not convinced, they can effectively block the collaborations from making claims they don't agree with. That rarely happens, but the emphasis on consensus leads to a slow process that tends to be very careful and conservative. You’d be hard-pressed to find a practicing particle physicist (among the ~10,000 working in this field from all around the world) that isn’t convinced that we discovered a particle in the search for the Higgs. </p>
 <p>There are a few that argued early on about whether or not what we found is the Higgs boson, but that quickly becomes a much more subtle question. I’d say that the overwhelming consensus is that a) we discovered a particle, b) that particle has the properties to be considered “a Higgs boson”, c) it is consistent with the specific properties we expect for the Higgs boson found in the Standard Model, and d) we are doing lots of precision measurements to see if we can uncover any deviations from the Standard Model that might point to some kind of new physics.</p>
 <h2>Is the Higgs relevant?</h2>
-<p>This part is not about statistics, but physics and impact on our lives. Ben writes, 
-<blockquote>
+<p>This part is not about statistics, but physics and impact on our lives. Ben writes, </p>
+<p><br /><blockquote>
 So I don’t care either way if physicists think they found a Higgs. It has zero bearing on my existence.
-</blockquote> 
-🤣 Ben, atoms literally wouldn’t form if the Higgs (or something like it) didn’t “give mass” to the electron!</p>
+</blockquote></p>
+<p>🤣 Ben, atoms literally wouldn’t form if the Higgs (or something like it) didn’t “give mass” to the electron!</p>
 <p>There’s another way that the Higgs is relevant in our everyday life. The origin story conceptually for the Higgs actually has to do with radioactive decay and the weak nuclear force. That underpins nuclear power, nuclear weapons, carbon dating, chemotherapy, and a host of other relevant technologies. </p>
 <p>The fact that all of this stuff about radioactive decay and nuclear physics is related to the mass of the electron and the existence of atoms is far from obvious. The power of quantum field theory is that it provides a conceptual framework that can relate these phenomena through a causal mechanism.</p>
 <p>Ben writes “There has to be something we can do with substantive causal theories for them to be real.” Well one thing you can do with this causal theory is start with the observation that we have radioactive decay, follow a logical thought process heavily constrained by mathematical consistency arguments, and somehow predict that if you were to build the LHC that you will produce a particle that no one has ever seen before. </p>
@@ -184,11 +199,11 @@ Now to the second question. When we ask, “Does the Higgs Boson exist?” we ar
 <p>In addition, the major experiments have started releasing <a href="https://www.symmetrymagazine.org/article/atlas-releases-full-orchestra-of-analysis-instruments">statistical models</a> and <a href="https://opendata.cern.ch">open data</a>. Recently, CMS released <a href="https://cms.cern/news/cms-commitment-open-science-takes-next-step">the statistical model and the data for the Higgs discovery as Open Data</a>. </p>
 <h2>Don't take this literally, p-hacking and the look elsewhere effect</h2>
 <p>Particle physicists worry a lot about multiple testing. We call it the look-elswewhere effect, and we account for it / correct for it. We make the distincition between "local significance" and "global-significance" (that includes the correction).</p>
-<p>The blog post quotes a Science magazine piece, which introduces some confusion and has this quote 
+<p>The blog post quotes a Science magazine piece, which introduces some confusion and has this quote </p>
 <blockquote>
 For example, a 5σ significance tells us that the probability of the background alone fluctuating up locally by the amount observed or more is about 1 in 3 million. In particle physics, this criterion has become a convention to claim discovery but should not be interpreted literally.
-</blockquote> 
-Ben reacts strongly to this, which isn't totally unreasonable given what is (incorrectly) written in that Science Magazine article. </p>
+</blockquote>
+<p>Ben reacts strongly to this, which isn't totally unreasonable given what is (incorrectly) written in that Science Magazine article. </p>
 <p>As far as I can tell, that Science Magazine glossary was written by Science Magazine, not by the experimental collaborations. Whoever wrote it, they confuse different things. <span class="math">\(5\sigma\)</span> is just a different way to refer to a specific probability or p-value, it has nothing to do with if it's local (no correction for multiple testing) or global (with correction). When we claimed discovery, we had <span class="math">\(5\sigma\)</span> globally in two independent experiments. These days it's way more significant than that. </p>
 <p>Secondly, I don't know what they were thinking when they say it shouldn't be interpreted literally. We very much calculate these p-values based on the distribution of the profile likelihood ratio test statistic. We explictly correct for multiple testing. And we've also gone through the process of calculating Bayesian posteriors etc. using the same statistical model. It all matches up.  I think the point there was that when the p-values get this small the specific numerical value of the p-value isn't that relevant. The same could be said for a Bayes factor. </p>
 <p>So no, particle physicsist are not p-hacking. Moreover, when p-values get this small (<span class="math">\(&lt;10^{-6}\)</span>), it doesn't make a very big difference for the number of "tests" we are doing as we scan over the unknown Higgs boson mass (<span class="math">\(\approx 100\)</span>). It's like a difference between <span class="math">\(5\sigma\)</span> and <span class="math">\(5.1 \sigma\)</span>. </p>
@@ -290,182 +305,72 @@ Ben reacts strongly to this, which isn't totally unreasonable given what is (inc
         </div>
         <div class="col-sm-3" id="sidebar">
             <aside>
-
+<!-- Sidebar -->
 <section class="well well-sm">
-    <ul class="list-group list-group-flush">
-            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
-              <ul class="list-group" id="social">
-                <li class="list-group-item"><a href="http://twitter.com/kylecranmer"><i class="fa fa-twitter-square fa-lg"></i> twitter</a></li>
-                <li class="list-group-item"><a href="http://github.com/cranmer"><i class="fa fa-github-square fa-lg"></i> github</a></li>
-                <li class="list-group-item"><a href="http://www.linkedin.com/in/kylecranmer"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
-                <li class="list-group-item"><a href="https://www.youtube.com/channel/UCKl2VoIJiPYp3QhuK22b7xQ"><i class="fa fa-youtube-square fa-lg"></i> youtube</a></li>
-                <li class="list-group-item"><a href="https://inspirehep.net/literature?sort=mostrecent&size=25&page=1&q=a%3Ak.s.cranmer.1%20and%20ac%201-%3E10&ui-citation-summary=true"><i class="fa fa-inspire-(≤-10-authors)-square fa-lg"></i> INSPIRE (≤ 10 authors)</a></li>
-                <li class="list-group-item"><a href="http://scholar.google.com/citations?user=EZjSxgwAAAAJ"><i class="fa fa-google-scholar-square fa-lg"></i> Google Scholar</a></li>
-                <li class="list-group-item"><a href="https://orcid.org/0000-0002-5769-7094"><i class="fa fa-orcid-square fa-lg"></i> ORCiD</a></li>
-                <li class="list-group-item"><a href="http://localhost:8000/pages/Research.html"><i class="fa fa-wikipedia-square fa-lg"></i> Wikipedia</a></li>
-              </ul>
-            </li>
+  <ul class="list-group list-group-flush">
 
-            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
-                <ul class="list-group" id="recentposts">
-                    <li class="list-group-item">
-                        <a href="https://theoryandpractice.org/2025/12/travel-map/">
-                            Travel Map
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="https://theoryandpractice.org/2025/12/cassville-checkers/">
-                            Casseville Checkers
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="https://theoryandpractice.org/2025/09/The Bittersweet Lesson/">
-                            The Bittersweet Lesson
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="https://theoryandpractice.org/2024/10/Yes, we did discover the Higgs!/">
-                            Yes, we did discover the Higgs!
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="https://theoryandpractice.org/2020/12/pelican-cite/">
-                            Citing from a bibtex file
-                        </a>
-                    </li>
-                </ul>
-            </li>
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="http://twitter.com/kylecranmer"><i class="fa fa-twitter-square fa-lg"></i> twitter</a></li>
+    <li class="list-group-item"><a href="http://github.com/cranmer"><i class="fa fa-github-square fa-lg"></i> github</a></li>
+    <li class="list-group-item"><a href="http://www.linkedin.com/in/kylecranmer"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
+    <li class="list-group-item"><a href="https://www.youtube.com/channel/UCKl2VoIJiPYp3QhuK22b7xQ"><i class="fa fa-youtube-square fa-lg"></i> youtube</a></li>
+    <li class="list-group-item"><a href="https://inspirehep.net/literature?sort=mostrecent&size=25&page=1&q=a%3Ak.s.cranmer.1%20and%20ac%201-%3E10&ui-citation-summary=true"><i class="fa fa-inspire-(≤-10-authors)-square fa-lg"></i> INSPIRE (≤ 10 authors)</a></li>
+    <li class="list-group-item"><a href="http://scholar.google.com/citations?user=EZjSxgwAAAAJ"><i class="fa fa-google-scholar-square fa-lg"></i> Google Scholar</a></li>
+    <li class="list-group-item"><a href="https://orcid.org/0000-0002-5769-7094"><i class="fa fa-orcid-square fa-lg"></i> ORCiD</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
 
+<!-- Sidebar/Recent Posts -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+  <ul class="list-group" id="recentposts">
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/12/travel-map/">Travel Map</a></li>
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/12/cassville-checkers/">Casseville Checkers</a></li>
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/09/The Bittersweet Lesson/">The Bittersweet Lesson</a></li>
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2024/10/Yes, we did discover the Higgs!/">Yes, we did discover the Higgs!</a></li>
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2020/12/pelican-cite/">Citing from a bibtex file</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Recent Posts -->
 
-            <li class="list-group-item"><a href="https://theoryandpractice.org/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
-                <ul class="list-group list-inline tagcloud" id="tags">
-                    <li class="list-group-item tag-4">
-                        <a href="https://theoryandpractice.org/tag/ai.html">
-                            AI
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-2">
-                        <a href="https://theoryandpractice.org/tag/communication.html">
-                            communication
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="https://theoryandpractice.org/tag/crayfis.html">
-                            crayfis
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-2">
-                        <a href="https://theoryandpractice.org/tag/data.html">
-                            Data
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="https://theoryandpractice.org/tag/data-science.html">
-                            data science
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-2">
-                        <a href="https://theoryandpractice.org/tag/higgs.html">
-                            Higgs
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="https://theoryandpractice.org/tag/machine-learning.html">
-                            machine learning
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="https://theoryandpractice.org/tag/mathematics.html">
-                            mathematics
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="https://theoryandpractice.org/tag/open-science.html">
-                            Open Science
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="https://theoryandpractice.org/tag/physics.html">
-                            physics
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="https://theoryandpractice.org/tag/python.html">
-                            python
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="https://theoryandpractice.org/tag/reflection.html">
-                            reflection
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-3">
-                        <a href="https://theoryandpractice.org/tag/research.html">
-                            research
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-3">
-                        <a href="https://theoryandpractice.org/tag/sabbatical.html">
-                            sabbatical
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="https://theoryandpractice.org/tag/statistics.html">
-                            statistics
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-2">
-                        <a href="https://theoryandpractice.org/tag/visualization.html">
-                            visualization
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-2">
-                        <a href="https://theoryandpractice.org/tag/website.html">
-                            website
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-
-    <li class="list-group-item"><h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
-      <ul class="list-group" id="links">
-        <li class="list-group-item">
-            <a href="https://datascience.wisc.edu" target="_blank">
-                Data Science @ UW
-            </a>
-        </li>
-        <li class="list-group-item">
-            <a href="https://www.physics.wisc.edu/directory/cranmer-kyle/" target="_blank">
-                My UW Physics webpage
-            </a>
-        </li>
-        <li class="list-group-item">
-            <a href="https://iris-hep.org/" target="_blank">
-                IRIS-HEP
-            </a>
-        </li>
-      </ul>
+<!-- Sidebar/Links -->
+<li class="list-group-item">
+  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+  <ul class="list-group" id="links">
+    <li class="list-group-item">
+      <a href="https://datascience.wisc.edu" target="_blank">Data Science @ UW</a>
     </li>
-    </ul>
+    <li class="list-group-item">
+      <a href="https://www.physics.wisc.edu/directory/cranmer-kyle/" target="_blank">My UW Physics webpage</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://iris-hep.org/" target="_blank">IRIS-HEP</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Links -->
+  </ul>
 </section>
-            </aside>
+<!-- End Sidebar -->            </aside>
         </div>
     </div>
 </div>
+<!-- End Content Container -->
+
 <footer>
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">
-         </div>
-         <br>
          <div class="col-xs-10">&copy; 2025 Kyle Cranmer
             &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
-            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>              <p><small>  <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by/4.0/80x15.png" /></a>
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>                <p><small>  <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.en"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by/4.0/80x15.png" /></a>
     Content
-  licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>, except where indicated otherwise.
+  licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.en">Creative Commons Attribution 4.0 International License</a>, except where indicated otherwise.
 </small></p>
          </div>
          <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
@@ -480,27 +385,10 @@ Ben reacts strongly to this, which isn't totally unreasonable given what is (inc
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
 <script src="https://theoryandpractice.org/theme/js/respond.min.js"></script>
 
-    <!-- Google Analytics -->
-    <script type="text/javascript">
 
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-3337202-1']);
-        _gaq.push(['_trackPageview']);
 
-        (function () {
-            var ga = document.createElement('script');
-            ga.type = 'text/javascript';
-            ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(ga, s);
-        })();
-    </script>
-    <!-- End Google Analytics Code -->
 
         <script type="text/javascript">var addthis_config = {"data_track_addressbar": true};</script>
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5332e76b5340f5f3"></script>
 </body>
-
-
 </html>
