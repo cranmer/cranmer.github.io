@@ -80,6 +80,7 @@ Theory And Practice            </a>
                     <li><a href="/index.html">About</a></li>
                     <li><a href="/pages/Research.html">Research</a></li>
                     <li><a href="/pages/projects.html">Projects</a></li>
+                    <li><a href="/presentations.html">Presentations</a></li>
                     <li><a href="/pages/in-the-news.html">Media & Outreach</a></li>
                         <li class="active">
                             <a href="https://theoryandpractice.org/category/blog.html">Blog</a>
@@ -156,6 +157,8 @@ Theory And Practice            </a>
 <li>pixi environment management for reproducible builds</li>
 <li>GitHub Actions deployment workflow to cranmer.github.io</li>
 <li>Publications page (<code>/publications.html</code>) generated from BibTeX</li>
+<li>Presentations page (<code>/presentations.html</code>) displaying 113 talks with video icons, compatible with <a href="https://iris-hep.org/presentations/byperson.html">IRIS-HEP format</a></li>
+<li>Custom <code>pelican-presentations</code> plugin for parsing YAML presentation data</li>
 <li>Bluesky social link with custom butterfly icon</li>
 <li>BibTeX modal popups with copy-to-clipboard functionality</li>
 <li>Markdown rendering inside HTML blocks (<code>md_in_html</code> extension)</li>
@@ -171,15 +174,17 @@ Theory And Practice            </a>
 <p><strong>pelican-cite</strong>: Added Bootstrap modal for viewing BibTeX entries with copy-to-clipboard functionality.</p>
 <p><strong>pelican-bibtex</strong>: Added Bootstrap modal replacing the old <code>window.open</code> popups that modern browsers block.</p>
 <p><strong>pelican_javascript</strong>: Migrated to Pelican 4 signal API while maintaining support for per-page custom CSS and JavaScript.</p>
+<p><strong>pelican-presentations</strong>: A new plugin created during this migration to generate a presentations page from YAML data. It's compatible with the IRIS-HEP presentations format, groups talks by year, and displays video icons for presentations with recordings.</p>
 <h2>Working with Claude Code</h2>
 <p>This entire migration was done in collaboration with Claude Code. The AI agent was able to:</p>
 <ul>
 <li>Understand the existing Pelican 3.7 configuration and plugin structure</li>
 <li>Set up the new pixi environment and Pelican 4.11 configuration</li>
 <li>Migrate and modify plugins to work with the new Pelican version</li>
+<li>Create a new <code>pelican-presentations</code> plugin from scratch, compatible with IRIS-HEP's format</li>
 <li>Debug issues with template rendering and markdown processing</li>
 <li>Create the GitHub Actions deployment workflow</li>
-<li>Add new features like the BibTeX modals and Bluesky social icon</li>
+<li>Add new features like the BibTeX modals, presentations page, and Bluesky social icon</li>
 </ul>
 <p>It was a genuinely collaborative process—I would describe what I wanted, Claude would implement it, and we'd iterate on the details together.</p>
 <h2>Documentation</h2>
@@ -232,7 +237,7 @@ Theory And Practice            </a>
     <li class="list-group-item"><a href="https://theoryandpractice.org/2025/12/travel-map/">Travel Map</a></li>
     <li class="list-group-item"><a href="https://theoryandpractice.org/2025/12/cassville-checkers/">Casseville Checkers</a></li>
     <li class="list-group-item"><a href="https://theoryandpractice.org/2025/09/The Bittersweet Lesson/">The Bittersweet Lesson</a></li>
-    <li class="list-group-item"><a href="https://theoryandpractice.org/2024/10/Yes, we did discover the Higgs!/">Yes, we did discover the Higgs!</a></li>
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/07/A pedagogical SBI example/">A pedagogical SBI example</a></li>
   </ul>
 </li>
 <!-- End Sidebar/Recent Posts -->
