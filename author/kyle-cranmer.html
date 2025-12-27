@@ -51,6 +51,18 @@
     })(window,document,'script','dataLayer','');</script>
     <!-- End Google Tag Manager -->
 
+    <!-- MathJax for LaTeX rendering -->
+    <script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true
+        }
+    };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
 </head>
 <body>
 
@@ -68,7 +80,6 @@ Theory And Practice            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                    <li><a href="/index.html">About</a></li>
                     <li><a href="/pages/Research.html">Research</a></li>
                     <li><a href="/pages/projects.html">Projects</a></li>
                     <li><a href="/presentations.html">Presentations</a></li>
@@ -78,6 +89,7 @@ Theory And Practice            </a>
                         </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+              <li><a href="https://theoryandpractice.org/search.html" title="Search"><i class="fa fa-search"></i></a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -121,16 +133,15 @@ Theory And Practice            </a>
             </article>
             <hr/>
             <article>
-                <h2><a href="https://theoryandpractice.org/2025/07/A pedagogical SBI example/">A pedagogical SBI example</a></h2>
+                <h2><a href="https://theoryandpractice.org/2025/07/pedagogical-SBI-example/">A pedagogical SBI example</a></h2>
                 <div class="summary"><p>I created this pedagogical example about simulation-based inference for a set of lectures that I gave in Paris in July 2025 for the University of Chicago's AI for Science summer school. The repository is <a href="https://github.com/cranmer/sbi-tutorial/">here</a> and it includes instructions on how to run the tutorial on your own machine. </p>
 <hr>
 <!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" />
 
-<html lang="en">
-<head><meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Notebook …</title></head></html>
-                    <a class="btn btn-default btn-xs" href="https://theoryandpractice.org/2025/07/A pedagogical SBI example/">more ...</a>
+                    <a class="btn btn-default btn-xs" href="https://theoryandpractice.org/2025/07/pedagogical-SBI-example/">more ...</a>
                 </div>
             </article>
             <hr/>
@@ -194,7 +205,7 @@ Theory And Practice            </a>
     <li class="list-group-item"><a href="https://theoryandpractice.org/2025/12/travel-map/">Travel Map</a></li>
     <li class="list-group-item"><a href="https://theoryandpractice.org/2025/12/cassville-checkers/">Casseville Checkers</a></li>
     <li class="list-group-item"><a href="https://theoryandpractice.org/2025/09/The Bittersweet Lesson/">The Bittersweet Lesson</a></li>
-    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/07/A pedagogical SBI example/">A pedagogical SBI example</a></li>
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/07/pedagogical-SBI-example/">A pedagogical SBI example</a></li>
   </ul>
 </li>
 <!-- End Sidebar/Recent Posts -->

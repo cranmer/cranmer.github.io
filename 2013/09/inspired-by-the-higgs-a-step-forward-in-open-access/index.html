@@ -60,6 +60,18 @@
     })(window,document,'script','dataLayer','');</script>
     <!-- End Google Tag Manager -->
 
+    <!-- MathJax for LaTeX rendering -->
+    <script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true
+        }
+    };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
 </head>
 <body>
 
@@ -77,7 +89,6 @@ Theory And Practice            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                    <li><a href="/index.html">About</a></li>
                     <li><a href="/pages/Research.html">Research</a></li>
                     <li><a href="/pages/projects.html">Projects</a></li>
                     <li><a href="/presentations.html">Presentations</a></li>
@@ -87,6 +98,7 @@ Theory And Practice            </a>
                         </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+              <li><a href="https://theoryandpractice.org/search.html" title="Search"><i class="fa fa-search"></i></a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -300,7 +312,7 @@ Higgs boson discovered at the LHC!</p>
     <li class="list-group-item"><a href="https://theoryandpractice.org/2025/12/travel-map/">Travel Map</a></li>
     <li class="list-group-item"><a href="https://theoryandpractice.org/2025/12/cassville-checkers/">Casseville Checkers</a></li>
     <li class="list-group-item"><a href="https://theoryandpractice.org/2025/09/The Bittersweet Lesson/">The Bittersweet Lesson</a></li>
-    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/07/A pedagogical SBI example/">A pedagogical SBI example</a></li>
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/07/pedagogical-SBI-example/">A pedagogical SBI example</a></li>
   </ul>
 </li>
 <!-- End Sidebar/Recent Posts -->

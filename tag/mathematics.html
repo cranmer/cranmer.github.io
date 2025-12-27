@@ -52,6 +52,18 @@
     })(window,document,'script','dataLayer','');</script>
     <!-- End Google Tag Manager -->
 
+    <!-- MathJax for LaTeX rendering -->
+    <script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true
+        }
+    };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
 </head>
 <body>
 
@@ -69,7 +81,6 @@ Theory And Practice            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                    <li><a href="/index.html">About</a></li>
                     <li><a href="/pages/Research.html">Research</a></li>
                     <li><a href="/pages/projects.html">Projects</a></li>
                     <li><a href="/presentations.html">Presentations</a></li>
@@ -79,6 +90,7 @@ Theory And Practice            </a>
                         </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+              <li><a href="https://theoryandpractice.org/search.html" title="Search"><i class="fa fa-search"></i></a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -98,16 +110,28 @@ Theory And Practice            </a>
 <p>You might want to <a href="http://nbviewer.jupyter.org/github/cranmer/play/blob/master/misc/recursive%20prime%20decomposition.ipynb">view the notebook with nbviewer instead</a>. </p>
 <hr>
 <!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" />
 
-<html lang="en">
-<head><meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Notebook</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Notebook</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
 <style type="text/css">
-    pre { line-height: 125%; }
-td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
-span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
-td.linenos …</style></head></html>
+    /*!
+*
+* Twitter Bootstrap
+*
+*/
+/*!
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+/*! normalize.css …</style></head></html>
                     <a class="btn btn-default btn-xs" href="https://theoryandpractice.org/2016/03/My favorite way to write numbers/">more ...</a>
                 </div>
             </article>

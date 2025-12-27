@@ -53,6 +53,18 @@
     })(window,document,'script','dataLayer','');</script>
     <!-- End Google Tag Manager -->
 
+    <!-- MathJax for LaTeX rendering -->
+    <script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true
+        }
+    };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
 </head>
 <body>
 
@@ -70,7 +82,6 @@ Theory And Practice            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                    <li><a href="/index.html">About</a></li>
                     <li><a href="/pages/Research.html">Research</a></li>
                     <li><a href="/pages/projects.html">Projects</a></li>
                     <li><a href="/presentations.html">Presentations</a></li>
@@ -80,6 +91,7 @@ Theory And Practice            </a>
                         </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+              <li><a href="https://theoryandpractice.org/search.html" title="Search"><i class="fa fa-search"></i></a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -132,18 +144,39 @@ My path to tenure was pretty quick PhD (5 yrs), post-doc …</p>
             <article>
                 <h2><a href="https://theoryandpractice.org/2014/04/Hotelling-Experiment/">Hotelling's Experiment</a></h2>
                 <div class="summary"><!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" />
 
-<html lang="en">
-<head><meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Notebook</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Notebook</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
 <style type="text/css">
-    pre { line-height: 125%; }
-td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
-span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
-td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
-span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
-.highlight .hll { background-color …</style></head></html>
+    /*!
+*
+* Twitter Bootstrap
+*
+*/
+/*!
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+}
+article,
+aside,
+details …</style></head></html>
                     <a class="btn btn-default btn-xs" href="https://theoryandpractice.org/2014/04/Hotelling-Experiment/">more ...</a>
                 </div>
             </article>
@@ -211,7 +244,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <li class="list-group-item"><a href="https://theoryandpractice.org/2025/12/travel-map/">Travel Map</a></li>
     <li class="list-group-item"><a href="https://theoryandpractice.org/2025/12/cassville-checkers/">Casseville Checkers</a></li>
     <li class="list-group-item"><a href="https://theoryandpractice.org/2025/09/The Bittersweet Lesson/">The Bittersweet Lesson</a></li>
-    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/07/A pedagogical SBI example/">A pedagogical SBI example</a></li>
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/07/pedagogical-SBI-example/">A pedagogical SBI example</a></li>
   </ul>
 </li>
 <!-- End Sidebar/Recent Posts -->
