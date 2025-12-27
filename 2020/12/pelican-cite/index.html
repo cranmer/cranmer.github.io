@@ -129,20 +129,20 @@ Theory And Practice            </a>
                 </div>
                 <p>I've been wanting to add some semi-automated way to handle papers and bibliography information in this website. I found <a href="https://github.com/vene/pelican-bibtex">pelican-bibtex</a> and <a href="https://github.com/VorpalBlade/pelican-cite">pelican-cite</a>. I'll need to look into pelican-bibtex to see if I can make a nice automated page based on a <code>.bib</code> file, but pelican-cite looked pretty easy to setup. </p>
 <p>Ok, let's see how this works. I got the .bib file from INSPIRE <a href="https://inspirehep.net/literature?sort=mostrecent&amp;size=25&amp;page=1&amp;q=a%3Ak.s.cranmer.1&amp;author_count=10%20authors%20or%20less&amp;ui-citation-summary=true">here</a>.</p>
-<p>I am doing a simple <code>grep "@" content/kyle-10authors-2020.bib</code> and then I can use a keyboard macro in VS Code to get the necessary markdown, which should complete into a nicer looking reference. Here are the papers with less than 10 authors that I wrote in 2020: </p>
-<p>[@Brehmer:2020ako]
-[@Brehmer:2020brs]
-[@Mishra-Sharma:2020kjb]
-[@Brehmer:2020cvb]
-[@Boyda:2020hsi]
-[@Shlomi:2020ufi] 
-[@Cranmer:2020wew]
-[@Brehmer:2020zwh]
-[@Brehmer:2020vwc]
-[@Kanwar:2020xzo]
-[@Greenberg:2020heb]
-[@Serviansky:2020qwa]
-[@Rezende:2020hrd]</p>
+<p>I am doing a simple <code>grep "&#64;" content/kyle-10authors-2020.bib</code> and then I can use a keyboard macro in VS Code to get the necessary markdown, which should complete into a nicer looking reference. Here are the papers with less than 10 authors that I wrote in 2020: </p>
+<p><a href='#Brehmer:2020ako' id='ref-Brehmer:2020ako-1'>Brehmer et al. (2020)</a>
+<a href='#Brehmer:2020brs' id='ref-Brehmer:2020brs-1'>Brehmer et al. (2020)</a>
+<a href='#Mishra-Sharma:2020kjb' id='ref-Mishra-Sharma:2020kjb-1'>MishraSharma and Cranmer (2020)</a>
+<a href='#Brehmer:2020cvb' id='ref-Brehmer:2020cvb-1'>Brehmer and Cranmer (2020)</a>
+<a href='#Boyda:2020hsi' id='ref-Boyda:2020hsi-1'>Boyda et al. (2020)</a>
+<a href='#Shlomi:2020ufi' id='ref-Shlomi:2020ufi-1'>Shlomi et al. (2020)</a> 
+<a href='#Cranmer:2020wew' id='ref-Cranmer:2020wew-1'>Cranmer et al. (2020)</a>
+<a href='#Brehmer:2020zwh' id='ref-Brehmer:2020zwh-1'>Brehmer et al. (2020)</a>
+<a href='#Brehmer:2020vwc' id='ref-Brehmer:2020vwc-1'>Brehmer and Cranmer (2020)</a>
+<a href='#Kanwar:2020xzo' id='ref-Kanwar:2020xzo-1'>Kanwar et al. (2020)</a>
+<a href='#Greenberg:2020heb' id='ref-Greenberg:2020heb-1'>Greenberg et al. (2020)</a>
+<a href='#Serviansky:2020qwa' id='ref-Serviansky:2020qwa-1'>Serviansky et al. (2020)</a>
+<a href='#Rezende:2020hrd' id='ref-Rezende:2020hrd-1'>Rezende et al. (2020)</a></p>
 <p>Well, I had to edit some entries in the <code>.bib</code> file that had missing <code>journal</code> information or it lead to a critical failure. This is nice, but not exactly what I'm looking for. </p>
 <p>... time passes...</p>
 <p>Ok, I played with <a href="https://github.com/vene/pelican-bibtex">pelican-bibtex</a> some. I added a custom template and I hacked pelican-bibtex with this:</p>
@@ -155,7 +155,98 @@ Theory And Practice            </a>
 
     formatted_entries = plain_style.format_entries(bibdata_all.entries.values())
 </code></pre>
-<p>so that I don't have to modify the <code>.bib</code> file. That produces <a href="/publications.html">this page</a></p>
+<p>so that I don't have to modify the <code>.bib</code> file. That produces <a href="/publications.html">this page</a></p><hr>
+<h2>Bibliography</h2>
+
+<script type="text/javascript">
+    function showCiteBibtex(bibtex) {
+        var formatted = bibtex.replace(/\\n/g, '\n');
+        document.getElementById('cite-bibtex-content').textContent = formatted;
+        $('#citeBibtexModal').modal('show');
+    }
+    function copyCiteBibtex() {
+        var bibtexText = document.getElementById('cite-bibtex-content').textContent;
+        navigator.clipboard.writeText(bibtexText).then(function() {
+            var btn = document.getElementById('cite-copy-btn');
+            btn.textContent = 'Copied!';
+            btn.className = 'btn btn-success';
+            setTimeout(function() {
+                btn.textContent = 'Copy to Clipboard';
+                btn.className = 'btn btn-primary';
+            }, 2000);
+        });
+    }
+</script>
+<div class="modal fade" id="citeBibtexModal" tabindex="-1" role="dialog" aria-labelledby="citeBibtexModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="citeBibtexModalLabel">BibTeX Entry</h4>
+      </div>
+      <div class="modal-body">
+        <pre id="cite-bibtex-content" style="white-space: pre-wrap; word-wrap: break-word; background: #f5f5f5; padding: 15px; border-radius: 4px;"></pre>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="cite-copy-btn" class="btn btn-primary" onclick="copyCiteBibtex()">Copy to Clipboard</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<p id='Boyda:2020hsi'>Denis Boyda, Gurtej Kanwar, Sébastien Racanière, Danilo&nbsp;Jimenez Rezende, Michael&nbsp;S. Albergo, Kyle Cranmer, Daniel&nbsp;C. Hackett, and Phiala&nbsp;E. Shanahan.
+<span class="bibtex-protected">Sampling using $SU(N)$ gauge equivariant flows</span>.
+8 2020.
+<a href="https://arxiv.org/abs/2008.05456">arXiv:2008.05456</a>. [<a href="javascript:void(0);" onclick="showCiteBibtex(decodeURIComponent('%40article%7BBoyda%3A2020hsi%2C%0A%20%20%20%20author%20%3D%20%22Boyda%2C%20Denis%20and%20Kanwar%2C%20Gurtej%20and%20Racani%5C%60ere%2C%20S%5C%27ebastien%20and%20Rezende%2C%20Danilo%20Jimenez%20and%20Albergo%2C%20Michael%20S.%20and%20Cranmer%2C%20Kyle%20and%20Hackett%2C%20Daniel%20C.%20and%20Shanahan%2C%20Phiala%20E.%22%2C%0A%20%20%20%20title%20%3D%20%22%7BSampling%20using%20%24SU%28N%29%24%20gauge%20equivariant%20flows%7D%22%2C%0A%20%20%20%20eprint%20%3D%20%222008.05456%22%2C%0A%20%20%20%20journal%20%3D%20%22%22%2C%0A%20%20%20%20archivePrefix%20%3D%20%22arXiv%22%2C%0A%20%20%20%20primaryClass%20%3D%20%22hep-lat%22%2C%0A%20%20%20%20reportNumber%20%3D%20%22MIT-CTP/5228%22%2C%0A%20%20%20%20month%20%3D%20%228%22%2C%0A%20%20%20%20year%20%3D%20%222020%22%0A%7D%0A'));">Bibtex</a>] <a class="cite-backref" href="#ref-Boyda:2020hsi-1" title="Jump back to reference 1">↩</a></p>
+<p id='Brehmer:2020vwc'>Johann Brehmer and Kyle Cranmer.
+<span class="bibtex-protected">Flows for simultaneous manifold learning and density estimation</span>.
+<em>NeurIPS2020</em>, 3 2020.
+<a href="https://arxiv.org/abs/2003.13913">arXiv:2003.13913</a>. [<a href="javascript:void(0);" onclick="showCiteBibtex(decodeURIComponent('%40article%7BBrehmer%3A2020vwc%2C%0A%20%20%20%20author%20%3D%20%22Brehmer%2C%20Johann%20and%20Cranmer%2C%20Kyle%22%2C%0A%20%20%20%20title%20%3D%20%22%7BFlows%20for%20simultaneous%20manifold%20learning%20and%20density%20estimation%7D%22%2C%0A%20%20%20%20eprint%20%3D%20%222003.13913%22%2C%0A%20%20%20%20archivePrefix%20%3D%20%22arXiv%22%2C%0A%20%20%20%20journal%20%3D%20%22NeurIPS2020%22%2C%0A%20%20%20%20primaryClass%20%3D%20%22stat.ML%22%2C%0A%20%20%20%20month%20%3D%20%223%22%2C%0A%20%20%20%20year%20%3D%20%222020%22%0A%7D%0A'));">Bibtex</a>] <a class="cite-backref" href="#ref-Brehmer:2020vwc-1" title="Jump back to reference 1">↩</a></p>
+<p id='Brehmer:2020cvb'>Johann Brehmer and Kyle Cranmer.
+<span class="bibtex-protected">Simulation-based inference methods for particle physics</span>.
+<em>To appear in Artificial Intelligence for Particle Physics, World Scientific Publishing Co</em>, 10 2020.
+<a href="https://arxiv.org/abs/2010.06439">arXiv:2010.06439</a>. [<a href="javascript:void(0);" onclick="showCiteBibtex(decodeURIComponent('%40article%7BBrehmer%3A2020cvb%2C%0A%20%20%20%20author%20%3D%20%22Brehmer%2C%20Johann%20and%20Cranmer%2C%20Kyle%22%2C%0A%20%20%20%20title%20%3D%20%22%7BSimulation-based%20inference%20methods%20for%20particle%20physics%7D%22%2C%0A%20%20%20%20eprint%20%3D%20%222010.06439%22%2C%0A%20%20%20%20journal%20%3D%20%22To%20appear%20in%20Artificial%20Intelligence%20for%20Particle%20Physics%2C%20World%20Scientific%20Publishing%20Co%22%2C%0A%20%20%20%20archivePrefix%20%3D%20%22arXiv%22%2C%0A%20%20%20%20primaryClass%20%3D%20%22hep-ph%22%2C%0A%20%20%20%20month%20%3D%20%2210%22%2C%0A%20%20%20%20year%20%3D%20%222020%22%0A%7D%0A'));">Bibtex</a>] <a class="cite-backref" href="#ref-Brehmer:2020cvb-1" title="Jump back to reference 1">↩</a></p>
+<p id='Brehmer:2020ako'>Johann Brehmer, Kyle Cranmer, Irina Espejo, Alexander Held, Felix Kling, Gilles Louppe, and Juan Pavez.
+<span class="bibtex-protected">Constraining effective field theories with machine learning</span>.
+<em>EPJ Web Conf.</em>, 245:06026, 2020.
+<a href="https://doi.org/10.1051/epjconf/202024506026">doi:10.1051/epjconf/202024506026</a>. [<a href="javascript:void(0);" onclick="showCiteBibtex(decodeURIComponent('%40article%7BBrehmer%3A2020ako%2C%0A%20%20%20%20author%20%3D%20%22Brehmer%2C%20Johann%20and%20Cranmer%2C%20Kyle%20and%20Espejo%2C%20Irina%20and%20Held%2C%20Alexander%20and%20Kling%2C%20Felix%20and%20Louppe%2C%20Gilles%20and%20Pavez%2C%20Juan%22%2C%0A%20%20%20%20editor%20%3D%20%22Doglioni%2C%20C.%20and%20Kim%2C%20D.%20and%20Stewart%2C%20G.A.%20and%20Silvestris%2C%20L.%20and%20Jackson%2C%20P.%20and%20Kamle%2C%20W.%22%2C%0A%20%20%20%20title%20%3D%20%22%7BConstraining%20effective%20field%20theories%20with%20machine%20learning%7D%22%2C%0A%20%20%20%20doi%20%3D%20%2210.1051/epjconf/202024506026%22%2C%0A%20%20%20%20journal%20%3D%20%22EPJ%20Web%20Conf.%22%2C%0A%20%20%20%20volume%20%3D%20%22245%22%2C%0A%20%20%20%20pages%20%3D%20%2206026%22%2C%0A%20%20%20%20year%20%3D%20%222020%22%0A%7D%0A'));">Bibtex</a>] <a class="cite-backref" href="#ref-Brehmer:2020ako-1" title="Jump back to reference 1">↩</a></p>
+<p id='Brehmer:2020zwh'>Johann Brehmer, Kyle Cranmer, and F.&nbsp;Kling.
+<span class="bibtex-protected">Improving inference with matrix elements and machine learning</span>.
+<em>Int. J. Mod. Phys. A</em>, 35(15n16):2041008, 2020.
+<a href="https://doi.org/10.1142/S0217751X20410080">doi:10.1142/S0217751X20410080</a>. [<a href="javascript:void(0);" onclick="showCiteBibtex(decodeURIComponent('%40article%7BBrehmer%3A2020zwh%2C%0A%20%20%20%20author%20%3D%20%22Brehmer%2C%20Johann%20and%20Cranmer%2C%20Kyle%20and%20Kling%2C%20F.%22%2C%0A%20%20%20%20title%20%3D%20%22%7BImproving%20inference%20with%20matrix%20elements%20and%20machine%20learning%7D%22%2C%0A%20%20%20%20doi%20%3D%20%2210.1142/S0217751X20410080%22%2C%0A%20%20%20%20journal%20%3D%20%22Int.%20J.%20Mod.%20Phys.%20A%22%2C%0A%20%20%20%20volume%20%3D%20%2235%22%2C%0A%20%20%20%20number%20%3D%20%2215n16%22%2C%0A%20%20%20%20pages%20%3D%20%222041008%22%2C%0A%20%20%20%20year%20%3D%20%222020%22%0A%7D%0A'));">Bibtex</a>] <a class="cite-backref" href="#ref-Brehmer:2020zwh-1" title="Jump back to reference 1">↩</a></p>
+<p id='Brehmer:2020brs'>Johann Brehmer, Sebastian Macaluso, Duccio Pappadopulo, and Kyle Cranmer.
+<span class="bibtex-protected">Hierarchical clustering in particle physics through reinforcement learning</span>.
+In <em><span class="bibtex-protected">34th Conference on Neural Information Processing Systems</span></em>. 11 2020.
+<a href="https://arxiv.org/abs/2011.08191">arXiv:2011.08191</a>. [<a href="javascript:void(0);" onclick="showCiteBibtex(decodeURIComponent('%40inproceedings%7BBrehmer%3A2020brs%2C%0A%20%20%20%20author%20%3D%20%22Brehmer%2C%20Johann%20and%20Macaluso%2C%20Sebastian%20and%20Pappadopulo%2C%20Duccio%20and%20Cranmer%2C%20Kyle%22%2C%0A%20%20%20%20title%20%3D%20%22%7BHierarchical%20clustering%20in%20particle%20physics%20through%20reinforcement%20learning%7D%22%2C%0A%20%20%20%20booktitle%20%3D%20%22%7B34th%20Conference%20on%20Neural%20Information%20Processing%20Systems%7D%22%2C%0A%20%20%20%20eprint%20%3D%20%222011.08191%22%2C%0A%20%20%20%20archivePrefix%20%3D%20%22arXiv%22%2C%0A%20%20%20%20primaryClass%20%3D%20%22cs.AI%22%2C%0A%20%20%20%20month%20%3D%20%2211%22%2C%0A%20%20%20%20year%20%3D%20%222020%22%0A%7D%0A'));">Bibtex</a>] <a class="cite-backref" href="#ref-Brehmer:2020brs-1" title="Jump back to reference 1">↩</a></p>
+<p id='Cranmer:2020wew'>Miles Cranmer, Alvaro Sanchez-Gonzalez, Peter Battaglia, Rui Xu, Kyle Cranmer, David Spergel, and Shirley Ho.
+<span class="bibtex-protected">Discovering Symbolic Models from Deep Learning with Inductive Biases</span>.
+<em>NeurIPS2020</em>, 6 2020.
+<a href="https://arxiv.org/abs/2006.11287">arXiv:2006.11287</a>. [<a href="javascript:void(0);" onclick="showCiteBibtex(decodeURIComponent('%40article%7BCranmer%3A2020wew%2C%0A%20%20%20%20author%20%3D%20%22Cranmer%2C%20Miles%20and%20Sanchez-Gonzalez%2C%20Alvaro%20and%20Battaglia%2C%20Peter%20and%20Xu%2C%20Rui%20and%20Cranmer%2C%20Kyle%20and%20Spergel%2C%20David%20and%20Ho%2C%20Shirley%22%2C%0A%20%20%20%20title%20%3D%20%22%7BDiscovering%20Symbolic%20Models%20from%20Deep%20Learning%20with%20Inductive%20Biases%7D%22%2C%0A%20%20%20%20eprint%20%3D%20%222006.11287%22%2C%0A%20%20%20%20archivePrefix%20%3D%20%22arXiv%22%2C%0A%20%20%20%20journal%20%3D%20%22NeurIPS2020%22%2C%0A%20%20%20%20primaryClass%20%3D%20%22cs.LG%22%2C%0A%20%20%20%20month%20%3D%20%226%22%2C%0A%20%20%20%20year%20%3D%20%222020%22%0A%7D%0A'));">Bibtex</a>] <a class="cite-backref" href="#ref-Cranmer:2020wew-1" title="Jump back to reference 1">↩</a></p>
+<p id='Greenberg:2020heb'>Craig&nbsp;S. Greenberg, Sebastian Macaluso, Nicholas Monath, Ji-Ah Lee, Patrick Flaherty, Kyle Cranmer, Andrew McGregor, and Andrew McCallum.
+<span class="bibtex-protected">Data Structures \&amp; Algorithms for Exact Inference in Hierarchical Clustering</span>.
+2 2020.
+<a href="https://arxiv.org/abs/2002.11661">arXiv:2002.11661</a>. [<a href="javascript:void(0);" onclick="showCiteBibtex(decodeURIComponent('%40article%7BGreenberg%3A2020heb%2C%0A%20%20%20%20author%20%3D%20%22Greenberg%2C%20Craig%20S.%20and%20Macaluso%2C%20Sebastian%20and%20Monath%2C%20Nicholas%20and%20Lee%2C%20Ji-Ah%20and%20Flaherty%2C%20Patrick%20and%20Cranmer%2C%20Kyle%20and%20McGregor%2C%20Andrew%20and%20McCallum%2C%20Andrew%22%2C%0A%20%20%20%20title%20%3D%20%22%7BData%20Structures%20%5Ctextbackslash%7B%7D%5C%5C%26%20Algorithms%20for%20Exact%20Inference%20in%20Hierarchical%20Clustering%7D%22%2C%0A%20%20%20%20eprint%20%3D%20%222002.11661%22%2C%0A%20%20%20%20archivePrefix%20%3D%20%22arXiv%22%2C%0A%20%20%20%20primaryClass%20%3D%20%22cs.DS%22%2C%0A%20%20%20%20journal%20%3D%20%22%22%2C%0A%20%20%20%20month%20%3D%20%222%22%2C%0A%20%20%20%20year%20%3D%20%222020%22%0A%7D%0A'));">Bibtex</a>] <a class="cite-backref" href="#ref-Greenberg:2020heb-1" title="Jump back to reference 1">↩</a></p>
+<p id='Kanwar:2020xzo'>Gurtej Kanwar, Michael&nbsp;S. Albergo, Denis Boyda, Kyle Cranmer, Daniel&nbsp;C. Hackett, Sébastien Racanière, Danilo&nbsp;Jimenez Rezende, and Phiala&nbsp;E. Shanahan.
+<span class="bibtex-protected">Equivariant flow-based sampling for lattice gauge theory</span>.
+<em>Phys. Rev. Lett.</em>, 125(12):121601, 2020.
+<a href="https://arxiv.org/abs/2003.06413">arXiv:2003.06413</a>, <a href="https://doi.org/10.1103/PhysRevLett.125.121601">doi:10.1103/PhysRevLett.125.121601</a>. [<a href="javascript:void(0);" onclick="showCiteBibtex(decodeURIComponent('%40article%7BKanwar%3A2020xzo%2C%0A%20%20%20%20author%20%3D%20%22Kanwar%2C%20Gurtej%20and%20Albergo%2C%20Michael%20S.%20and%20Boyda%2C%20Denis%20and%20Cranmer%2C%20Kyle%20and%20Hackett%2C%20Daniel%20C.%20and%20Racani%5C%60ere%2C%20S%5C%27ebastien%20and%20Rezende%2C%20Danilo%20Jimenez%20and%20Shanahan%2C%20Phiala%20E.%22%2C%0A%20%20%20%20title%20%3D%20%22%7BEquivariant%20flow-based%20sampling%20for%20lattice%20gauge%20theory%7D%22%2C%0A%20%20%20%20eprint%20%3D%20%222003.06413%22%2C%0A%20%20%20%20archivePrefix%20%3D%20%22arXiv%22%2C%0A%20%20%20%20primaryClass%20%3D%20%22hep-lat%22%2C%0A%20%20%20%20reportNumber%20%3D%20%22MIT-CTP/5181%22%2C%0A%20%20%20%20doi%20%3D%20%2210.1103/PhysRevLett.125.121601%22%2C%0A%20%20%20%20journal%20%3D%20%22Phys.%20Rev.%20Lett.%22%2C%0A%20%20%20%20volume%20%3D%20%22125%22%2C%0A%20%20%20%20number%20%3D%20%2212%22%2C%0A%20%20%20%20pages%20%3D%20%22121601%22%2C%0A%20%20%20%20year%20%3D%20%222020%22%0A%7D%0A'));">Bibtex</a>] <a class="cite-backref" href="#ref-Kanwar:2020xzo-1" title="Jump back to reference 1">↩</a></p>
+<p id='Mishra-Sharma:2020kjb'>Siddharth Mishra-Sharma and Kyle Cranmer.
+<span class="bibtex-protected">Semi-parametric γ-ray modeling with Gaussian processes and variational inference</span>.
+In <em><span class="bibtex-protected">34th Conference on Neural Information Processing Systems</span></em>. 10 2020.
+<a href="https://arxiv.org/abs/2010.10450">arXiv:2010.10450</a>. [<a href="javascript:void(0);" onclick="showCiteBibtex(decodeURIComponent('%40inproceedings%7BMishra-Sharma%3A2020kjb%2C%0A%20%20%20%20author%20%3D%20%22Mishra-Sharma%2C%20Siddharth%20and%20Cranmer%2C%20Kyle%22%2C%0A%20%20%20%20title%20%3D%20%22%7BSemi-parametric%20%24%5Cgamma%24-ray%20modeling%20with%20Gaussian%20processes%20and%20variational%20inference%7D%22%2C%0A%20%20%20%20booktitle%20%3D%20%22%7B34th%20Conference%20on%20Neural%20Information%20Processing%20Systems%7D%22%2C%0A%20%20%20%20eprint%20%3D%20%222010.10450%22%2C%0A%20%20%20%20archivePrefix%20%3D%20%22arXiv%22%2C%0A%20%20%20%20primaryClass%20%3D%20%22astro-ph.HE%22%2C%0A%20%20%20%20month%20%3D%20%2210%22%2C%0A%20%20%20%20year%20%3D%20%222020%22%0A%7D%0A'));">Bibtex</a>] <a class="cite-backref" href="#ref-Mishra-Sharma:2020kjb-1" title="Jump back to reference 1">↩</a></p>
+<p id='Rezende:2020hrd'>Danilo&nbsp;Jimenez Rezende, George Papamakarios, Sébastien Racanière, Michael&nbsp;S. Albergo, Gurtej Kanwar, Phiala&nbsp;E. Shanahan, and Kyle Cranmer.
+<span class="bibtex-protected">Normalizing Flows on Tori and Spheres</span>.
+<em>ICML 2020</em>, 2 2020.
+<a href="https://arxiv.org/abs/2002.02428">arXiv:2002.02428</a>. [<a href="javascript:void(0);" onclick="showCiteBibtex(decodeURIComponent('%40article%7BRezende%3A2020hrd%2C%0A%20%20%20%20author%20%3D%20%22Rezende%2C%20Danilo%20Jimenez%20and%20Papamakarios%2C%20George%20and%20Racani%5C%60ere%2C%20S%5C%27ebastien%20and%20Albergo%2C%20Michael%20S.%20and%20Kanwar%2C%20Gurtej%20and%20Shanahan%2C%20Phiala%20E.%20and%20Cranmer%2C%20Kyle%22%2C%0A%20%20%20%20title%20%3D%20%22%7BNormalizing%20Flows%20on%20Tori%20and%20Spheres%7D%22%2C%0A%20%20%20%20eprint%20%3D%20%222002.02428%22%2C%0A%20%20%20%20archivePrefix%20%3D%20%22arXiv%22%2C%0A%20%20%20%20journal%20%3D%20%22ICML%202020%22%2C%0A%20%20%20%20primaryClass%20%3D%20%22stat.ML%22%2C%0A%20%20%20%20month%20%3D%20%222%22%2C%0A%20%20%20%20year%20%3D%20%222020%22%0A%7D%0A'));">Bibtex</a>] <a class="cite-backref" href="#ref-Rezende:2020hrd-1" title="Jump back to reference 1">↩</a></p>
+<p id='Serviansky:2020qwa'>Hadar Serviansky, Nimrod Segol, Jonathan Shlomi, Kyle Cranmer, Eilam Gross, Haggai Maron, and Yaron Lipman.
+<span class="bibtex-protected">Set2Graph: Learning Graphs From Sets</span>.
+<em>NeurIPS2020</em>, 2 2020.
+<a href="https://arxiv.org/abs/2002.08772">arXiv:2002.08772</a>. [<a href="javascript:void(0);" onclick="showCiteBibtex(decodeURIComponent('%40article%7BServiansky%3A2020qwa%2C%0A%20%20%20%20author%20%3D%20%22Serviansky%2C%20Hadar%20and%20Segol%2C%20Nimrod%20and%20Shlomi%2C%20Jonathan%20and%20Cranmer%2C%20Kyle%20and%20Gross%2C%20Eilam%20and%20Maron%2C%20Haggai%20and%20Lipman%2C%20Yaron%22%2C%0A%20%20%20%20title%20%3D%20%22%7BSet2Graph%3A%20Learning%20Graphs%20From%20Sets%7D%22%2C%0A%20%20%20%20eprint%20%3D%20%222002.08772%22%2C%0A%20%20%20%20archivePrefix%20%3D%20%22arXiv%22%2C%0A%20%20%20%20journal%20%3D%20%22NeurIPS2020%22%2C%0A%20%20%20%20primaryClass%20%3D%20%22cs.LG%22%2C%0A%20%20%20%20month%20%3D%20%222%22%2C%0A%20%20%20%20year%20%3D%20%222020%22%0A%7D%0A'));">Bibtex</a>] <a class="cite-backref" href="#ref-Serviansky:2020qwa-1" title="Jump back to reference 1">↩</a></p>
+<p id='Shlomi:2020ufi'>Jonathan Shlomi, Sanmay Ganguly, Eilam Gross, Kyle Cranmer, Yaron Lipman, Hadar Serviansky, Haggai Maron, and Nimrod Segol.
+<span class="bibtex-protected">Secondary Vertex Finding in Jets with Neural Networks</span>.
+8 2020.
+<a href="https://arxiv.org/abs/2008.02831">arXiv:2008.02831</a>. [<a href="javascript:void(0);" onclick="showCiteBibtex(decodeURIComponent('%40article%7BShlomi%3A2020ufi%2C%0A%20%20%20%20author%20%3D%20%22Shlomi%2C%20Jonathan%20and%20Ganguly%2C%20Sanmay%20and%20Gross%2C%20Eilam%20and%20Cranmer%2C%20Kyle%20and%20Lipman%2C%20Yaron%20and%20Serviansky%2C%20Hadar%20and%20Maron%2C%20Haggai%20and%20Segol%2C%20Nimrod%22%2C%0A%20%20%20%20title%20%3D%20%22%7BSecondary%20Vertex%20Finding%20in%20Jets%20with%20Neural%20Networks%7D%22%2C%0A%20%20%20%20eprint%20%3D%20%222008.02831%22%2C%0A%20%20%20%20archivePrefix%20%3D%20%22arXiv%22%2C%0A%20%20%20%20journal%20%3D%20%22%22%2C%0A%20%20%20%20primaryClass%20%3D%20%22hep-ex%22%2C%0A%20%20%20%20month%20%3D%20%228%22%2C%0A%20%20%20%20year%20%3D%20%222020%22%0A%7D%0A'));">Bibtex</a>] <a class="cite-backref" href="#ref-Shlomi:2020ufi-1" title="Jump back to reference 1">↩</a></p>
+
             </div>
             <!-- /.entry-content -->
     <hr />
