@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>Casseville Checkers - Theory And Practice</title>
+    <title>agentic AI - Theory And Practice</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -9,23 +9,16 @@
 
 
 
-<link rel="canonical" href="https://theoryandpractice.org/2025/12/cassville-checkers/">
 
-        <meta name="author" content="Kyle Cranmer" />
-        <meta name="keywords" content="Claude,python,machine learning" />
-        <meta name="description" content="Cassville Checkers is a marble racing board game that has been played by my wife&#39;s family for generations. I used Claude Code to build an RL environment and web interface for the game." />
+    <meta name="author" content="Kyle Cranmer" />
+    <meta name="keywords" content="agentic AI" />
 
+    <!-- Open Graph tags -->
         <meta property="og:site_name" content="Theory And Practice" />
-        <meta property="og:type" content="article"/>
-        <meta property="og:title" content="Casseville Checkers"/>
-        <meta property="og:url" content="https://theoryandpractice.org/2025/12/cassville-checkers/"/>
-        <meta property="og:description" content="Cassville Checkers is a marble racing board game that has been played by my wife&#39;s family for generations. I used Claude Code to build an RL environment and web interface for the game."/>
-        <meta property="article:published_time" content="2025-12-24" />
-            <meta property="article:section" content="Blog" />
-            <meta property="article:tag" content="Claude" />
-            <meta property="article:tag" content="python" />
-            <meta property="article:tag" content="machine learning" />
-            <meta property="article:author" content="Kyle Cranmer" />
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="Theory And Practice"/>
+        <meta property="og:url" content="https://theoryandpractice.org"/>
+        <meta property="og:description" content="Theory And Practice"/>
 
 
 
@@ -40,8 +33,7 @@
         <link href="https://theoryandpractice.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
               title="Theory And Practice ATOM Feed"/>
 
-        <link href="https://theoryandpractice.org/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate"
-              title="Theory And Practice Blog ATOM Feed"/>
+
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3337202-1"></script>
     <script>
@@ -81,7 +73,7 @@ Theory And Practice            </a>
                     <li><a href="/pages/Research.html">Research</a></li>
                     <li><a href="/pages/projects.html">Projects</a></li>
                     <li><a href="/pages/in-the-news.html">Media & Outreach</a></li>
-                        <li class="active">
+                        <li >
                             <a href="https://theoryandpractice.org/category/blog.html">Blog</a>
                         </li>
             </ul>
@@ -99,65 +91,13 @@ Theory And Practice            </a>
 <div class="container">
     <div class="row">
         <div class="col-sm-9">
-    <section id="content">
-        <article>
-            <header class="page-header">
-                <h1>
-                    <a href="https://theoryandpractice.org/2025/12/cassville-checkers/"
-                       rel="bookmark"
-                       title="Permalink to Casseville Checkers">
-                        Casseville Checkers
-                    </a>
-                </h1>
-            </header>
-            <div class="entry-content">
-                <div class="panel">
-                    <div class="panel-body">
-<footer class="post-info">
-    <span class="label label-default">Date</span>
-    <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2025-12-24T00:00:00-06:00"> Wed 24 December 2025</time>
-    </span>
-
-
-
-
-
-<span class="label label-default">Tags</span>
-	<a href="https://theoryandpractice.org/tag/claude.html">Claude</a>
-        /
-	<a href="https://theoryandpractice.org/tag/python.html">python</a>
-        /
-	<a href="https://theoryandpractice.org/tag/machine-learning.html">machine learning</a>
-    
-</footer><!-- /.post-info -->                    </div>
+            <article>
+                <h2><a href="https://theoryandpractice.org/2025/12/migrating-with-claude/">Migrating with Claude</a></h2>
+                <div class="summary"><p>I migrated my personal website from Pelican 3.7 to Pelican 4.11 using Claude Code, Anthropic's agentic AI coding tool. Here's what changed and how it went.</p>
+                    <a class="btn btn-default btn-xs" href="https://theoryandpractice.org/2025/12/migrating-with-claude/">more ...</a>
                 </div>
-                <p><img src="https://theoryandpractice.org/images/casseville-checkers.jpeg" alt="Cassville checkers board" width="35%" style="float: right; margin-left: 15px; margin-bottom: 10px;"/></p>
-<p>Cassville Checkers is a marble racing board game that has been played by my wife's family for generations. The game is played on a handmade wooden board with a distinctive ring track. Marbles race around a circular track, competing to be the first to get all their pieces home.</p>
-<p>I've wanted to try coding up this game in a reinforcement learning environment for a long time. I started to do this back in 2018, but I didn't make it very far and it was never a high priority.</p>
-<p>But recently, a friend of mine (Sidharth Mishra-Sharma) encouraged me to try using claude code (from Anthropic). This is an advanced agentic AI coding tool. I used this project as a test case, and I was very impressed.</p>
-<p><br clear="all"/></p>
-<p>Not only did claude code create the RL environment, I also had it build a web user interface to play the game and help me debug it. I also had it write some benchmarking scripts to analyze the game and write it all up in a reproducible way using MyST:</p>
-<ul>
-<li><a href="https://github.com/cranmer/cassville-checkers">Project on GitHub</a></li>
-<li><a href="https://theoryandpractice.org/cassville-checkers/">A report analyzing different strategies for playing the game</a></li>
-</ul>
-<div>
-<img src="https://theoryandpractice.org/images/casseville_checkers_UI_screenshot.png" alt="Cassville checkers board" width="90%" style="display: block; margin: auto;" />
-<div style="text-align: center; font-style: italic;">A screenshot of the  the Cassville checkers web version.</div>
-</div>
-            </div>
-            <!-- /.entry-content -->
-    <hr />
-    <!-- AddThis Button BEGIN -->
-    <div class="addthis_toolbox addthis_default_style">
-            <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-            <a class="addthis_button_tweet"></a>
-            <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
-    </div>
-    <!-- AddThis Button END -->
-        </article>
-    </section>
+            </article>
+            <hr/>
 
         </div>
         <div class="col-sm-3" id="sidebar">
@@ -187,10 +127,6 @@ Theory And Practice            </a>
   <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
   <ul class="list-group" id="recentposts">
     <li class="list-group-item"><a href="https://theoryandpractice.org/2025/12/migrating-with-claude/">Migrating with Claude</a></li>
-    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/12/travel-map/">Travel Map</a></li>
-    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/12/cassville-checkers/">Casseville Checkers</a></li>
-    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/09/The Bittersweet Lesson/">The Bittersweet Lesson</a></li>
-    <li class="list-group-item"><a href="https://theoryandpractice.org/2024/10/Yes, we did discover the Higgs!/">Yes, we did discover the Higgs!</a></li>
   </ul>
 </li>
 <!-- End Sidebar/Recent Posts -->
@@ -246,7 +182,5 @@ Theory And Practice            </a>
 
 
 
-        <script type="text/javascript">var addthis_config = {"data_track_addressbar": true};</script>
-    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5332e76b5340f5f3"></script>
 </body>
 </html>

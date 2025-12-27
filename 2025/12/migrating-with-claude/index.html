@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>Casseville Checkers - Theory And Practice</title>
+    <title>Migrating with Claude - Theory And Practice</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -9,22 +9,22 @@
 
 
 
-<link rel="canonical" href="https://theoryandpractice.org/2025/12/cassville-checkers/">
+<link rel="canonical" href="https://theoryandpractice.org/2025/12/migrating-with-claude/">
 
         <meta name="author" content="Kyle Cranmer" />
-        <meta name="keywords" content="Claude,python,machine learning" />
-        <meta name="description" content="Cassville Checkers is a marble racing board game that has been played by my wife&#39;s family for generations. I used Claude Code to build an RL environment and web interface for the game." />
+        <meta name="keywords" content="website,Claude,agentic AI" />
+        <meta name="description" content="I migrated my personal website from Pelican 3.7 to Pelican 4.11 using Claude Code, Anthropic&#39;s agentic AI coding tool. Here&#39;s what changed and how it went." />
 
         <meta property="og:site_name" content="Theory And Practice" />
         <meta property="og:type" content="article"/>
-        <meta property="og:title" content="Casseville Checkers"/>
-        <meta property="og:url" content="https://theoryandpractice.org/2025/12/cassville-checkers/"/>
-        <meta property="og:description" content="Cassville Checkers is a marble racing board game that has been played by my wife&#39;s family for generations. I used Claude Code to build an RL environment and web interface for the game."/>
-        <meta property="article:published_time" content="2025-12-24" />
+        <meta property="og:title" content="Migrating with Claude"/>
+        <meta property="og:url" content="https://theoryandpractice.org/2025/12/migrating-with-claude/"/>
+        <meta property="og:description" content="I migrated my personal website from Pelican 3.7 to Pelican 4.11 using Claude Code, Anthropic&#39;s agentic AI coding tool. Here&#39;s what changed and how it went."/>
+        <meta property="article:published_time" content="2025-12-27" />
             <meta property="article:section" content="Blog" />
+            <meta property="article:tag" content="website" />
             <meta property="article:tag" content="Claude" />
-            <meta property="article:tag" content="python" />
-            <meta property="article:tag" content="machine learning" />
+            <meta property="article:tag" content="agentic AI" />
             <meta property="article:author" content="Kyle Cranmer" />
 
 
@@ -103,10 +103,10 @@ Theory And Practice            </a>
         <article>
             <header class="page-header">
                 <h1>
-                    <a href="https://theoryandpractice.org/2025/12/cassville-checkers/"
+                    <a href="https://theoryandpractice.org/2025/12/migrating-with-claude/"
                        rel="bookmark"
-                       title="Permalink to Casseville Checkers">
-                        Casseville Checkers
+                       title="Permalink to Migrating with Claude">
+                        Migrating with Claude
                     </a>
                 </h1>
             </header>
@@ -116,7 +116,7 @@ Theory And Practice            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2025-12-24T00:00:00-06:00"> Wed 24 December 2025</time>
+        <i class="fa fa-calendar"></i><time datetime="2025-12-27T00:00:00-06:00"> Sat 27 December 2025</time>
     </span>
 
 
@@ -124,28 +124,70 @@ Theory And Practice            </a>
 
 
 <span class="label label-default">Tags</span>
+	<a href="https://theoryandpractice.org/tag/website.html">website</a>
+        /
 	<a href="https://theoryandpractice.org/tag/claude.html">Claude</a>
         /
-	<a href="https://theoryandpractice.org/tag/python.html">python</a>
-        /
-	<a href="https://theoryandpractice.org/tag/machine-learning.html">machine learning</a>
+	<a href="https://theoryandpractice.org/tag/agentic-ai.html">agentic AI</a>
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                <p><img src="https://theoryandpractice.org/images/casseville-checkers.jpeg" alt="Cassville checkers board" width="35%" style="float: right; margin-left: 15px; margin-bottom: 10px;"/></p>
-<p>Cassville Checkers is a marble racing board game that has been played by my wife's family for generations. The game is played on a handmade wooden board with a distinctive ring track. Marbles race around a circular track, competing to be the first to get all their pieces home.</p>
-<p>I've wanted to try coding up this game in a reinforcement learning environment for a long time. I started to do this back in 2018, but I didn't make it very far and it was never a high priority.</p>
-<p>But recently, a friend of mine (Sidharth Mishra-Sharma) encouraged me to try using claude code (from Anthropic). This is an advanced agentic AI coding tool. I used this project as a test case, and I was very impressed.</p>
-<p><br clear="all"/></p>
-<p>Not only did claude code create the RL environment, I also had it build a web user interface to play the game and help me debug it. I also had it write some benchmarking scripts to analyze the game and write it all up in a reproducible way using MyST:</p>
+                <p>I've been meaning to update my personal website infrastructure for a while. The site was running on Pelican 3.7.1, which was getting long in the tooth. This December, I finally migrated to Pelican 4.11 using <a href="https://claude.com/claude-code">Claude Code</a>, Anthropic's agentic AI coding tool.</p>
+<h2>Migration Overview</h2>
+<p>This repository is a fresh migration of the original <a href="https://github.com/cranmer/TheoryAndPractice">TheoryAndPractice</a> repository. The migration involved several key changes:</p>
 <ul>
-<li><a href="https://github.com/cranmer/cassville-checkers">Project on GitHub</a></li>
-<li><a href="https://theoryandpractice.org/cassville-checkers/">A report analyzing different strategies for playing the game</a></li>
+<li><strong>Pelican version</strong>: 3.7.1 → 4.11.0</li>
+<li><strong>Environment management</strong>: Now uses <a href="https://pixi.sh/">pixi</a> for reproducible environments</li>
+<li><strong>Plugin system</strong>: Migrated to Pelican 4's namespace plugin architecture where possible</li>
+<li><strong>Deployment</strong>: GitHub Actions workflow deploys to <a href="https://github.com/cranmer/cranmer.github.io">cranmer/cranmer.github.io</a></li>
 </ul>
-<div>
-<img src="https://theoryandpractice.org/images/casseville_checkers_UI_screenshot.png" alt="Cassville checkers board" width="90%" style="display: block; margin: auto;" />
-<div style="text-align: center; font-style: italic;">A screenshot of the  the Cassville checkers web version.</div>
-</div>
+<h3>What Was Preserved</h3>
+<ul>
+<li>All existing content and URL structure</li>
+<li>pelican-bootstrap3 theme with Bootswatch 'flatly' styling</li>
+<li>Custom per-page JavaScript and CSS functionality</li>
+<li>Jupyter notebook embedding via liquid tags</li>
+<li>BibTeX bibliography support</li>
+</ul>
+<h2>Key Changes</h2>
+<h3>Added</h3>
+<ul>
+<li>Fresh repository migrated from Pelican 3.7 to Pelican 4.11</li>
+<li>pixi environment management for reproducible builds</li>
+<li>GitHub Actions deployment workflow to cranmer.github.io</li>
+<li>Publications page (<code>/publications.html</code>) generated from BibTeX</li>
+<li>Bluesky social link with custom butterfly icon</li>
+<li>BibTeX modal popups with copy-to-clipboard functionality</li>
+<li>Markdown rendering inside HTML blocks (<code>md_in_html</code> extension)</li>
+</ul>
+<h3>Fixed</h3>
+<ul>
+<li>Markdown links not rendering inside HTML <code>&lt;div&gt;</code> blocks</li>
+<li>Floating images appearing in blog index summaries</li>
+<li>BibTeX popup windows blocked by modern browsers (replaced with Bootstrap modals)</li>
+</ul>
+<h3>Plugin Modifications</h3>
+<p>The migration required modifications to several plugins:</p>
+<p><strong>pelican-cite</strong>: Added Bootstrap modal for viewing BibTeX entries with copy-to-clipboard functionality.</p>
+<p><strong>pelican-bibtex</strong>: Added Bootstrap modal replacing the old <code>window.open</code> popups that modern browsers block.</p>
+<p><strong>pelican_javascript</strong>: Migrated to Pelican 4 signal API while maintaining support for per-page custom CSS and JavaScript.</p>
+<h2>Working with Claude Code</h2>
+<p>This entire migration was done in collaboration with Claude Code. The AI agent was able to:</p>
+<ul>
+<li>Understand the existing Pelican 3.7 configuration and plugin structure</li>
+<li>Set up the new pixi environment and Pelican 4.11 configuration</li>
+<li>Migrate and modify plugins to work with the new Pelican version</li>
+<li>Debug issues with template rendering and markdown processing</li>
+<li>Create the GitHub Actions deployment workflow</li>
+<li>Add new features like the BibTeX modals and Bluesky social icon</li>
+</ul>
+<p>It was a genuinely collaborative process—I would describe what I wanted, Claude would implement it, and we'd iterate on the details together.</p>
+<h2>Documentation</h2>
+<p>For full details on the setup and all changes made, see:</p>
+<ul>
+<li><a href="https://github.com/cranmer/theoryandpractice-2026/blob/main/README.md">README.md</a> - Complete documentation on setup, deployment, and configuration</li>
+<li><a href="https://github.com/cranmer/theoryandpractice-2026/blob/main/CHANGELOG.md">CHANGELOG.md</a> - Detailed list of all changes made during migration</li>
+</ul>
             </div>
             <!-- /.entry-content -->
     <hr />
