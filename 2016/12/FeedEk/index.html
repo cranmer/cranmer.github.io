@@ -133,9 +133,8 @@ I'd like to get mathjax to work on the titles of the papers.</p>
 <p>I was looking around earlier, and I found <a href="http://jquery-plugins.net/FeedEK/FeedEK.html">FeedEK</a>, which looks pretty nice.
 Now that I've enabled <a href="https://github.com/mortada/pelican_javascript">pelican_javascript</a>, it's pretty easy. I did this first for the <a href="/2016/12/collaboration-map/">Collaboration Map</a> and this time it only took me about five minutes to add the  <a href="https://github.com/cranmer/TheoryAndPractice/tree/master/content/js">javascript</a> and <a href="https://github.com/cranmer/TheoryAndPractice/tree/master/content/css">css</a>. I'm pointing the feed to my INSPIRE profile: <code>http://inspirehep.net/rss?ln=en&amp;p=a%3AK.S.Cranmer.1</code>. </p>
 <p>All I had to do in my markdown/html was add</p>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;divRss&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-</code></pre></div>
-
+<pre><code class="language-html">&lt;div id=&quot;divRss&quot;&gt;&lt;/div&gt;
+</code></pre>
 <p>I'm still not sure how to get mathjax to render the LaTeX, but it seems more plausible now.</p>
 <h3>Here's the minimal feed:</h3>
 <hr>

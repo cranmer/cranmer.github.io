@@ -143,113 +143,109 @@ Theory And Practice            </a>
 <p><br /></p>
 <h2>Making it easier to make them with YAML</h2>
 <p>One nice thing about this appraoch is that the input to the D3.js script <a href="/downloads/files/collaboration.json">is JSON</a> (here's an example on GitHub <a href="https://github.com/cranmer/TheoryAndPractice/blob/javascript/content/downloads/files/test.json">link</a> ), so it should be easy to collaboratively guild this collaboration graph. However, the JSON is annoying to edit and the D3 script is picky. So I worked on a small script to convert a minimal YAML file into the corresponding JSON.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">yaml</span><span class="o">,</span> <span class="nn">json</span>
+<pre><code class="language-python">import sys, yaml, json
 
-<span class="k">def</span> <span class="nf">expand_dict</span><span class="p">(</span><span class="n">dict_in</span><span class="p">):</span>
-    <span class="n">dict_out</span> <span class="o">=</span> <span class="p">{}</span>
+def expand_dict(dict_in):
+    dict_out = {}
 
-    <span class="n">ditem_defaults</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span><span class="s1">&#39;ditem&#39;</span><span class="p">,</span><span class="s1">&#39;links&#39;</span><span class="p">:[],</span> <span class="s1">&#39;description&#39;</span><span class="p">:</span><span class="s1">&#39;&#39;</span><span class="p">}</span>
-    <span class="n">dict_out</span><span class="p">[</span><span class="s1">&#39;ditems&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">n</span><span class="o">=</span><span class="mi">0</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">dict_in</span><span class="p">[</span><span class="s1">&#39;ditems&#39;</span><span class="p">]:</span>
-        <span class="n">n</span><span class="o">+=</span><span class="mi">1</span>
-        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">ditem_defaults</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="o">-</span> <span class="n">i</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-            <span class="n">i</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">ditem_defaults</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
-        <span class="n">i</span><span class="p">[</span><span class="s1">&#39;ditem&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">n</span>
-        <span class="n">dict_out</span><span class="p">[</span><span class="s1">&#39;ditems&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    ditem_defaults = {'type':'ditem','links':[], 'description':''}
+    dict_out['ditems'] = []
+    n=0
+    for i in dict_in['ditems']:
+        n+=1
+        for key in ditem_defaults.keys() - i.keys():
+            i[key]=ditem_defaults[key]
+        i['ditem']=n
+        dict_out['ditems'].append(i)
 
-    <span class="n">collab_defaults</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span><span class="s1">&#39;collaboration&#39;</span><span class="p">,</span><span class="s1">&#39;description&#39;</span><span class="p">:</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;group&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">}</span>
-    <span class="n">dict_out</span><span class="p">[</span><span class="s1">&#39;collaborations&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">n</span><span class="o">=</span><span class="mi">0</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">dict_in</span><span class="p">[</span><span class="s1">&#39;collaborations&#39;</span><span class="p">]:</span>
-        <span class="n">n</span><span class="o">+=</span><span class="mi">1</span>
-        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">collab_defaults</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="o">-</span> <span class="n">i</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-            <span class="n">i</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">collab_defaults</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
-        <span class="n">i</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">n</span>
-        <span class="n">dict_out</span><span class="p">[</span><span class="s1">&#39;collaborations&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    collab_defaults = {'type':'collaboration','description':'','group':1}
+    dict_out['collaborations'] = []
+    n=0
+    for i in dict_in['collaborations']:
+        n+=1
+        for key in collab_defaults.keys() - i.keys():
+            i[key]=collab_defaults[key]
+        i['count']=n
+        dict_out['collaborations'].append(i)
 
-    <span class="n">proj_defaults</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span><span class="s1">&#39;project&#39;</span><span class="p">,</span><span class="s1">&#39;description&#39;</span><span class="p">:</span><span class="s1">&#39;&#39;</span><span class="p">}</span>
-    <span class="n">dict_out</span><span class="p">[</span><span class="s1">&#39;projects&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">n</span><span class="o">=</span><span class="mi">0</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">dict_in</span><span class="p">[</span><span class="s1">&#39;projects&#39;</span><span class="p">]:</span>
-        <span class="n">n</span><span class="o">+=</span><span class="mi">1</span>
-        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">proj_defaults</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="o">-</span> <span class="n">i</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-            <span class="n">i</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">proj_defaults</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
-        <span class="n">i</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">n</span>
-        <span class="n">dict_out</span><span class="p">[</span><span class="s1">&#39;projects&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    proj_defaults = {'type':'project','description':''}
+    dict_out['projects'] = []
+    n=0
+    for i in dict_in['projects']:
+        n+=1
+        for key in proj_defaults.keys() - i.keys():
+            i[key]=proj_defaults[key]
+        i['count']=n
+        dict_out['projects'].append(i)
 
-    <span class="k">return</span> <span class="n">dict_out</span>
+    return dict_out
 
-<span class="c1">#read files and convert</span>
-<span class="n">ydict_minimal</span><span class="o">=</span><span class="p">{}</span>
-<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;test_people.yml&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
-<span class="n">ydict_minimal</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
-<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;test_projects.yml&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
-<span class="n">ydict_minimal</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
-<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;test_colab.yml&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
-<span class="n">ydict_minimal</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
-<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+#read files and convert
+ydict_minimal={}
+f = open('test_people.yml', 'r')
+ydict_minimal.update(yaml.load(f))
+f.close()
+f = open('test_projects.yml', 'r')
+ydict_minimal.update(yaml.load(f))
+f.close()
+f = open('test_colab.yml', 'r')
+ydict_minimal.update(yaml.load(f))
+f.close()
 
-<span class="n">ydict_expanded</span> <span class="o">=</span> <span class="n">expand_dict</span><span class="p">(</span><span class="n">ydict_minimal</span><span class="p">)</span>
+ydict_expanded = expand_dict(ydict_minimal)
 
-<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;test.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">)</span>
-<span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">ydict_expanded</span><span class="p">,</span><span class="n">f</span><span class="p">,</span><span class="n">indent</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>        
-</code></pre></div>
-
+f = open('test.json', 'w+')
+json.dump(ydict_expanded,f,indent=1)
+f.close()        
+</code></pre>
 <h2>Example YAML files</h2>
-<div class="highlight"><pre><span></span><code><span class="nt">ditems</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Peter Elmer</span>
-<span class="w">  </span><span class="nt">links</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CMS</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DIANA</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Executive Board</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Steering Board</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Innovative Algorithms</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Brian Bockelman</span>
-<span class="w">  </span><span class="nt">links</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DOMA</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DIANA</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OSG</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Executive Board</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">xcache</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">iDDS</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">third party copy</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="nt">projects</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pyhf</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">func_adl</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Coffea</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uproot</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Awkward Array</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Recast</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">REANA</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MadMiner</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Scikit-Hep</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="nt">collaborations</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ATLAS</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CMS</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LHCb</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DOMA</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis Systems</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Innovative Algorithms</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SSL</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Blueprint</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Executive Board</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Steering Board</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Advisory Board</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Training, Education and Outreach</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OSG</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SCAILFIN</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DIANA</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DASPOS</span>
-</code></pre></div>
-
+<pre><code class="language-yaml">ditems:
+- name: Peter Elmer
+  links:
+  - CMS
+  - DIANA
+  - Executive Board
+  - Steering Board
+  - Innovative Algorithms
+- name: Brian Bockelman
+  links:
+  - DOMA
+  - DIANA
+  - OSG
+  - Executive Board
+  - xcache
+  - iDDS
+  - third party copy
+</code></pre>
+<pre><code class="language-yaml">projects:
+- name: pyhf
+- name: func_adl
+- name: Coffea
+- name: uproot
+- name: Awkward Array
+- name: Recast
+- name: REANA
+- name: MadMiner
+- name: Scikit-Hep
+</code></pre>
+<pre><code class="language-yaml">collaborations:
+- name: ATLAS
+- name: CMS
+- name: LHCb
+- name: DOMA
+- name: Analysis Systems
+- name: Innovative Algorithms
+- name: SSL
+- name: Blueprint
+- name: Executive Board
+- name: Steering Board
+- name: Advisory Board
+- name: Training, Education and Outreach
+- name: OSG
+- name: SCAILFIN
+- name: DIANA
+- name: DASPOS
+</code></pre>
 <hr>
             </div>
             <!-- /.entry-content -->

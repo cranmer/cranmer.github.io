@@ -128,38 +128,36 @@ Theory And Practice            </a>
                 </div>
                 <p>For the <a href="http://iris-hep.org">IRIS-HEP</a> organization we need to collect publications and update our webpage regularly. I also have to do this for our group webpage, my CV, etc. It's annoying to copy/paste all of this information. The <a href="INSPIRE">http://inspirehep.net</a> website lets you export bibtex, latex, and plain text for individual papers or a set of papers that match a search result, but it's still not very convenient for web stuff where Markdown is common. The IRIS-HEP webpage is also based on jekyll, and can parse yaml files for making publication pages. So I wanted a tool that could ingest a bunch of paper identifiers and output yaml.</p>
 <p>The new <a href="https://labs.inspirehep.net">INSPIRE beta</a> has a more modern API, so I wanted to try that out. Here's a <a href="https://github.com/cranmer/inspire_play">repo</a> with what I came up with while at CERN</p>
-<div class="highlight"><pre><span></span><code><span class="n">recid_unpublished</span> <span class="o">=</span> <span class="mi">1726790</span> <span class="c1">#notpublished</span>
-<span class="n">recid_published</span> <span class="o">=</span> <span class="mi">1705857</span> <span class="c1">#published</span>
-<span class="n">list_of_recids</span> <span class="o">=</span> <span class="p">[</span><span class="n">recid_published</span><span class="p">,</span> <span class="n">recid_unpublished</span><span class="p">]</span>
-<span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">summarize_records</span><span class="p">(</span><span class="n">list_of_recids</span><span class="p">),</span><span class="n">default_flow_style</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</code></pre></div>
-
+<pre><code class="language-python">recid_unpublished = 1726790 #notpublished
+recid_published = 1705857 #published
+list_of_recids = [recid_published, recid_unpublished]
+yaml.dump(summarize_records(list_of_recids),default_flow_style=False)
+</code></pre>
 <p>which yields</p>
-<div class="highlight"><pre><span></span><code><span class="nt">publications</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">arxiv_eprint</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;1811.12113&#39;</span>
-<span class="w">  </span><span class="nt">authors</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Aaboud, Morad; Aad, Georges; Abbott, Brad; Abdinov, Ovsat; Abeloos, Baptiste;</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">et. al.</span>
-<span class="w">  </span><span class="nt">collaboration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ATLAS</span>
-<span class="w">  </span><span class="nt">creation_date</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;2018-11-30&#39;</span>
-<span class="w">  </span><span class="nt">doi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.1007/JHEP04(2019)046</span>
-<span class="w">  </span><span class="nt">journal_title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">JHEP</span>
-<span class="w">  </span><span class="nt">journal_volume</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;04&#39;</span>
-<span class="w">  </span><span class="nt">journal_year</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2019</span>
-<span class="w">  </span><span class="nt">page_start</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;046&#39;</span>
-<span class="w">  </span><span class="nt">recid</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1705857</span>
-<span class="w">  </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Measurements of fiducial and differential cross-sections of $t\bar{t}$ production</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">with additional heavy-flavour jets in proton-proton collisions at $\sqrt{s}$ =</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">13 TeV with the ATLAS detector</span>
-<span class="w">  </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://arxiv.org/abs/1811.12113</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">arxiv_eprint</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;1903.10563&#39;</span>
-<span class="w">  </span><span class="nt">authors</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Carleo, Giuseppe; Cirac, Ignacio; Cranmer, Kyle; Daudet, Laurent; Schuld,</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">Maria; et. al.</span>
-<span class="w">  </span><span class="nt">creation_date</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;2019-03-27&#39;</span>
-<span class="w">  </span><span class="nt">recid</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1726790</span>
-<span class="w">  </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Machine learning and the physical sciences</span>
-<span class="w">  </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://arxiv.org/abs/1903.10563</span>
-</code></pre></div>
-
+<pre><code class="language-yaml">publications:
+- arxiv_eprint: '1811.12113'
+  authors: Aaboud, Morad; Aad, Georges; Abbott, Brad; Abdinov, Ovsat; Abeloos, Baptiste;
+    et. al.
+  collaboration: ATLAS
+  creation_date: '2018-11-30'
+  doi: 10.1007/JHEP04(2019)046
+  journal_title: JHEP
+  journal_volume: '04'
+  journal_year: 2019
+  page_start: '046'
+  recid: 1705857
+  title: Measurements of fiducial and differential cross-sections of $t\bar{t}$ production
+    with additional heavy-flavour jets in proton-proton collisions at $\sqrt{s}$ =
+    13 TeV with the ATLAS detector
+  url: https://arxiv.org/abs/1811.12113
+- arxiv_eprint: '1903.10563'
+  authors: Carleo, Giuseppe; Cirac, Ignacio; Cranmer, Kyle; Daudet, Laurent; Schuld,
+    Maria; et. al.
+  creation_date: '2019-03-27'
+  recid: 1726790
+  title: Machine learning and the physical sciences
+  url: https://arxiv.org/abs/1903.10563
+</code></pre>
 <p>Here's an except from the notebook</p>
 <!DOCTYPE html>
 

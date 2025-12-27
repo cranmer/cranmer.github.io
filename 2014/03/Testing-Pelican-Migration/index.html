@@ -148,10 +148,9 @@ and I don't plan on giving that up.</p>
 <li>Conversations with <a href="http://www.svenkreiss.com">Sven Kreiss</a> and <a href="http://dan.iel.fm">Forman-Mackey</a></li>
 </ul>
 <p>Great! Now I can render_math like <span class="math">\(e^{i\pi}+1 = 0\)</span> and include a little block of python with pygments</p>
-<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-        <span class="nb">print</span> <span class="s1">&#39;welcome to Pelican&#39;</span>
-</code></pre></div>
-
+<pre><code class="language-python">    def main():
+        print 'welcome to Pelican'
+</code></pre>
 <p>I was able to export my wordpress site to XML and import using the pelican-import tool.  The images were a bit of a disaster, so I had to manually change all of that. I was also able to make the URLs to my posts to keep the old wordpress convention. I haven't yet moved the site to <code>theoryandpractice.org</code>, but this will keep the links working if/when I do.  </p>
 <h3>Workflow issues:</h3>
 <p>I'm happy to use <code>virtualenv</code>, but it's not quite clear to me the best way to use it for pelican development. Should I be using <code>virtualenv</code> for my pelican installation, which I then use to build my site (which I think of as some data); or am I using <code>virtualenv</code> to encapsulate all my site's dependencies (themes, plugins, etc.) ? Currently, I'm not using git submodules, b/c I've heard they are somewhat <code>evil</code> (TM). This also affects the use of <code>ghp-import</code>... am I using the same repository for my pelican content and configuration as I use to deploy?  Currently, I have a separate repository for pelican source and the rendered html.</p>
@@ -7693,7 +7692,7 @@ a.anchor-link {
 </style>
 <!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<main><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=89dfb779">
+<main><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=e6c6145a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15245,7 +15244,7 @@ a.anchor-link {
 </style>
 <!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<main><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=c07894dd">
+<main><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=605a8d4f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
