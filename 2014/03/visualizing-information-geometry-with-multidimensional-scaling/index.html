@@ -168,14 +168,14 @@ To do: repeat exercise with MSSM SUSY grids published on HepData. Change from Ga
 To do: move to a non-number counting model, generate graph of KL distances, use shortest path on this graph (via Dijkstra's algorithm) to approximate the geodesic from the fisher information metric -- perhaps using <a href="http://www.boost.org/doc/libs/1_55_0/libs/graph/doc/index.html">boost libraries</a> or the code from <a href="http://arxiv.org/abs/0802.2050">FINE</a>, amazingly <a href="http://tbayes.eecs.umich.edu/kmcarter/fine_doc">the code is available</a> -- nicely done Kevin Carter!</p>
 <p>For convenience, the original notebook is embedded below (using the pelican liquid notebook plugin)</p>
 <hr>
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=eff4e2e3"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=6519aa24"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Visualizing-information-geometry-with-multidimensional-scaling">Visualizing information geometry with multidimensional scaling<a class="anchor-link" href="#Visualizing-information-geometry-with-multidimensional-scaling">¶</a></h1>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=822f14c3"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=c32e0126"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><em>License:</em> <a href="http://opensource.org/licenses/BSD-3-Clause"><em>BSD</em></a>
@@ -184,14 +184,14 @@ To do: move to a non-number counting model, generate graph of KL distances, use 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=1a7982e3"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=b54b76ea"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">¶</a></h1>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=34adca08"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=c70a2432"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>When I was a graduate student I went to a conference in Germany about neural networks. I didn't know anyone at the conference, and during lunch I joined a Japanese man sitting by himself. We started to chat, and he introduced himself as
@@ -201,7 +201,7 @@ To do: move to a non-number counting model, generate graph of KL distances, use 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=eb1be998"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=31237ba0"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The starting point for informaiton geometry is that one defines the <a href="http://en.wikipedia.org/wiki/Fisher_information_metric">Fisher information metric</a></p>
@@ -215,21 +215,21 @@ g_{ij}(\vec\alpha) = E\left[  -\partial_i \partial_j \ln L(\vec\alpha) \left | \
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=e59432fc"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=2660bb37"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="The-project">The project<a class="anchor-link" href="#The-project">¶</a></h1>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=11fe45ef"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=dfd93033"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="http://en.wikipedia.org/wiki/Whitney_embedding_theorem">Almost any 2-d Manifold (surface)</a> can be <a href="http://en.wikipedia.org/wiki/Embedding#Riemannian_geometry">embedded</a> into 3-d in a way that preserves the metric. In the case of the 2-d surface defined by the $(\mu,\sigma)$ of the Gaussian distribution, that embedding into 3-d is the pseudo-sphere I mentioned above. Can we use some numerical algorithms to 'discover' that embedding without ever explicitly figuring out the mapping $(\mu,\sigma) \to \mathbb{R}^3$?</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=84c2fbe6"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=cdb6e1f7"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Eventually, what I'd like to do is create some general purpose code that allows me to make these embeddings to visualize the surface based on an arbitrary Fisher information metric $g_{ij}(\vec\alpha)$.  That is going to take some more work, because calculating hte distance between points is a bit involved.</p>
@@ -251,14 +251,14 @@ D_F(\mu_1,\sigma_1;\mu_2,\sigma_2)) = \sqrt{2}\ln\left[ \frac{
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=08a3f034"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=08795814"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>First let's get the basics imports out of the way:</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=ee38d254">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=3d75b99b">
 <div class="input">
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
@@ -280,7 +280,7 @@ D_F(\mu_1,\sigma_1;\mu_2,\sigma_2)) = \sqrt{2}\ln\left[ \frac{
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=bc423d00">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=8bd4c875">
 <div class="input">
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
@@ -323,14 +323,14 @@ D_F(\mu_1,\sigma_1;\mu_2,\sigma_2)) = \sqrt{2}\ln\left[ \frac{
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=492a022b"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=24087768"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now let's make a grid in the $(\mu,\sigma)$ plane that is n_samples x n_samples</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=de46458c">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=5a66aca6">
 <div class="input">
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
@@ -350,14 +350,14 @@ D_F(\mu_1,\sigma_1;\mu_2,\sigma_2)) = \sqrt{2}\ln\left[ \frac{
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=82e5ecc7"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=1da4182c"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now let's code up that handy-dandy distance measure (this would be a big numerical project for an arbitrary metric $g_{ij}(\vec\alpha)$ -- let's takle that later.)</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=71784297">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=f099748d">
 <div class="input">
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
@@ -379,14 +379,14 @@ D_F(\mu_1,\sigma_1;\mu_2,\sigma_2)) = \sqrt{2}\ln\left[ \frac{
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=5d4b9f80"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=8a3e4ff6"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now let's loop through all the pairs of points and calculate the distance between them. For some reason this is referred to as "dissimilarity" in a lot of MDS literature.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=8a6b0ad6">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=ca211834">
 <div class="input">
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
@@ -404,14 +404,14 @@ D_F(\mu_1,\sigma_1;\mu_2,\sigma_2)) = \sqrt{2}\ln\left[ \frac{
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=5fc8bf7e"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=bc051fb3"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>And now we can use scikit-learn's MDS implementation to embed these points in 3d and 2d so that the euclidean distance between points in the embedding corresponds to the Fisher information distance we calculated above.  So even though we start with a 2d grid, the 2d embeddign will not look the same b/c the grid is not uniformly spaced in terms of the information distance.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=12736719">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=f6911218">
 <div class="input">
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
@@ -430,14 +430,14 @@ D_F(\mu_1,\sigma_1;\mu_2,\sigma_2)) = \sqrt{2}\ln\left[ \frac{
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=73f5f914"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=cfe9fc6c"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Ok, the hard work is done, now let's make some plots.  Let's color each point so we can see the correspondence.  The colors will mainly stripe along a constant mean (as in all green points will correspond to a mean of ~0).</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=00f23fc8">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=1baaf3d0">
 <div class="input">
 <div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
@@ -2878,7 +2878,7 @@ ABRIrAEAABRIrAEAABRIrAEAABRIrAEAABToC3PRk3G2sn5hAAAAAElFTkSuQmCC
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=9ff76f4a"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=e55b98a1"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><em>Wow! Super cool! That looks like the pseudo-sphere!</em></p>
@@ -2888,21 +2888,21 @@ ABRIrAEAABRIrAEAABRIrAEAABRIrAEAABToC3PRk3G2sn5hAAAAAElFTkSuQmCC
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=5a4284db"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=96ddf46b"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <img alt="No description has been provided for this image" src="http://web1.kcn.jp/hp28ah77/fig20_1n2.gif" width="400"/>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=fe773089"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=309b8d67"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>So that was a very fun weekend project.  I'm impressed with scikit-learn and how well the MDS algorithm discovered the pseudo-sphere.  Now to think about how to visualize some more tricky theoretical physics models where I can describe the information metric, but it's not so easy to calculate the distance between random points in that space.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=38e01fc1"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=a46ef1fe"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><em>This post was created entirely in IPython notebook.  Download the raw notebook</em>
