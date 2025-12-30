@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Collaborators</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+
+        <meta name="author" content="Kyle Cranmer" />
+
+    <!-- Open Graph tags -->
+        <meta property="og:site_name" content="Theory And Practice" />
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="Theory And Practice"/>
+        <meta property="og:url" content="https://theoryandpractice.org"/>
+        <meta property="og:description" content="Theory And Practice"/>
+            <meta property="og:image"
+                  content="https://theoryandpractice.org/images/TheoryAndPractice-logo-byline-wide.png"/>
+
+    <meta name="twitter:dnt" content="on">
+    <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="@kylecranmer">
+        <meta name="twitter:creator" content="@kylecranmer">
+    <meta name="twitter:domain" content="https://theoryandpractice.org">
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://theoryandpractice.org/theme/css/bootstrap.flatly.min.css" type="text/css"/>
+    <link href="https://theoryandpractice.org/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="https://theoryandpractice.org/theme/css/pygments/default.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://theoryandpractice.org/theme/css/style.css" type="text/css"/>
+
+<style>
+    .collaborators-intro {
+        color: #666;
+        margin-bottom: 30px;
+    }
+    .collaborator-category {
+        margin-bottom: 50px;
+    }
+    .collaborator-category h3 {
+        border-bottom: 2px solid #18bc9c;
+        padding-bottom: 10px;
+        margin-bottom: 25px;
+    }
+    .category-description {
+        color: #666;
+        font-style: italic;
+        margin-bottom: 20px;
+    }
+    .collaborators-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 25px;
+    }
+    .collaborator-card {
+        text-align: center;
+        padding: 15px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        transition: transform 0.2s, box-shadow 0.2s;
+        border-top: 3px solid #dee2e6;
+    }
+    .collaborator-card.current {
+        border-top-color: #18bc9c;
+    }
+    .collaborator-card.former {
+        border-top-color: #95a5a6;
+        opacity: 0.9;
+    }
+    .collaborator-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .status-badge {
+        display: inline-block;
+        font-size: 0.7em;
+        padding: 2px 8px;
+        border-radius: 10px;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+    .status-badge.current {
+        background: #18bc9c;
+        color: white;
+    }
+    .status-badge.former {
+        background: #95a5a6;
+        color: white;
+    }
+    .status-toggle {
+        display: inline-block;
+        margin-left: 20px;
+    }
+    .status-toggle .btn {
+        padding: 2px 10px;
+        font-size: 0.85em;
+        margin-right: 5px;
+    }
+    .status-toggle .btn.active {
+        background-color: #18bc9c;
+        border-color: #18bc9c;
+        color: white;
+    }
+    .collaborator-photo {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        margin-bottom: 12px;
+    }
+    .collaborator-photo.circular {
+        border-radius: 50%;
+    }
+    .collaborator-photo.rectangular {
+        border-radius: 8px;
+    }
+    .collaborator-photo-placeholder {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 12px auto;
+        background: #dee2e6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #6c757d;
+        font-size: 2.5em;
+    }
+    .collaborator-photo-placeholder.circular {
+        border-radius: 50%;
+    }
+    .collaborator-photo-placeholder.rectangular {
+        border-radius: 8px;
+    }
+    .collaborator-name {
+        font-weight: bold;
+        font-size: 1.05em;
+        color: #2c3e50;
+        margin-bottom: 4px;
+    }
+    .collaborator-name a {
+        color: #2c3e50;
+    }
+    .collaborator-name a:hover {
+        color: #18bc9c;
+    }
+    .collaborator-role {
+        font-size: 0.9em;
+        color: #18bc9c;
+        margin-bottom: 4px;
+    }
+    .collaborator-affiliation {
+        font-size: 0.85em;
+        color: #666;
+        margin-bottom: 8px;
+    }
+    .collaborator-years {
+        font-size: 0.8em;
+        color: #888;
+        margin-bottom: 8px;
+    }
+    .collaborator-current-position {
+        font-size: 0.8em;
+        color: #666;
+        font-style: italic;
+        margin-bottom: 8px;
+    }
+    .collaborator-thesis {
+        font-size: 0.8em;
+        color: #666;
+        margin-bottom: 8px;
+    }
+    .collaborator-thesis a {
+        color: #18bc9c;
+    }
+    .collaborator-links {
+        font-size: 1.2em;
+    }
+    .collaborator-links a {
+        color: #6c757d;
+        margin: 0 5px;
+    }
+    .collaborator-links a:hover {
+        color: #18bc9c;
+    }
+    /* Filter controls */
+    .collaborator-filters {
+        background: #f8f9fa;
+        padding: 15px;
+        margin-bottom: 25px;
+        border-radius: 4px;
+    }
+    .collaborator-filters label {
+        margin-right: 8px;
+        font-weight: bold;
+    }
+    .collaborator-filters select {
+        padding: 5px 10px;
+        margin-right: 20px;
+    }
+</style>
+
+        <link href="https://theoryandpractice.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Theory And Practice ATOM Feed"/>
+
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3337202-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', UA-3337202-1);
+    </script>
+    <!-- End Google Analytics Code -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- MathJax for LaTeX rendering -->
+    <script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true
+        }
+    };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="https://theoryandpractice.org/" class="navbar-brand">
+Theory And Practice            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                    <li><a href="/pages/cv.html">CV</a></li>
+                    <li><a href="/selected-publications.html">Publications</a></li>
+                    <li><a href="/presentations.html">Talks</a></li>
+                    <li><a href="/collaborators.html">Group</a></li>
+                    <li><a href="/pages/projects.html">Projects</a></li>
+                    <li><a href="/pages/in-the-news.html">Media & Outreach</a></li>
+                        <li >
+                            <a href="https://theoryandpractice.org/category/blog.html">Blog</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="https://theoryandpractice.org/search.html" title="Search"><i class="fa fa-search"></i></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<!-- Banner -->
+<!-- End Banner -->
+
+<!-- Content Container -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+<section id="content" class="body">
+    <h1 class="entry-title">Collaborators</h1>
+
+    <p class="collaborators-intro">Current and former students, postdocs, and research collaborators.</p>
+
+
+    <!-- Filters -->
+    <div class="collaborator-filters">
+        <label for="filter-category">Category:</label>
+        <select id="filter-category" onchange="filterCollaborators()">
+            <option value="">All</option>
+            <option value="students">Students</option>
+            <option value="postdocs">Postdocs</option>
+            <option value="scientists">Scientists</option>
+            <option value="collaborators">Collaborators</option>
+        </select>
+
+        <label>Status:</label>
+        <span class="status-toggle">
+            <button class="btn btn-default active" data-status="" onclick="setStatusFilter(this, '')">All</button>
+            <button class="btn btn-default" data-status="current" onclick="setStatusFilter(this, 'current')">Current</button>
+            <button class="btn btn-default" data-status="former" onclick="setStatusFilter(this, 'former')">Former</button>
+        </span>
+    </div>
+
+    <!-- Collaborators by Category -->
+    <section class="collaborator-category" id="cat-students" data-category="students">
+        <h3>Students</h3>
+        <p class="category-description">PhD students and undergraduate researchers.</p>
+
+        <div class="collaborators-grid">
+            <div class="collaborator-card current" data-name="Haotian Cao" data-current="true">
+                <img src="/images/collaborators/haotian-cao.jpg" alt="Haotian Cao" class="collaborator-photo circular">
+
+                <div class="collaborator-name">
+                    Haotian Cao
+                </div>
+
+                <div class="collaborator-role">PhD Student</div>
+
+                <div class="collaborator-affiliation">University of Wisconsin-Madison</div>
+
+                <div class="collaborator-years">
+                    2024 – present                </div>
+
+
+
+                <div class="collaborator-links">
+                        <a href="https://linkedin.com/in/haotian-cao-2aab431a3" target="_blank" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-card current" data-name="Raheem Hashmani" data-current="true">
+                <img src="https://rkhashmani.me/authors/admin/avatar_hu14d0eabce56bfc3665c796ac60d5ad60_410493_270x270_fill_q75_lanczos_center.jpeg" alt="Raheem Hashmani" class="collaborator-photo circular">
+
+                <div class="collaborator-name">
+                    <a href="https://rkhashmani.me" target="_blank">Raheem Hashmani</a>
+                </div>
+
+                <div class="collaborator-role">PhD Student</div>
+
+                <div class="collaborator-affiliation">University of Wisconsin-Madison</div>
+
+                <div class="collaborator-years">
+                    2023 – present                </div>
+
+
+
+                <div class="collaborator-links">
+                        <a href="https://rkhashmani.me" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://github.com/RKHashmani" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                        <a href="https://scholar.google.com/citations?user=LgmqE2QAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                        <a href="https://twitter.com/RaheemHashmani" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a>
+                        <a href="https://linkedin.com/in/raheemhashmani" target="_blank" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-card current" data-name="Edison Weik" data-current="true">
+                <img src="https://github.com/eweik.png?size=200" alt="Edison Weik" class="collaborator-photo circular">
+
+                <div class="collaborator-name">
+                    Edison Weik
+                </div>
+
+                <div class="collaborator-role">PhD Student</div>
+
+                <div class="collaborator-affiliation">New York University</div>
+
+                <div class="collaborator-years">
+                    2020 – present                </div>
+
+
+
+                <div class="collaborator-links">
+                        <a href="https://github.com/eweik" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-card current" data-name="Matthew Drnevich" data-current="true">
+                <img src="https://github.com/mdkdrnevich.png?size=200" alt="Matthew Drnevich" class="collaborator-photo circular">
+
+                <div class="collaborator-name">
+                    Matthew Drnevich
+                </div>
+
+                <div class="collaborator-role">PhD Student</div>
+
+                <div class="collaborator-affiliation">New York University</div>
+
+                <div class="collaborator-years">
+                    2020 – present                </div>
+
+
+
+                <div class="collaborator-links">
+                        <a href="https://github.com/mdkdrnevich" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-card current" data-name="Zubair Bhatti" data-current="true">
+                <img src="https://github.com/zbhatti.png?size=200" alt="Zubair Bhatti" class="collaborator-photo circular">
+
+                <div class="collaborator-name">
+                    Zubair Bhatti
+                </div>
+
+                <div class="collaborator-role">PhD Student</div>
+
+                <div class="collaborator-affiliation">New York University</div>
+
+                <div class="collaborator-years">
+                    2019 – present                </div>
+
+
+
+                <div class="collaborator-links">
+                        <a href="https://github.com/zbhatti" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-card former" data-name="Irina Espejo Morales" data-current="false">
+                <img src="https://github.com/irinaespejo.png?size=200" alt="Irina Espejo Morales" class="collaborator-photo circular">
+
+                <div class="collaborator-name">
+                    Irina Espejo Morales
+                </div>
+
+                <div class="collaborator-role">PhD Student (Data Science)</div>
+
+                <div class="collaborator-affiliation">New York University</div>
+
+                <div class="collaborator-years">
+                    2018 – 2023 (PhD 2023)                </div>
+
+
+                <div class="collaborator-current-position">Now: Postdoc at Polymathic AI</div>
+
+                <div class="collaborator-links">
+                        <a href="https://github.com/irinaespejo" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-card former" data-name="Lily Zhang" data-current="false">
+                <img src="https://lhz1029.github.io/images/lily_bio_2019_square.jpg" alt="Lily Zhang" class="collaborator-photo circular">
+
+                <div class="collaborator-name">
+                    <a href="https://lhz1029.github.io/" target="_blank">Lily Zhang</a>
+                </div>
+
+                <div class="collaborator-role">PhD Student (Data Science)</div>
+
+                <div class="collaborator-affiliation">New York University</div>
+
+                <div class="collaborator-years">
+                    2018 – 2023 (PhD 2023)                </div>
+
+
+                <div class="collaborator-current-position">Now: Researcher at Google DeepMind</div>
+
+                <div class="collaborator-links">
+                        <a href="https://lhz1029.github.io/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://github.com/lhz1029" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                        <a href="https://scholar.google.com/citations?user=fmCi9ZQAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                        <a href="https://twitter.com/lilyhzhang" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a>
+                        <a href="https://linkedin.com/in/lilyhzhang" target="_blank" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-card former" data-name="Michael Albergo" data-current="false">
+                <img src="https://github.com/malbergo.png?size=200" alt="Michael Albergo" class="collaborator-photo circular">
+
+                <div class="collaborator-name">
+                    <a href="http://malbergo.me/" target="_blank">Michael Albergo</a>
+                </div>
+
+                <div class="collaborator-role">PhD Student</div>
+
+                <div class="collaborator-affiliation">New York University</div>
+
+                <div class="collaborator-years">
+                    2018 – 2023 (PhD 2023)                </div>
+
+
+                <div class="collaborator-current-position">Now: Junior Fellow, Harvard University and IAFAI Fellow, MIT</div>
+
+                <div class="collaborator-links">
+                        <a href="http://malbergo.me/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://github.com/malbergo" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                        <a href="https://twitter.com/msalbergo" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-card former" data-name="Swapneel Mehta" data-current="false">
+                <img src="https://github.com/SwapneelM.png?size=200" alt="Swapneel Mehta" class="collaborator-photo circular">
+
+                <div class="collaborator-name">
+                    <a href="https://swapneelm.github.io/" target="_blank">Swapneel Mehta</a>
+                </div>
+
+                <div class="collaborator-role">PhD Student (Data Science)</div>
+
+                <div class="collaborator-affiliation">New York University</div>
+
+                <div class="collaborator-years">
+                    2018 – 2023 (PhD 2023)                </div>
+
+
+                <div class="collaborator-current-position">Now: Postdoc at Boston University and MIT</div>
+
+                <div class="collaborator-links">
+                        <a href="https://swapneelm.github.io/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://github.com/SwapneelM" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-card former" data-name="Lukas Heinrich" data-current="false">
+                <img src="https://github.com/lukasheinrich.png?size=200" alt="Lukas Heinrich" class="collaborator-photo circular">
+
+                <div class="collaborator-name">
+                    <a href="https://www.lukasheinrich.com/" target="_blank">Lukas Heinrich</a>
+                </div>
+
+                <div class="collaborator-role">PhD Student</div>
+
+                <div class="collaborator-affiliation">New York University</div>
+
+                <div class="collaborator-years">
+                    2014 – 2019 (PhD 2019)                </div>
+
+                <div class="collaborator-thesis">
+                    Thesis:
+                    <em>Searches for Supersymmetry, RECAST, and Contributions to Computational High Energy Physics</em>
+                </div>
+
+                <div class="collaborator-current-position">Now: Professor for Data Science for Physics, Technical University Munich</div>
+
+                <div class="collaborator-links">
+                        <a href="https://www.lukasheinrich.com/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://github.com/lukasheinrich" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                        <a href="https://twitter.com/lukasheinrich_" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-card former" data-name="Sven Kreiss" data-current="false">
+                <img src="https://www.svenkreiss.com/images/me2022_square_small.jpeg" alt="Sven Kreiss" class="collaborator-photo circular">
+
+                <div class="collaborator-name">
+                    <a href="https://www.svenkreiss.com/" target="_blank">Sven Kreiss</a>
+                </div>
+
+                <div class="collaborator-role">PhD Student</div>
+
+                <div class="collaborator-affiliation">New York University</div>
+
+                <div class="collaborator-years">
+                    2010 – 2014 (PhD 2014)                </div>
+
+                <div class="collaborator-thesis">
+                    Thesis:
+                    <em>Higgs Boson Discovery and First Property Measurements with the H -> ZZ -> 4l Channel and the Combination</em>
+                </div>
+
+                <div class="collaborator-current-position">Now: Facebook Reality Labs</div>
+
+                <div class="collaborator-links">
+                        <a href="https://www.svenkreiss.com/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://github.com/svenkreiss" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                        <a href="https://scholar.google.com/citations?user=SnjnSVEAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                        <a href="https://twitter.com/svenkreiss" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a>
+                        <a href="https://linkedin.com/in/svenkreiss" target="_blank" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-card former" data-name="James Beacham" data-current="false">
+                <img src="https://images.squarespace-cdn.com/content/v1/561e8e98e4b08e2972a76f87/f997e8c4-d8fb-4b50-a858-44eda0456fe5/Beacham_Headshot_v02_sm.jpg" alt="James Beacham" class="collaborator-photo circular">
+
+                <div class="collaborator-name">
+                    <a href="https://jbbeacham.com/" target="_blank">James Beacham</a>
+                </div>
+
+                <div class="collaborator-role">PhD Student</div>
+
+                <div class="collaborator-affiliation">New York University</div>
+
+                <div class="collaborator-years">
+                    2009 – 2014 (PhD 2014)                </div>
+
+                <div class="collaborator-thesis">
+                    Thesis:
+                    <em>Exotic Higgs, Rare Z, and a Dark Photon: Searching for New Physics at the LHC, LEP, and Jefferson Lab</em>
+                </div>
+
+                <div class="collaborator-current-position">Now: Postdoc at Duke University</div>
+
+                <div class="collaborator-links">
+                        <a href="https://jbbeacham.com/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://twitter.com/jbbeacham" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-card former" data-name="George Herbert Lewis" data-current="false">
+                <img src="https://unavatar.io/twitter/HerbieLewis" alt="George Herbert Lewis" class="collaborator-photo circular">
+
+                <div class="collaborator-name">
+                    George Herbert Lewis
+                </div>
+
+                <div class="collaborator-role">PhD Student</div>
+
+                <div class="collaborator-affiliation">New York University</div>
+
+                <div class="collaborator-years">
+                    2008 – 2013 (PhD 2013)                </div>
+
+                <div class="collaborator-thesis">
+                    Thesis:
+                    <em>Measurements and Searches for New Physics Using Top Quarks at the LHC</em>
+                </div>
+
+                <div class="collaborator-current-position">Now: Google</div>
+
+                <div class="collaborator-links">
+                        <a href="https://twitter.com/HerbieLewis" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="collaborator-category" id="cat-postdocs" data-category="postdocs">
+        <h3>Postdocs</h3>
+        <p class="category-description">Postdoctoral researchers.</p>
+
+        <div class="collaborators-grid">
+            <div class="collaborator-card current" data-name="Garrett Merz" data-current="true">
+                <img src="https://GarrettMerz.github.io/images/profile.jpeg" alt="Garrett Merz" class="collaborator-photo circular">
+
+                <div class="collaborator-name">
+                    <a href="https://garrettmerz.github.io" target="_blank">Garrett Merz</a>
+                </div>
+
+                <div class="collaborator-role">Postdoctoral Researcher</div>
+
+                <div class="collaborator-affiliation">University of Wisconsin-Madison</div>
+
+                <div class="collaborator-years">
+                    2024 – present                </div>
+
+
+
+                <div class="collaborator-links">
+                        <a href="https://garrettmerz.github.io" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://github.com/GarrettMerz" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-card current" data-name="Jay Sandesara" data-current="true">
+                <img src="https://github.com/JaySandesara.png?size=200" alt="Jay Sandesara" class="collaborator-photo circular">
+
+                <div class="collaborator-name">
+                    Jay Sandesara
+                </div>
+
+                <div class="collaborator-role">Postdoctoral Researcher</div>
+
+                <div class="collaborator-affiliation">University of Wisconsin-Madison</div>
+
+                <div class="collaborator-years">
+                    2024 – present                </div>
+
+
+
+                <div class="collaborator-links">
+                        <a href="https://github.com/JaySandesara" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                        <a href="https://twitter.com/SandesaraJay" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-card former" data-name="Siddharth Mishra-Sharma" data-current="false">
+                <img src="https://smsharma.io/assets/siddharth_headshot_small.jpg" alt="Siddharth Mishra-Sharma" class="collaborator-photo circular">
+
+                <div class="collaborator-name">
+                    <a href="https://smsharma.io" target="_blank">Siddharth Mishra-Sharma</a>
+                </div>
+
+                <div class="collaborator-role">Postdoctoral Researcher</div>
+
+                <div class="collaborator-affiliation">New York University</div>
+
+                <div class="collaborator-years">
+                    2019 – 2022                </div>
+
+
+                <div class="collaborator-current-position">Now: Member of Technical Staff at Anthropic; Assistant Professor at Boston University</div>
+
+                <div class="collaborator-links">
+                        <a href="https://smsharma.io" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://github.com/smsharma" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                        <a href="https://scholar.google.com/citations?user=hJVjhlwAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                        <a href="https://twitter.com/kdqg1" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-card former" data-name="Johann Brehmer" data-current="false">
+                <img src="https://github.com/johannbrehmer.png?size=200" alt="Johann Brehmer" class="collaborator-photo circular">
+
+                <div class="collaborator-name">
+                    <a href="https://johannbrehmer.github.io" target="_blank">Johann Brehmer</a>
+                </div>
+
+                <div class="collaborator-role">Postdoctoral Researcher</div>
+
+                <div class="collaborator-affiliation">New York University</div>
+
+                <div class="collaborator-years">
+                    2018 – 2021                </div>
+
+
+                <div class="collaborator-current-position">Now: Research Scientist at Qualcomm AI Research</div>
+
+                <div class="collaborator-links">
+                        <a href="https://johannbrehmer.github.io" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://github.com/johannbrehmer" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                        <a href="https://scholar.google.com/citations?user=ZdUMvCsAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-card former" data-name="Patrick Rieck" data-current="false">
+                <img src="https://physics.nyu.edu/experimentalparticle/images/patrick-cropped.png" alt="Patrick Rieck" class="collaborator-photo circular">
+
+                <div class="collaborator-name">
+                    Patrick Rieck
+                </div>
+
+                <div class="collaborator-role">Research Scientist</div>
+
+                <div class="collaborator-affiliation">New York University</div>
+
+                <div class="collaborator-years">
+                    2018 – 2023                </div>
+
+
+
+                <div class="collaborator-links">
+                        <a href="https://twitter.com/patrick_rieck" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-card former" data-name="Sebastian Macaluso" data-current="false">
+                <img src="https://github.com/sebastianmacaluso.png?size=200" alt="Sebastian Macaluso" class="collaborator-photo circular">
+
+                <div class="collaborator-name">
+                    Sebastian Macaluso
+                </div>
+
+                <div class="collaborator-role">Postdoctoral Researcher</div>
+
+                <div class="collaborator-affiliation">New York University</div>
+
+                <div class="collaborator-years">
+                    2018 – 2022                </div>
+
+
+                <div class="collaborator-current-position">Now: Senior Researcher at Telefonica Research</div>
+
+                <div class="collaborator-links">
+                        <a href="https://github.com/sebastianmacaluso" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-card former" data-name="Leonora Vesterbacka" data-current="false">
+                <img src="https://github.com/leonoravesterbacka.png?size=200" alt="Leonora Vesterbacka" class="collaborator-photo circular">
+
+                <div class="collaborator-name">
+                    Leonora Vesterbacka
+                </div>
+
+                <div class="collaborator-role">Postdoctoral Researcher</div>
+
+                <div class="collaborator-affiliation">New York University</div>
+
+                <div class="collaborator-years">
+                    2017 – 2020                </div>
+
+
+                <div class="collaborator-current-position">Now: Data Scientist at Vinnova</div>
+
+                <div class="collaborator-links">
+                        <a href="https://github.com/leonoravesterbacka" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                        <a href="https://linkedin.com/in/leonora-vesterbacka" target="_blank" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-card former" data-name="Gilles Louppe" data-current="false">
+                <img src="https://github.com/glouppe.png?size=200" alt="Gilles Louppe" class="collaborator-photo circular">
+
+                <div class="collaborator-name">
+                    <a href="https://glouppe.github.io/" target="_blank">Gilles Louppe</a>
+                </div>
+
+                <div class="collaborator-role">Moore-Sloan Data Science Fellow</div>
+
+                <div class="collaborator-affiliation">New York University</div>
+
+                <div class="collaborator-years">
+                    2015 – 2017                </div>
+
+
+                <div class="collaborator-current-position">Now: Associate Professor at University of Liège, Belgium</div>
+
+                <div class="collaborator-links">
+                        <a href="https://glouppe.github.io/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://github.com/glouppe" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                        <a href="https://scholar.google.com/citations?user=F_77d4QAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                        <a href="https://twitter.com/glouppe" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-card former" data-name="Duccio Pappadopulo" data-current="false">
+                <img src="https://unavatar.io/twitter/ducciolvp" alt="Duccio Pappadopulo" class="collaborator-photo circular">
+
+                <div class="collaborator-name">
+                    Duccio Pappadopulo
+                </div>
+
+                <div class="collaborator-role">Postdoctoral Researcher</div>
+
+                <div class="collaborator-affiliation">New York University</div>
+
+                <div class="collaborator-years">
+                    2014 – 2017                </div>
+
+
+
+                <div class="collaborator-links">
+                        <a href="https://twitter.com/ducciolvp" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a>
+                        <a href="https://linkedin.com/in/ducciop" target="_blank" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-card former" data-name="Catrin Bernius" data-current="false">
+                <img src="https://physics.nyu.edu/experimentalparticle/images/catrin-smaller.jpg" alt="Catrin Bernius" class="collaborator-photo circular">
+
+                <div class="collaborator-name">
+                    Catrin Bernius
+                </div>
+
+                <div class="collaborator-role">Research Scientist</div>
+
+                <div class="collaborator-affiliation">New York University</div>
+
+                <div class="collaborator-years">
+                    2012 – 2016                </div>
+
+
+                <div class="collaborator-current-position">Now: Computing Professional at SLAC</div>
+
+                <div class="collaborator-links">
+                </div>
+            </div>
+            <div class="collaborator-card former" data-name="Kirill Prokofiev" data-current="false">
+                <img src="https://physics.nyu.edu/experimentalparticle/images/Kirill.jpg" alt="Kirill Prokofiev" class="collaborator-photo circular">
+
+                <div class="collaborator-name">
+                    Kirill Prokofiev
+                </div>
+
+                <div class="collaborator-role">Postdoctoral Researcher</div>
+
+                <div class="collaborator-affiliation">New York University</div>
+
+                <div class="collaborator-years">
+                    2010 – 2014                </div>
+
+
+                <div class="collaborator-current-position">Now: Research Assistant Professor at Hong Kong University of Science & Technology</div>
+
+                <div class="collaborator-links">
+                </div>
+            </div>
+            <div class="collaborator-card former" data-name="Attila Krasznahorkay" data-current="false">
+                <img src="https://physics.nyu.edu/experimentalparticle/images/Attila_small.jpg" alt="Attila Krasznahorkay" class="collaborator-photo circular">
+
+                <div class="collaborator-name">
+                    Attila Krasznahorkay
+                </div>
+
+                <div class="collaborator-role">Postdoctoral Researcher</div>
+
+                <div class="collaborator-affiliation">New York University</div>
+
+                <div class="collaborator-years">
+                    2009 – 2012                </div>
+
+
+                <div class="collaborator-current-position">Now: CERN Fellow</div>
+
+                <div class="collaborator-links">
+                </div>
+            </div>
+            <div class="collaborator-card former" data-name="Diego Casadei" data-current="false">
+                <img src="https://physics.nyu.edu/experimentalparticle/images/diego.jpg" alt="Diego Casadei" class="collaborator-photo circular">
+
+                <div class="collaborator-name">
+                    <a href="http://www.physics.nyu.edu/people/casadei.diego.html" target="_blank">Diego Casadei</a>
+                </div>
+
+                <div class="collaborator-role">Postdoctoral Researcher</div>
+
+                <div class="collaborator-affiliation">New York University</div>
+
+                <div class="collaborator-years">
+                    2008 – 2012                </div>
+
+
+                <div class="collaborator-current-position">Now: FHNW School of Engineering and UCL Department of Physics</div>
+
+                <div class="collaborator-links">
+                        <a href="http://www.physics.nyu.edu/people/casadei.diego.html" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="collaborator-category" id="cat-scientists" data-category="scientists">
+        <h3>Scientists</h3>
+        <p class="category-description">Research scientists and staff.</p>
+
+        <div class="collaborators-grid">
+            <div class="collaborator-card current" data-name="Nils Krumnack" data-current="true">
+                <img src="https://dsi.wisc.edu/wp-content/uploads/sites/1922/2024/12/krumnack-540x540-1-300x300.jpg" alt="Nils Krumnack" class="collaborator-photo circular">
+
+                <div class="collaborator-name">
+                    <a href="https://dsi.wisc.edu/staff/krumnack-nils/" target="_blank">Nils Krumnack</a>
+                </div>
+
+                <div class="collaborator-role">Research Software Engineer</div>
+
+                <div class="collaborator-affiliation">University of Wisconsin-Madison</div>
+
+                <div class="collaborator-years">
+                    2024 – present                </div>
+
+
+
+                <div class="collaborator-links">
+                        <a href="https://dsi.wisc.edu/staff/krumnack-nils/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-card current" data-name="Alexander Held" data-current="true">
+                <img src="https://github.com/alexander-held.png?size=200" alt="Alexander Held" class="collaborator-photo circular">
+
+                <div class="collaborator-name">
+                    Alexander Held
+                </div>
+
+                <div class="collaborator-role">Postdoctoral Researcher</div>
+
+                <div class="collaborator-affiliation">University of Wisconsin-Madison</div>
+
+                <div class="collaborator-years">
+                    2023 – present                </div>
+
+
+
+                <div class="collaborator-links">
+                        <a href="https://github.com/alexander-held" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-card current" data-name="Matthew Feickert" data-current="true">
+                <img src="https://images.squarespace-cdn.com/content/v1/535ddd66e4b0e268e3eae4cf/e8c0acb6-6537-4245-9670-cc2fc5dd39d5/2024-07-12-Matthew+Feickert-scipy-portrait-crop.jpg" alt="Matthew Feickert" class="collaborator-photo circular">
+
+                <div class="collaborator-name">
+                    <a href="https://www.matthewfeickert.com" target="_blank">Matthew Feickert</a>
+                </div>
+
+                <div class="collaborator-role">Research Scientist</div>
+
+                <div class="collaborator-affiliation">University of Wisconsin-Madison</div>
+
+                <div class="collaborator-years">
+                    2023 – present                </div>
+
+
+
+                <div class="collaborator-links">
+                        <a href="https://www.matthewfeickert.com" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://github.com/matthewfeickert" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                        <a href="https://twitter.com/HEPfeickert" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a>
+                        <a href="https://linkedin.com/in/matthew-feickert-87232675" target="_blank" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="collaborator-category" id="cat-collaborators" data-category="collaborators">
+        <h3>Collaborators</h3>
+        <p class="category-description">Frequent research collaborators.</p>
+
+        <div class="collaborators-grid">
+            <div class="collaborator-card former" data-name="Taoli Cheng" data-current="false">
+                <img src="https://github.com/taolicheng.png?size=200" alt="Taoli Cheng" class="collaborator-photo circular">
+
+                <div class="collaborator-name">
+                    <a href="https://taolicheng.github.io/" target="_blank">Taoli Cheng</a>
+                </div>
+
+                <div class="collaborator-role">Postdoc at MILA (co-advised)</div>
+
+                <div class="collaborator-affiliation">MILA / NYU</div>
+
+                <div class="collaborator-years">
+                    2019 – 2022                </div>
+
+
+                <div class="collaborator-current-position">Now: Senior Research Scientist at Bosch Research</div>
+
+                <div class="collaborator-links">
+                        <a href="https://taolicheng.github.io/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://github.com/taolicheng" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</section>
+
+<script>
+var currentStatusFilter = '';
+
+function setStatusFilter(btn, status) {
+    currentStatusFilter = status;
+    // Update active button
+    document.querySelectorAll('.status-toggle .btn').forEach(function(b) {
+        b.classList.remove('active');
+    });
+    btn.classList.add('active');
+    filterCollaborators();
+}
+
+function filterCollaborators() {
+    var catFilter = document.getElementById('filter-category').value;
+
+    document.querySelectorAll('.collaborator-category').forEach(function(cat) {
+        var catId = cat.getAttribute('data-category');
+        var catVisible = !catFilter || catId === catFilter;
+
+        if (!catVisible) {
+            cat.style.display = 'none';
+        } else {
+            cat.style.display = 'block';
+
+            // Filter cards within category by status
+            var visibleCount = 0;
+            cat.querySelectorAll('.collaborator-card').forEach(function(card) {
+                var isCurrent = card.getAttribute('data-current') === 'true';
+                var statusMatch = !currentStatusFilter ||
+                    (currentStatusFilter === 'current' && isCurrent) ||
+                    (currentStatusFilter === 'former' && !isCurrent);
+
+                if (statusMatch) {
+                    card.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Hide category if no cards visible
+            if (visibleCount === 0) {
+                cat.style.display = 'none';
+            }
+        }
+    });
+}
+</script>
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Recent Posts -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+  <ul class="list-group" id="recentposts">
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/12/migrating-with-claude/">Migrating with Claude</a></li>
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/12/year-in-review-2025/">Year in Review: 2025</a></li>
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/12/travel-map/">Travel Map</a></li>
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/12/cassville-checkers/">Casseville Checkers</a></li>
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/09/The Bittersweet Lesson/">The Bittersweet Lesson</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Recent Posts -->
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="https://bsky.app/profile/kylecranmer.bsky.social"><i class="fa fa-bluesky fa-lg"></i> Bluesky</a></li>
+    <li class="list-group-item"><a href="http://twitter.com/kylecranmer"><i class="fa fa-twitter-square fa-lg"></i> twitter</a></li>
+    <li class="list-group-item"><a href="https://www.instagram.com/kyle.cranmer/"><i class="fa fa-instagram fa-lg"></i> instagram</a></li>
+    <li class="list-group-item"><a href="http://github.com/cranmer"><i class="fa fa-github-square fa-lg"></i> github</a></li>
+    <li class="list-group-item"><a href="http://www.linkedin.com/in/kylecranmer"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
+    <li class="list-group-item"><a href="https://www.youtube.com/channel/UCKl2VoIJiPYp3QhuK22b7xQ"><i class="fa fa-youtube-square fa-lg"></i> youtube</a></li>
+    <li class="list-group-item"><a href="https://inspirehep.net/literature?sort=mostrecent&size=25&page=1&q=a%3Ak.s.cranmer.1%20and%20ac%201-%3E10&ui-citation-summary=true"><i class="fa fa-inspire fa-lg"></i> INSPIRE (≤ 10 authors)</a></li>
+    <li class="list-group-item"><a href="http://scholar.google.com/citations?user=EZjSxgwAAAAJ"><i class="fa fa-google-scholar fa-lg"></i> Google Scholar</a></li>
+    <li class="list-group-item"><a href="https://orcid.org/0000-0002-5769-7094"><i class="fa fa-orcid fa-lg"></i> ORCiD</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+
+<!-- Sidebar/Links -->
+<li class="list-group-item">
+  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+  <ul class="list-group" id="links">
+    <li class="list-group-item">
+      <a href="https://theoryandpractice.org/stats-ds-book/intro.html" target="_blank">Stats & Data Science Book</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://dsi.wisc.edu" target="_blank">Data Science Institute</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://www.physics.wisc.edu/directory/cranmer-kyle/" target="_blank">My UW Physics webpage</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://iris-hep.org/" target="_blank">IRIS-HEP</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://en.wikipedia.org/wiki/Kyle_Cranmer" target="_blank">Wikipedia</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Links -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<!-- End Content Container -->
+
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2025 Kyle Cranmer
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>                <p><small>  <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/deed.en"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>
+    Content
+  licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/deed.en">Creative Commons Attribution-NonCommercial 4.0 International License</a>, except where indicated otherwise.
+</small></p>
+         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="https://theoryandpractice.org/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://theoryandpractice.org/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="https://theoryandpractice.org/theme/js/respond.min.js"></script>
+
+
+
+
+</body>
+</html>
