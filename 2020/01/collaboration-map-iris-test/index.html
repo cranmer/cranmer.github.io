@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Map of IRIS-HEP - Theory And Practice</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="https://theoryandpractice.org/2020/01/collaboration-map-iris-test/">
+
+        <meta name="author" content="Kyle Cranmer" />
+        <meta name="keywords" content="visualization" />
+        <meta name="description" content="This is a variation on the other Collaboration map aimed at IRIS-HEP. people: with description that links to their homepage. projects: specific projects or perhaps topics of discussion collaborations: groups of people brought together with some common goal, theme, or for some other organizational reason The result Making it easier …" />
+
+        <meta property="og:site_name" content="Theory And Practice" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Map of IRIS-HEP"/>
+        <meta property="og:url" content="https://theoryandpractice.org/2020/01/collaboration-map-iris-test/"/>
+        <meta property="og:description" content="This is a variation on the other Collaboration map aimed at IRIS-HEP. people: with description that links to their homepage. projects: specific projects or perhaps topics of discussion collaborations: groups of people brought together with some common goal, theme, or for some other organizational reason The result Making it easier …"/>
+        <meta property="article:published_time" content="2020-01-25" />
+            <meta property="article:section" content="Blog" />
+            <meta property="article:tag" content="visualization" />
+            <meta property="article:author" content="Kyle Cranmer" />
+            <meta property="og:image"
+                  content="https://theoryandpractice.org/images/TheoryAndPractice-logo-byline-wide.png"/>
+
+    <meta name="twitter:dnt" content="on">
+    <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="@kylecranmer">
+        <meta name="twitter:creator" content="@kylecranmer">
+    <meta name="twitter:domain" content="https://theoryandpractice.org">
+            <meta property="twitter:image"
+                  content="https://theoryandpractice.org/images/TheoryAndPractice-logo-byline-wide.png"/>
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://theoryandpractice.org/theme/css/bootstrap.flatly.min.css" type="text/css"/>
+    <link href="https://theoryandpractice.org/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="https://theoryandpractice.org/theme/css/pygments/default.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://theoryandpractice.org/theme/css/style.css" type="text/css"/>
+
+            <link rel="stylesheet" href="https://theoryandpractice.org/css/concept-map.css" type="text/css" />
+            <link rel="stylesheet" href="https://theoryandpractice.org/css/concept-map-padding.css" type="text/css" />
+
+        <link href="https://theoryandpractice.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Theory And Practice ATOM Feed"/>
+
+        <link href="https://theoryandpractice.org/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Theory And Practice Blog ATOM Feed"/>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3337202-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', UA-3337202-1);
+    </script>
+    <!-- End Google Analytics Code -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- MathJax for LaTeX rendering -->
+    <script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true
+        }
+    };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="https://theoryandpractice.org/" class="navbar-brand">
+Theory And Practice            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                    <li><a href="/pages/cv.html">CV</a></li>
+                    <li><a href="/selected-publications.html">Publications</a></li>
+                    <li><a href="/presentations.html">Talks</a></li>
+                    <li><a href="/pages/projects.html">Projects</a></li>
+                    <li><a href="/pages/in-the-news.html">Media & Outreach</a></li>
+                        <li class="active">
+                            <a href="https://theoryandpractice.org/category/blog.html">Blog</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="https://theoryandpractice.org/search.html" title="Search"><i class="fa fa-search"></i></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<!-- Banner -->
+<!-- End Banner -->
+
+<!-- Content Container -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="https://theoryandpractice.org/2020/01/collaboration-map-iris-test/"
+                       rel="bookmark"
+                       title="Permalink to Map of IRIS-HEP">
+                        Map of IRIS-HEP
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2020-01-25T00:00:00-06:00"> Sat 25 January 2020</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="https://theoryandpractice.org/tag/visualization.html">visualization</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>This is a variation on the other <a href="/2019/05/collaboration-map-iris/">Collaboration map</a> aimed at IRIS-HEP.</p>
+<ul>
+<li>people: with description that links to their homepage.</li>
+<li>projects: specific projects or perhaps topics of discussion</li>
+<li>collaborations: groups of people brought together with some common goal, theme, or for some other organizational reason </li>
+</ul>
+<h2>The result</h2>
+<div id="graph" class="conceptmap" ></div>
+<div id="graph-info"></div>
+
+<p><br /></p>
+<h2>Making it easier to make them with YAML</h2>
+<p>One nice thing about this appraoch is that the input to the D3.js script <a href="/downloads/files/collaboration.json">is JSON</a> (here's an example on GitHub <a href="https://github.com/cranmer/TheoryAndPractice/blob/javascript/content/downloads/files/test.json">link</a> ), so it should be easy to collaboratively guild this collaboration graph. However, the JSON is annoying to edit and the D3 script is picky. So I worked on a small script to convert a minimal YAML file into the corresponding JSON.</p>
+<pre><code class="language-python">import sys, yaml, json
+
+def expand_dict(dict_in):
+    dict_out = {}
+
+    ditem_defaults = {'type':'ditem','links':[], 'description':''}
+    dict_out['ditems'] = []
+    n=0
+    for i in dict_in['ditems']:
+        n+=1
+        for key in ditem_defaults.keys() - i.keys():
+            i[key]=ditem_defaults[key]
+        i['ditem']=n
+        dict_out['ditems'].append(i)
+
+    collab_defaults = {'type':'collaboration','description':'','group':1}
+    dict_out['collaborations'] = []
+    n=0
+    for i in dict_in['collaborations']:
+        n+=1
+        for key in collab_defaults.keys() - i.keys():
+            i[key]=collab_defaults[key]
+        i['count']=n
+        dict_out['collaborations'].append(i)
+
+    proj_defaults = {'type':'project','description':''}
+    dict_out['projects'] = []
+    n=0
+    for i in dict_in['projects']:
+        n+=1
+        for key in proj_defaults.keys() - i.keys():
+            i[key]=proj_defaults[key]
+        i['count']=n
+        dict_out['projects'].append(i)
+
+    return dict_out
+
+#read files and convert
+ydict_minimal={}
+f = open('test_people.yml', 'r')
+ydict_minimal.update(yaml.load(f))
+f.close()
+f = open('test_projects.yml', 'r')
+ydict_minimal.update(yaml.load(f))
+f.close()
+f = open('test_colab.yml', 'r')
+ydict_minimal.update(yaml.load(f))
+f.close()
+
+ydict_expanded = expand_dict(ydict_minimal)
+
+f = open('test.json', 'w+')
+json.dump(ydict_expanded,f,indent=1)
+f.close()        
+</code></pre>
+<h2>Example YAML files</h2>
+<pre><code class="language-yaml">ditems:
+- name: Peter Elmer
+  links:
+  - CMS
+  - DIANA
+  - Executive Board
+  - Steering Board
+  - Innovative Algorithms
+- name: Brian Bockelman
+  links:
+  - DOMA
+  - DIANA
+  - OSG
+  - Executive Board
+  - xcache
+  - iDDS
+  - third party copy
+</code></pre>
+<pre><code class="language-yaml">projects:
+- name: pyhf
+- name: func_adl
+- name: Coffea
+- name: uproot
+- name: Awkward Array
+- name: Recast
+- name: REANA
+- name: MadMiner
+- name: Scikit-Hep
+</code></pre>
+<pre><code class="language-yaml">collaborations:
+- name: ATLAS
+- name: CMS
+- name: LHCb
+- name: DOMA
+- name: Analysis Systems
+- name: Innovative Algorithms
+- name: SSL
+- name: Blueprint
+- name: Executive Board
+- name: Steering Board
+- name: Advisory Board
+- name: Training, Education and Outreach
+- name: OSG
+- name: SCAILFIN
+- name: DIANA
+- name: DASPOS
+</code></pre>
+<hr>
+            </div>
+            <!-- /.entry-content -->
+    <hr />
+    <!-- AddThis Button BEGIN -->
+    <div class="addthis_toolbox addthis_default_style">
+            <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+            <a class="addthis_button_tweet"></a>
+            <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    </div>
+    <!-- AddThis Button END -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Recent Posts -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+  <ul class="list-group" id="recentposts">
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/12/migrating-with-claude/">Migrating with Claude</a></li>
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/12/year-in-review-2025/">Year in Review: 2025</a></li>
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/12/travel-map/">Travel Map</a></li>
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/12/cassville-checkers/">Casseville Checkers</a></li>
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/09/The Bittersweet Lesson/">The Bittersweet Lesson</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Recent Posts -->
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="https://bsky.app/profile/kylecranmer.bsky.social"><i class="fa fa-bluesky fa-lg"></i> Bluesky</a></li>
+    <li class="list-group-item"><a href="http://twitter.com/kylecranmer"><i class="fa fa-twitter-square fa-lg"></i> twitter</a></li>
+    <li class="list-group-item"><a href="https://www.instagram.com/kyle.cranmer/"><i class="fa fa-instagram fa-lg"></i> instagram</a></li>
+    <li class="list-group-item"><a href="http://github.com/cranmer"><i class="fa fa-github-square fa-lg"></i> github</a></li>
+    <li class="list-group-item"><a href="http://www.linkedin.com/in/kylecranmer"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
+    <li class="list-group-item"><a href="https://www.youtube.com/channel/UCKl2VoIJiPYp3QhuK22b7xQ"><i class="fa fa-youtube-square fa-lg"></i> youtube</a></li>
+    <li class="list-group-item"><a href="https://inspirehep.net/literature?sort=mostrecent&size=25&page=1&q=a%3Ak.s.cranmer.1%20and%20ac%201-%3E10&ui-citation-summary=true"><i class="fa fa-inspire fa-lg"></i> INSPIRE (≤ 10 authors)</a></li>
+    <li class="list-group-item"><a href="http://scholar.google.com/citations?user=EZjSxgwAAAAJ"><i class="fa fa-google-scholar fa-lg"></i> Google Scholar</a></li>
+    <li class="list-group-item"><a href="https://orcid.org/0000-0002-5769-7094"><i class="fa fa-orcid fa-lg"></i> ORCiD</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+
+<!-- Sidebar/Links -->
+<li class="list-group-item">
+  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+  <ul class="list-group" id="links">
+    <li class="list-group-item">
+      <a href="https://dsi.wisc.edu" target="_blank">Data Science Institute</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://www.physics.wisc.edu/directory/cranmer-kyle/" target="_blank">My UW Physics webpage</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://iris-hep.org/" target="_blank">IRIS-HEP</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://en.wikipedia.org/wiki/Kyle_Cranmer" target="_blank">wikipedia</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Links -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<!-- End Content Container -->
+
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2025 Kyle Cranmer
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>                <p><small>  <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/deed.en"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>
+    Content
+  licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/deed.en">Creative Commons Attribution-NonCommercial 4.0 International License</a>, except where indicated otherwise.
+</small></p>
+         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="https://theoryandpractice.org/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://theoryandpractice.org/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="https://theoryandpractice.org/theme/js/respond.min.js"></script>
+
+
+
+
+        <script src="https://theoryandpractice.org/js/d3.min.js"></script>
+        <script src="https://theoryandpractice.org/js/packages.js"></script>
+        <script src="https://theoryandpractice.org/js/collaboration-map.js"></script>
+        <script src="https://theoryandpractice.org/js/iris-collaboration-map-test.js"></script>
+        <script type="text/javascript">var addthis_config = {"data_track_addressbar": true};</script>
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5332e76b5340f5f3"></script>
+</body>
+</html>
