@@ -194,6 +194,15 @@ Theory And Practice            </a>
 <li>Custom <code>pelican-presentations</code> plugin for parsing YAML presentation data</li>
 </ul>
 </li>
+<li><strong>New</strong> Projects page (<code>/projects.html</code>) with card-based layout organized by category<ul>
+<li>Custom <code>pelican-projects</code> plugin for YAML-driven project organization</li>
+<li>Card and list view toggle</li>
+<li>Category and status filtering (All/Active/Completed)</li>
+<li>Draft mode with separate preview page (<code>/projects-draft.html</code>) for unpublished projects</li>
+<li>Auto-fetch images from GitHub repos when not specified</li>
+<li>SVG images automatically get white backgrounds</li>
+</ul>
+</li>
 <li><a href="https://pagefind.app/">Pagefind</a> search with instant client-side search across all pages</li>
 <li>Bluesky social link with custom butterfly icon</li>
 <li>Custom SVG icons for Google Scholar, ORCiD, INSPIRE-HEP, arXiv, and OpenAlex (Font Awesome 4.x lacks these)</li>
@@ -226,6 +235,9 @@ Theory And Practice            </a>
 <li>
 <p><strong>pelican-selected-publications</strong>: Another new plugin that generates a curated publications page organized by research themes. Publications are defined in a YAML file that references BibTeX keys, allowing thematic grouping with category descriptions. Features include filtering by category/year/highlights, publication metrics display, profile icons, and collapsible Altmetric badges.</p>
 </li>
+<li>
+<p><strong>pelican-projects</strong>: A new plugin that generates a projects page with card-based layout. Projects are organized by category (software, research, collaborations, etc.) with card and list view options, status filtering, and draft mode support. Automatically fetches social preview images from GitHub repos and handles SVG images with white backgrounds.</p>
+</li>
 </ul>
 <h2>Working with Claude Code</h2>
 <p>This entire migration was done in collaboration with Claude Code. The AI agent was able to:</p>
@@ -235,6 +247,7 @@ Theory And Practice            </a>
 <li>Migrate and modify plugins to work with the new Pelican version</li>
 <li>Create a new <code>pelican-presentations</code> plugin from scratch, compatible with IRIS-HEP's format</li>
 <li>Create a new <code>pelican-selected-publications</code> plugin for thematic publication organization with Altmetric integration</li>
+<li>Create a new <code>pelican-projects</code> plugin for card-based project display with draft mode support</li>
 <li>Build a comprehensive CV page from PDF content</li>
 <li>Debug issues with template rendering and markdown processing</li>
 <li>Create the GitHub Actions deployment workflow</li>
