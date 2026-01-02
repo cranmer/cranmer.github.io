@@ -1,0 +1,1688 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Media & Outreach - Theory And Practice</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+
+        <meta name="author" content="Kyle Cranmer" />
+
+    <!-- Open Graph tags -->
+        <meta property="og:site_name" content="Theory And Practice" />
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="Theory And Practice"/>
+        <meta property="og:url" content="https://theoryandpractice.org"/>
+        <meta property="og:description" content="Theory And Practice"/>
+            <meta property="og:image"
+                  content="https://theoryandpractice.org/images/TheoryAndPractice-logo-byline-wide.png"/>
+
+    <meta name="twitter:dnt" content="on">
+    <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="@kylecranmer">
+        <meta name="twitter:creator" content="@kylecranmer">
+    <meta name="twitter:domain" content="https://theoryandpractice.org">
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://theoryandpractice.org/theme/css/bootstrap.flatly.min.css" type="text/css"/>
+    <link href="https://theoryandpractice.org/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="https://theoryandpractice.org/theme/css/pygments/default.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://theoryandpractice.org/theme/css/style.css" type="text/css"/>
+
+<style>
+/* Media Page Styles */
+.media-header {
+    margin-bottom: 30px;
+}
+
+.media-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 30px;
+    align-items: center;
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 4px;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.filter-group label {
+    font-weight: 600;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.filter-group select {
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: white;
+    min-width: 150px;
+}
+
+.view-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.view-btn {
+    padding: 6px 14px;
+    border: 1px solid #337ab7;
+    background: white;
+    color: #337ab7;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-radius: 4px;
+}
+
+.view-btn:hover {
+    background: #e8f4fc;
+}
+
+.view-btn.active {
+    background: #337ab7;
+    color: white;
+}
+
+/* Category Section */
+.media-category {
+    margin-bottom: 40px;
+}
+
+.media-category h2 {
+    border-bottom: 2px solid #337ab7;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.media-category h2 i {
+    margin-right: 10px;
+    color: #337ab7;
+}
+
+/* Media Grid */
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+}
+
+/* Media Card */
+.media-card {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    background: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.media-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.media-card.featured {
+    border: 2px solid #ffc107;
+}
+
+/* Card Embed */
+.media-embed {
+    position: relative;
+    width: 100%;
+    background: #f0f0f0;
+}
+
+.media-embed.has-video {
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+}
+
+.media-embed iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.media-embed img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.media-embed-placeholder {
+    width: 100%;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3em;
+    color: rgba(0,0,0,0.2);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: rgba(255,255,255,0.5);
+}
+
+/* Featured Badge */
+.media-featured {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #ffc107;
+    color: #212529;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75em;
+    font-weight: 600;
+    z-index: 10;
+}
+
+/* Card Content */
+.media-content {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.media-outlet {
+    font-size: 0.85em;
+    color: #337ab7;
+    font-weight: 600;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.media-title {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin: 0 0 10px 0;
+    color: #2c3e50;
+    line-height: 1.3;
+}
+
+.media-title a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.media-title a:hover {
+    color: #337ab7;
+}
+
+.media-description {
+    color: #666;
+    font-size: 0.9em;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    flex: 1;
+}
+
+/* Media Meta */
+.media-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    font-size: 0.85em;
+    color: #888;
+}
+
+.media-date {
+    font-weight: 500;
+}
+
+.media-link a {
+    color: #337ab7;
+    text-decoration: none;
+}
+
+.media-link a:hover {
+    text-decoration: underline;
+}
+
+/* Hidden class for filtering */
+.media-hidden {
+    display: none !important;
+}
+
+.category-hidden {
+    display: none !important;
+}
+
+/* ==================
+   List View Styles
+   ================== */
+.media-list {
+    display: none;
+}
+
+.view-list .media-grid {
+    display: none;
+}
+
+.view-list .media-list {
+    display: block;
+}
+
+.media-list-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    transition: background 0.2s;
+}
+
+.media-list-item:hover {
+    background: #f8f9fa;
+}
+
+.media-list-item.featured {
+    border-left: 3px solid #ffc107;
+}
+
+.media-list-icon {
+    width: 40px;
+    text-align: center;
+    flex-shrink: 0;
+    color: #337ab7;
+    font-size: 1.3em;
+}
+
+.media-list-outlet {
+    width: 150px;
+    flex-shrink: 0;
+    font-weight: 600;
+    color: #337ab7;
+    font-size: 0.85em;
+}
+
+.media-list-title {
+    flex: 1;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.media-list-title a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.media-list-title a:hover {
+    color: #337ab7;
+}
+
+.media-list-title .featured-star {
+    color: #ffc107;
+    margin-left: 6px;
+}
+
+.media-list-date {
+    width: 100px;
+    text-align: right;
+    color: #888;
+    font-size: 0.85em;
+    flex-shrink: 0;
+}
+
+.media-list-link {
+    width: 60px;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.media-list-link a {
+    color: #666;
+    font-size: 1.1em;
+}
+
+.media-list-link a:hover {
+    color: #337ab7;
+}
+
+/* Empty state */
+.no-media {
+    text-align: center;
+    padding: 40px;
+    color: #888;
+    font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .media-filters {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .media-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .media-list-outlet {
+        display: none;
+    }
+
+    .media-list-item {
+        flex-wrap: wrap;
+    }
+}
+</style>
+
+        <link href="https://theoryandpractice.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Theory And Practice ATOM Feed"/>
+
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3337202-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', UA-3337202-1);
+    </script>
+    <!-- End Google Analytics Code -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- MathJax for LaTeX rendering -->
+    <script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true
+        }
+    };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="https://theoryandpractice.org/" class="navbar-brand">
+Theory And Practice            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                    <li><a href="/pages/cv.html">CV</a></li>
+                    <li><a href="/selected-publications.html">Publications</a></li>
+                    <li><a href="/presentations.html">Talks</a></li>
+                    <li><a href="/collaborators.html">Group</a></li>
+                    <li><a href="/projects.html">Projects</a></li>
+                    <li><a href="/media.html">Media & Outreach</a></li>
+                        <li >
+                            <a href="https://theoryandpractice.org/category/blog.html">Blog</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="https://theoryandpractice.org/search.html" title="Search"><i class="fa fa-search"></i></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<!-- Banner -->
+<!-- End Banner -->
+
+<!-- Content Container -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+<div class="media-header">
+    <h1>Media & Outreach</h1>
+    <p class="lead">Videos, podcasts, news articles, and outreach activities.</p>
+</div>
+
+<!-- Filters -->
+<div class="media-filters">
+    <div class="filter-group">
+        <label for="category-filter">Category:</label>
+        <select id="category-filter" onchange="filterMedia()">
+            <option value="all">All Categories</option>
+            <option value="videos">Videos</option>
+            <option value="podcasts">Podcasts</option>
+            <option value="articles">News Articles</option>
+            <option value="interviews">Interviews</option>
+            <option value="outreach">Outreach</option>
+        </select>
+    </div>
+
+    <div class="filter-group">
+        <label for="year-filter">Year:</label>
+        <select id="year-filter" onchange="filterMedia()">
+            <option value="all">All Years</option>
+            <option value="2016">2016</option>
+            <option value="2015">2015</option>
+            <option value="2014">2014</option>
+            <option value="2013">2013</option>
+            <option value="2012">2012</option>
+        </select>
+    </div>
+
+    <div class="filter-group">
+        <label>View:</label>
+        <div class="view-buttons">
+            <button class="view-btn active" data-view="cards" onclick="setView('cards')" title="Card View"><i class="fa fa-th-large"></i></button>
+            <button class="view-btn" data-view="list" onclick="setView('list')" title="List View"><i class="fa fa-list"></i></button>
+        </div>
+    </div>
+</div>
+
+<!-- Media by Category -->
+<section class="media-category" data-category="videos">
+    <h2><i class="fa fa-video-camera"></i>Videos</h2>
+
+    <!-- Card View -->
+    <div class="media-grid">
+        <div class="media-card featured"
+             data-category="videos"
+             data-year="2013"
+             data-featured="true">
+
+            <div class="media-embed has-video">
+                <span class="media-featured"><i class="fa fa-star"></i> Featured</span>
+
+                    <iframe src="https://www.youtube.com/embed/Pv_DtHuj5Ds" allowfullscreen></iframe>
+            </div>
+
+            <div class="media-content">
+                <div class="media-outlet">TEDx</div>
+                <h3 class="media-title">
+                    TEDx: The Higgs Boson
+                </h3>
+
+
+                <div class="media-meta">
+                    <span class="media-date">
+2013-05-20                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="media-card"
+             data-category="videos"
+             data-year="2015"
+             data-featured="false">
+
+            <div class="media-embed has-video">
+
+                    <iframe src="https://www.youtube.com/embed/8Y3O5K_LtG0" allowfullscreen></iframe>
+            </div>
+
+            <div class="media-content">
+                <div class="media-outlet">Webby Awards</div>
+                <h3 class="media-title">
+                    5-Word Speech at 19th Webby Awards
+                </h3>
+
+                <p class="media-description">Acceptance speech for Crayfis at the Webby Awards</p>
+
+                <div class="media-meta">
+                    <span class="media-date">
+2015-05-18                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="media-card"
+             data-category="videos"
+             data-year="2013"
+             data-featured="false">
+
+            <div class="media-embed has-video">
+
+                    <iframe src="https://www.youtube.com/embed/2KJc8w7BonM" allowfullscreen></iframe>
+            </div>
+
+            <div class="media-content">
+                <div class="media-outlet">Aspen Public Talk</div>
+                <h3 class="media-title">
+                    Higgs Boson: A Natural Disaster!
+                </h3>
+
+
+                <div class="media-meta">
+                    <span class="media-date">
+2013-08-15                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="media-card"
+             data-category="videos"
+             data-year="2013"
+             data-featured="false">
+
+            <div class="media-embed has-video">
+
+                    <iframe src="https://www.youtube.com/embed/b1q46oeuG4Q?start=3158" allowfullscreen></iframe>
+            </div>
+
+            <div class="media-content">
+                <div class="media-outlet">Physics Slam on Ice</div>
+                <h3 class="media-title">
+                    My Story in the Higgs Discovery
+                </h3>
+
+
+                <div class="media-meta">
+                    <span class="media-date">
+2013-02-01                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="media-card"
+             data-category="videos"
+             data-year="2012"
+             data-featured="false">
+
+            <div class="media-embed">
+
+            </div>
+
+            <div class="media-content">
+                <div class="media-outlet">CUNY Institute for Theoretical Sciences</div>
+                <h3 class="media-title">
+                    The Higgs Boson
+                </h3>
+
+
+                <div class="media-meta">
+                    <span class="media-date">
+2012-10-01                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="media-card"
+             data-category="videos"
+             data-year="2012"
+             data-featured="false">
+
+            <div class="media-embed has-video">
+
+                    <iframe src="https://www.youtube.com/embed/d5df1NVkYuQ" allowfullscreen></iframe>
+            </div>
+
+            <div class="media-content">
+                <div class="media-outlet">National Science Foundation</div>
+                <h3 class="media-title">
+                    NSF's Science Nation
+                </h3>
+
+
+                <div class="media-meta">
+                    <span class="media-date">
+2012-09-01                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="media-card"
+             data-category="videos"
+             data-year="2012"
+             data-featured="false">
+
+            <div class="media-embed has-video">
+
+                    <iframe src="https://www.youtube.com/embed/DpuVrTWulv0" allowfullscreen></iframe>
+            </div>
+
+            <div class="media-content">
+                <div class="media-outlet">SpaceLab</div>
+                <h3 class="media-title">
+                    Ask an Expert
+                </h3>
+
+
+                <div class="media-meta">
+                    <span class="media-date">
+2012-07-01                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="media-card"
+             data-category="videos"
+             data-year="2012"
+             data-featured="false">
+
+            <div class="media-embed has-video">
+
+                    <iframe src="https://www.youtube.com/embed/EwYmtFcg4Wk" allowfullscreen></iframe>
+            </div>
+
+            <div class="media-content">
+                <div class="media-outlet">SpaceLab</div>
+                <h3 class="media-title">
+                    The Higgs Sound
+                </h3>
+
+
+                <div class="media-meta">
+                    <span class="media-date">
+2012-07-01                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- List View -->
+    <div class="media-list">
+        <div class="media-list-item featured"
+             data-category="videos"
+             data-year="2013"
+             data-featured="true">
+
+            <div class="media-list-icon">
+                <i class="fa fa-video-camera"></i>
+            </div>
+
+            <div class="media-list-outlet">
+                TEDx
+            </div>
+
+            <div class="media-list-title">
+                TEDx: The Higgs Boson
+<i class="fa fa-star featured-star" title="Featured"></i>            </div>
+
+            <div class="media-list-date">
+2013-05-20            </div>
+
+            <div class="media-list-link">
+            </div>
+        </div>
+        <div class="media-list-item"
+             data-category="videos"
+             data-year="2015"
+             data-featured="false">
+
+            <div class="media-list-icon">
+                <i class="fa fa-video-camera"></i>
+            </div>
+
+            <div class="media-list-outlet">
+                Webby Awards
+            </div>
+
+            <div class="media-list-title">
+                5-Word Speech at 19th Webby Awards
+            </div>
+
+            <div class="media-list-date">
+2015-05-18            </div>
+
+            <div class="media-list-link">
+            </div>
+        </div>
+        <div class="media-list-item"
+             data-category="videos"
+             data-year="2013"
+             data-featured="false">
+
+            <div class="media-list-icon">
+                <i class="fa fa-video-camera"></i>
+            </div>
+
+            <div class="media-list-outlet">
+                Aspen Public Talk
+            </div>
+
+            <div class="media-list-title">
+                Higgs Boson: A Natural Disaster!
+            </div>
+
+            <div class="media-list-date">
+2013-08-15            </div>
+
+            <div class="media-list-link">
+            </div>
+        </div>
+        <div class="media-list-item"
+             data-category="videos"
+             data-year="2013"
+             data-featured="false">
+
+            <div class="media-list-icon">
+                <i class="fa fa-video-camera"></i>
+            </div>
+
+            <div class="media-list-outlet">
+                Physics Slam on Ice
+            </div>
+
+            <div class="media-list-title">
+                My Story in the Higgs Discovery
+            </div>
+
+            <div class="media-list-date">
+2013-02-01            </div>
+
+            <div class="media-list-link">
+            </div>
+        </div>
+        <div class="media-list-item"
+             data-category="videos"
+             data-year="2012"
+             data-featured="false">
+
+            <div class="media-list-icon">
+                <i class="fa fa-video-camera"></i>
+            </div>
+
+            <div class="media-list-outlet">
+                CUNY Institute for Theoretical Sciences
+            </div>
+
+            <div class="media-list-title">
+                The Higgs Boson
+            </div>
+
+            <div class="media-list-date">
+2012-10-01            </div>
+
+            <div class="media-list-link">
+            </div>
+        </div>
+        <div class="media-list-item"
+             data-category="videos"
+             data-year="2012"
+             data-featured="false">
+
+            <div class="media-list-icon">
+                <i class="fa fa-video-camera"></i>
+            </div>
+
+            <div class="media-list-outlet">
+                National Science Foundation
+            </div>
+
+            <div class="media-list-title">
+                NSF's Science Nation
+            </div>
+
+            <div class="media-list-date">
+2012-09-01            </div>
+
+            <div class="media-list-link">
+            </div>
+        </div>
+        <div class="media-list-item"
+             data-category="videos"
+             data-year="2012"
+             data-featured="false">
+
+            <div class="media-list-icon">
+                <i class="fa fa-video-camera"></i>
+            </div>
+
+            <div class="media-list-outlet">
+                SpaceLab
+            </div>
+
+            <div class="media-list-title">
+                Ask an Expert
+            </div>
+
+            <div class="media-list-date">
+2012-07-01            </div>
+
+            <div class="media-list-link">
+            </div>
+        </div>
+        <div class="media-list-item"
+             data-category="videos"
+             data-year="2012"
+             data-featured="false">
+
+            <div class="media-list-icon">
+                <i class="fa fa-video-camera"></i>
+            </div>
+
+            <div class="media-list-outlet">
+                SpaceLab
+            </div>
+
+            <div class="media-list-title">
+                The Higgs Sound
+            </div>
+
+            <div class="media-list-date">
+2012-07-01            </div>
+
+            <div class="media-list-link">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="media-category" data-category="podcasts">
+    <h2><i class="fa fa-podcast"></i>Podcasts</h2>
+
+    <!-- Card View -->
+    <div class="media-grid">
+        <div class="media-card featured"
+             data-category="podcasts"
+             data-year="2012"
+             data-featured="true">
+
+            <div class="media-embed">
+                <span class="media-featured"><i class="fa fa-star"></i> Featured</span>
+
+                <img src="http://www.startalkradio.net/wp-content/uploads/2012/11/Particle-Party-Backstage-Group-Shot1.jpg" alt="StarTalk Live: The Particle Party">
+            </div>
+
+            <div class="media-content">
+                <div class="media-outlet">StarTalk with Neil deGrasse Tyson</div>
+                <h3 class="media-title">
+                    <a href="http://www.startalkradio.net/show/startalk-live-the-particle-party-part-1/" target="_blank">StarTalk Live: The Particle Party</a>
+                </h3>
+
+                <p class="media-description">Kyle joins Bill Nye the Science Guy, Eugene Mirman and Sara Vowell for a special episode dedicated to the Higgs discovery. Voted fan favorite for 2012.</p>
+
+                <div class="media-meta">
+                    <span class="media-date">
+2012-11-01                    </span>
+                    <span class="media-link">
+                        <a href="http://www.startalkradio.net/show/startalk-live-the-particle-party-part-1/" target="_blank"><i class="fa fa-external-link"></i> View</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="media-card"
+             data-category="podcasts"
+             data-year="2015"
+             data-featured="false">
+
+            <div class="media-embed">
+
+            </div>
+
+            <div class="media-content">
+                <div class="media-outlet">NPR Here and Now</div>
+                <h3 class="media-title">
+                    <a href="http://hereandnow.wbur.org/2015/12/16/cern-fundamental-particle-nature" target="_blank">Physicists May Have Found New Fundamental Particle</a>
+                </h3>
+
+
+                <div class="media-meta">
+                    <span class="media-date">
+2015-12-16                    </span>
+                    <span class="media-link">
+                        <a href="http://hereandnow.wbur.org/2015/12/16/cern-fundamental-particle-nature" target="_blank"><i class="fa fa-external-link"></i> View</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="media-card"
+             data-category="podcasts"
+             data-year="2012"
+             data-featured="false">
+
+            <div class="media-embed">
+
+            </div>
+
+            <div class="media-content">
+                <div class="media-outlet">WNYC</div>
+                <h3 class="media-title">
+                    The Leonard Lopate Show
+                </h3>
+
+
+                <div class="media-meta">
+                    <span class="media-date">
+2012-07-04                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- List View -->
+    <div class="media-list">
+        <div class="media-list-item featured"
+             data-category="podcasts"
+             data-year="2012"
+             data-featured="true">
+
+            <div class="media-list-icon">
+                <i class="fa fa-podcast"></i>
+            </div>
+
+            <div class="media-list-outlet">
+                StarTalk with Neil deGrasse Tyson
+            </div>
+
+            <div class="media-list-title">
+                <a href="http://www.startalkradio.net/show/startalk-live-the-particle-party-part-1/" target="_blank">StarTalk Live: The Particle Party</a>
+<i class="fa fa-star featured-star" title="Featured"></i>            </div>
+
+            <div class="media-list-date">
+2012-11-01            </div>
+
+            <div class="media-list-link">
+                <a href="http://www.startalkradio.net/show/startalk-live-the-particle-party-part-1/" target="_blank" title="View"><i class="fa fa-external-link"></i></a>
+            </div>
+        </div>
+        <div class="media-list-item"
+             data-category="podcasts"
+             data-year="2015"
+             data-featured="false">
+
+            <div class="media-list-icon">
+                <i class="fa fa-podcast"></i>
+            </div>
+
+            <div class="media-list-outlet">
+                NPR Here and Now
+            </div>
+
+            <div class="media-list-title">
+                <a href="http://hereandnow.wbur.org/2015/12/16/cern-fundamental-particle-nature" target="_blank">Physicists May Have Found New Fundamental Particle</a>
+            </div>
+
+            <div class="media-list-date">
+2015-12-16            </div>
+
+            <div class="media-list-link">
+                <a href="http://hereandnow.wbur.org/2015/12/16/cern-fundamental-particle-nature" target="_blank" title="View"><i class="fa fa-external-link"></i></a>
+            </div>
+        </div>
+        <div class="media-list-item"
+             data-category="podcasts"
+             data-year="2012"
+             data-featured="false">
+
+            <div class="media-list-icon">
+                <i class="fa fa-podcast"></i>
+            </div>
+
+            <div class="media-list-outlet">
+                WNYC
+            </div>
+
+            <div class="media-list-title">
+                The Leonard Lopate Show
+            </div>
+
+            <div class="media-list-date">
+2012-07-04            </div>
+
+            <div class="media-list-link">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="media-category" data-category="articles">
+    <h2><i class="fa fa-newspaper-o"></i>News Articles</h2>
+
+    <!-- Card View -->
+    <div class="media-grid">
+        <div class="media-card"
+             data-category="articles"
+             data-year="2016"
+             data-featured="false">
+
+            <div class="media-embed">
+
+                <div class="media-embed-placeholder">
+                    <i class="fa fa-newspaper-o"></i>
+                </div>
+            </div>
+
+            <div class="media-content">
+                <div class="media-outlet">Vox</div>
+                <h3 class="media-title">
+                    <a href="http://www.vox.com/2016/9/21/12691576/lhc-cern-new-subatomic-particle" target="_blank">Why physicists really, really want to find a new subatomic particle</a>
+                </h3>
+
+
+                <div class="media-meta">
+                    <span class="media-date">
+2016-09-21                    </span>
+                    <span class="media-link">
+                        <a href="http://www.vox.com/2016/9/21/12691576/lhc-cern-new-subatomic-particle" target="_blank"><i class="fa fa-external-link"></i> View</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="media-card"
+             data-category="articles"
+             data-year="2015"
+             data-featured="false">
+
+            <div class="media-embed">
+
+                <div class="media-embed-placeholder">
+                    <i class="fa fa-newspaper-o"></i>
+                </div>
+            </div>
+
+            <div class="media-content">
+                <div class="media-outlet">Vox</div>
+                <h3 class="media-title">
+                    <a href="http://www.vox.com/science-and-health/2015/12/16/10295962/new-subatomic-particle-cern-hadron" target="_blank">Did we just discover a new subatomic particle?</a>
+                </h3>
+
+
+                <div class="media-meta">
+                    <span class="media-date">
+2015-12-16                    </span>
+                    <span class="media-link">
+                        <a href="http://www.vox.com/science-and-health/2015/12/16/10295962/new-subatomic-particle-cern-hadron" target="_blank"><i class="fa fa-external-link"></i> View</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="media-card"
+             data-category="articles"
+             data-year="2015"
+             data-featured="false">
+
+            <div class="media-embed">
+
+                <div class="media-embed-placeholder">
+                    <i class="fa fa-newspaper-o"></i>
+                </div>
+            </div>
+
+            <div class="media-content">
+                <div class="media-outlet">New York Times</div>
+                <h3 class="media-title">
+                    <a href="http://www.nytimes.com/2015/12/16/science/physicists-in-europe-find-tantalizing-hints-of-a-mysterious-new-particle.html" target="_blank">Physicists in Europe Find Tantalizing Hints of a Mysterious New Particle</a>
+                </h3>
+
+
+                <div class="media-meta">
+                    <span class="media-date">
+2015-12-16                    </span>
+                    <span class="media-link">
+                        <a href="http://www.nytimes.com/2015/12/16/science/physicists-in-europe-find-tantalizing-hints-of-a-mysterious-new-particle.html" target="_blank"><i class="fa fa-external-link"></i> View</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="media-card"
+             data-category="articles"
+             data-year="2015"
+             data-featured="false">
+
+            <div class="media-embed">
+
+                <div class="media-embed-placeholder">
+                    <i class="fa fa-newspaper-o"></i>
+                </div>
+            </div>
+
+            <div class="media-content">
+                <div class="media-outlet">WIRED</div>
+                <h3 class="media-title">
+                    <a href="https://www.wired.com/2015/01/higgs-discovery-hijack-attempt/" target="_blank">How Three Guys With $10K and Decades-Old Data Almost Found the Higgs Boson First</a>
+                </h3>
+
+
+                <div class="media-meta">
+                    <span class="media-date">
+2015-01-15                    </span>
+                    <span class="media-link">
+                        <a href="https://www.wired.com/2015/01/higgs-discovery-hijack-attempt/" target="_blank"><i class="fa fa-external-link"></i> View</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="media-card"
+             data-category="articles"
+             data-year="2014"
+             data-featured="false">
+
+            <div class="media-embed">
+
+                <div class="media-embed-placeholder">
+                    <i class="fa fa-newspaper-o"></i>
+                </div>
+            </div>
+
+            <div class="media-content">
+                <div class="media-outlet">The New Yorker</div>
+                <h3 class="media-title">
+                    <a href="https://www.newyorker.com/tech/annals-of-technology/seeking-source-cosmic-rays" target="_blank">Seeking the Source of Cosmic Rays</a>
+                </h3>
+
+                <p class="media-description">Article about the Crayfis citizen science project</p>
+
+                <div class="media-meta">
+                    <span class="media-date">
+2014-10-15                    </span>
+                    <span class="media-link">
+                        <a href="https://www.newyorker.com/tech/annals-of-technology/seeking-source-cosmic-rays" target="_blank"><i class="fa fa-external-link"></i> View</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- List View -->
+    <div class="media-list">
+        <div class="media-list-item"
+             data-category="articles"
+             data-year="2016"
+             data-featured="false">
+
+            <div class="media-list-icon">
+                <i class="fa fa-newspaper-o"></i>
+            </div>
+
+            <div class="media-list-outlet">
+                Vox
+            </div>
+
+            <div class="media-list-title">
+                <a href="http://www.vox.com/2016/9/21/12691576/lhc-cern-new-subatomic-particle" target="_blank">Why physicists really, really want to find a new subatomic particle</a>
+            </div>
+
+            <div class="media-list-date">
+2016-09-21            </div>
+
+            <div class="media-list-link">
+                <a href="http://www.vox.com/2016/9/21/12691576/lhc-cern-new-subatomic-particle" target="_blank" title="View"><i class="fa fa-external-link"></i></a>
+            </div>
+        </div>
+        <div class="media-list-item"
+             data-category="articles"
+             data-year="2015"
+             data-featured="false">
+
+            <div class="media-list-icon">
+                <i class="fa fa-newspaper-o"></i>
+            </div>
+
+            <div class="media-list-outlet">
+                Vox
+            </div>
+
+            <div class="media-list-title">
+                <a href="http://www.vox.com/science-and-health/2015/12/16/10295962/new-subatomic-particle-cern-hadron" target="_blank">Did we just discover a new subatomic particle?</a>
+            </div>
+
+            <div class="media-list-date">
+2015-12-16            </div>
+
+            <div class="media-list-link">
+                <a href="http://www.vox.com/science-and-health/2015/12/16/10295962/new-subatomic-particle-cern-hadron" target="_blank" title="View"><i class="fa fa-external-link"></i></a>
+            </div>
+        </div>
+        <div class="media-list-item"
+             data-category="articles"
+             data-year="2015"
+             data-featured="false">
+
+            <div class="media-list-icon">
+                <i class="fa fa-newspaper-o"></i>
+            </div>
+
+            <div class="media-list-outlet">
+                New York Times
+            </div>
+
+            <div class="media-list-title">
+                <a href="http://www.nytimes.com/2015/12/16/science/physicists-in-europe-find-tantalizing-hints-of-a-mysterious-new-particle.html" target="_blank">Physicists in Europe Find Tantalizing Hints of a Mysterious New Particle</a>
+            </div>
+
+            <div class="media-list-date">
+2015-12-16            </div>
+
+            <div class="media-list-link">
+                <a href="http://www.nytimes.com/2015/12/16/science/physicists-in-europe-find-tantalizing-hints-of-a-mysterious-new-particle.html" target="_blank" title="View"><i class="fa fa-external-link"></i></a>
+            </div>
+        </div>
+        <div class="media-list-item"
+             data-category="articles"
+             data-year="2015"
+             data-featured="false">
+
+            <div class="media-list-icon">
+                <i class="fa fa-newspaper-o"></i>
+            </div>
+
+            <div class="media-list-outlet">
+                WIRED
+            </div>
+
+            <div class="media-list-title">
+                <a href="https://www.wired.com/2015/01/higgs-discovery-hijack-attempt/" target="_blank">How Three Guys With $10K and Decades-Old Data Almost Found the Higgs Boson First</a>
+            </div>
+
+            <div class="media-list-date">
+2015-01-15            </div>
+
+            <div class="media-list-link">
+                <a href="https://www.wired.com/2015/01/higgs-discovery-hijack-attempt/" target="_blank" title="View"><i class="fa fa-external-link"></i></a>
+            </div>
+        </div>
+        <div class="media-list-item"
+             data-category="articles"
+             data-year="2014"
+             data-featured="false">
+
+            <div class="media-list-icon">
+                <i class="fa fa-newspaper-o"></i>
+            </div>
+
+            <div class="media-list-outlet">
+                The New Yorker
+            </div>
+
+            <div class="media-list-title">
+                <a href="https://www.newyorker.com/tech/annals-of-technology/seeking-source-cosmic-rays" target="_blank">Seeking the Source of Cosmic Rays</a>
+            </div>
+
+            <div class="media-list-date">
+2014-10-15            </div>
+
+            <div class="media-list-link">
+                <a href="https://www.newyorker.com/tech/annals-of-technology/seeking-source-cosmic-rays" target="_blank" title="View"><i class="fa fa-external-link"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="media-category" data-category="interviews">
+    <h2><i class="fa fa-microphone"></i>Interviews</h2>
+
+    <!-- Card View -->
+    <div class="media-grid">
+        <div class="media-card featured"
+             data-category="interviews"
+             data-year="2012"
+             data-featured="true">
+
+            <div class="media-embed">
+                <span class="media-featured"><i class="fa fa-star"></i> Featured</span>
+
+                <img src="/images/CharlieRose_forweb2-284x300.png" alt="Charlie Rose Interview">
+            </div>
+
+            <div class="media-content">
+                <div class="media-outlet">Charlie Rose</div>
+                <h3 class="media-title">
+                    <a href="http://www.charlierose.com/view/interview/10943" target="_blank">Charlie Rose Interview</a>
+                </h3>
+
+
+                <div class="media-meta">
+                    <span class="media-date">
+2012-07-10                    </span>
+                    <span class="media-link">
+                        <a href="http://www.charlierose.com/view/interview/10943" target="_blank"><i class="fa fa-external-link"></i> View</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="media-card"
+             data-category="interviews"
+             data-year="2014"
+             data-featured="false">
+
+            <div class="media-embed">
+
+                <img src="/images/particle-fever.png" alt="This is Kyle Cranmer">
+            </div>
+
+            <div class="media-content">
+                <div class="media-outlet">Particle Fever</div>
+                <h3 class="media-title">
+                    <a href="https://particlefever.vhx.tv/buy/particle-fever" target="_blank">This is Kyle Cranmer</a>
+                </h3>
+
+                <p class="media-description">Featured in the documentary Particle Fever about the Higgs discovery</p>
+
+                <div class="media-meta">
+                    <span class="media-date">
+2014-03-05                    </span>
+                    <span class="media-link">
+                        <a href="https://particlefever.vhx.tv/buy/particle-fever" target="_blank"><i class="fa fa-external-link"></i> View</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- List View -->
+    <div class="media-list">
+        <div class="media-list-item featured"
+             data-category="interviews"
+             data-year="2012"
+             data-featured="true">
+
+            <div class="media-list-icon">
+                <i class="fa fa-microphone"></i>
+            </div>
+
+            <div class="media-list-outlet">
+                Charlie Rose
+            </div>
+
+            <div class="media-list-title">
+                <a href="http://www.charlierose.com/view/interview/10943" target="_blank">Charlie Rose Interview</a>
+<i class="fa fa-star featured-star" title="Featured"></i>            </div>
+
+            <div class="media-list-date">
+2012-07-10            </div>
+
+            <div class="media-list-link">
+                <a href="http://www.charlierose.com/view/interview/10943" target="_blank" title="View"><i class="fa fa-external-link"></i></a>
+            </div>
+        </div>
+        <div class="media-list-item"
+             data-category="interviews"
+             data-year="2014"
+             data-featured="false">
+
+            <div class="media-list-icon">
+                <i class="fa fa-microphone"></i>
+            </div>
+
+            <div class="media-list-outlet">
+                Particle Fever
+            </div>
+
+            <div class="media-list-title">
+                <a href="https://particlefever.vhx.tv/buy/particle-fever" target="_blank">This is Kyle Cranmer</a>
+            </div>
+
+            <div class="media-list-date">
+2014-03-05            </div>
+
+            <div class="media-list-link">
+                <a href="https://particlefever.vhx.tv/buy/particle-fever" target="_blank" title="View"><i class="fa fa-external-link"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="media-category" data-category="outreach">
+    <h2><i class="fa fa-users"></i>Outreach</h2>
+
+    <!-- Card View -->
+    <div class="media-grid">
+        <div class="media-card"
+             data-category="outreach"
+             data-year="2014"
+             data-featured="false">
+
+            <div class="media-embed">
+
+                <div class="media-embed-placeholder">
+                    <i class="fa fa-users"></i>
+                </div>
+            </div>
+
+            <div class="media-content">
+                <div class="media-outlet">USA Science Festival</div>
+                <h3 class="media-title">
+                    <a href="http://www.flickr.com/photos/hoonynoo/sets/72157638481017703/" target="_blank">USA Science & Engineering Festival</a>
+                </h3>
+
+
+                <div class="media-meta">
+                    <span class="media-date">
+2014-04-26                    </span>
+                    <span class="media-link">
+                        <a href="http://www.flickr.com/photos/hoonynoo/sets/72157638481017703/" target="_blank"><i class="fa fa-external-link"></i> View</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="media-card"
+             data-category="outreach"
+             data-year="2012"
+             data-featured="false">
+
+            <div class="media-embed">
+
+                <img src="/images/Kyle_Nifty_Fifty_2-small.jpeg" alt="Nifty Fifty Speaker">
+            </div>
+
+            <div class="media-content">
+                <div class="media-outlet">USA Science & Engineering Festival</div>
+                <h3 class="media-title">
+                    Nifty Fifty Speaker
+                </h3>
+
+                <p class="media-description">Selected as one of the 'Nifty Fifty' science speakers</p>
+
+                <div class="media-meta">
+                    <span class="media-date">
+2012-04-28                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- List View -->
+    <div class="media-list">
+        <div class="media-list-item"
+             data-category="outreach"
+             data-year="2014"
+             data-featured="false">
+
+            <div class="media-list-icon">
+                <i class="fa fa-users"></i>
+            </div>
+
+            <div class="media-list-outlet">
+                USA Science Festival
+            </div>
+
+            <div class="media-list-title">
+                <a href="http://www.flickr.com/photos/hoonynoo/sets/72157638481017703/" target="_blank">USA Science & Engineering Festival</a>
+            </div>
+
+            <div class="media-list-date">
+2014-04-26            </div>
+
+            <div class="media-list-link">
+                <a href="http://www.flickr.com/photos/hoonynoo/sets/72157638481017703/" target="_blank" title="View"><i class="fa fa-external-link"></i></a>
+            </div>
+        </div>
+        <div class="media-list-item"
+             data-category="outreach"
+             data-year="2012"
+             data-featured="false">
+
+            <div class="media-list-icon">
+                <i class="fa fa-users"></i>
+            </div>
+
+            <div class="media-list-outlet">
+                USA Science & Engineering Festival
+            </div>
+
+            <div class="media-list-title">
+                Nifty Fifty Speaker
+            </div>
+
+            <div class="media-list-date">
+2012-04-28            </div>
+
+            <div class="media-list-link">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script>
+let currentCategory = 'all';
+let currentYear = 'all';
+let currentView = 'cards';
+
+function setView(view) {
+    currentView = view;
+
+    // Update button states
+    document.querySelectorAll('.view-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.view === view);
+    });
+
+    // Toggle view class on categories
+    document.querySelectorAll('.media-category').forEach(section => {
+        section.classList.toggle('view-list', view === 'list');
+    });
+}
+
+function filterMedia() {
+    currentCategory = document.getElementById('category-filter').value;
+    currentYear = document.getElementById('year-filter').value;
+
+    // Filter category sections
+    document.querySelectorAll('.media-category').forEach(section => {
+        const catId = section.dataset.category;
+        const showCategory = currentCategory === 'all' || currentCategory === catId;
+
+        if (!showCategory) {
+            section.classList.add('category-hidden');
+        } else {
+            section.classList.remove('category-hidden');
+
+            // Filter individual items within visible categories (both views)
+            let visibleCount = 0;
+            section.querySelectorAll('.media-card, .media-list-item').forEach(item => {
+                const itemYear = item.dataset.year;
+                const showItem = currentYear === 'all' || itemYear === currentYear;
+
+                item.classList.toggle('media-hidden', !showItem);
+                if (showItem && item.classList.contains('media-card')) visibleCount++;
+            });
+
+            // Hide category if no items visible
+            if (visibleCount === 0) {
+                section.classList.add('category-hidden');
+            }
+        }
+    });
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', filterMedia);
+</script>
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Recent Posts -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+  <ul class="list-group" id="recentposts">
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/12/migrating-with-claude/">Migrating with Claude</a></li>
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/12/year-in-review-2025/">Year in Review: 2025</a></li>
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/12/travel-map/">Travel Map</a></li>
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/12/cassville-checkers/">Casseville Checkers</a></li>
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/09/The Bittersweet Lesson/">The Bittersweet Lesson</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Recent Posts -->
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="https://bsky.app/profile/kylecranmer.bsky.social"><i class="fa fa-bluesky fa-lg"></i> Bluesky</a></li>
+    <li class="list-group-item"><a href="http://twitter.com/kylecranmer"><i class="fa fa-twitter-square fa-lg"></i> twitter</a></li>
+    <li class="list-group-item"><a href="https://www.instagram.com/kyle.cranmer/"><i class="fa fa-instagram fa-lg"></i> instagram</a></li>
+    <li class="list-group-item"><a href="http://github.com/cranmer"><i class="fa fa-github-square fa-lg"></i> github</a></li>
+    <li class="list-group-item"><a href="http://www.linkedin.com/in/kylecranmer"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
+    <li class="list-group-item"><a href="https://www.youtube.com/channel/UCKl2VoIJiPYp3QhuK22b7xQ"><i class="fa fa-youtube-square fa-lg"></i> youtube</a></li>
+    <li class="list-group-item"><a href="https://inspirehep.net/literature?sort=mostrecent&size=25&page=1&q=a%3Ak.s.cranmer.1%20and%20ac%201-%3E10&ui-citation-summary=true"><i class="fa fa-inspire fa-lg"></i> INSPIRE</a></li>
+    <li class="list-group-item"><a href="http://scholar.google.com/citations?user=EZjSxgwAAAAJ"><i class="fa fa-google-scholar fa-lg"></i> Google Scholar</a></li>
+    <li class="list-group-item"><a href="https://orcid.org/0000-0002-5769-7094"><i class="fa fa-orcid fa-lg"></i> ORCiD</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+
+<!-- Sidebar/Links -->
+<li class="list-group-item">
+  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+  <ul class="list-group" id="links">
+    <li class="list-group-item">
+      <a href="https://theoryandpractice.org/stats-ds-book/intro.html" target="_blank">Stats & Data Science Book</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://dsi.wisc.edu" target="_blank">Data Science Institute</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://www.physics.wisc.edu/directory/cranmer-kyle/" target="_blank">My UW Physics webpage</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://iris-hep.org/" target="_blank">IRIS-HEP</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://en.wikipedia.org/wiki/Kyle_Cranmer" target="_blank">Wikipedia</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Links -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<!-- End Content Container -->
+
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2025 Kyle Cranmer
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>                <p><small>  <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/deed.en"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>
+    Content
+  licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/deed.en">Creative Commons Attribution-NonCommercial 4.0 International License</a>, except where indicated otherwise.
+</small></p>
+         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="https://theoryandpractice.org/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://theoryandpractice.org/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="https://theoryandpractice.org/theme/js/respond.min.js"></script>
+
+
+
+
+</body>
+</html>

@@ -344,27 +344,28 @@
 }
 
 .project-list-status {
-    width: 80px;
+    width: 24px;
     flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .project-list-status span {
     display: inline-block;
-    padding: 2px 8px;
-    border-radius: 10px;
-    font-size: 0.7em;
-    font-weight: 600;
-    text-transform: uppercase;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    font-size: 0;
+    text-indent: -9999px;
 }
 
 .project-list-status .active {
     background: #28a745;
-    color: white;
 }
 
 .project-list-status .completed {
-    background: #6c757d;
-    color: white;
+    background: #adb5bd;
 }
 
 .project-list-name {
@@ -495,7 +496,7 @@ Theory And Practice            </a>
                     <li><a href="/presentations.html">Talks</a></li>
                     <li><a href="/collaborators.html">Group</a></li>
                     <li><a href="/projects.html">Projects</a></li>
-                    <li><a href="/pages/in-the-news.html">Media & Outreach</a></li>
+                    <li><a href="/media.html">Media & Outreach</a></li>
                         <li >
                             <a href="https://theoryandpractice.org/category/blog.html">Blog</a>
                         </li>
@@ -873,7 +874,7 @@ Theory And Practice            </a>
              data-name="pyhf">
 
             <div class="project-list-status">
-                <span class="active">active</span>
+                <span class="active" title="Active">active</span>
             </div>
 
             <div class="project-list-name">
@@ -899,7 +900,7 @@ Theory And Practice            </a>
              data-name="Excursion">
 
             <div class="project-list-status">
-                <span class="completed">completed</span>
+                <span class="completed" title="Completed">completed</span>
             </div>
 
             <div class="project-list-name">
@@ -924,7 +925,7 @@ Theory And Practice            </a>
              data-name="MadMiner">
 
             <div class="project-list-status">
-                <span class="active">active</span>
+                <span class="active" title="Active">active</span>
             </div>
 
             <div class="project-list-name">
@@ -950,7 +951,7 @@ Theory And Practice            </a>
              data-name="REANA">
 
             <div class="project-list-status">
-                <span class="active">active</span>
+                <span class="active" title="Active">active</span>
             </div>
 
             <div class="project-list-name">
@@ -976,7 +977,7 @@ Theory And Practice            </a>
              data-name="TreeNiN">
 
             <div class="project-list-status">
-                <span class="completed">completed</span>
+                <span class="completed" title="Completed">completed</span>
             </div>
 
             <div class="project-list-name">
@@ -1001,7 +1002,7 @@ Theory And Practice            </a>
              data-name="carl">
 
             <div class="project-list-status">
-                <span class="completed">completed</span>
+                <span class="completed" title="Completed">completed</span>
             </div>
 
             <div class="project-list-name">
@@ -1026,7 +1027,7 @@ Theory And Practice            </a>
              data-name="HistFactory">
 
             <div class="project-list-status">
-                <span class="completed">completed</span>
+                <span class="completed" title="Completed">completed</span>
             </div>
 
             <div class="project-list-name">
@@ -1051,7 +1052,7 @@ Theory And Practice            </a>
              data-name="RooFit & RooStats">
 
             <div class="project-list-status">
-                <span class="completed">completed</span>
+                <span class="completed" title="Completed">completed</span>
             </div>
 
             <div class="project-list-name">
@@ -1163,7 +1164,7 @@ Theory And Practice            </a>
              data-name="IRIS-HEP">
 
             <div class="project-list-status">
-                <span class="active">active</span>
+                <span class="active" title="Active">active</span>
             </div>
 
             <div class="project-list-name">
@@ -1189,7 +1190,7 @@ Theory And Practice            </a>
              data-name="ATLAS Experiment">
 
             <div class="project-list-status">
-                <span class="active">active</span>
+                <span class="active" title="Active">active</span>
             </div>
 
             <div class="project-list-name">
@@ -1415,7 +1416,7 @@ Theory And Practice            </a>
              data-name="AI for Lattice QCD">
 
             <div class="project-list-status">
-                <span class="completed">completed</span>
+                <span class="completed" title="Completed">completed</span>
             </div>
 
             <div class="project-list-name">
@@ -1440,7 +1441,7 @@ Theory And Practice            </a>
              data-name="Discovery of the Higgs Boson">
 
             <div class="project-list-status">
-                <span class="completed">completed</span>
+                <span class="completed" title="Completed">completed</span>
             </div>
 
             <div class="project-list-name">
@@ -1465,7 +1466,7 @@ Theory And Practice            </a>
              data-name="AI for Amplitudes">
 
             <div class="project-list-status">
-                <span class="active">active</span>
+                <span class="active" title="Active">active</span>
             </div>
 
             <div class="project-list-name">
@@ -1490,7 +1491,7 @@ Theory And Practice            </a>
              data-name="Precision EFT Measurements">
 
             <div class="project-list-status">
-                <span class="active">active</span>
+                <span class="active" title="Active">active</span>
             </div>
 
             <div class="project-list-name">
@@ -1515,7 +1516,7 @@ Theory And Practice            </a>
              data-name="APEX Experiment">
 
             <div class="project-list-status">
-                <span class="completed">completed</span>
+                <span class="completed" title="Completed">completed</span>
             </div>
 
             <div class="project-list-name">
@@ -1630,7 +1631,7 @@ Theory And Practice            </a>
              data-name="Simulation-Based Inference">
 
             <div class="project-list-status">
-                <span class="active">active</span>
+                <span class="active" title="Active">active</span>
             </div>
 
             <div class="project-list-name">
@@ -1655,7 +1656,7 @@ Theory And Practice            </a>
              data-name="Profile Likelihood Ratio">
 
             <div class="project-list-status">
-                <span class="completed">completed</span>
+                <span class="completed" title="Completed">completed</span>
             </div>
 
             <div class="project-list-name">
@@ -1768,7 +1769,7 @@ Theory And Practice            </a>
              data-name="Machine Learning Chapter in PDG">
 
             <div class="project-list-status">
-                <span class="completed">completed</span>
+                <span class="completed" title="Completed">completed</span>
             </div>
 
             <div class="project-list-name">
@@ -1793,7 +1794,7 @@ Theory And Practice            </a>
              data-name="Statistics and Data Science for Physicists">
 
             <div class="project-list-status">
-                <span class="completed">completed</span>
+                <span class="completed" title="Completed">completed</span>
             </div>
 
             <div class="project-list-name">
@@ -1975,7 +1976,7 @@ Theory And Practice            </a>
              data-name="UW-Madison Data Science Institute">
 
             <div class="project-list-status">
-                <span class="active">active</span>
+                <span class="active" title="Active">active</span>
             </div>
 
             <div class="project-list-name">
@@ -2000,7 +2001,7 @@ Theory And Practice            </a>
              data-name="Open Source Program Office">
 
             <div class="project-list-status">
-                <span class="active">active</span>
+                <span class="active" title="Active">active</span>
             </div>
 
             <div class="project-list-name">
@@ -2025,7 +2026,7 @@ Theory And Practice            </a>
              data-name="P5">
 
             <div class="project-list-status">
-                <span class="completed">completed</span>
+                <span class="completed" title="Completed">completed</span>
             </div>
 
             <div class="project-list-name">
@@ -2050,7 +2051,7 @@ Theory And Practice            </a>
              data-name="Moore-Sloan Data Science Environment">
 
             <div class="project-list-status">
-                <span class="completed">completed</span>
+                <span class="completed" title="Completed">completed</span>
             </div>
 
             <div class="project-list-name">
@@ -2199,7 +2200,7 @@ Theory And Practice            </a>
              data-name="Hammers & Nails">
 
             <div class="project-list-status">
-                <span class="active">active</span>
+                <span class="active" title="Active">active</span>
             </div>
 
             <div class="project-list-name">
@@ -2223,7 +2224,7 @@ Theory And Practice            </a>
              data-name="ML4Jets">
 
             <div class="project-list-status">
-                <span class="completed">completed</span>
+                <span class="completed" title="Completed">completed</span>
             </div>
 
             <div class="project-list-name">
@@ -2248,7 +2249,7 @@ Theory And Practice            </a>
              data-name="ML4PS Workshop">
 
             <div class="project-list-status">
-                <span class="active">active</span>
+                <span class="active" title="Active">active</span>
             </div>
 
             <div class="project-list-name">
@@ -2434,7 +2435,7 @@ Theory And Practice            </a>
              data-name="Machine Learning: Science and Technology">
 
             <div class="project-list-status">
-                <span class="active">active</span>
+                <span class="active" title="Active">active</span>
             </div>
 
             <div class="project-list-name">
@@ -2459,7 +2460,7 @@ Theory And Practice            </a>
              data-name="GitHub → Zenodo DOIs">
 
             <div class="project-list-status">
-                <span class="active">active</span>
+                <span class="active" title="Active">active</span>
             </div>
 
             <div class="project-list-name">
@@ -2484,7 +2485,7 @@ Theory And Practice            </a>
              data-name="INSPIRE">
 
             <div class="project-list-status">
-                <span class="active">active</span>
+                <span class="active" title="Active">active</span>
             </div>
 
             <div class="project-list-name">
@@ -2509,7 +2510,7 @@ Theory And Practice            </a>
              data-name="RECAST">
 
             <div class="project-list-status">
-                <span class="active">active</span>
+                <span class="active" title="Active">active</span>
             </div>
 
             <div class="project-list-name">
@@ -2583,7 +2584,7 @@ Theory And Practice            </a>
              data-name="Theory and Practice">
 
             <div class="project-list-status">
-                <span class="active">active</span>
+                <span class="active" title="Active">active</span>
             </div>
 
             <div class="project-list-name">
@@ -2730,7 +2731,7 @@ Theory And Practice            </a>
              data-name="Vectorscope">
 
             <div class="project-list-status">
-                <span class="active">active</span>
+                <span class="active" title="Active">active</span>
             </div>
 
             <div class="project-list-name">
@@ -2756,7 +2757,7 @@ Theory And Practice            </a>
              data-name="Crayfis">
 
             <div class="project-list-status">
-                <span class="completed">completed</span>
+                <span class="completed" title="Completed">completed</span>
             </div>
 
             <div class="project-list-name">
@@ -2781,7 +2782,7 @@ Theory And Practice            </a>
              data-name="UnicodeIt">
 
             <div class="project-list-status">
-                <span class="completed">completed</span>
+                <span class="completed" title="Completed">completed</span>
             </div>
 
             <div class="project-list-name">
