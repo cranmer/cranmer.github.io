@@ -1,0 +1,1792 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Projects (Preview) - Theory And Practice</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+
+        <meta name="author" content="Kyle Cranmer" />
+
+    <!-- Open Graph tags -->
+        <meta property="og:site_name" content="Theory And Practice" />
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="Theory And Practice"/>
+        <meta property="og:url" content="https://theoryandpractice.org"/>
+        <meta property="og:description" content="Theory And Practice"/>
+            <meta property="og:image"
+                  content="https://theoryandpractice.org/images/TheoryAndPractice-logo-byline-wide.png"/>
+
+    <meta name="twitter:dnt" content="on">
+    <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="@kylecranmer">
+        <meta name="twitter:creator" content="@kylecranmer">
+    <meta name="twitter:domain" content="https://theoryandpractice.org">
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://theoryandpractice.org/theme/css/bootstrap.flatly.min.css" type="text/css"/>
+    <link href="https://theoryandpractice.org/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="https://theoryandpractice.org/theme/css/pygments/default.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://theoryandpractice.org/theme/css/style.css" type="text/css"/>
+
+<style>
+/* Projects Page Styles */
+.projects-header {
+    margin-bottom: 30px;
+}
+
+.draft-notice {
+    background: #fff3cd;
+    border: 1px solid #ffc107;
+    border-radius: 4px;
+    padding: 15px 20px;
+    margin-bottom: 25px;
+    color: #856404;
+}
+
+.draft-notice strong {
+    color: #664d03;
+}
+
+.projects-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 30px;
+    align-items: center;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.filter-group label {
+    font-weight: 600;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.filter-group select {
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: white;
+    min-width: 150px;
+}
+
+.status-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.status-btn {
+    padding: 6px 14px;
+    border: 1px solid #337ab7;
+    background: white;
+    color: #337ab7;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-radius: 4px;
+}
+
+.status-btn:hover {
+    background: #e8f4fc;
+}
+
+.status-btn.active {
+    background: #337ab7;
+    color: white;
+}
+
+.sort-group select {
+    min-width: 180px;
+}
+
+/* Category Section */
+.projects-category {
+    margin-bottom: 40px;
+}
+
+.projects-category h2 {
+    border-bottom: 2px solid #337ab7;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.projects-category .category-description {
+    color: #666;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+/* Projects Grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+/* Project Card */
+.project-card {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    background: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.project-card.status-completed {
+    opacity: 0.85;
+}
+
+.project-card.status-archived {
+    opacity: 0.7;
+}
+
+/* Draft card styling */
+.project-card.is-draft {
+    border: 2px dashed #ffc107;
+}
+
+/* Card Image */
+.project-image {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.project-image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3em;
+    color: rgba(255,255,255,0.5);
+}
+
+/* Status Badge */
+.project-status {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75em;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.project-status.active {
+    background: #28a745;
+    color: white;
+}
+
+.project-status.completed {
+    background: #6c757d;
+    color: white;
+}
+
+.project-status.archived {
+    background: #dc3545;
+    color: white;
+}
+
+/* Featured Badge */
+.project-featured {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #ffc107;
+    color: #212529;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75em;
+    font-weight: 600;
+}
+
+/* Draft Badge */
+.project-draft-badge {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: #dc3545;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75em;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Card Content */
+.project-content {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-title {
+    font-size: 1.25em;
+    font-weight: 600;
+    margin: 0 0 10px 0;
+    color: #2c3e50;
+}
+
+.project-title a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.project-title a:hover {
+    color: #337ab7;
+}
+
+.project-description {
+    color: #666;
+    font-size: 0.95em;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    flex: 1;
+}
+
+/* Tags */
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 15px;
+}
+
+.project-tag {
+    background: #e9ecef;
+    color: #495057;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.8em;
+}
+
+/* Project Meta */
+.project-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    font-size: 0.85em;
+    color: #888;
+}
+
+.project-year {
+    font-weight: 500;
+}
+
+/* Project Links */
+.project-links {
+    display: flex;
+    gap: 12px;
+}
+
+.project-links a {
+    color: #666;
+    font-size: 1.2em;
+    transition: color 0.2s;
+}
+
+.project-links a:hover {
+    color: #337ab7;
+}
+
+/* Hidden class for filtering */
+.project-hidden {
+    display: none !important;
+}
+
+.category-hidden {
+    display: none !important;
+}
+
+/* Empty state */
+.no-projects {
+    text-align: center;
+    padding: 40px;
+    color: #888;
+    font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .projects-filters {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+        <link href="https://theoryandpractice.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Theory And Practice ATOM Feed"/>
+
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3337202-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', UA-3337202-1);
+    </script>
+    <!-- End Google Analytics Code -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- MathJax for LaTeX rendering -->
+    <script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true
+        }
+    };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="https://theoryandpractice.org/" class="navbar-brand">
+Theory And Practice            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                    <li><a href="/pages/cv.html">CV</a></li>
+                    <li><a href="/selected-publications.html">Publications</a></li>
+                    <li><a href="/presentations.html">Talks</a></li>
+                    <li><a href="/collaborators.html">Group</a></li>
+                    <li><a href="/projects.html">Projects</a></li>
+                    <li><a href="/pages/in-the-news.html">Media & Outreach</a></li>
+                        <li >
+                            <a href="https://theoryandpractice.org/category/blog.html">Blog</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="https://theoryandpractice.org/search.html" title="Search"><i class="fa fa-search"></i></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<!-- Banner -->
+<!-- End Banner -->
+
+<!-- Content Container -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+<div class="projects-header">
+    <h1>Projects <small style="color: #888;">(Preview)</small></h1>
+    <p class="lead">A collection of research, software, and other projects.</p>
+</div>
+
+
+<!-- Draft Notice -->
+<div class="draft-notice">
+    <i class="fa fa-eye"></i>
+    <strong>Preview Mode:</strong> This page includes 1 draft project(s) that are not visible on the public <a href="https://theoryandpractice.org/projects.html">projects page</a>.
+    Draft projects are marked with a <span style="background: #dc3545; color: white; padding: 2px 6px; border-radius: 4px; font-size: 0.85em;">DRAFT</span> badge.
+</div>
+
+<!-- Filters -->
+<div class="projects-filters">
+    <div class="filter-group">
+        <label for="category-filter">Category:</label>
+        <select id="category-filter" onchange="filterProjects()">
+            <option value="all">All Categories</option>
+            <option value="software">Software (4)</option>
+            <option value="collaborations">Collaborations (2)</option>
+            <option value="research">Research (5)</option>
+            <option value="methodology">Methodology (2)</option>
+            <option value="teaching">Teaching (2)</option>
+            <option value="leadership">Leadership (2)</option>
+            <option value="community">Community (3)</option>
+            <option value="publishing">Publishing (3)</option>
+            <option value="web">Web (1)</option>
+            <option value="fun">Fun (3)</option>
+        </select>
+    </div>
+
+    <div class="filter-group">
+        <label>Status:</label>
+        <div class="status-buttons">
+            <button class="status-btn active" data-status="all" onclick="setStatusFilter('all')">All</button>
+            <button class="status-btn" data-status="active" onclick="setStatusFilter('active')">Active</button>
+            <button class="status-btn" data-status="completed" onclick="setStatusFilter('completed')">Completed</button>
+        </div>
+    </div>
+
+    <div class="filter-group sort-group">
+        <label for="sort-select">Sort:</label>
+        <select id="sort-select" onchange="sortProjects()">
+            <option value="featured">Featured First</option>
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+            <option value="alpha">Alphabetical</option>
+        </select>
+    </div>
+</div>
+
+<!-- Projects by Category -->
+<section class="projects-category" data-category="software">
+    <h2>Software</h2>
+    <p class="category-description">Open source software projects for physics and machine learning.</p>
+
+    <div class="projects-grid">
+        <div class="project-card status-active"
+             data-status="active"
+             data-featured="true"
+             data-year="2018"
+             data-name="pyhf"
+             data-draft="false">
+
+            <div class="project-image">
+                <img src="https://raw.githubusercontent.com/scikit-hep/pyhf/main/docs/_static/img/pyhf-logo.svg" alt="pyhf" loading="lazy">
+
+                <span class="project-featured"><i class="fa fa-star"></i> Featured</span>
+
+                <span class="project-status active">active</span>
+
+            </div>
+
+            <div class="project-content">
+                <h3 class="project-title">
+                    <a href="https://pyhf.readthedocs.io" target="_blank">pyhf</a>
+                </h3>
+
+                <p class="project-description">Pure-Python implementation of HistFactory statistical models with auto-differentiation.</p>
+
+                <div class="project-tags">
+                    <span class="project-tag">python</span>
+                    <span class="project-tag">statistics</span>
+                    <span class="project-tag">HEP</span>
+                </div>
+
+                <div class="project-meta">
+                    <span class="project-year">
+                        2018 – present                    </span>
+
+                    <div class="project-links">
+                        <a href="https://pyhf.readthedocs.io" target="_blank" title="Website"><i class="fa fa-external-link"></i></a>
+                        <a href="https://github.com/scikit-hep/pyhf" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="project-card status-active"
+             data-status="active"
+             data-featured="false"
+             data-year="2018"
+             data-name="MadMiner"
+             data-draft="false">
+
+            <div class="project-image">
+                <img src="https://opengraph.githubassets.com/1/madminer-tool/madminer" alt="MadMiner" loading="lazy">
+
+
+                <span class="project-status active">active</span>
+
+            </div>
+
+            <div class="project-content">
+                <h3 class="project-title">
+                    <a href="https://madminer.readthedocs.io" target="_blank">MadMiner</a>
+                </h3>
+
+                <p class="project-description">Machine learning-based inference for particle physics with neural ratio estimation.</p>
+
+                <div class="project-tags">
+                    <span class="project-tag">python</span>
+                    <span class="project-tag">simulation-based-inference</span>
+                    <span class="project-tag">HEP</span>
+                </div>
+
+                <div class="project-meta">
+                    <span class="project-year">
+                        2018 – present                    </span>
+
+                    <div class="project-links">
+                        <a href="https://madminer.readthedocs.io" target="_blank" title="Website"><i class="fa fa-external-link"></i></a>
+                        <a href="https://github.com/madminer-tool/madminer" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="project-card status-completed"
+             data-status="completed"
+             data-featured="false"
+             data-year="2012"
+             data-name="HistFactory"
+             data-draft="false">
+
+            <div class="project-image">
+                <div class="project-image-placeholder">
+                    <i class="fa fa-folder-open"></i>
+                </div>
+
+
+                <span class="project-status completed">completed</span>
+
+            </div>
+
+            <div class="project-content">
+                <h3 class="project-title">
+                    <a href="https://cds.cern.ch/record/1456844" target="_blank">HistFactory</a>
+                </h3>
+
+                <p class="project-description">A tool for building statistical models for measurements based on template histograms.</p>
+
+                <div class="project-tags">
+                    <span class="project-tag">C++</span>
+                    <span class="project-tag">statistics</span>
+                    <span class="project-tag">HEP</span>
+                </div>
+
+                <div class="project-meta">
+                    <span class="project-year">
+                        2012                    </span>
+
+                    <div class="project-links">
+                        <a href="https://cds.cern.ch/record/1456844" target="_blank" title="Website"><i class="fa fa-external-link"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="project-card status-completed"
+             data-status="completed"
+             data-featured="false"
+             data-year="2003"
+             data-name="RooFit & RooStats"
+             data-draft="false">
+
+            <div class="project-image">
+                <div class="project-image-placeholder">
+                    <i class="fa fa-folder-open"></i>
+                </div>
+
+
+                <span class="project-status completed">completed</span>
+
+            </div>
+
+            <div class="project-content">
+                <h3 class="project-title">
+                    <a href="https://root.cern/manual/roofit/" target="_blank">RooFit & RooStats</a>
+                </h3>
+
+                <p class="project-description">Statistical data analysis toolkit integrated with ROOT.</p>
+
+                <div class="project-tags">
+                    <span class="project-tag">C++</span>
+                    <span class="project-tag">statistics</span>
+                    <span class="project-tag">CERN</span>
+                </div>
+
+                <div class="project-meta">
+                    <span class="project-year">
+                        2003                    </span>
+
+                    <div class="project-links">
+                        <a href="https://root.cern/manual/roofit/" target="_blank" title="Website"><i class="fa fa-external-link"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="projects-category" data-category="collaborations">
+    <h2>Collaborations</h2>
+    <p class="category-description">Large-scale research collaborations and institutes.</p>
+
+    <div class="projects-grid">
+        <div class="project-card status-active"
+             data-status="active"
+             data-featured="true"
+             data-year="2018"
+             data-name="IRIS-HEP"
+             data-draft="false">
+
+            <div class="project-image">
+                <img src="https://iris-hep.org/assets/logos/Iris-hep-4-no-long-name.svg" alt="IRIS-HEP" loading="lazy">
+
+                <span class="project-featured"><i class="fa fa-star"></i> Featured</span>
+
+                <span class="project-status active">active</span>
+
+            </div>
+
+            <div class="project-content">
+                <h3 class="project-title">
+                    <a href="https://iris-hep.org" target="_blank">IRIS-HEP</a>
+                </h3>
+
+                <p class="project-description">Institute for Research and Innovation in Software for High Energy Physics.</p>
+
+                <div class="project-tags">
+                    <span class="project-tag">software</span>
+                    <span class="project-tag">HEP</span>
+                    <span class="project-tag">NSF</span>
+                </div>
+
+                <div class="project-meta">
+                    <span class="project-year">
+                        2018 – present                    </span>
+
+                    <div class="project-links">
+                        <a href="https://iris-hep.org" target="_blank" title="Website"><i class="fa fa-external-link"></i></a>
+                        <a href="https://github.com/iris-hep" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="project-card status-active"
+             data-status="active"
+             data-featured="true"
+             data-year="2007"
+             data-name="ATLAS Experiment"
+             data-draft="false">
+
+            <div class="project-image">
+                <img src="https://atlas.cern/sites/default/files/2024-01/ATLAS-detector-overview.jpg" alt="ATLAS Experiment" loading="lazy">
+
+                <span class="project-featured"><i class="fa fa-star"></i> Featured</span>
+
+                <span class="project-status active">active</span>
+
+            </div>
+
+            <div class="project-content">
+                <h3 class="project-title">
+                    <a href="https://atlas.cern" target="_blank">ATLAS Experiment</a>
+                </h3>
+
+                <p class="project-description">One of the two general-purpose particle physics experiments at the Large Hadron Collider.</p>
+
+                <div class="project-tags">
+                    <span class="project-tag">HEP</span>
+                    <span class="project-tag">CERN</span>
+                    <span class="project-tag">LHC</span>
+                </div>
+
+                <div class="project-meta">
+                    <span class="project-year">
+                        2007 – present                    </span>
+
+                    <div class="project-links">
+                        <a href="https://atlas.cern" target="_blank" title="Website"><i class="fa fa-external-link"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="projects-category" data-category="research">
+    <h2>Research</h2>
+    <p class="category-description">Research initiatives and projects.</p>
+
+    <div class="projects-grid">
+        <div class="project-card status-completed"
+             data-status="completed"
+             data-featured="true"
+             data-year="2019"
+             data-name="AI for Lattice QCD"
+             data-draft="false">
+
+            <div class="project-image">
+                <div class="project-image-placeholder">
+                    <i class="fa fa-folder-open"></i>
+                </div>
+
+                <span class="project-featured"><i class="fa fa-star"></i> Featured</span>
+
+                <span class="project-status completed">completed</span>
+
+            </div>
+
+            <div class="project-content">
+                <h3 class="project-title">
+                    <a href="https://www.nature.com/articles/s42254-023-00616-w" target="_blank">AI for Lattice QCD</a>
+                </h3>
+
+                <p class="project-description">Machine learning approaches to sampling in lattice QCD and other field theories, including equivariant normalizing flows.</p>
+
+                <div class="project-tags">
+                    <span class="project-tag">machine-learning</span>
+                    <span class="project-tag">lattice-QCD</span>
+                    <span class="project-tag">normalizing-flows</span>
+                </div>
+
+                <div class="project-meta">
+                    <span class="project-year">
+                        2019                    </span>
+
+                    <div class="project-links">
+                        <a href="https://www.nature.com/articles/s42254-023-00616-w" target="_blank" title="Website"><i class="fa fa-external-link"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="project-card status-completed"
+             data-status="completed"
+             data-featured="true"
+             data-year="2012"
+             data-name="Discovery of the Higgs Boson"
+             data-draft="false">
+
+            <div class="project-image">
+                <img src="/images/projects/higgs-discovery.jpeg" alt="Discovery of the Higgs Boson" loading="lazy">
+
+                <span class="project-featured"><i class="fa fa-star"></i> Featured</span>
+
+                <span class="project-status completed">completed</span>
+
+            </div>
+
+            <div class="project-content">
+                <h3 class="project-title">
+                    <a href="https://doi.org/10.1016/j.physletb.2012.08.020" target="_blank">Discovery of the Higgs Boson</a>
+                </h3>
+
+                <p class="project-description">Observation of a new particle in the search for the Standard Model Higgs boson with the ATLAS detector at the LHC.</p>
+
+                <div class="project-tags">
+                    <span class="project-tag">HEP</span>
+                    <span class="project-tag">Higgs</span>
+                    <span class="project-tag">ATLAS</span>
+                    <span class="project-tag">discovery</span>
+                </div>
+
+                <div class="project-meta">
+                    <span class="project-year">
+                        2012 – 2012                    </span>
+
+                    <div class="project-links">
+                        <a href="https://doi.org/10.1016/j.physletb.2012.08.020" target="_blank" title="Website"><i class="fa fa-external-link"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="project-card status-active"
+             data-status="active"
+             data-featured="false"
+             data-year="2024"
+             data-name="AI for Amplitudes"
+             data-draft="false">
+
+            <div class="project-image">
+                <div class="project-image-placeholder">
+                    <i class="fa fa-folder-open"></i>
+                </div>
+
+
+                <span class="project-status active">active</span>
+
+            </div>
+
+            <div class="project-content">
+                <h3 class="project-title">
+                    <a href="https://arxiv.org/abs/2407.11731" target="_blank">AI for Amplitudes</a>
+                </h3>
+
+                <p class="project-description">Using machine learning and transformers to bootstrap scattering amplitudes and explore the space of consistent quantum field theories.</p>
+
+                <div class="project-tags">
+                    <span class="project-tag">machine-learning</span>
+                    <span class="project-tag">amplitudes</span>
+                    <span class="project-tag">QFT</span>
+                </div>
+
+                <div class="project-meta">
+                    <span class="project-year">
+                        2024 – present                    </span>
+
+                    <div class="project-links">
+                        <a href="https://arxiv.org/abs/2407.11731" target="_blank" title="Website"><i class="fa fa-external-link"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="project-card status-active"
+             data-status="active"
+             data-featured="false"
+             data-year="2018"
+             data-name="Precision EFT Measurements"
+             data-draft="false">
+
+            <div class="project-image">
+                <div class="project-image-placeholder">
+                    <i class="fa fa-folder-open"></i>
+                </div>
+
+
+                <span class="project-status active">active</span>
+
+            </div>
+
+            <div class="project-content">
+                <h3 class="project-title">
+                    <a href="https://doi.org/10.1103/PhysRevLett.121.111801" target="_blank">Precision EFT Measurements</a>
+                </h3>
+
+                <p class="project-description">Constraining Effective Field Theories with machine learning for precision measurements at the LHC.</p>
+
+                <div class="project-tags">
+                    <span class="project-tag">machine-learning</span>
+                    <span class="project-tag">EFT</span>
+                    <span class="project-tag">HEP</span>
+                </div>
+
+                <div class="project-meta">
+                    <span class="project-year">
+                        2018 – present                    </span>
+
+                    <div class="project-links">
+                        <a href="https://doi.org/10.1103/PhysRevLett.121.111801" target="_blank" title="Website"><i class="fa fa-external-link"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="project-card status-completed"
+             data-status="completed"
+             data-featured="false"
+             data-year="2010"
+             data-name="APEX Experiment"
+             data-draft="false">
+
+            <div class="project-image">
+                <div class="project-image-placeholder">
+                    <i class="fa fa-folder-open"></i>
+                </div>
+
+
+                <span class="project-status completed">completed</span>
+
+            </div>
+
+            <div class="project-content">
+                <h3 class="project-title">
+                    <a href="https://doi.org/10.1103/PhysRevLett.107.191804" target="_blank">APEX Experiment</a>
+                </h3>
+
+                <p class="project-description">Search for a new dark photon (A' boson) in the sub-GeV mass range at Jefferson Lab, looking for narrow bumps in the QED e+e- spectrum.</p>
+
+                <div class="project-tags">
+                    <span class="project-tag">HEP</span>
+                    <span class="project-tag">dark-photon</span>
+                    <span class="project-tag">Jefferson-Lab</span>
+                </div>
+
+                <div class="project-meta">
+                    <span class="project-year">
+                        2010 – 2011                    </span>
+
+                    <div class="project-links">
+                        <a href="https://doi.org/10.1103/PhysRevLett.107.191804" target="_blank" title="Website"><i class="fa fa-external-link"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="projects-category" data-category="methodology">
+    <h2>Methodology</h2>
+    <p class="category-description">Statistical and machine learning methodology.</p>
+
+    <div class="projects-grid">
+        <div class="project-card status-active"
+             data-status="active"
+             data-featured="true"
+             data-year="2016"
+             data-name="Simulation-Based Inference"
+             data-draft="false">
+
+            <div class="project-image">
+                <div class="project-image-placeholder">
+                    <i class="fa fa-folder-open"></i>
+                </div>
+
+                <span class="project-featured"><i class="fa fa-star"></i> Featured</span>
+
+                <span class="project-status active">active</span>
+
+            </div>
+
+            <div class="project-content">
+                <h3 class="project-title">
+                    <a href="https://simulation-based-inference.org" target="_blank">Simulation-Based Inference</a>
+                </h3>
+
+                <p class="project-description">Machine learning methods for likelihood-free inference with complex simulators.</p>
+
+                <div class="project-tags">
+                    <span class="project-tag">machine-learning</span>
+                    <span class="project-tag">statistics</span>
+                    <span class="project-tag">simulation</span>
+                </div>
+
+                <div class="project-meta">
+                    <span class="project-year">
+                        2016 – present                    </span>
+
+                    <div class="project-links">
+                        <a href="https://simulation-based-inference.org" target="_blank" title="Website"><i class="fa fa-external-link"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="project-card status-completed"
+             data-status="completed"
+             data-featured="true"
+             data-year="2011"
+             data-name="Profile Likelihood Ratio"
+             data-draft="false">
+
+            <div class="project-image">
+                <div class="project-image-placeholder">
+                    <i class="fa fa-folder-open"></i>
+                </div>
+
+                <span class="project-featured"><i class="fa fa-star"></i> Featured</span>
+
+                <span class="project-status completed">completed</span>
+
+            </div>
+
+            <div class="project-content">
+                <h3 class="project-title">
+                    <a href="https://doi.org/10.1140/epjc/s10052-011-1554-0" target="_blank">Profile Likelihood Ratio</a>
+                </h3>
+
+                <p class="project-description">Asymptotic formulae for likelihood-based tests of new physics. Over 10,000 citations.</p>
+
+                <div class="project-tags">
+                    <span class="project-tag">statistics</span>
+                    <span class="project-tag">HEP</span>
+                    <span class="project-tag">hypothesis-testing</span>
+                </div>
+
+                <div class="project-meta">
+                    <span class="project-year">
+                        2011                    </span>
+
+                    <div class="project-links">
+                        <a href="https://doi.org/10.1140/epjc/s10052-011-1554-0" target="_blank" title="Website"><i class="fa fa-external-link"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="projects-category" data-category="teaching">
+    <h2>Teaching</h2>
+    <p class="category-description">Educational materials, courses, and tutorials.</p>
+
+    <div class="projects-grid">
+        <div class="project-card status-completed"
+             data-status="completed"
+             data-featured="false"
+             data-year="2021"
+             data-name="Machine Learning Chapter in PDG"
+             data-draft="false">
+
+            <div class="project-image">
+                <div class="project-image-placeholder">
+                    <i class="fa fa-folder-open"></i>
+                </div>
+
+
+                <span class="project-status completed">completed</span>
+
+            </div>
+
+            <div class="project-content">
+                <h3 class="project-title">
+                    <a href="https://pdg.lbl.gov/2024/reviews/rpp2024-rev-machine-learning.pdf" target="_blank">Machine Learning Chapter in PDG</a>
+                </h3>
+
+                <p class="project-description">Chapter on machine learning methods in the Particle Data Group Review of Particle Physics.</p>
+
+                <div class="project-tags">
+                    <span class="project-tag">machine-learning</span>
+                    <span class="project-tag">HEP</span>
+                    <span class="project-tag">PDG</span>
+                </div>
+
+                <div class="project-meta">
+                    <span class="project-year">
+                        2021                    </span>
+
+                    <div class="project-links">
+                        <a href="https://pdg.lbl.gov/2024/reviews/rpp2024-rev-machine-learning.pdf" target="_blank" title="Website"><i class="fa fa-external-link"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="project-card status-completed"
+             data-status="completed"
+             data-featured="false"
+             data-year="2007"
+             data-name="Statistics and Data Science for Physicists"
+             data-draft="false">
+
+            <div class="project-image">
+                <div class="project-image-placeholder">
+                    <i class="fa fa-folder-open"></i>
+                </div>
+
+
+                <span class="project-status completed">completed</span>
+
+            </div>
+
+            <div class="project-content">
+                <h3 class="project-title">
+                    <a href="https://theoryandpractice.org/stats-ds-book/intro.html" target="_blank">Statistics and Data Science for Physicists</a>
+                </h3>
+
+                <p class="project-description">Graduate course on statistical methods and data science for particle physics.</p>
+
+                <div class="project-tags">
+                    <span class="project-tag">statistics</span>
+                    <span class="project-tag">data-science</span>
+                    <span class="project-tag">education</span>
+                </div>
+
+                <div class="project-meta">
+                    <span class="project-year">
+                        2007                    </span>
+
+                    <div class="project-links">
+                        <a href="https://theoryandpractice.org/stats-ds-book/intro.html" target="_blank" title="Website"><i class="fa fa-external-link"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="projects-category" data-category="leadership">
+    <h2>Leadership</h2>
+    <p class="category-description">Leadership roles and institutional initiatives.</p>
+
+    <div class="projects-grid">
+        <div class="project-card status-active"
+             data-status="active"
+             data-featured="true"
+             data-year="2022"
+             data-name="UW-Madison Data Science Institute"
+             data-draft="false">
+
+            <div class="project-image">
+                <div class="project-image-placeholder">
+                    <i class="fa fa-folder-open"></i>
+                </div>
+
+                <span class="project-featured"><i class="fa fa-star"></i> Featured</span>
+
+                <span class="project-status active">active</span>
+
+            </div>
+
+            <div class="project-content">
+                <h3 class="project-title">
+                    <a href="https://dsi.wisc.edu" target="_blank">UW-Madison Data Science Institute</a>
+                </h3>
+
+                <p class="project-description">David R. Anderson Director of the Data Science Institute at UW-Madison.</p>
+
+
+                <div class="project-meta">
+                    <span class="project-year">
+                        2022 – present                    </span>
+
+                    <div class="project-links">
+                        <a href="https://dsi.wisc.edu" target="_blank" title="Website"><i class="fa fa-external-link"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="project-card status-completed"
+             data-status="completed"
+             data-featured="false"
+             data-year="2023"
+             data-name="P5"
+             data-draft="false">
+
+            <div class="project-image">
+                <div class="project-image-placeholder">
+                    <i class="fa fa-folder-open"></i>
+                </div>
+
+
+                <span class="project-status completed">completed</span>
+
+            </div>
+
+            <div class="project-content">
+                <h3 class="project-title">
+                    <a href="https://www.usparticlephysics.org/2023-p5-report/" target="_blank">P5</a>
+                </h3>
+
+                <p class="project-description">Particle Physics Project Prioritization Panel - shaping the future of U.S. particle physics.</p>
+
+                <div class="project-tags">
+                    <span class="project-tag">HEP</span>
+                    <span class="project-tag">policy</span>
+                    <span class="project-tag">planning</span>
+                </div>
+
+                <div class="project-meta">
+                    <span class="project-year">
+                        2023                    </span>
+
+                    <div class="project-links">
+                        <a href="https://www.usparticlephysics.org/2023-p5-report/" target="_blank" title="Website"><i class="fa fa-external-link"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="projects-category" data-category="community">
+    <h2>Community</h2>
+    <p class="category-description">Community building and collaborative efforts.</p>
+
+    <div class="projects-grid">
+        <div class="project-card status-active"
+             data-status="active"
+             data-featured="false"
+             data-year="2017"
+             data-name="Hammers & Nails"
+             data-draft="false">
+
+            <div class="project-image">
+                <div class="project-image-placeholder">
+                    <i class="fa fa-folder-open"></i>
+                </div>
+
+
+                <span class="project-status active">active</span>
+
+            </div>
+
+            <div class="project-content">
+                <h3 class="project-title">
+                    Hammers & Nails
+                </h3>
+
+                <p class="project-description">Workshop series bridging machine learning and physical sciences.</p>
+
+                <div class="project-tags">
+                    <span class="project-tag">machine-learning</span>
+                    <span class="project-tag">physics</span>
+                    <span class="project-tag">workshop</span>
+                </div>
+
+                <div class="project-meta">
+                    <span class="project-year">
+                        2017 – present                    </span>
+
+                    <div class="project-links">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="project-card status-completed"
+             data-status="completed"
+             data-featured="false"
+             data-year="2017"
+             data-name="ML4Jets"
+             data-draft="false">
+
+            <div class="project-image">
+                <div class="project-image-placeholder">
+                    <i class="fa fa-folder-open"></i>
+                </div>
+
+
+                <span class="project-status completed">completed</span>
+
+            </div>
+
+            <div class="project-content">
+                <h3 class="project-title">
+                    <a href="https://theoryandpractice.org/2020/01/ML4Jets%202020/" target="_blank">ML4Jets</a>
+                </h3>
+
+                <p class="project-description">Workshop series on machine learning for jet physics.</p>
+
+                <div class="project-tags">
+                    <span class="project-tag">machine-learning</span>
+                    <span class="project-tag">jets</span>
+                    <span class="project-tag">HEP</span>
+                    <span class="project-tag">workshop</span>
+                </div>
+
+                <div class="project-meta">
+                    <span class="project-year">
+                        2017                    </span>
+
+                    <div class="project-links">
+                        <a href="https://theoryandpractice.org/2020/01/ML4Jets%202020/" target="_blank" title="Website"><i class="fa fa-external-link"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="project-card status-active"
+             data-status="active"
+             data-featured="false"
+             data-year="2017"
+             data-name="ML4PS Workshop"
+             data-draft="false">
+
+            <div class="project-image">
+                <img src="/images/ml4ps-website.png" alt="ML4PS Workshop" loading="lazy">
+
+
+                <span class="project-status active">active</span>
+
+            </div>
+
+            <div class="project-content">
+                <h3 class="project-title">
+                    <a href="https://ml4physicalsciences.github.io" target="_blank">ML4PS Workshop</a>
+                </h3>
+
+                <p class="project-description">Machine Learning for Physical Sciences workshop series at NeurIPS.</p>
+
+                <div class="project-tags">
+                    <span class="project-tag">machine-learning</span>
+                    <span class="project-tag">physics</span>
+                    <span class="project-tag">NeurIPS</span>
+                </div>
+
+                <div class="project-meta">
+                    <span class="project-year">
+                        2017 – present                    </span>
+
+                    <div class="project-links">
+                        <a href="https://ml4physicalsciences.github.io" target="_blank" title="Website"><i class="fa fa-external-link"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="projects-category" data-category="publishing">
+    <h2>Publishing</h2>
+    <p class="category-description">Publications, journals, and editorial work.</p>
+
+    <div class="projects-grid">
+        <div class="project-card status-active"
+             data-status="active"
+             data-featured="true"
+             data-year="2022"
+             data-name="Machine Learning: Science and Technology"
+             data-draft="false">
+
+            <div class="project-image">
+                <div class="project-image-placeholder">
+                    <i class="fa fa-folder-open"></i>
+                </div>
+
+                <span class="project-featured"><i class="fa fa-star"></i> Featured</span>
+
+                <span class="project-status active">active</span>
+
+            </div>
+
+            <div class="project-content">
+                <h3 class="project-title">
+                    <a href="https://iopscience.iop.org/journal/2632-2153" target="_blank">Machine Learning: Science and Technology</a>
+                </h3>
+
+                <p class="project-description">Editor-in-Chief of IOP Publishing's journal on ML for science.</p>
+
+                <div class="project-tags">
+                    <span class="project-tag">journal</span>
+                    <span class="project-tag">machine-learning</span>
+                    <span class="project-tag">science</span>
+                </div>
+
+                <div class="project-meta">
+                    <span class="project-year">
+                        2022 – present                    </span>
+
+                    <div class="project-links">
+                        <a href="https://iopscience.iop.org/journal/2632-2153" target="_blank" title="Website"><i class="fa fa-external-link"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="project-card status-active"
+             data-status="active"
+             data-featured="false"
+             data-year="2010"
+             data-name="INSPIRE"
+             data-draft="false">
+
+            <div class="project-image">
+                <div class="project-image-placeholder">
+                    <i class="fa fa-folder-open"></i>
+                </div>
+
+
+                <span class="project-status active">active</span>
+
+            </div>
+
+            <div class="project-content">
+                <h3 class="project-title">
+                    <a href="https://inspirehep.net" target="_blank">INSPIRE</a>
+                </h3>
+
+                <p class="project-description">High Energy Physics literature database and information system.</p>
+
+                <div class="project-tags">
+                    <span class="project-tag">HEP</span>
+                    <span class="project-tag">literature</span>
+                    <span class="project-tag">database</span>
+                </div>
+
+                <div class="project-meta">
+                    <span class="project-year">
+                        2010 – present                    </span>
+
+                    <div class="project-links">
+                        <a href="https://inspirehep.net" target="_blank" title="Website"><i class="fa fa-external-link"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="project-card status-active"
+             data-status="active"
+             data-featured="false"
+             data-year="2010"
+             data-name="RECAST"
+             data-draft="false">
+
+            <div class="project-image">
+                <div class="project-image-placeholder">
+                    <i class="fa fa-folder-open"></i>
+                </div>
+
+
+                <span class="project-status active">active</span>
+
+            </div>
+
+            <div class="project-content">
+                <h3 class="project-title">
+                    <a href="https://inspirehep.net/literature?sort=mostrecent&size=25&page=1&q=RECAST%20and%20%28cn%3Aatlas%20or%20a%3Acranmer%29&ui-citation-summary=true" target="_blank">RECAST</a>
+                </h3>
+
+                <p class="project-description">A framework for reinterpreting LHC analyses for new physics models.</p>
+
+                <div class="project-tags">
+                    <span class="project-tag">reinterpretation</span>
+                    <span class="project-tag">HEP</span>
+                    <span class="project-tag">analysis-preservation</span>
+                </div>
+
+                <div class="project-meta">
+                    <span class="project-year">
+                        2010 – present                    </span>
+
+                    <div class="project-links">
+                        <a href="https://inspirehep.net/literature?sort=mostrecent&size=25&page=1&q=RECAST%20and%20%28cn%3Aatlas%20or%20a%3Acranmer%29&ui-citation-summary=true" target="_blank" title="Website"><i class="fa fa-external-link"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="projects-category" data-category="web">
+    <h2>Web</h2>
+    <p class="category-description">Web projects, tools, and visualizations.</p>
+
+    <div class="projects-grid">
+        <div class="project-card status-active"
+             data-status="active"
+             data-featured="false"
+             data-year="2012"
+             data-name="Theory and Practice"
+             data-draft="false">
+
+            <div class="project-image">
+                <img src="/images/TheoryAndPractice-logo-byline-wide.png" alt="Theory and Practice" loading="lazy">
+
+
+                <span class="project-status active">active</span>
+
+            </div>
+
+            <div class="project-content">
+                <h3 class="project-title">
+                    <a href="https://theoryandpractice.org" target="_blank">Theory and Practice</a>
+                </h3>
+
+                <p class="project-description">Personal website and blog on physics, statistics, and machine learning.</p>
+
+                <div class="project-tags">
+                    <span class="project-tag">blog</span>
+                    <span class="project-tag">pelican</span>
+                    <span class="project-tag">python</span>
+                </div>
+
+                <div class="project-meta">
+                    <span class="project-year">
+                        2012 – present                    </span>
+
+                    <div class="project-links">
+                        <a href="https://theoryandpractice.org" target="_blank" title="Website"><i class="fa fa-external-link"></i></a>
+                        <a href="https://github.com/cranmer/theoryandpractice-2026" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="projects-category" data-category="fun">
+    <h2>Fun</h2>
+    <p class="category-description">Side projects and experiments.</p>
+
+    <div class="projects-grid">
+        <div class="project-card status-active is-draft"
+             data-status="active"
+             data-featured="false"
+             data-year="2025"
+             data-name="Draft Project Example"
+             data-draft="true">
+
+            <div class="project-image">
+                <div class="project-image-placeholder">
+                    <i class="fa fa-folder-open"></i>
+                </div>
+
+
+                <span class="project-status active">active</span>
+
+                <span class="project-draft-badge"><i class="fa fa-pencil"></i> Draft</span>
+            </div>
+
+            <div class="project-content">
+                <h3 class="project-title">
+                    Draft Project Example
+                </h3>
+
+                <p class="project-description">This is a draft project for testing. It will only appear on projects-draft.html.</p>
+
+                <div class="project-tags">
+                    <span class="project-tag">draft</span>
+                    <span class="project-tag">test</span>
+                </div>
+
+                <div class="project-meta">
+                    <span class="project-year">
+                        2025 – present                    </span>
+
+                    <div class="project-links">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="project-card status-active"
+             data-status="active"
+             data-featured="false"
+             data-year="2024"
+             data-name="Vectorscope"
+             data-draft="false">
+
+            <div class="project-image">
+                <img src="https://raw.githubusercontent.com/cranmer/vectorscope/main/logo.svg" alt="Vectorscope" loading="lazy">
+
+
+                <span class="project-status active">active</span>
+
+            </div>
+
+            <div class="project-content">
+                <h3 class="project-title">
+                    <a href="http://theoryandpractice.org/vectorscope/" target="_blank">Vectorscope</a>
+                </h3>
+
+                <p class="project-description">Interactive visualization tool for exploring high-dimensional vector embeddings.</p>
+
+                <div class="project-tags">
+                    <span class="project-tag">python</span>
+                    <span class="project-tag">visualization</span>
+                    <span class="project-tag">embeddings</span>
+                </div>
+
+                <div class="project-meta">
+                    <span class="project-year">
+                        2024 – present                    </span>
+
+                    <div class="project-links">
+                        <a href="http://theoryandpractice.org/vectorscope/" target="_blank" title="Website"><i class="fa fa-external-link"></i></a>
+                        <a href="https://github.com/cranmer/vectorscope" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="project-card status-completed"
+             data-status="completed"
+             data-featured="false"
+             data-year="2014"
+             data-name="Crayfis"
+             data-draft="false">
+
+            <div class="project-image">
+                <div class="project-image-placeholder">
+                    <i class="fa fa-folder-open"></i>
+                </div>
+
+
+                <span class="project-status completed">completed</span>
+
+            </div>
+
+            <div class="project-content">
+                <h3 class="project-title">
+                    <a href="https://www.newyorker.com/tech/annals-of-technology/seeking-source-cosmic-rays" target="_blank">Crayfis</a>
+                </h3>
+
+                <p class="project-description">Citizen science project using smartphone cameras to detect cosmic rays.</p>
+
+                <div class="project-tags">
+                    <span class="project-tag">citizen-science</span>
+                    <span class="project-tag">mobile</span>
+                    <span class="project-tag">cosmic-rays</span>
+                </div>
+
+                <div class="project-meta">
+                    <span class="project-year">
+                        2014 – 2020                    </span>
+
+                    <div class="project-links">
+                        <a href="https://www.newyorker.com/tech/annals-of-technology/seeking-source-cosmic-rays" target="_blank" title="Website"><i class="fa fa-external-link"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script>
+let currentStatus = 'all';
+let currentCategory = 'all';
+
+function setStatusFilter(status) {
+    currentStatus = status;
+
+    // Update button states
+    document.querySelectorAll('.status-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.status === status);
+    });
+
+    filterProjects();
+}
+
+function filterProjects() {
+    currentCategory = document.getElementById('category-filter').value;
+
+    // Filter category sections
+    document.querySelectorAll('.projects-category').forEach(section => {
+        const catId = section.dataset.category;
+        const showCategory = currentCategory === 'all' || currentCategory === catId;
+        section.classList.toggle('category-hidden', !showCategory);
+
+        if (showCategory) {
+            // Filter individual projects within visible categories
+            let visibleCount = 0;
+            section.querySelectorAll('.project-card').forEach(card => {
+                const status = card.dataset.status;
+                const showProject = currentStatus === 'all' || currentStatus === status;
+                card.classList.toggle('project-hidden', !showProject);
+                if (showProject) visibleCount++;
+            });
+        }
+    });
+}
+
+function sortProjects() {
+    const sortBy = document.getElementById('sort-select').value;
+
+    document.querySelectorAll('.projects-grid').forEach(grid => {
+        const cards = Array.from(grid.querySelectorAll('.project-card'));
+
+        cards.sort((a, b) => {
+            switch(sortBy) {
+                case 'featured':
+                    const aFeat = a.dataset.featured === 'true' ? 0 : 1;
+                    const bFeat = b.dataset.featured === 'true' ? 0 : 1;
+                    if (aFeat !== bFeat) return aFeat - bFeat;
+                    return parseInt(b.dataset.year) - parseInt(a.dataset.year);
+                case 'newest':
+                    return parseInt(b.dataset.year) - parseInt(a.dataset.year);
+                case 'oldest':
+                    return parseInt(a.dataset.year) - parseInt(b.dataset.year);
+                case 'alpha':
+                    return a.dataset.name.localeCompare(b.dataset.name);
+                default:
+                    return 0;
+            }
+        });
+
+        cards.forEach(card => grid.appendChild(card));
+    });
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', filterProjects);
+</script>
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Recent Posts -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+  <ul class="list-group" id="recentposts">
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/12/migrating-with-claude/">Migrating with Claude</a></li>
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/12/year-in-review-2025/">Year in Review: 2025</a></li>
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/12/travel-map/">Travel Map</a></li>
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/12/cassville-checkers/">Casseville Checkers</a></li>
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/09/The Bittersweet Lesson/">The Bittersweet Lesson</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Recent Posts -->
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="https://bsky.app/profile/kylecranmer.bsky.social"><i class="fa fa-bluesky fa-lg"></i> Bluesky</a></li>
+    <li class="list-group-item"><a href="http://twitter.com/kylecranmer"><i class="fa fa-twitter-square fa-lg"></i> twitter</a></li>
+    <li class="list-group-item"><a href="https://www.instagram.com/kyle.cranmer/"><i class="fa fa-instagram fa-lg"></i> instagram</a></li>
+    <li class="list-group-item"><a href="http://github.com/cranmer"><i class="fa fa-github-square fa-lg"></i> github</a></li>
+    <li class="list-group-item"><a href="http://www.linkedin.com/in/kylecranmer"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
+    <li class="list-group-item"><a href="https://www.youtube.com/channel/UCKl2VoIJiPYp3QhuK22b7xQ"><i class="fa fa-youtube-square fa-lg"></i> youtube</a></li>
+    <li class="list-group-item"><a href="https://inspirehep.net/literature?sort=mostrecent&size=25&page=1&q=a%3Ak.s.cranmer.1%20and%20ac%201-%3E10&ui-citation-summary=true"><i class="fa fa-inspire fa-lg"></i> INSPIRE</a></li>
+    <li class="list-group-item"><a href="http://scholar.google.com/citations?user=EZjSxgwAAAAJ"><i class="fa fa-google-scholar fa-lg"></i> Google Scholar</a></li>
+    <li class="list-group-item"><a href="https://orcid.org/0000-0002-5769-7094"><i class="fa fa-orcid fa-lg"></i> ORCiD</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+
+<!-- Sidebar/Links -->
+<li class="list-group-item">
+  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+  <ul class="list-group" id="links">
+    <li class="list-group-item">
+      <a href="https://theoryandpractice.org/stats-ds-book/intro.html" target="_blank">Stats & Data Science Book</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://dsi.wisc.edu" target="_blank">Data Science Institute</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://www.physics.wisc.edu/directory/cranmer-kyle/" target="_blank">My UW Physics webpage</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://iris-hep.org/" target="_blank">IRIS-HEP</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://en.wikipedia.org/wiki/Kyle_Cranmer" target="_blank">Wikipedia</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Links -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<!-- End Content Container -->
+
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2025 Kyle Cranmer
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>                <p><small>  <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/deed.en"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>
+    Content
+  licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/deed.en">Creative Commons Attribution-NonCommercial 4.0 International License</a>, except where indicated otherwise.
+</small></p>
+         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="https://theoryandpractice.org/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://theoryandpractice.org/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="https://theoryandpractice.org/theme/js/respond.min.js"></script>
+
+
+
+
+</body>
+</html>
