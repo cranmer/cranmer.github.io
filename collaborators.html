@@ -215,6 +215,10 @@
         padding: 15px;
         margin-bottom: 25px;
         border-radius: 4px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 15px;
     }
     .collaborator-filters label {
         margin-right: 8px;
@@ -222,7 +226,156 @@
     }
     .collaborator-filters select {
         padding: 5px 10px;
-        margin-right: 20px;
+    }
+    .filter-group {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .view-buttons {
+        display: flex;
+        gap: 5px;
+    }
+    .view-btn {
+        padding: 6px 14px;
+        border: 1px solid #18bc9c;
+        background: white;
+        color: #18bc9c;
+        cursor: pointer;
+        transition: all 0.2s;
+        border-radius: 4px;
+    }
+    .view-btn:hover {
+        background: #e8f8f5;
+    }
+    .view-btn.active {
+        background: #18bc9c;
+        color: white;
+    }
+
+    /* ==================
+       List View Styles
+       ================== */
+    .collaborators-list {
+        display: none;
+    }
+    .view-list .collaborators-grid {
+        display: none;
+    }
+    .view-list .collaborators-list {
+        display: block;
+    }
+    .collaborator-list-item {
+        display: flex;
+        align-items: center;
+        padding: 12px 15px;
+        border-bottom: 1px solid #eee;
+        transition: background 0.2s;
+    }
+    .collaborator-list-item:hover {
+        background: #f8f9fa;
+    }
+    .collaborator-list-item.former {
+        opacity: 0.75;
+    }
+    .collaborator-list-photo {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-right: 15px;
+        flex-shrink: 0;
+    }
+    .collaborator-list-photo-placeholder {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #dee2e6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #6c757d;
+        font-size: 1.2em;
+        margin-right: 15px;
+        flex-shrink: 0;
+    }
+    .collaborator-list-status {
+        width: 70px;
+        flex-shrink: 0;
+    }
+    .collaborator-list-status span {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 10px;
+        font-size: 0.7em;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+    .collaborator-list-status .current {
+        background: #18bc9c;
+        color: white;
+    }
+    .collaborator-list-status .former {
+        background: #95a5a6;
+        color: white;
+    }
+    .collaborator-list-name {
+        flex: 1;
+        font-weight: 600;
+        color: #2c3e50;
+        min-width: 150px;
+    }
+    .collaborator-list-name a {
+        color: inherit;
+        text-decoration: none;
+    }
+    .collaborator-list-name a:hover {
+        color: #18bc9c;
+    }
+    .collaborator-list-role {
+        flex: 1;
+        color: #18bc9c;
+        font-size: 0.9em;
+    }
+    .collaborator-list-affiliation {
+        flex: 1.5;
+        color: #666;
+        font-size: 0.9em;
+    }
+    .collaborator-list-years {
+        width: 120px;
+        text-align: right;
+        color: #888;
+        font-size: 0.85em;
+        flex-shrink: 0;
+    }
+    .collaborator-list-links {
+        width: 100px;
+        text-align: right;
+        flex-shrink: 0;
+    }
+    .collaborator-list-links a {
+        color: #666;
+        margin-left: 8px;
+        font-size: 1.1em;
+    }
+    .collaborator-list-links a:hover {
+        color: #18bc9c;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .collaborator-filters {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .collaborator-list-role,
+        .collaborator-list-affiliation {
+            display: none;
+        }
+        .collaborator-list-item {
+            flex-wrap: wrap;
+        }
     }
 </style>
 
@@ -310,21 +463,33 @@ Theory And Practice            </a>
 
     <!-- Filters -->
     <div class="collaborator-filters">
-        <label for="filter-category">Category:</label>
-        <select id="filter-category" onchange="filterCollaborators()">
-            <option value="">All</option>
-            <option value="students">Students</option>
-            <option value="postdocs">Postdocs</option>
-            <option value="scientists">Scientists</option>
-            <option value="collaborators">Collaborators</option>
-        </select>
+        <div class="filter-group">
+            <label for="filter-category">Category:</label>
+            <select id="filter-category" onchange="filterCollaborators()">
+                <option value="">All</option>
+                <option value="students">Students</option>
+                <option value="postdocs">Postdocs</option>
+                <option value="scientists">Scientists</option>
+                <option value="collaborators">Collaborators</option>
+            </select>
+        </div>
 
-        <label>Status:</label>
-        <span class="status-toggle">
-            <button class="btn btn-default active" data-status="" onclick="setStatusFilter(this, '')">All</button>
-            <button class="btn btn-default" data-status="current" onclick="setStatusFilter(this, 'current')">Current</button>
-            <button class="btn btn-default" data-status="former" onclick="setStatusFilter(this, 'former')">Former</button>
-        </span>
+        <div class="filter-group">
+            <label>Status:</label>
+            <span class="status-toggle">
+                <button class="btn btn-default active" data-status="" onclick="setStatusFilter(this, '')">All</button>
+                <button class="btn btn-default" data-status="current" onclick="setStatusFilter(this, 'current')">Current</button>
+                <button class="btn btn-default" data-status="former" onclick="setStatusFilter(this, 'former')">Former</button>
+            </span>
+        </div>
+
+        <div class="filter-group">
+            <label>View:</label>
+            <div class="view-buttons">
+                <button class="view-btn active" data-view="cards" onclick="setView('cards')" title="Card View"><i class="fa fa-th-large"></i></button>
+                <button class="view-btn" data-view="list" onclick="setView('list')" title="List View"><i class="fa fa-list"></i></button>
+            </div>
+        </div>
     </div>
 
     <!-- Collaborators by Category -->
@@ -737,6 +902,355 @@ Theory And Practice            </a>
                             <i class="fa fa-handshake-o"></i> Co-authored
                         </a>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- List View -->
+        <div class="collaborators-list">
+            <div class="collaborator-list-item current" data-name="Haotian Cao" data-current="true">
+                <img src="/images/collaborators/haotian-cao.jpg" alt="Haotian Cao" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Haotian Cao
+                </div>
+
+                <div class="collaborator-list-role">
+                    PhD Student
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    University of Wisconsin-Madison
+                </div>
+
+                <div class="collaborator-list-years">
+                    2024 – present                </div>
+
+                <div class="collaborator-list-links">
+                </div>
+            </div>
+            <div class="collaborator-list-item current" data-name="Raheem Hashmani" data-current="true">
+                <img src="https://rkhashmani.me/authors/admin/avatar_hu14d0eabce56bfc3665c796ac60d5ad60_410493_270x270_fill_q75_lanczos_center.jpeg" alt="Raheem Hashmani" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://rkhashmani.me" target="_blank">Raheem Hashmani</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    PhD Student
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    University of Wisconsin-Madison
+                </div>
+
+                <div class="collaborator-list-years">
+                    2023 – present                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://rkhashmani.me" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://github.com/RKHashmani" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                        <a href="https://scholar.google.com/citations?user=LgmqE2QAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item current" data-name="Edison Weik" data-current="true">
+                <img src="https://github.com/eweik.png?size=200" alt="Edison Weik" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Edison Weik
+                </div>
+
+                <div class="collaborator-list-role">
+                    PhD Student
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    New York University
+                </div>
+
+                <div class="collaborator-list-years">
+                    2020 – present                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://github.com/eweik" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item current" data-name="Matthew Drnevich" data-current="true">
+                <img src="https://github.com/mdkdrnevich.png?size=200" alt="Matthew Drnevich" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Matthew Drnevich
+                </div>
+
+                <div class="collaborator-list-role">
+                    PhD Student
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    New York University
+                </div>
+
+                <div class="collaborator-list-years">
+                    2020 – present                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://github.com/mdkdrnevich" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item current" data-name="Zubair Bhatti" data-current="true">
+                <img src="https://github.com/zbhatti.png?size=200" alt="Zubair Bhatti" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Zubair Bhatti
+                </div>
+
+                <div class="collaborator-list-role">
+                    PhD Student
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    New York University
+                </div>
+
+                <div class="collaborator-list-years">
+                    2019 – present                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://github.com/zbhatti" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item current" data-name="Lukas Heinrich" data-current="true">
+                <img src="https://github.com/lukasheinrich.png?size=200" alt="Lukas Heinrich" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://www.lukasheinrich.com/" target="_blank">Lukas Heinrich</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    PhD Student
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    New York University
+                </div>
+
+                <div class="collaborator-list-years">
+                    2014 – 2019                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://www.lukasheinrich.com/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://github.com/lukasheinrich" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item current" data-name="Sven Kreiss" data-current="true">
+                <img src="https://www.svenkreiss.com/images/me2022_square_small.jpeg" alt="Sven Kreiss" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://www.svenkreiss.com/" target="_blank">Sven Kreiss</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    PhD Student
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    New York University
+                </div>
+
+                <div class="collaborator-list-years">
+                    2010 – 2014                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://www.svenkreiss.com/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://github.com/svenkreiss" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                        <a href="https://scholar.google.com/citations?user=SnjnSVEAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item current" data-name="James Beacham" data-current="true">
+                <img src="https://images.squarespace-cdn.com/content/v1/561e8e98e4b08e2972a76f87/f997e8c4-d8fb-4b50-a858-44eda0456fe5/Beacham_Headshot_v02_sm.jpg" alt="James Beacham" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://jbbeacham.com/" target="_blank">James Beacham</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    PhD Student
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    New York University
+                </div>
+
+                <div class="collaborator-list-years">
+                    2009 – 2014                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://jbbeacham.com/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item current" data-name="George Herbert Lewis" data-current="true">
+                <img src="https://unavatar.io/twitter/HerbieLewis" alt="George Herbert Lewis" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    George Herbert Lewis
+                </div>
+
+                <div class="collaborator-list-role">
+                    PhD Student
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    New York University
+                </div>
+
+                <div class="collaborator-list-years">
+                    2008 – 2013                </div>
+
+                <div class="collaborator-list-links">
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Irina Espejo Morales" data-current="false">
+                <img src="https://github.com/irinaespejo.png?size=200" alt="Irina Espejo Morales" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Irina Espejo Morales
+                </div>
+
+                <div class="collaborator-list-role">
+                    PhD Student (Data Science)
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    New York University
+                </div>
+
+                <div class="collaborator-list-years">
+                    2018 – 2023                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://github.com/irinaespejo" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Lily Zhang" data-current="false">
+                <img src="https://lhz1029.github.io/images/lily_bio_2019_square.jpg" alt="Lily Zhang" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://lhz1029.github.io/" target="_blank">Lily Zhang</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    PhD Student (Data Science)
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    New York University
+                </div>
+
+                <div class="collaborator-list-years">
+                    2018 – 2023                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://lhz1029.github.io/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://github.com/lhz1029" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                        <a href="https://scholar.google.com/citations?user=fmCi9ZQAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Michael Albergo" data-current="false">
+                <img src="https://github.com/malbergo.png?size=200" alt="Michael Albergo" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="http://malbergo.me/" target="_blank">Michael Albergo</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    PhD Student
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    New York University
+                </div>
+
+                <div class="collaborator-list-years">
+                    2018 – 2023                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="http://malbergo.me/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://github.com/malbergo" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Swapneel Mehta" data-current="false">
+                <img src="https://github.com/SwapneelM.png?size=200" alt="Swapneel Mehta" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://swapneelm.github.io/" target="_blank">Swapneel Mehta</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    PhD Student (Data Science)
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    New York University
+                </div>
+
+                <div class="collaborator-list-years">
+                    2018 – 2023                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://swapneelm.github.io/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://github.com/SwapneelM" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
                 </div>
             </div>
         </div>
@@ -1158,6 +1672,376 @@ Theory And Practice            </a>
                 </div>
             </div>
         </div>
+
+        <!-- List View -->
+        <div class="collaborators-list">
+            <div class="collaborator-list-item current" data-name="Garrett Merz" data-current="true">
+                <img src="https://GarrettMerz.github.io/images/profile.jpeg" alt="Garrett Merz" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://garrettmerz.github.io" target="_blank">Garrett Merz</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Postdoctoral Researcher
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    University of Wisconsin-Madison
+                </div>
+
+                <div class="collaborator-list-years">
+                    2024 – present                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://garrettmerz.github.io" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://github.com/GarrettMerz" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item current" data-name="Jay Sandesara" data-current="true">
+                <img src="https://github.com/JaySandesara.png?size=200" alt="Jay Sandesara" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Jay Sandesara
+                </div>
+
+                <div class="collaborator-list-role">
+                    Postdoctoral Researcher
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    University of Wisconsin-Madison
+                </div>
+
+                <div class="collaborator-list-years">
+                    2024 – present                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://github.com/JaySandesara" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item current" data-name="Sebastian Macaluso" data-current="true">
+                <img src="https://github.com/sebastianmacaluso.png?size=200" alt="Sebastian Macaluso" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Sebastian Macaluso
+                </div>
+
+                <div class="collaborator-list-role">
+                    Postdoctoral Researcher
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    New York University
+                </div>
+
+                <div class="collaborator-list-years">
+                    2018 – 2022                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://github.com/sebastianmacaluso" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item current" data-name="Johann Brehmer" data-current="true">
+                <img src="https://github.com/johannbrehmer.png?size=200" alt="Johann Brehmer" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://johannbrehmer.github.io" target="_blank">Johann Brehmer</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Postdoctoral Researcher
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    New York University
+                </div>
+
+                <div class="collaborator-list-years">
+                    2018 – 2021                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://johannbrehmer.github.io" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://github.com/johannbrehmer" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                        <a href="https://scholar.google.com/citations?user=ZdUMvCsAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Patrick Rieck" data-current="false">
+                <img src="https://physics.nyu.edu/experimentalparticle/images/patrick-cropped.png" alt="Patrick Rieck" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Patrick Rieck
+                </div>
+
+                <div class="collaborator-list-role">
+                    Research Scientist
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    New York University
+                </div>
+
+                <div class="collaborator-list-years">
+                    2018 – 2023                </div>
+
+                <div class="collaborator-list-links">
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Siddharth Mishra-Sharma" data-current="false">
+                <img src="https://smsharma.io/assets/siddharth_headshot_small.jpg" alt="Siddharth Mishra-Sharma" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://smsharma.io" target="_blank">Siddharth Mishra-Sharma</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Postdoctoral Researcher
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    New York University
+                </div>
+
+                <div class="collaborator-list-years">
+                    2019 – 2022                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://smsharma.io" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://github.com/smsharma" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                        <a href="https://scholar.google.com/citations?user=hJVjhlwAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Leonora Vesterbacka" data-current="false">
+                <img src="https://github.com/leonoravesterbacka.png?size=200" alt="Leonora Vesterbacka" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Leonora Vesterbacka
+                </div>
+
+                <div class="collaborator-list-role">
+                    Postdoctoral Researcher
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    New York University
+                </div>
+
+                <div class="collaborator-list-years">
+                    2017 – 2020                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://github.com/leonoravesterbacka" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Gilles Louppe" data-current="false">
+                <img src="https://github.com/glouppe.png?size=200" alt="Gilles Louppe" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://glouppe.github.io/" target="_blank">Gilles Louppe</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Moore-Sloan Data Science Fellow
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    New York University
+                </div>
+
+                <div class="collaborator-list-years">
+                    2015 – 2017                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://glouppe.github.io/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://github.com/glouppe" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                        <a href="https://scholar.google.com/citations?user=F_77d4QAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Duccio Pappadopulo" data-current="false">
+                <img src="https://unavatar.io/twitter/ducciolvp" alt="Duccio Pappadopulo" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Duccio Pappadopulo
+                </div>
+
+                <div class="collaborator-list-role">
+                    Postdoctoral Researcher
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    New York University
+                </div>
+
+                <div class="collaborator-list-years">
+                    2014 – 2017                </div>
+
+                <div class="collaborator-list-links">
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Catrin Bernius" data-current="false">
+                <img src="https://physics.nyu.edu/experimentalparticle/images/catrin-smaller.jpg" alt="Catrin Bernius" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Catrin Bernius
+                </div>
+
+                <div class="collaborator-list-role">
+                    Research Scientist
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    New York University
+                </div>
+
+                <div class="collaborator-list-years">
+                    2012 – 2016                </div>
+
+                <div class="collaborator-list-links">
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Kirill Prokofiev" data-current="false">
+                <img src="https://physics.nyu.edu/experimentalparticle/images/Kirill.jpg" alt="Kirill Prokofiev" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Kirill Prokofiev
+                </div>
+
+                <div class="collaborator-list-role">
+                    Postdoctoral Researcher
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    New York University
+                </div>
+
+                <div class="collaborator-list-years">
+                    2010 – 2014                </div>
+
+                <div class="collaborator-list-links">
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Attila Krasznahorkay" data-current="false">
+                <img src="https://physics.nyu.edu/experimentalparticle/images/Attila_small.jpg" alt="Attila Krasznahorkay" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Attila Krasznahorkay
+                </div>
+
+                <div class="collaborator-list-role">
+                    Postdoctoral Researcher
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    New York University
+                </div>
+
+                <div class="collaborator-list-years">
+                    2009 – 2012                </div>
+
+                <div class="collaborator-list-links">
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Diego Casadei" data-current="false">
+                <img src="https://physics.nyu.edu/experimentalparticle/images/diego.jpg" alt="Diego Casadei" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="http://www.physics.nyu.edu/people/casadei.diego.html" target="_blank">Diego Casadei</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Postdoctoral Researcher
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    New York University
+                </div>
+
+                <div class="collaborator-list-years">
+                    2008 – 2012                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="http://www.physics.nyu.edu/people/casadei.diego.html" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Akira Shibata" data-current="false">
+                <img src="https://i0.wp.com/ashibata.com/wp-content/uploads/2020/10/e382b7e3838fe38299e382bfe381aee78fbee59ca8e381aebioe58699e79c9f-1.png?ssl=1" alt="Akira Shibata" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://ashibata.com" target="_blank">Akira Shibata</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Postdoctoral Researcher
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    New York University
+                </div>
+
+                <div class="collaborator-list-years">
+                    2007 – 2010                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://ashibata.com" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                </div>
+            </div>
+        </div>
     </section>
     <section class="collaborator-category" id="cat-scientists" data-category="scientists">
         <h3>Scientists</h3>
@@ -1249,6 +2133,89 @@ Theory And Practice            </a>
                             <i class="fa fa-handshake-o"></i> Co-authored
                         </a>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- List View -->
+        <div class="collaborators-list">
+            <div class="collaborator-list-item current" data-name="Nils Krumnack" data-current="true">
+                <img src="https://dsi.wisc.edu/wp-content/uploads/sites/1922/2024/12/krumnack-540x540-1-300x300.jpg" alt="Nils Krumnack" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://dsi.wisc.edu/staff/krumnack-nils/" target="_blank">Nils Krumnack</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Research Software Engineer
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    University of Wisconsin-Madison
+                </div>
+
+                <div class="collaborator-list-years">
+                    2024 – present                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://dsi.wisc.edu/staff/krumnack-nils/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item current" data-name="Alexander Held" data-current="true">
+                <img src="https://github.com/alexander-held.png?size=200" alt="Alexander Held" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Alexander Held
+                </div>
+
+                <div class="collaborator-list-role">
+                    Postdoctoral Researcher
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    University of Wisconsin-Madison
+                </div>
+
+                <div class="collaborator-list-years">
+                    2023 – present                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://github.com/alexander-held" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item current" data-name="Matthew Feickert" data-current="true">
+                <img src="https://images.squarespace-cdn.com/content/v1/535ddd66e4b0e268e3eae4cf/e8c0acb6-6537-4245-9670-cc2fc5dd39d5/2024-07-12-Matthew+Feickert-scipy-portrait-crop.jpg" alt="Matthew Feickert" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://www.matthewfeickert.com" target="_blank">Matthew Feickert</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Research Scientist
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    University of Wisconsin-Madison
+                </div>
+
+                <div class="collaborator-list-years">
+                    2023 – present                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://www.matthewfeickert.com" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://github.com/matthewfeickert" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
                 </div>
             </div>
         </div>
@@ -4864,12 +5831,3322 @@ Theory And Practice            </a>
                 </div>
             </div>
         </div>
+
+        <!-- List View -->
+        <div class="collaborators-list">
+            <div class="collaborator-list-item current" data-name="François Charton" data-current="true">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    François Charton
+                </div>
+
+                <div class="collaborator-list-role">
+                    Research Engineer
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Axiom Math (formerly Meta AI)
+                </div>
+
+                <div class="collaborator-list-years">
+                    2024 – present                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://scholar.google.com/citations?user=1tMnd-4AAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item current" data-name="Helen Qu" data-current="true">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://helenqu.com/" target="_blank">Helen Qu</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Research Fellow
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Flatiron Institute
+                </div>
+
+                <div class="collaborator-list-years">
+                    2024 – present                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://helenqu.com/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://scholar.google.com/citations?user=FWPJDb4AAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item current" data-name="Lance J. Dixon" data-current="true">
+                <img src="/images/collaborators/lance-dixon.jpg" alt="Lance J. Dixon" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://www.slac.stanford.edu/~lance/" target="_blank">Lance J. Dixon</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    SLAC / Stanford University
+                </div>
+
+                <div class="collaborator-list-years">
+                    2024 – present                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://www.slac.stanford.edu/~lance/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://scholar.google.com/citations?user=WFR45vUAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item current" data-name="Gary Shiu" data-current="true">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://shiu.physics.wisc.edu/" target="_blank">Gary Shiu</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    UW-Madison
+                </div>
+
+                <div class="collaborator-list-years">
+                    2022 – present                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://shiu.physics.wisc.edu/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://scholar.google.com/citations?user=7_B0r5MAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item current" data-name="Jessica Montgomery" data-current="true">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://science.ai.cam.ac.uk/team/jessica-montgomery.html" target="_blank">Jessica Montgomery</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Executive Director
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    University of Cambridge
+                </div>
+
+                <div class="collaborator-list-years">
+                    2021 – present                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://science.ai.cam.ac.uk/team/jessica-montgomery.html" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item current" data-name="Neil D. Lawrence" data-current="true">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://inverseprobability.com/" target="_blank">Neil D. Lawrence</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    DeepMind Professor of Machine Learning
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    University of Cambridge
+                </div>
+
+                <div class="collaborator-list-years">
+                    2021 – present                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://inverseprobability.com/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://scholar.google.com/citations?user=r3SJcvoAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item current" data-name="Nicholas Wardle" data-current="true">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://www.imperial.ac.uk/people/n.wardle09" target="_blank">Nicholas Wardle</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Associate Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Imperial College London
+                </div>
+
+                <div class="collaborator-list-years">
+                    2021 – present                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://www.imperial.ac.uk/people/n.wardle09" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item current" data-name="Philipp Berens" data-current="true">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://philippberens.wordpress.com/" target="_blank">Philipp Berens</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Full Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    University of Tübingen
+                </div>
+
+                <div class="collaborator-list-years">
+                    2021 – present                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://philippberens.wordpress.com/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://scholar.google.com/citations?user=lPQLk3QAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item current" data-name="Ulrike von Luxburg" data-current="true">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="http://tml.cs.uni-tuebingen.de/team/luxburg/" target="_blank">Ulrike von Luxburg</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Full Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    University of Tübingen
+                </div>
+
+                <div class="collaborator-list-years">
+                    2021 – present                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="http://tml.cs.uni-tuebingen.de/team/luxburg/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://scholar.google.com/citations?user=mMifMdoAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item current" data-name="Mariel Pettee" data-current="true">
+                <img src="https://github.com/mariel-pettee.png?size=200" alt="Mariel Pettee" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://marielpettee.com/" target="_blank">Mariel Pettee</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Researcher
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    UW-Madison
+                </div>
+
+                <div class="collaborator-list-years">
+                    2018 – present                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://marielpettee.com/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://github.com/mariel-pettee" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item current" data-name="Matthias Wilhelm" data-current="true">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Matthias Wilhelm
+                </div>
+
+                <div class="collaborator-list-role">
+                    Researcher
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Niels Bohr Institute, University of Copenhagen
+                </div>
+
+                <div class="collaborator-list-years">
+                    2010 – present                </div>
+
+                <div class="collaborator-list-links">
+                </div>
+            </div>
+            <div class="collaborator-list-item current" data-name="Xiao-Li Meng" data-current="true">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Xiao-Li Meng
+                </div>
+
+                <div class="collaborator-list-role">
+                    Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Harvard University
+                </div>
+
+                <div class="collaborator-list-years">
+                    2010 – present                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://scholar.google.com/citations?user=4Qr8tRgAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item current" data-name="Daniel Whiteson" data-current="true">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://sites.uci.edu/daniel/" target="_blank">Daniel Whiteson</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    University of California, Irvine
+                </div>
+
+                <div class="collaborator-list-years">
+                    2009 – present                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://sites.uci.edu/daniel/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item current" data-name="Gordon Watts" data-current="true">
+                <img src="https://github.com/gordonwatts.png?size=200" alt="Gordon Watts" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://gordonwatts.wordpress.com/" target="_blank">Gordon Watts</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    University of Washington
+                </div>
+
+                <div class="collaborator-list-years">
+                    2005 – present                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://gordonwatts.wordpress.com/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://github.com/gordonwatts" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item current" data-name="Michael Hildreth" data-current="true">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://physics.nd.edu/people/mike-hildreth/" target="_blank">Michael Hildreth</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    University of Notre Dame
+                </div>
+
+                <div class="collaborator-list-years">
+                    2005 – present                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://physics.nd.edu/people/mike-hildreth/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item current" data-name="Tilman Plehn" data-current="true">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://www.thphys.uni-heidelberg.de/~plehn/" target="_blank">Tilman Plehn</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Universität Heidelberg
+                </div>
+
+                <div class="collaborator-list-years">
+                    2004 – present                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://www.thphys.uni-heidelberg.de/~plehn/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://scholar.google.com/citations?user=r3zfvh0AAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item current" data-name="Peter Elmer" data-current="true">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://elmer.scholar.princeton.edu/" target="_blank">Peter Elmer</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Senior Research Physicist
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Princeton University
+                </div>
+
+                <div class="collaborator-list-years">
+                    1999 – present                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://elmer.scholar.princeton.edu/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item current" data-name="Adelle Wright" data-current="true">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://wright-lab.notion.site/welcome" target="_blank">Adelle Wright</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Collaborator
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    University of Wisconsin-Madison
+                </div>
+
+                <div class="collaborator-list-years">
+                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://wright-lab.notion.site/welcome" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item current" data-name="Brian P. Bockelman" data-current="true">
+                <img src="https://github.com/bbockelm.png?size=200" alt="Brian P. Bockelman" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://morgridge.org/research/labs/bockelman-group/" target="_blank">Brian P. Bockelman</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Principal Investigator
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Morgridge Institute for Research
+                </div>
+
+                <div class="collaborator-list-years">
+                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://morgridge.org/research/labs/bockelman-group/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://github.com/bbockelm" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                        <a href="https://scholar.google.com/citations?user=dcv26D4AAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item current" data-name="Maja Waldron" data-current="true">
+                <img src="https://github.com/mariru.png?size=200" alt="Maja Waldron" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://maja-waldron.github.io" target="_blank">Maja Waldron</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Collaborator
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    University of Wisconsin-Madison
+                </div>
+
+                <div class="collaborator-list-years">
+                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://maja-waldron.github.io" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://github.com/mariru" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                        <a href="https://scholar.google.com/citations?user=QW_JZnsAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item current" data-name="Misha Khodak" data-current="true">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://pages.cs.wisc.edu/~khodak/" target="_blank">Misha Khodak</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Collaborator
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    University of Wisconsin-Madison
+                </div>
+
+                <div class="collaborator-list-years">
+                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://pages.cs.wisc.edu/~khodak/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item current" data-name="Moritz Münchmeyer" data-current="true">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://www.moritzmunchmeyer.com/" target="_blank">Moritz Münchmeyer</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Assistant Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    UW-Madison
+                </div>
+
+                <div class="collaborator-list-years">
+                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://www.moritzmunchmeyer.com/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://scholar.google.com/citations?user=rRZtQ9QAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item current" data-name="Rogerio Jorge" data-current="true">
+                <img src="https://github.com/rogeriojorge.png?size=200" alt="Rogerio Jorge" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://rogeriojorge.com" target="_blank">Rogerio Jorge</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Collaborator
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    University of Wisconsin-Madison
+                </div>
+
+                <div class="collaborator-list-years">
+                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://rogeriojorge.com" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://github.com/rogeriojorge" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item current" data-name="Stephen Wright" data-current="true">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://wrightstephen.github.io/sw_proj/" target="_blank">Stephen Wright</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    University of Wisconsin-Madison
+                </div>
+
+                <div class="collaborator-list-years">
+                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://wrightstephen.github.io/sw_proj/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://scholar.google.com/citations?user=VFQRIOwAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item current" data-name="Jennifer Ngadiuba" data-current="true">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="current">Current</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Jennifer Ngadiuba
+                </div>
+
+                <div class="collaborator-list-role">
+                    Associate Scientist
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Fermilab
+                </div>
+
+                <div class="collaborator-list-years">
+                    2024 – 2024                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://scholar.google.com/citations?user=ZTqZD80AAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Tianji Cai" data-current="false">
+                <img src="https://github.com/TianjiCai.png?size=200" alt="Tianji Cai" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Tianji Cai
+                </div>
+
+                <div class="collaborator-list-role">
+                    Distinguished Researcher
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Tongji University
+                </div>
+
+                <div class="collaborator-list-years">
+                    2003 – 2025                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://github.com/TianjiCai" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                        <a href="https://scholar.google.com/citations?user=KBaK_w0AAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Niklas Nolte" data-current="false">
+                <img src="https://github.com/niklasnolte.png?size=200" alt="Niklas Nolte" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://nolte.dev/" target="_blank">Niklas Nolte</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Researcher
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Anthropic
+                </div>
+
+                <div class="collaborator-list-years">
+                    2024 – 2024                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://nolte.dev/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://github.com/niklasnolte" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Abhijith Gandrakota" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Abhijith Gandrakota
+                </div>
+
+                <div class="collaborator-list-role">
+                    Research Associate
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Fermilab
+                </div>
+
+                <div class="collaborator-list-years">
+                    2023 – 2024                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://scholar.google.com/citations?user=Gau3JTYAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Mark S. Neubauer" data-current="false">
+                <img src="https://github.com/msneubauer.png?size=200" alt="Mark S. Neubauer" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://www.marksneubauer.com/" target="_blank">Mark S. Neubauer</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    University of Illinois Urbana-Champaign
+                </div>
+
+                <div class="collaborator-list-years">
+                    2018 – 2024                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://www.marksneubauer.com/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://github.com/msneubauer" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Jonathan Shlomi" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Jonathan Shlomi
+                </div>
+
+                <div class="collaborator-list-role">
+                    Researcher
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Weizmann Institute of Science
+                </div>
+
+                <div class="collaborator-list-years">
+                    2017 – 2024                </div>
+
+                <div class="collaborator-list-links">
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Rajesh Ranganath" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://cims.nyu.edu/~rajeshr/" target="_blank">Rajesh Ranganath</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Assistant Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    NYU
+                </div>
+
+                <div class="collaborator-list-years">
+                    2017 – 2024                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://cims.nyu.edu/~rajeshr/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://scholar.google.com/citations?user=kddKBCsAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Dan Guest" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Dan Guest
+                </div>
+
+                <div class="collaborator-list-role">
+                    Researcher
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    University of California, Irvine
+                </div>
+
+                <div class="collaborator-list-years">
+                    2011 – 2024                </div>
+
+                <div class="collaborator-list-links">
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Glen Cowan" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://www.pp.rhul.ac.uk/~cowan/" target="_blank">Glen Cowan</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Royal Holloway, University of London
+                </div>
+
+                <div class="collaborator-list-years">
+                    2010 – 2024                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://www.pp.rhul.ac.uk/~cowan/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://scholar.google.com/citations?user=ljQwt8QAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Daniel Hackett" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Daniel Hackett
+                </div>
+
+                <div class="collaborator-list-role">
+                    Postdoctoral Researcher
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Fermilab
+                </div>
+
+                <div class="collaborator-list-years">
+                    2023 – 2023                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://scholar.google.com/citations?user=9ZDR9jYAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Fernando Romero-López" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Fernando Romero-López
+                </div>
+
+                <div class="collaborator-list-role">
+                    Researcher
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    MIT / Universitat de València
+                </div>
+
+                <div class="collaborator-list-years">
+                    2022 – 2023                </div>
+
+                <div class="collaborator-list-links">
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Sanmay Ganguly" data-current="false">
+                <img src="https://github.com/sanmayphy.png?size=200" alt="Sanmay Ganguly" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Sanmay Ganguly
+                </div>
+
+                <div class="collaborator-list-role">
+                    Assistant Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    IIT Kanpur
+                </div>
+
+                <div class="collaborator-list-years">
+                    2022 – 2023                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://github.com/sanmayphy" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Juan Rojo" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Juan Rojo
+                </div>
+
+                <div class="collaborator-list-role">
+                    Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    VU Amsterdam / Nikhef
+                </div>
+
+                <div class="collaborator-list-years">
+                    2021 – 2023                </div>
+
+                <div class="collaborator-list-links">
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Julian Urban" data-current="false">
+                <img src="https://github.com/julian-urban.png?size=200" alt="Julian Urban" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Julian Urban
+                </div>
+
+                <div class="collaborator-list-role">
+                    Researcher
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Universität Heidelberg
+                </div>
+
+                <div class="collaborator-list-years">
+                    2021 – 2023                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://github.com/julian-urban" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Danilo Jimenez Rezende" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://danilorezende.com/about/" target="_blank">Danilo Jimenez Rezende</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    VP of AI Research
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Ellison Institute of Technology
+                </div>
+
+                <div class="collaborator-list-years">
+                    2020 – 2023                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://danilorezende.com/about/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://scholar.google.com/citations?user=rvW4j38AAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Denis Boyda" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Denis Boyda
+                </div>
+
+                <div class="collaborator-list-role">
+                    IAIFI Fellow
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    MIT
+                </div>
+
+                <div class="collaborator-list-years">
+                    2020 – 2023                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://scholar.google.com/citations?user=LRXX-0gAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Gurtej Kanwar" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Gurtej Kanwar
+                </div>
+
+                <div class="collaborator-list-role">
+                    Postdoctoral Researcher
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    University of Bern
+                </div>
+
+                <div class="collaborator-list-years">
+                    2020 – 2023                </div>
+
+                <div class="collaborator-list-links">
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Phiala Shanahan" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Phiala Shanahan
+                </div>
+
+                <div class="collaborator-list-role">
+                    Associate Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    MIT
+                </div>
+
+                <div class="collaborator-list-years">
+                    2020 – 2023                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://scholar.google.com/citations?user=GWBSOj4AAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Sébastien Racanière" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Sébastien Racanière
+                </div>
+
+                <div class="collaborator-list-role">
+                    Staff Research Engineer
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Google DeepMind
+                </div>
+
+                <div class="collaborator-list-years">
+                    2020 – 2023                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://scholar.google.com/citations?user=o-h0vrQAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Felix Kling" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Felix Kling
+                </div>
+
+                <div class="collaborator-list-role">
+                    Research Fellow
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    DESY
+                </div>
+
+                <div class="collaborator-list-years">
+                    2017 – 2023                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://scholar.google.com/citations?user=CdKKXWcAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Michael Kagan" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Michael Kagan
+                </div>
+
+                <div class="collaborator-list-role">
+                    Panofsky Fellow
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    SLAC National Accelerator Laboratory
+                </div>
+
+                <div class="collaborator-list-years">
+                    2016 – 2023                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://scholar.google.com/citations?user=Gau3JTYAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Sabine Kraml" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="http://kraml.home.cern.ch/kraml/" target="_blank">Sabine Kraml</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    CNRS Researcher
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    LPSC Grenoble
+                </div>
+
+                <div class="collaborator-list-years">
+                    2013 – 2023                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="http://kraml.home.cern.ch/kraml/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://scholar.google.com/citations?user=WqBKDGsAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Eilam Gross" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://www.weizmann.ac.il/particle/gross/" target="_blank">Eilam Gross</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Weizmann Institute of Science
+                </div>
+
+                <div class="collaborator-list-years">
+                    2012 – 2023                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://www.weizmann.ac.il/particle/gross/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://scholar.google.com/citations?user=iibZFkYAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Matthias Wolf" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Matthias Wolf
+                </div>
+
+                <div class="collaborator-list-role">
+                    Researcher
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    CMS Experiment
+                </div>
+
+                <div class="collaborator-list-years">
+                    2000 – 2023                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://scholar.google.com/citations?user=DCNguIcAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Philip Bechtle" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Philip Bechtle
+                </div>
+
+                <div class="collaborator-list-role">
+                    Senior Researcher
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    University of Bonn
+                </div>
+
+                <div class="collaborator-list-years">
+                    2022 – 2022                </div>
+
+                <div class="collaborator-list-links">
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Ricky T. Q. Chen" data-current="false">
+                <img src="https://github.com/rtqichen.png?size=200" alt="Ricky T. Q. Chen" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://rtqichen.github.io/" target="_blank">Ricky T. Q. Chen</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Research Scientist
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Meta FAIR
+                </div>
+
+                <div class="collaborator-list-years">
+                    2022 – 2022                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://rtqichen.github.io/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://github.com/rtqichen" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                        <a href="https://scholar.google.com/citations?user=7MxQd6UAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Maurizio Pierini" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Maurizio Pierini
+                </div>
+
+                <div class="collaborator-list-role">
+                    Staff Physicist
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    CERN
+                </div>
+
+                <div class="collaborator-list-years">
+                    2021 – 2022                </div>
+
+                <div class="collaborator-list-links">
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Taoli Cheng" data-current="false">
+                <img src="https://github.com/taolicheng.png?size=200" alt="Taoli Cheng" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://taolicheng.github.io/" target="_blank">Taoli Cheng</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Postdoc at MILA (co-advised)
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    MILA / NYU
+                </div>
+
+                <div class="collaborator-list-years">
+                    2019 – 2022                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://taolicheng.github.io/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://github.com/taolicheng" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Joan Bruna" data-current="false">
+                <img src="https://github.com/joanbruna.png?size=200" alt="Joan Bruna" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://cims.nyu.edu/~bruna/" target="_blank">Joan Bruna</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Full Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    NYU Courant Institute
+                </div>
+
+                <div class="collaborator-list-years">
+                    2017 – 2022                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://cims.nyu.edu/~bruna/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://github.com/joanbruna" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                        <a href="https://scholar.google.com/citations?user=L4bNmsMAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Meghan Frate" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Meghan Frate
+                </div>
+
+                <div class="collaborator-list-role">
+                    Former PhD Student
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    UC Irvine (formerly)
+                </div>
+
+                <div class="collaborator-list-years">
+                    2015 – 2022                </div>
+
+                <div class="collaborator-list-links">
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Andrew Gordon Wilson" data-current="false">
+                <img src="https://github.com/andrewgordonwilson.png?size=200" alt="Andrew Gordon Wilson" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://cims.nyu.edu/~andrewgw/" target="_blank">Andrew Gordon Wilson</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    NYU
+                </div>
+
+                <div class="collaborator-list-years">
+                    2013 – 2022                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://cims.nyu.edu/~andrewgw/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://github.com/andrewgordonwilson" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                        <a href="https://scholar.google.com/citations?user=twWX2LIAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Harrison B. Prosper" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="http://web2.physics.fsu.edu/~prosper/bio.html" target="_blank">Harrison B. Prosper</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Kirby W. Kemper Endowed Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Florida State University
+                </div>
+
+                <div class="collaborator-list-years">
+                    2013 – 2022                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="http://web2.physics.fsu.edu/~prosper/bio.html" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Sezen Sekmen" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Sezen Sekmen
+                </div>
+
+                <div class="collaborator-list-role">
+                    Researcher
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Kyungpook National University
+                </div>
+
+                <div class="collaborator-list-years">
+                    2013 – 2022                </div>
+
+                <div class="collaborator-list-links">
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Andrew Haas" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Andrew Haas
+                </div>
+
+                <div class="collaborator-list-role">
+                    Associate Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    NYU
+                </div>
+
+                <div class="collaborator-list-years">
+                    2009 – 2022                </div>
+
+                <div class="collaborator-list-links">
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Léon Bottou" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://leon.bottou.org/" target="_blank">Léon Bottou</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Research Lead
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Meta FAIR
+                </div>
+
+                <div class="collaborator-list-years">
+                    2009 – 2022                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://leon.bottou.org/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://scholar.google.com/citations?user=kbN88gsAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Allen Mincer" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://physics.nyu.edu/~am3/" target="_blank">Allen Mincer</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    NYU
+                </div>
+
+                <div class="collaborator-list-years">
+                    2007 – 2022                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://physics.nyu.edu/~am3/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Yann LeCun" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="http://yann.lecun.com/" target="_blank">Yann LeCun</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Professor & Chief AI Scientist
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    NYU / Meta
+                </div>
+
+                <div class="collaborator-list-years">
+                    2007 – 2022                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="http://yann.lecun.com/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://scholar.google.com/citations?user=WLN3QrAAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Craig Greenberg" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Craig Greenberg
+                </div>
+
+                <div class="collaborator-list-role">
+                    Researcher
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    UMass Amherst
+                </div>
+
+                <div class="collaborator-list-years">
+                    2020 – 2021                </div>
+
+                <div class="collaborator-list-links">
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Nicholas Monath" data-current="false">
+                <img src="https://github.com/nmonath.png?size=200" alt="Nicholas Monath" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://nmonath.github.io/" target="_blank">Nicholas Monath</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Research Scientist
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Google
+                </div>
+
+                <div class="collaborator-list-years">
+                    2020 – 2021                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://nmonath.github.io/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://github.com/nmonath" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                        <a href="https://scholar.google.com/citations?user=PTfhfCQAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Atılım Güneş Baydin" data-current="false">
+                <img src="https://github.com/gbaydin.png?size=200" alt="Atılım Güneş Baydin" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="http://gbaydin.github.io/" target="_blank">Atılım Güneş Baydin</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Departmental Lecturer
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    University of Oxford
+                </div>
+
+                <div class="collaborator-list-years">
+                    2017 – 2021                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="http://gbaydin.github.io/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://github.com/gbaydin" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                        <a href="https://scholar.google.com/citations?user=GWBSOj4AAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="David Spergel" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://www.astro.princeton.edu/~dns/" target="_blank">David Spergel</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    President
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Simons Foundation
+                </div>
+
+                <div class="collaborator-list-years">
+                    2020 – 2020                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://www.astro.princeton.edu/~dns/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="George Papamakarios" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    George Papamakarios
+                </div>
+
+                <div class="collaborator-list-role">
+                    Research Scientist
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Google DeepMind
+                </div>
+
+                <div class="collaborator-list-years">
+                    2020 – 2020                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://scholar.google.com/citations?user=wHcpf58AAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Hadar Serviansky" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Hadar Serviansky
+                </div>
+
+                <div class="collaborator-list-role">
+                    MS Student
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Weizmann Institute
+                </div>
+
+                <div class="collaborator-list-years">
+                    2020 – 2020                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://scholar.google.com/citations?user=-jVU-vQAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Haggai Maron" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://haggaim.github.io/" target="_blank">Haggai Maron</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Assistant Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Technion / NVIDIA Research
+                </div>
+
+                <div class="collaborator-list-years">
+                    2020 – 2020                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://haggaim.github.io/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://scholar.google.com/citations?user=4v8uJrIAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Miles Cranmer" data-current="false">
+                <img src="https://github.com/MilesCranmer.png?size=200" alt="Miles Cranmer" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://astroautomata.com/" target="_blank">Miles Cranmer</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Assistant Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    University of Cambridge
+                </div>
+
+                <div class="collaborator-list-years">
+                    2020 – 2020                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://astroautomata.com/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://github.com/MilesCranmer" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                        <a href="https://scholar.google.com/citations?user=10WfwCQAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Nimrod Segol" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Nimrod Segol
+                </div>
+
+                <div class="collaborator-list-role">
+                    PhD Student
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Weizmann Institute
+                </div>
+
+                <div class="collaborator-list-years">
+                    2020 – 2020                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://scholar.google.com/citations?user=dTuhEVsAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Shirley Ho" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://www.shirleyho.me/" target="_blank">Shirley Ho</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Group Leader
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Flatiron Institute
+                </div>
+
+                <div class="collaborator-list-years">
+                    2020 – 2020                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://www.shirleyho.me/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://scholar.google.com/citations?user=fhOi--4AAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Yaron Lipman" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://www.wisdom.weizmann.ac.il/~ylipman/" target="_blank">Yaron Lipman</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Weizmann Institute of Science
+                </div>
+
+                <div class="collaborator-list-years">
+                    2020 – 2020                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://www.wisdom.weizmann.ac.il/~ylipman/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://scholar.google.com/citations?user=vyteiT4AAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Alvaro Sanchez-Gonzalez" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Alvaro Sanchez-Gonzalez
+                </div>
+
+                <div class="collaborator-list-role">
+                    Staff Research Engineer
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Google DeepMind
+                </div>
+
+                <div class="collaborator-list-years">
+                    2019 – 2020                </div>
+
+                <div class="collaborator-list-links">
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Peter Battaglia" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Peter Battaglia
+                </div>
+
+                <div class="collaborator-list-role">
+                    Research Scientist
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Google DeepMind
+                </div>
+
+                <div class="collaborator-list-years">
+                    2019 – 2020                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://scholar.google.com/citations?user=nQ7Ij30AAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Rui Xu" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Rui Xu
+                </div>
+
+                <div class="collaborator-list-role">
+                    Researcher
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Microsoft GenAI
+                </div>
+
+                <div class="collaborator-list-years">
+                    2000 – 2020                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://scholar.google.com/citations?user=_W5wq18AAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Frank Wood" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://www.cs.ubc.ca/~fwood/" target="_blank">Frank Wood</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    University of British Columbia
+                </div>
+
+                <div class="collaborator-list-years">
+                    2019 – 2019                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://www.cs.ubc.ca/~fwood/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://scholar.google.com/citations?user=d4yNzXIAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Giuseppe Carleo" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://people.epfl.ch/giuseppe.carleo" target="_blank">Giuseppe Carleo</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    EPFL
+                </div>
+
+                <div class="collaborator-list-years">
+                    2019 – 2019                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://people.epfl.ch/giuseppe.carleo" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://scholar.google.com/citations?user=e9I38PEAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Ignacio Cirac" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://www.mpq.mpg.de/ignacio-cirac" target="_blank">Ignacio Cirac</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Director
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Max Planck Institute of Quantum Optics
+                </div>
+
+                <div class="collaborator-list-years">
+                    2019 – 2019                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://www.mpq.mpg.de/ignacio-cirac" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://scholar.google.com/citations?user=gPGlTbgAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Laurent Daudet" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Laurent Daudet
+                </div>
+
+                <div class="collaborator-list-role">
+                    Co-CEO
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    LightOn
+                </div>
+
+                <div class="collaborator-list-years">
+                    2019 – 2019                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://scholar.google.com/citations?user=PCIAcfUAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Lenka Zdeborová" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://people.epfl.ch/lenka.zdeborova" target="_blank">Lenka Zdeborová</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Associate Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    EPFL
+                </div>
+
+                <div class="collaborator-list-years">
+                    2019 – 2019                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://people.epfl.ch/lenka.zdeborova" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://scholar.google.com/citations?user=gkCjy_UAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Leslie Vogt-Maranto" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Leslie Vogt-Maranto
+                </div>
+
+                <div class="collaborator-list-role">
+                    Postdoctoral Fellow
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    NYU
+                </div>
+
+                <div class="collaborator-list-years">
+                    2019 – 2019                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://scholar.google.com/citations?user=H6WcIUQAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Maria Schuld" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Maria Schuld
+                </div>
+
+                <div class="collaborator-list-role">
+                    Quantum Machine Learning Research Lead
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Xanadu
+                </div>
+
+                <div class="collaborator-list-years">
+                    2019 – 2019                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://scholar.google.com/citations?user=_ih_hwUAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Naftali Tishby" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Naftali Tishby
+                </div>
+
+                <div class="collaborator-list-role">
+                    Professor (deceased)
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Hebrew University of Jerusalem
+                </div>
+
+                <div class="collaborator-list-years">
+                    2019 – 2019                </div>
+
+                <div class="collaborator-list-links">
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Sebastian Neubert" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Sebastian Neubert
+                </div>
+
+                <div class="collaborator-list-role">
+                    Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    University of Bonn
+                </div>
+
+                <div class="collaborator-list-years">
+                    2018 – 2019                </div>
+
+                <div class="collaborator-list-links">
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Siavash Golkar" data-current="false">
+                <img src="https://github.com/golkar.png?size=200" alt="Siavash Golkar" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://polymathic-ai.org/members/siavash-golkar" target="_blank">Siavash Golkar</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Research Scientist
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    New York University / Flatiron Institute
+                </div>
+
+                <div class="collaborator-list-years">
+                    2018 – 2019                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://polymathic-ai.org/members/siavash-golkar" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://github.com/golkar" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                        <a href="https://scholar.google.com/citations?user=UzaZt7MAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Wahid Bhimji" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://www.nersc.gov/about/nersc-staff/data-analytics-services/wahid-bhimji/" target="_blank">Wahid Bhimji</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Division Deputy for AI and Science
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    NERSC, Lawrence Berkeley National Laboratory
+                </div>
+
+                <div class="collaborator-list-years">
+                    2017 – 2019                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://www.nersc.gov/about/nersc-staff/data-analytics-services/wahid-bhimji/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Sünje Dallmeier-Tiessen" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Sünje Dallmeier-Tiessen
+                </div>
+
+                <div class="collaborator-list-role">
+                    Open Science Expert
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    CERN
+                </div>
+
+                <div class="collaborator-list-years">
+                    2012 – 2019                </div>
+
+                <div class="collaborator-list-links">
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Ana Trisovic" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://anatrisovic.com/" target="_blank">Ana Trisovic</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Sloan Postdoctoral Fellow
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Harvard IQSS
+                </div>
+
+                <div class="collaborator-list-years">
+                    2018 – 2018                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://anatrisovic.com/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Tibor Šimko" data-current="false">
+                <img src="https://github.com/tiborsimko.png?size=200" alt="Tibor Šimko" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Tibor Šimko
+                </div>
+
+                <div class="collaborator-list-role">
+                    Project Leader
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    CERN
+                </div>
+
+                <div class="collaborator-list-years">
+                    2018 – 2018                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://github.com/tiborsimko" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Kati Lassila-Perini" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Kati Lassila-Perini
+                </div>
+
+                <div class="collaborator-list-role">
+                    CMS Data Preservation Lead
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Helsinki Institute of Physics / CERN
+                </div>
+
+                <div class="collaborator-list-years">
+                    2012 – 2018                </div>
+
+                <div class="collaborator-list-links">
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Salvatore Mele" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Salvatore Mele
+                </div>
+
+                <div class="collaborator-list-role">
+                    Head of Open Access
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    CERN
+                </div>
+
+                <div class="collaborator-list-years">
+                    2012 – 2018                </div>
+
+                <div class="collaborator-list-links">
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Diego Rodriguez Rodriguez" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Diego Rodriguez Rodriguez
+                </div>
+
+                <div class="collaborator-list-role">
+                    Software Engineer
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    CERN
+                </div>
+
+                <div class="collaborator-list-years">
+                    2003 – 2018                </div>
+
+                <div class="collaborator-list-links">
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Tim Smith" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://tjs.web.cern.ch/tjs/" target="_blank">Tim Smith</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Coordinator of IT Communication and Outreach
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    CERN
+                </div>
+
+                <div class="collaborator-list-years">
+                    2000 – 2018                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://tjs.web.cern.ch/tjs/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Xiaoli Chen" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Xiaoli Chen
+                </div>
+
+                <div class="collaborator-list-role">
+                    FAIR Workflow Project Lead
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    DataCite
+                </div>
+
+                <div class="collaborator-list-years">
+                    2000 – 2018                </div>
+
+                <div class="collaborator-list-links">
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Alexander Vandenberg-Rodes" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://www.math.uci.edu/~vandenbe/" target="_blank">Alexander Vandenberg-Rodes</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Senior Principal ML Researcher
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Obsidian Security
+                </div>
+
+                <div class="collaborator-list-years">
+                    2017 – 2017                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://www.math.uci.edu/~vandenbe/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://scholar.google.com/citations?user=NNYJZZEAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Prabhat" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Prabhat
+                </div>
+
+                <div class="collaborator-list-role">
+                    Former Data & Analytics Group Lead
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    NERSC (formerly)
+                </div>
+
+                <div class="collaborator-list-years">
+                    2017 – 2017                </div>
+
+                <div class="collaborator-list-links">
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Kyunghyun Cho" data-current="false">
+                <img src="/images/collaborators/kyunghyun-cho.jpg" alt="Kyunghyun Cho" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://kyunghyuncho.me/" target="_blank">Kyunghyun Cho</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    New York University
+                </div>
+
+                <div class="collaborator-list-years">
+                    2011 – 2017                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://kyunghyuncho.me/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://scholar.google.com/citations?user=0RAmmIAAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Pierre Baldi" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://www.igb.uci.edu/~pfbaldi/" target="_blank">Pierre Baldi</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Distinguished Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    University of California, Irvine
+                </div>
+
+                <div class="collaborator-list-years">
+                    2016 – 2016                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://www.igb.uci.edu/~pfbaldi/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://scholar.google.com/citations?user=RhFhIIgAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Alberto Pepe" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://www.authorea.com/users/3-alberto-pepe" target="_blank">Alberto Pepe</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Director of Strategy and Innovation
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Atypon
+                </div>
+
+                <div class="collaborator-list-years">
+                    2014 – 2015                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://www.authorea.com/users/3-alberto-pepe" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Aleksandra Slavkovic" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://science.psu.edu/stat/people/abs12" target="_blank">Aleksandra Slavkovic</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Penn State
+                </div>
+
+                <div class="collaborator-list-years">
+                    2014 – 2015                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://science.psu.edu/stat/people/abs12" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://scholar.google.com/citations?user=plbHxNUAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Alexander Blocker" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Alexander Blocker
+                </div>
+
+                <div class="collaborator-list-role">
+                    Researcher
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Harvard Statistics (formerly)
+                </div>
+
+                <div class="collaborator-list-years">
+                    2014 – 2015                </div>
+
+                <div class="collaborator-list-links">
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Alyssa Goodman" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://scholar.harvard.edu/agoodman/home" target="_blank">Alyssa Goodman</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Harvard University
+                </div>
+
+                <div class="collaborator-list-years">
+                    2014 – 2015                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://scholar.harvard.edu/agoodman/home" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://scholar.google.com/citations?user=0LoCGasAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Aneta Siemiginowska" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://hea-www.harvard.edu/~aneta/HomePage.html" target="_blank">Aneta Siemiginowska</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Senior Astrophysicist
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Center for Astrophysics | Harvard & Smithsonian
+                </div>
+
+                <div class="collaborator-list-years">
+                    2014 – 2015                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://hea-www.harvard.edu/~aneta/HomePage.html" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Ashish Mahabal" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://ashishmahabal.net/" target="_blank">Ashish Mahabal</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Sr. Research Scientist
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Caltech
+                </div>
+
+                <div class="collaborator-list-years">
+                    2014 – 2015                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://ashishmahabal.net/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://scholar.google.com/citations?user=Ww9DSqAAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Christine Borgman" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://christineborgman.info/" target="_blank">Christine Borgman</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Distinguished Research Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    UCLA
+                </div>
+
+                <div class="collaborator-list-years">
+                    2014 – 2015                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://christineborgman.info/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="David Hogg" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://cosmo.nyu.edu/hogg/" target="_blank">David Hogg</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    New York University / Flatiron Institute
+                </div>
+
+                <div class="collaborator-list-years">
+                    2014 – 2015                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://cosmo.nyu.edu/hogg/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://scholar.google.com/citations?user=hcmW-W0AAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Margaret Hedstrom" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://www.si.umich.edu/people/margaret-hedstrom" target="_blank">Margaret Hedstrom</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Professor Emerita
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    University of Michigan
+                </div>
+
+                <div class="collaborator-list-years">
+                    2014 – 2015                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://www.si.umich.edu/people/margaret-hedstrom" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://scholar.google.com/citations?user=cmWGmOgAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Paul Groth" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://pgroth.com/" target="_blank">Paul Groth</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    University of Amsterdam
+                </div>
+
+                <div class="collaborator-list-years">
+                    2014 – 2015                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://pgroth.com/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://scholar.google.com/citations?user=0tHSHCIAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Rosanne Di Stefano" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="http://rosanne-distefano.org/" target="_blank">Rosanne Di Stefano</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Senior Astrophysicist
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Center for Astrophysics | Harvard & Smithsonian
+                </div>
+
+                <div class="collaborator-list-years">
+                    2014 – 2015                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="http://rosanne-distefano.org/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Vinay Kashyap" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://hea-www.harvard.edu/~kashyap/" target="_blank">Vinay Kashyap</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Senior Astrophysicist
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Center for Astrophysics | Harvard & Smithsonian
+                </div>
+
+                <div class="collaborator-list-years">
+                    2014 – 2015                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://hea-www.harvard.edu/~kashyap/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Mercè Crosas" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Mercè Crosas
+                </div>
+
+                <div class="collaborator-list-role">
+                    President of CODATA
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Barcelona Supercomputing Center
+                </div>
+
+                <div class="collaborator-list-years">
+                    2014 – 2014                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://scholar.google.com/citations?user=0LoCGasAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Yolanda Gil" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    <a href="https://knowledgecaptureanddiscovery.github.io/yolanda_gil_website/" target="_blank">Yolanda Gil</a>
+                </div>
+
+                <div class="collaborator-list-role">
+                    Research Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    USC Information Sciences Institute
+                </div>
+
+                <div class="collaborator-list-years">
+                    2014 – 2014                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://knowledgecaptureanddiscovery.github.io/yolanda_gil_website/" target="_blank" title="Website"><i class="fa fa-globe"></i></a>
+                        <a href="https://scholar.google.com/citations?user=NDmGsCgAAAAJ" target="_blank" title="Google Scholar"><i class="fa fa-google-scholar"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Lorenzo Moneta" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Lorenzo Moneta
+                </div>
+
+                <div class="collaborator-list-role">
+                    Senior Applied Scientist
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    CERN
+                </div>
+
+                <div class="collaborator-list-years">
+                    2010 – 2014                </div>
+
+                <div class="collaborator-list-links">
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Wouter Verkerke" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Wouter Verkerke
+                </div>
+
+                <div class="collaborator-list-role">
+                    Researcher
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    NIKHEF
+                </div>
+
+                <div class="collaborator-list-years">
+                    2010 – 2014                </div>
+
+                <div class="collaborator-list-links">
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Ofer Vitells" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Ofer Vitells
+                </div>
+
+                <div class="collaborator-list-role">
+                    Researcher
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Weizmann Institute of Science
+                </div>
+
+                <div class="collaborator-list-years">
+                    2010 – 2013                </div>
+
+                <div class="collaborator-list-links">
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Itay Yavin" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Itay Yavin
+                </div>
+
+                <div class="collaborator-list-role">
+                    Associate Professor
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    McMaster University / Perimeter Institute
+                </div>
+
+                <div class="collaborator-list-years">
+                    2010 – 2012                </div>
+
+                <div class="collaborator-list-links">
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Danilo Piparo" data-current="false">
+                <img src="https://github.com/dpiparo.png?size=200" alt="Danilo Piparo" class="collaborator-list-photo">
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Danilo Piparo
+                </div>
+
+                <div class="collaborator-list-role">
+                    ROOT Project Leader
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    CERN
+                </div>
+
+                <div class="collaborator-list-years">
+                    2010 – 2010                </div>
+
+                <div class="collaborator-list-links">
+                        <a href="https://github.com/dpiparo" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+                </div>
+            </div>
+            <div class="collaborator-list-item former" data-name="Kevin Belasco" data-current="false">
+                <div class="collaborator-list-photo-placeholder">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="collaborator-list-status">
+                    <span class="former">Former</span>
+                </div>
+
+                <div class="collaborator-list-name">
+                    Kevin Belasco
+                </div>
+
+                <div class="collaborator-list-role">
+                    Former Researcher
+                </div>
+
+                <div class="collaborator-list-affiliation">
+                    Princeton University (formerly)
+                </div>
+
+                <div class="collaborator-list-years">
+                    2010 – 2010                </div>
+
+                <div class="collaborator-list-links">
+                </div>
+            </div>
+        </div>
     </section>
 
 </section>
 
 <script>
 var currentStatusFilter = '';
+var currentView = 'cards';
+
+function setView(view) {
+    currentView = view;
+
+    // Update button states
+    document.querySelectorAll('.view-btn').forEach(function(btn) {
+        btn.classList.toggle('active', btn.getAttribute('data-view') === view);
+    });
+
+    // Toggle view class on categories
+    document.querySelectorAll('.collaborator-category').forEach(function(section) {
+        section.classList.toggle('view-list', view === 'list');
+    });
+}
 
 function setStatusFilter(btn, status) {
     currentStatusFilter = status;
@@ -4893,23 +9170,23 @@ function filterCollaborators() {
         } else {
             cat.style.display = 'block';
 
-            // Filter cards within category by status
+            // Filter items within category by status (both views)
             var visibleCount = 0;
-            cat.querySelectorAll('.collaborator-card').forEach(function(card) {
-                var isCurrent = card.getAttribute('data-current') === 'true';
+            cat.querySelectorAll('.collaborator-card, .collaborator-list-item').forEach(function(item) {
+                var isCurrent = item.getAttribute('data-current') === 'true';
                 var statusMatch = !currentStatusFilter ||
                     (currentStatusFilter === 'current' && isCurrent) ||
                     (currentStatusFilter === 'former' && !isCurrent);
 
                 if (statusMatch) {
-                    card.style.display = 'block';
-                    visibleCount++;
+                    item.style.display = '';
+                    if (item.classList.contains('collaborator-card')) visibleCount++;
                 } else {
-                    card.style.display = 'none';
+                    item.style.display = 'none';
                 }
             });
 
-            // Hide category if no cards visible
+            // Hide category if no items visible
             if (visibleCount === 0) {
                 cat.style.display = 'none';
             }
