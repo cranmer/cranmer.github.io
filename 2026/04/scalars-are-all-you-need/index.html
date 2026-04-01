@@ -13,13 +13,13 @@
 
         <meta name="author" content="Kyle Cranmer" />
         <meta name="keywords" content="multimodal,foundation models,inference,deep learning" />
-        <meta name="description" content="I describe an alternate approach to multimodal inference" />
+        <meta name="description" content="I describe an alternate approach to multimodal inference that is structurally very different from most approaches to multimodal foundation models and offers some advantages compared to them." />
 
         <meta property="og:site_name" content="Theory And Practice" />
         <meta property="og:type" content="article"/>
         <meta property="og:title" content="Scalars Are All You Need for Multimodal Inference"/>
         <meta property="og:url" content="https://theoryandpractice.org/2026/04/scalars-are-all-you-need/"/>
-        <meta property="og:description" content="I describe an alternate approach to multimodal inference"/>
+        <meta property="og:description" content="I describe an alternate approach to multimodal inference that is structurally very different from most approaches to multimodal foundation models and offers some advantages compared to them."/>
         <meta property="article:published_time" content="2026-04-01" />
             <meta property="article:section" content="Blog" />
             <meta property="article:tag" content="multimodal" />
@@ -160,7 +160,8 @@ Theory And Practice            </a>
 </footer><!-- /.post-info -->                    </div>
                 </div>
                 <p>I'm pretty excited about this alternate approach to multimodal inference that replaces the standard high-dimensional, task-agnostic representations used in multimodal foundation models with task-dependent scalar functions. The paper isn't ready for publication and my experiments are still running, but I'm excited to share the idea. This could be huge! </p>
-<p>Here's a <a href="/downloads/files/multimodal-inference-scalar-bottleneck.pdf"><strong>link to the draft paper</strong></a>. </p>
+<p>Here's a <a href="/downloads/files/multimodal-inference-scalar-bottleneck.pdf"><strong>link to the draft paper</strong></a>. </br>
+<em>(Note, I used ChatGPT to help me with the initial draft, and I've found some other relevant work as noted in the footnotes.)</em></p>
 <p><strong>Abstract</strong> Multimodal foundation models integrate heterogeneous data sources into unified representations. This is particularly powerful in scientific settings as these unified representations can be used as the input to downstream statistical inference tasks such as hypothesis testing, parameter estimation, or other forms of inference of underlying  phenomena. Typically, contrastive learning or masked objectives are used to train task-agnostic representations followed by task-specific fine-tuning or the addition of task-specific heads. We propose an alternative framework for multimodal inference in which the task-specific training is applied to each modality individually. We show that the output representation for each modality can be reduced to a scalar function of the parameters and that these scalars can be aggregated additively without degrading performance. We show that, under conditional independence across modalities, this architecture enables permutation-invariant fusion, independent training of modality-specific encoders, and append-only extensibility. For regression tasks, predictive estimates can be extracted by passing this scalar function to a differentiable optimization layer. We show that in the limit of many observations, the resulting estimators achieve optimal properties. These results suggest that when representations are conditioned on the inferential context, high-dimensional multimodal embeddings are unnecessary: one scalar function per modality suffices.</p>
 <h3>Introduction</h3>
 <p>Multimodal foundation models are increasingly viewed as a pathway toward scientific discovery, where diverse data sources are combined to infer underlying laws  governing complex systems. Notationally, we will use  <span class="math">\(\theta\)</span> to represent a discrete index or the continuous parameters of a family of scientifically-motivated generative models for the data. In many such settings, this shared  parameter vector <span class="math">\(\theta\)</span> determines the distribution of multiple observational modalities <span class="math">\(x_1, \dots, x_M\)</span>, each providing a complementary view of the same phenomenon.</p>
