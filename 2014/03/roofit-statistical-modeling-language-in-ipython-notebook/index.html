@@ -169,21 +169,21 @@ some simulated data, fit that data, create the profile likelihood, and
 provide a covariance matrix from the likelihood fit.  Enjoy!</span></p>
 <p>For convenience, here it is embeded</p>
 <hr>
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=4f681abd"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=7c29c23c"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="A-basic-example-of-ROOT's-RooFit-statistical-modeling-language-in-iPython-notebook">A basic example of ROOT's RooFit statistical modeling language in iPython notebook<a class="anchor-link" href="#A-basic-example-of-ROOT's-RooFit-statistical-modeling-language-in-iPython-notebook">¶</a></h1>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=e7ced333"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=6b337597"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>License: <a href="http://opensource.org/licenses/BSD-3-Clause">BSD</a> (C) 2014, Kyle Cranmer. Feel free to use, distribute, and modify with the above attribution.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=6be7db7d"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=a49c004e"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Particle physicisits primarily use <a href="http://root.cern.ch">ROOT</a> for the data analysis framework.  Part of that framework is a package called <a href="http://root.cern.ch/drupal/content/users-guide#roofit">RooFit</a> statistical modeling and fitting package.  I have contributed to this package and added a layer on top called <a href="https://twiki.cern.ch/twiki/bin/view/RooStats/WebHome">RooStats</a> that provides with statistical inference in both frequentist and Bayesian paradigms based on statistical models made with RooFit. These are the tools that were used to claim the discover the Higgs boson, and those <a href="http://blogs.discovermagazine.com/cosmicvariance/2011/12/08/making-the-higgs-sausage/?utm_source=feedburner&amp;utm_medium=feed&amp;utm_campaign=Feed%3A+CosmicVariance+%28Cosmic+Variance%29#.UxFW0NyrvlI">statistical models get pretty complicated</a>.</p>
@@ -192,7 +192,7 @@ provide a covariance matrix from the likelihood fit.  Enjoy!</span></p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=bf166e4a">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=4048f28f">
 <div class="input">
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
@@ -205,7 +205,7 @@ provide a covariance matrix from the likelihood fit.  Enjoy!</span></p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=881c85b8"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=fa6eb22b"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Here we create a "workspace" object that provides a factory with a convenient syntax for statistical models and variables. The workspace also provides an I/O mechanism to read/write statistical models and data to/from files.</p>
@@ -214,7 +214,7 @@ This is really a marked Poisson process, because in addition to the pdf on x, we
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=5f239cfa">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=76681b5c">
 <div class="input">
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
@@ -240,14 +240,14 @@ This is really a marked Poisson process, because in addition to the pdf on x, we
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=62a81cfb"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=bad433ab"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now that we have made the mdoel, we can generate some fake data, make a plot of the data, fit the model to that data, and overlay the fitted model in the plot</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=c69be005">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=2ce38c40">
 <div class="input">
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
@@ -555,14 +555,14 @@ FQAAgAYEVQAAABoQVAEAAGhAUAUAAKABQRUAAIAG/x/9TWIki6MsbAAAAABJRU5ErkJggg==
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=b28c79cb"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=f1212d1c"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can check the value of the parameters after the fit</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=d0c2bbd8">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=151563a0">
 <div class="input">
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
@@ -585,14 +585,14 @@ FQAAgAYEVQAAABoQVAEAAGhAUAUAAKABQRUAAIAG/x/9TWIki6MsbAAAAABJRU5ErkJggg==
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=fb9cd947"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=d46fc6c6"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>And make a plot of the log(profile likelihood Ratio) as a function of the signal rate</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=aedb8ad0">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=f5f5f32c">
 <div class="input">
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
@@ -867,14 +867,14 @@ BIQqAIAJCFUAABMQqgAAJiBUAQBMQKgCAJiAUAUAMIH/Dxiavwm57kFpAAAAAElFTkSuQmCC
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=51e02b7d"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=e19a51b2"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>And finally, make a plot that encodes the correlation matrix between the four free parameters in the fit.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=5147480a">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=f6b695d4">
 <div class="input">
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
@@ -1154,14 +1154,14 @@ TAAAAABJRU5ErkJggg==
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=b65eedda"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=1c914832"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Well, I hope that's interesting. It's just a taste of what's possible with RooFit and RooStats.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=30d1c99c"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=52c7b60b"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This post was created entirely in IPython notebook. Download the raw notebook <a href="https://raw.github.com/cranmer/play/raw/master/iPythonROOT/BasicRooFitExample.ipynb">here</a>, or see a static view on <a href="http://nbviewer.ipython.org/url/github.com/cranmer/play/raw/master/iPythonROOT/BasicRooFitExample.ipynb">nbviewer</a>.</p>
