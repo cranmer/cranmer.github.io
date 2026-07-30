@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>A Four-Dimensional Rubik's Cube - Theory And Practice</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="https://theoryandpractice.org/2026/07/four-dimensional-rubiks-cube/">
+
+        <meta name="author" content="Kyle Cranmer" />
+        <meta name="keywords" content="math,geometry,Claude,agentic AI" />
+        <meta name="description" content="Porting a dormant ~11-year-old Java applet of a 4D Rubik&#39;s cube to a modern web app with Claude Code." />
+
+        <meta property="og:site_name" content="Theory And Practice" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="A Four-Dimensional Rubik&#39;s Cube"/>
+        <meta property="og:url" content="https://theoryandpractice.org/2026/07/four-dimensional-rubiks-cube/"/>
+        <meta property="og:description" content="Porting a dormant ~11-year-old Java applet of a 4D Rubik&#39;s cube to a modern web app with Claude Code."/>
+        <meta property="article:published_time" content="2026-07-30" />
+            <meta property="article:section" content="Blog" />
+            <meta property="article:tag" content="math" />
+            <meta property="article:tag" content="geometry" />
+            <meta property="article:tag" content="Claude" />
+            <meta property="article:tag" content="agentic AI" />
+            <meta property="article:author" content="Kyle Cranmer" />
+            <meta property="og:image"
+                  content="https://theoryandpractice.org/images/TheoryAndPractice-logo-byline-wide.png"/>
+
+    <meta name="twitter:dnt" content="on">
+    <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="@kylecranmer">
+        <meta name="twitter:creator" content="@kylecranmer">
+    <meta name="twitter:domain" content="https://theoryandpractice.org">
+            <meta property="twitter:image"
+                  content="https://theoryandpractice.org/images/TheoryAndPractice-logo-byline-wide.png"/>
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://theoryandpractice.org/theme/css/bootstrap.flatly.min.css" type="text/css"/>
+    <link href="https://theoryandpractice.org/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="https://theoryandpractice.org/theme/css/pygments/default.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://theoryandpractice.org/theme/css/style.css" type="text/css"/>
+
+
+        <link href="https://theoryandpractice.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Theory And Practice ATOM Feed"/>
+
+        <link href="https://theoryandpractice.org/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Theory And Practice Blog ATOM Feed"/>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3337202-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', UA-3337202-1);
+    </script>
+    <!-- End Google Analytics Code -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- MathJax for LaTeX rendering -->
+    <script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true
+        }
+    };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="https://theoryandpractice.org/" class="navbar-brand">
+Theory And Practice            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                    <li><a href="/pages/cv.html">CV</a></li>
+                    <li><a href="/selected-publications.html">Publications</a></li>
+                    <li><a href="/presentations.html">Talks</a></li>
+                    <li><a href="/collaborators.html">Group</a></li>
+                    <li><a href="/projects.html">Projects</a></li>
+                    <li><a href="/media.html">Media & Outreach</a></li>
+                        <li class="active">
+                            <a href="https://theoryandpractice.org/category/blog.html">Blog</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="https://theoryandpractice.org/search.html" title="Search"><i class="fa fa-search"></i></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<!-- Banner -->
+<!-- End Banner -->
+
+<!-- Content Container -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="https://theoryandpractice.org/2026/07/four-dimensional-rubiks-cube/"
+                       rel="bookmark"
+                       title="Permalink to A Four-Dimensional Rubik's Cube">
+                        A Four-Dimensional Rubik's Cube
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2026-07-30T00:00:00-05:00"> Thu 30 July 2026</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="https://theoryandpractice.org/tag/math.html">math</a>
+        /
+	<a href="https://theoryandpractice.org/tag/geometry.html">geometry</a>
+        /
+	<a href="https://theoryandpractice.org/tag/claude.html">Claude</a>
+        /
+	<a href="https://theoryandpractice.org/tag/agentic-ai.html">agentic AI</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>I recently used <a href="https://claude.com/claude-code">Claude Code</a> to revive a project that had been sitting dormant for about 11 years: a four-dimensional Rubik's cube. The original was a Java applet — a technology that modern browsers no longer run — and porting it to a modern web stack brought it back to life.</p>
+<ul>
+<li><strong>Play it here:</strong> <a href="https://theoryandpractice.org/cube4d/">theoryandpractice.org/cube4d</a></li>
+<li><strong>Source code:</strong> <a href="https://github.com/cranmer/cube4d">github.com/cranmer/cube4d</a></li>
+</ul>
+<p><img alt="A four-dimensional Rubik's cube" src="https://theoryandpractice.org/images/magiccube4d.jpg"></p>
+<p>The part that still surprises me is how fast the hard part went. I scaffolded the repo on a Sunday
+evening. By ten the next morning the puzzle was rendering in a browser, and by that afternoon it was
+<strong>playable</strong> — click a sticker to twist it, undo, redo, scramble, solve detection, and solve files
+from the original opening and replaying unchanged. That was
+<a href="https://github.com/cranmer/cube4d/commit/5ce229f5c87bb649c313fad45486c5f04b1a5abe">commit 12</a>, on
+day two.</p>
+<p>Everything after that — the other 74 commits — was tweaking: interface experiments, a puzzle gallery,
+a three-dimensional cube running on the same engine, and a great deal of deciding what <em>not</em> to add.
+Reviving the dead applet was a day's work. Working out what it should feel like took the rest of the
+week.</p>
+<h2>A puzzle with a long history</h2>
+<p>This is not my puzzle — I'm just a fan giving an old implementation a new home on the web. The 4D Rubik's cube, <strong>MagicCube4D</strong>, has been developed on and off by <strong>Don Hatch</strong> and <strong>Melinda Green</strong> starting in 1988. The <a href="https://github.com/cutelyaware/magiccube4d">original project lives on GitHub</a>, and its git history stretches back about 17 years (it migrated from Google Code to GitHub at some point along the way).</p>
+<p>Most of the active development seems to have wound down around 11 years ago, with a few changes 5 or 6 years ago. But the puzzle is far from forgotten: the repository has <a href="https://github.com/cutelyaware/magiccube4d/issues">62 issues, some as recent as September 2025</a>, and there's still a reasonably active <a href="https://groups.google.com/g/hypercubing">hypercubing mailing list</a>. There's a real community of people who solve — and think hard about — higher-dimensional twisty puzzles.</p>
+<h2>What is a 4D Rubik's cube?</h2>
+<p>A standard Rubik's cube is a 3×3×3 arrangement whose six faces are 2D squares. Its four-dimensional cousin is built on the <strong>tesseract</strong> (hypercube): instead of six square faces, it has eight cubic <em>cells</em>, and a "twist" rotates one of those cells in four-dimensional space. What you see on screen is a projection of that 4D object down into something we can look at and manipulate.</p>
+<h2>How it was ported</h2>
+<p>The hardest part of MagicCube4D isn't the visuals or the 4D math you see — it's the <strong>geometry engine</strong>, a ~7,000-line n-dimensional CSG library that <em>computes</em> each puzzle's geometry rather than storing it. Every saved solution refers to that geometry by array index, so bit-for-bit compatibility with the original really matters.</p>
+<p>Rather than reimplement that engine, the port takes a different route, laid out in two design docs written along the way:</p>
+<ul>
+<li><a href="https://github.com/cranmer/cube4d/blob/main/docs/architecture-options.md"><strong>Architecture options</strong></a> — weighing four approaches: port the CSG engine to TypeScript, precompute geometry at build time, compile the Java to WebAssembly, or keep a Java backend.</li>
+<li><a href="https://github.com/cranmer/cube4d/blob/main/docs/plan.md"><strong>Implementation plan</strong></a> — the phased plan for the approach we chose.</li>
+</ul>
+<p>The winning approach was <strong>Option B: precompute the geometry at build time.</strong> A small Java exporter runs the original application and dumps each puzzle's geometry to compact binary assets, so the web app ships pre-generated data and never needs the CSG engine at all. That guarantees legacy compatibility "by construction," gives instant loads, and eliminates the riskiest code to port. The trade-off — no arbitrary runtime custom puzzles — is softened by exporting the full catalog of built-in puzzles.</p>
+<p>From there the web app is a modern static site: <strong>React + TypeScript + Three.js</strong>, built with Vite. (Three.js is driven directly rather than through react-three-fiber, and the puzzle state lives in a small hand-rolled session hook rather than a state library — there turned out to be very little to hold.) The heavy lifting happens on the GPU — the vertex shader handles the 4D rotation, projection, front-cell culling, and shrinking — and picking is done with GPU color-ID rendering rather than raycasting, since the CPU never holds a copy of the 4D-warped geometry.</p>
+<h2>New UI features</h2>
+<p>Beyond a faithful port, I added some interface features that the original desktop app didn't have:</p>
+<ul>
+<li><strong>Multi-angle mode</strong> — view the puzzle from several projection angles at once.</li>
+<li><strong>Gallery view</strong> — browse the puzzle catalog with pictures rather than a text list.</li>
+<li><strong>Classic catalog view</strong> — the familiar list-style picker for jumping to any puzzle.</li>
+<li><strong>3D cube mode</strong> — a traditional 3×3×3 Rubik's cube running on the very same engine.</li>
+</ul>
+<p>Two of those turned into more than a feature, and are worth a section each.</p>
+<h2>Two interfaces</h2>
+<p>Once the puzzle was playable I kept adding controls to it, and after a while I realised I was
+spoiling the thing I most wanted to keep. The original MagicCube4D is one window with a trackball:
+you drag, the hypercube tumbles, you click a sticker to twist. Every button I added chipped away at
+that.</p>
+<p>So rather than build one app with a settings panel, I built several on one engine. They share the
+geometry, the renderer and the twist logic — a second front-end costs its own layout and nothing
+more — and they differ only in what they put in front of you.</p>
+<p><strong><a href="https://theoryandpractice.org/cube4d/classic/">Classic interface</a></strong> is the original as it was: one
+viewport, the original colours on the original sky-blue background, and a trackball you drag. There
+is a Reset view button and that is about the whole of it. If you have used MagicCube4D before,
+nothing here should surprise you.</p>
+<p><strong><a href="https://theoryandpractice.org/cube4d/multi/">New interface</a></strong> is where the additions live. The
+obvious one is that you can have the same puzzle in up to three panes at once, from three different
+angles: twist in any pane and every pane turns, hover a sticker and it lights up in all of them. Seeing
+one twist from three viewpoints simultaneously does more for my intuition than any amount of dragging.</p>
+<p>The less obvious addition is the one I care about more. A free trackball in four dimensions is very
+easy to get lost in. In 3D, if you tumble a cube into a bad orientation you can always find your way
+back, because you know what a cube looks like. In 4D you can end up looking at an arrangement that
+tells you nothing, with no obvious way to recover. So each pane gets three buttons that move between
+the eight natural ways of facing the puzzle instead:</p>
+<ul>
+<li><strong>Turn</strong> — a quarter turn to the next oblique corner, keeping the same cell in the middle. The
+  default view is deliberately oblique, so that seven of the eight cells are visible at once, and
+  there are four equally good corners to view it from. This walks between them.</li>
+<li><strong>Tip</strong> — swings a cell from the surrounding ring into the middle and drops the middle one into the
+  ring. It is a three-cycle, so three presses bring you home.</li>
+<li><strong>Flip</strong> — swaps the cell in the middle with the hidden one.</li>
+</ul>
+<p>Turn and Tip between them reach four of the eight axis-aligned viewpoints; Flip is what makes all
+eight reachable, which is the entire reason it exists. There is also a small compass in the corner
+showing where the four axes currently point, with each spoke coloured like the cell that sits on it.
+The axis pointing straight at you is not drawn at all — that is the cell the renderer hides so you
+can see into the interior, and labelling a cell you cannot see would be a lie. At the <code>+X</code> viewpoint,
+the label that vanishes is <code>−X</code>.</p>
+<p>None of this is in the classic app, on purpose. I tried the buttons there first, floating in the
+corners of the viewport, and then took them out. Two apps that each do one thing beat one app with a
+mode switch.</p>
+<h2>The gallery, and how far the framework generalises</h2>
+<p>The thing that kept surprising me as I worked on this is that <strong>nothing in the engine is about the
+hypercube.</strong> A puzzle is a Schläfli product symbol and an edge length, and that is the whole
+specification. The program constructs the polytope from the symbol, slices it with hyperplanes, and
+derives the stickers, the twist axes and their rotation orders from whatever falls out. <code>{4,3,3} 3</code>
+is the four-dimensional Rubik's cube. Change four characters and you get something nobody has a name
+for.</p>
+<p>Since the geometry is precomputed at build time, I could simply run the exporter over the whole
+catalog and see what the engine is capable of. It builds <strong>136 puzzles across 23 families</strong>. Twenty-one
+of those are one slice to a side, which means they have no moves — genuine polytopes, but not puzzles —
+so the remaining <strong>115</strong> go into a <a href="https://theoryandpractice.org/cube4d/gallery/"><strong>puzzle gallery</strong></a>,
+rendered rather than listed, because a text list of Schläfli symbols tells you nothing about what you
+are about to open.</p>
+<p>Browsing it is the best argument for the generality of Don Hatch's design that I can make:</p>
+<ul>
+<li><strong><code>{4,3,3}</code></strong> — the hypercube, from 2×2×2×2 up to 9 slices a side.</li>
+<li><strong><code>{3,3,3}</code></strong> — the 5-cell, the four-dimensional simplex. Five tetrahedral cells; the smallest 4D
+  puzzle there is.</li>
+<li><strong><code>{5,3,3}</code></strong> — the 120-cell, built from <strong>120 dodecahedra</strong>, which the catalog labels
+  "Hypermegaminx (BIG!)" without exaggeration.</li>
+<li><strong><code>{5,3}x{}</code></strong> — a dodecahedral prism, the four-dimensional extrusion of a megaminx.</li>
+<li><strong><code>{3}x{4}</code>, <code>{5}x{5}</code>, <code>{10}x{10}</code>…</strong> — duoprisms, the product of two polygons, which have no
+  three-dimensional analogue at all. There is a 100-gonal one, because why not.</li>
+</ul>
+<p>All of them are playable with exactly the same rules: click a sticker, the number of colours it
+carries picks the axis, and the puzzle turns. I did not write a line of code for any individual
+puzzle in that list, and neither did Don Hatch — that is the point of specifying a puzzle by its
+symbol instead of its geometry.</p>
+<h2>A 3D Rubik's cube, flat in the fourth dimension</h2>
+<p>The part that surprised me most is that an ordinary Rubik's cube came almost for free.</p>
+<p>Don Hatch's engine is genuinely n-dimensional. It does not hard-code the hypercube: you hand it a
+Schläfli product symbol and an edge length, and it constructs the polytope, slices it with
+hyperplanes, and derives the stickers and the twist axes from whatever comes out. <code>{4,3,3} 3</code> is the
+four-dimensional cube. <code>{4,3} 3</code> is the one on your desk. The engine could always build both — nobody
+had asked it to draw the second one in a browser.</p>
+<p>Getting it on screen was mostly a matter of padding the geometry out to four dimensions with <code>w = 0</code>
+and turning off one thing. The renderer hides the cell nearest you so that you can see through it
+into the interior; for a puzzle that is flat in the fourth dimension there is no nearest cell, and if
+you leave that test switched on it quietly culls everything.</p>
+<p>What I actually cared about was the interface. In MagicCube4D, which axis a click means is <em>inferred</em>
+from how many colours the piece you clicked carries: a corner asks for a rotation about a vertex, an
+edge piece about an edge, a centre about a face. That rule is the thing worth learning, and I wanted
+the 3D cube to teach it on a shape you can already picture rather than invent its own scheme.</p>
+<p>It does, with one honest asymmetry that turned out to be the most interesting thing in the project.
+Click a centre sticker and you get the 90° face turn you expect. Click a corner and the axis is
+perfectly real — but it turns the <em>whole cube</em> by 120° rather than a layer. The reason is that in
+four dimensions the first layer measured from a cell <strong>is that cell</strong>: a whole 3×3×3 block, which
+carries the cube's full rotation group, so a 120° turn about one of its corners maps it onto itself.
+In three dimensions the first layer measured from a face is a flat 3×3×1 slab, whose only symmetry is
+the face's own four-fold one. Turn that about a corner and its cubies have nowhere to go.</p>
+<p>That is exactly the same fact as a physical Rubik's cube having no corner move, and I think it is the
+clearest demonstration I know of what the fourth dimension actually buys you. It also stopped me from
+"fixing" it: at one point we had a special case that made the 2×2×2 work, and it broke the hypercube.
+Consistency across dimensions was worth more than the special case, so we documented the limitation
+instead. The 2×2×2 has no centre stickers at all, so under the pure rule it has no legal moves
+whatsoever — holding <kbd>Ctrl</kbd> names the face axis directly, which makes a pocket cube playable
+without bending the rule for everyone else.</p>
+<p>Along with the 3×3×3 you get 2×2×2 through 7×7×7, and a megaminx.</p>
+<h2>By the numbers</h2>
+<p>I was curious what this actually took, so I counted rather than guessed — the numbers below come from
+the Claude Code session logs and the git history.</p>
+<ul>
+<li><strong>81 prompts</strong> from me, over four days, totalling about <strong>3,700 words</strong>. That is roughly seven pages
+  of typing for the whole project, and most of the individual messages are a sentence or two.</li>
+<li><strong>~2,200 model turns</strong> in response, making <strong>1,148 tool calls</strong> — 860 shell commands, 127 file
+  reads, 137 file writes and edits.</li>
+<li><strong>86 commits</strong>, about <strong>18,400 lines</strong> of TypeScript, CSS, docs and Java export tooling, and <strong>409
+  tests</strong>.</li>
+</ul>
+<p>The token counts are the part I found genuinely surprising. The model <em>wrote</em> about <strong>2.8 million
+output tokens</strong>. But the conversation is re-sent on every single step, so the input side totalled
+about <strong>1.07 billion tokens</strong> — which sounds absurd until you realise that essentially all of it is
+cache reads of the same accumulated context, not new material. Nearly all of the "billion tokens" is
+one long conversation being remembered over and over.</p>
+<p>The ratio is the interesting bit: 3,700 words in, 18,400 lines of working software out. That gap is
+entirely filled by the model reading the original Java, checking its own work, and being told when it
+was wrong.</p>
+<h3>And what it cost the atmosphere</h3>
+<p>Having counted the tokens, I wanted to know what they cost in carbon. This turns out to be
+surprisingly hard to answer honestly, and the way it is usually answered is wrong.</p>
+<p>If you ask a search engine, you get something like "0.45 to 20 grams of CO₂e per 1,000 output
+tokens", which for 2.8 million output tokens gives anywhere from 1.3 kg to 57 kg — the high end
+being about a 140-mile drive. Two things are wrong with that. The range is a <strong>44× spread</strong>, which is
+not an estimate so much as an admission that nobody knows, and quoting it to three significant figures
+lends it a precision it does not have. More importantly, it prices only the <em>output</em> tokens, which is
+the wrong half of this workload: the conversation is re-sent on every step, so the input side is where
+most of the compute goes. Pricing an agentic coding session by its output tokens is like pricing a
+road trip by the return leg.</p>
+<p>A better attempt is <a href="https://github.com/gwittebolle/claude-carbon">claude-carbon</a>, which prices both
+sides separately, using factors regressed from
+<a href="https://dev.to/gwittebolle/how-much-co2-does-a-claude-code-session-actually-emit-1gna">Jegham et al. 2025</a>
+for Claude 3.7 Sonnet running on AWS: 39 gCO₂e per million input tokens, 826 per million output, and
+cached reads at 0.08× the input rate — they skip the prefill computation but still pay for the decode.
+Applied to what this project actually used:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align: right;">tokens</th>
+<th style="text-align: right;">gCO₂e</th>
+<th style="text-align: right;">share</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cache reads</td>
+<td style="text-align: right;">1,066,103,626</td>
+<td style="text-align: right;">3,326</td>
+<td style="text-align: right;">50%</td>
+</tr>
+<tr>
+<td>Output</td>
+<td style="text-align: right;">2,848,899</td>
+<td style="text-align: right;">2,353</td>
+<td style="text-align: right;">36%</td>
+</tr>
+<tr>
+<td>Cache creation</td>
+<td style="text-align: right;">24,477,308</td>
+<td style="text-align: right;">955</td>
+<td style="text-align: right;">14%</td>
+</tr>
+<tr>
+<td>Fresh input</td>
+<td style="text-align: right;">9,081</td>
+<td style="text-align: right;">0.4</td>
+<td style="text-align: right;">—</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"><strong>≈ 6,634 g</strong></td>
+<td style="text-align: right;"></td>
+</tr>
+</tbody>
+</table>
+<p>So roughly <strong>6.6 kg of CO₂e</strong>, about the same as driving 17 miles. Note that the half of it I would
+have missed by counting output tokens alone is the cache reads — the cost of the model re-reading our
+conversation, over and over, all week.</p>
+<p>I would treat even that as an order of magnitude rather than a measurement, for several reasons:</p>
+<ul>
+<li><strong>Anthropic publishes no per-inference energy data.</strong> OpenAI has said an average ChatGPT query uses
+  about 0.34 Wh, and Google puts the median Gemini text prompt at 0.24 Wh and 0.03 gCO₂e. For Claude
+  there is no official figure at all, so every number above is third-party extrapolation.</li>
+<li><strong>The factors are measured on the wrong model.</strong> They come from Claude 3.7 Sonnet; this project ran
+  on Opus, which is substantially larger. 6.6 kg is closer to a floor than a midpoint.</li>
+<li><strong>The cache multiplier is a derivation, not a measurement</strong> — the author gives it a range of
+  0.05–0.15×, and it drives half the total.</li>
+<li><strong>It is inference only.</strong> No amortised training, no hardware manufacturing, no water. And none of
+  the 860 shell commands, 86 CI runs and few dozen headless-browser rendering sessions, which ran on
+  my laptop and on GitHub's machines rather than in a model.</li>
+</ul>
+<p>None of which changes the order of magnitude: this was single-digit kilograms, not grams and not
+tonnes. For context, it is a rounding error next to the flight I would have taken to a conference to
+talk about it — but it is not nothing, and I would rather publish the uncertainty than a number that
+looks authoritative because it has three digits in it.</p>
+<h2>Reflections</h2>
+<!-- TODO: Closing thoughts on reviving old code, the math, community stewardship, and agentic AI. -->
+            </div>
+            <!-- /.entry-content -->
+    <hr />
+    <!-- AddThis Button BEGIN -->
+    <div class="addthis_toolbox addthis_default_style">
+            <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+            <a class="addthis_button_tweet"></a>
+            <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    </div>
+    <!-- AddThis Button END -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Recent Posts -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+  <ul class="list-group" id="recentposts">
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2026/07/four-dimensional-rubiks-cube/">A Four-Dimensional Rubik's Cube</a></li>
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2026/04/scalars-are-all-you-need/">Scalars Are All You Need for Multimodal Inference</a></li>
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/12/migrating-with-claude/">Migrating with Claude</a></li>
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/12/year-in-review-2025/">Year in Review: 2025</a></li>
+    <li class="list-group-item"><a href="https://theoryandpractice.org/2025/12/travel-map/">Travel Map</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Recent Posts -->
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="https://bsky.app/profile/kylecranmer.bsky.social"><i class="fa fa-bluesky fa-lg"></i> Bluesky</a></li>
+    <li class="list-group-item"><a href="http://twitter.com/kylecranmer"><i class="fa fa-twitter-square fa-lg"></i> twitter</a></li>
+    <li class="list-group-item"><a href="https://www.instagram.com/kyle.cranmer/"><i class="fa fa-instagram fa-lg"></i> instagram</a></li>
+    <li class="list-group-item"><a href="http://github.com/cranmer"><i class="fa fa-github-square fa-lg"></i> github</a></li>
+    <li class="list-group-item"><a href="http://www.linkedin.com/in/kylecranmer"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
+    <li class="list-group-item"><a href="https://www.youtube.com/channel/UCKl2VoIJiPYp3QhuK22b7xQ"><i class="fa fa-youtube-square fa-lg"></i> youtube</a></li>
+    <li class="list-group-item"><a href="https://inspirehep.net/literature?sort=mostrecent&size=25&page=1&q=a%3Ak.s.cranmer.1%20and%20ac%201-%3E10&ui-citation-summary=true"><i class="fa fa-inspire fa-lg"></i> INSPIRE</a></li>
+    <li class="list-group-item"><a href="http://scholar.google.com/citations?user=EZjSxgwAAAAJ"><i class="fa fa-google-scholar fa-lg"></i> Google Scholar</a></li>
+    <li class="list-group-item"><a href="https://orcid.org/0000-0002-5769-7094"><i class="fa fa-orcid fa-lg"></i> ORCiD</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+
+<!-- Sidebar/Links -->
+<li class="list-group-item">
+  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+  <ul class="list-group" id="links">
+    <li class="list-group-item">
+      <a href="https://theoryandpractice.org/stats-ds-book/intro.html" target="_blank">Stats & Data Science Book</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://dsi.wisc.edu" target="_blank">Data Science Institute</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://www.physics.wisc.edu/directory/cranmer-kyle/" target="_blank">My UW Physics webpage</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://iris-hep.org/" target="_blank">IRIS-HEP</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://en.wikipedia.org/wiki/Kyle_Cranmer" target="_blank">Wikipedia</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Links -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<!-- End Content Container -->
+
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2026 Kyle Cranmer
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>                <p><small>  <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/deed.en"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>
+    Content
+  licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/deed.en">Creative Commons Attribution-NonCommercial 4.0 International License</a>, except where indicated otherwise.
+</small></p>
+         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="https://theoryandpractice.org/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://theoryandpractice.org/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="https://theoryandpractice.org/theme/js/respond.min.js"></script>
+
+
+
+
+        <script type="text/javascript">var addthis_config = {"data_track_addressbar": true};</script>
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5332e76b5340f5f3"></script>
+</body>
+</html>
